@@ -1,0 +1,24 @@
+<div class="form-group xibo-form-input rich-text-input {{customClass}}"
+    {{#if visibility}}data-visibility="{{visibility}}"{{/if}}
+    {{#if dependsOn}}data-depends-on="{{dependsOn}}"{{/if}}
+>
+    <label for="input_{{id}}" class="control-label"><strong>{{title}}</strong></label>
+    <div class="input-info-container">
+        {{#if helpText}}
+            {{>add-ons/helpText helpText=helpText}}
+        {{/if}}
+    </div>
+    <div class="rich-text-main-container">
+        <div class="text-area-buttons"></div>
+        <div class="rich-text-container-wrapper">
+            <div class="rich-text-container">
+                <textarea type="text" class="form-control rich-text" id="input_{{id}}" name="{{#if name}}{{name}}{{else}}{{id}}{{/if}}"
+                    {{#each customData}}
+                        data-{{this.name}}="{{this.value}}"
+                    {{/each}}
+                />{{value}}</textarea>
+                <div class="rich-text-editor" data-target="input_{{id}}"></div>
+            </div>
+        </div>
+    </div>
+</div>

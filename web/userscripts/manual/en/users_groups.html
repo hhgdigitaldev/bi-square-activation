@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="users">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<a href="users_administration.html">User Administration</a>
+</li>
+<li class="active">
+<a href="users_groups.html">User Groups<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a>
+</li>
+<li>
+<a href="users_dashboards.html">User Dashboards</a>
+</li>
+<li>
+<a href="users_features_and_sharing.html">Features and Sharing</a>
+</li>
+<li>
+<a href="users_notifications.html">Notifications</a>
+</li>
+</ul>
+</body></html>
+<li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="user_groups">User Groups <a href="#user_groups" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>User Groups are an easy way to configure <a href="users_features_and_sharing.html">Features and Share</a> options to apply to multiple Users who are members of a particular User Group.</p>
+<blockquote class="tip"><p>User Groups makes it easier to onboard new Users and manage system access. Users will inherit the  Feature and Sharing options enabled for the group!</p>
+</blockquote>
+<p>Create your own User Groups are select from a set of pre-configured groups, created to serve common functions in the CMS, available for new installations.</p>
+<p><img src="img/v4_user_groups_preconfigured.png" alt="Pre-Configured Groups" /></p>
+<p>The pre-configured User Groups already have the required Features enabled to allow Users to carry out the chosen role. These can be modified if required to suit.</p>
+<h2 id="create_user_groups">Create User Groups <a href="#create_user_groups" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>User Groups are administered from <strong>User Groups</strong> under the <strong>Administration</strong> section of the main CMS menu. The User Group grid will open for you to add and manage User Groups:</p>
+<p><img src="img/v4_user_group_add.png" alt="User Group Add" /></p>
+<blockquote class="tip"><p>Add User Groups to suit your specific needs and enable them to be shown for the <a href="users_administration.html">New User</a> onboarding wizard to make it easier to add Users to the right User Group from the start!</p>
+</blockquote>
+<p>To add a new group, click on the <strong>Add User Group</strong> button and enter the required information for each tab:</p>
+<h4>General</h4>
+<ul>
+<li>Give your User Group a <strong>Name</strong> to identify it within the CMS</li>
+<li>Enter a maximum amount of <a href="users_administration.html#content-library-quota">Library Quota</a> allowed to be uploaded to the Library for this User Group. Enter 0 if no quota should be applied.</li>
+<li>Select the type, <strong>System</strong> or <strong>Display</strong>, if the User Group should receive notifications.</li>
+</ul>
+<h4>Description</h4>
+<p>Provide optional text to describe the created Group.</p>
+<blockquote class="tip"><p>If enabled to show for onboarding new Users, this description (such as the Groups role) will be shown to make it clear for selection.</p>
+</blockquote>
+<h4>Onboarding Settings</h4>
+<p>Use this tab to control the options for onboarding new Users:</p>
+<ul>
+<li>Tick if you want to include this User Group for selection when using the onboarding wizard.</li>
+<li>Use the dropdown to select the <a href="users_dashboards.html">Dashboard</a> which will be used as a homepage for all members of this group.</li>
+<li>Click to Save.</li>
+</ul>
+<h3>Group Members</h3>
+<p>Once added to the grid, add Users to the User Group by using the row menu:</p>
+<ul>
+<li>Click on <strong>Members</strong>
+</li>
+</ul>
+<p><img src="img/v4_user_group_manage_membership.png" alt="User Group Manage Membership" /></p>
+<ul>
+<li>Select which <strong>Users</strong> should belong to the selected <strong>User Group</strong>.</li>
+<li>Click to <strong>Save</strong>.</li>
+</ul>
+<blockquote class="tip"><p>Users can be assigned to one or more <strong>User Groups</strong> for ease of sharing and collaboration!</p>
+<p>Membership can also be controlled from the User grid by using the row menu and selecting  <strong>User Groups</strong> to open the <strong>Manage Membership</strong> form!</p>
+</blockquote>
+<h3>Features</h3>
+<p>Control the User Groups access to the relevant parts of the CMS by selecting <a href="users_features_and_sharing.html">Features</a> from the row menu.</p>
+<h3>Copy</h3>
+<p>Make a <strong>Copy</strong> of an existing User Group from the row menu to make adjustments and easily create new Groups to suit your requirements.</p>
+<h4>Next…</h4>
+<p><a href="users_features_and_sharing">Features and Sharing</a></p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

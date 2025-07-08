@@ -1,0 +1,290 @@
+<!--
+  ~ Copyright (C) 2023 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-countdown-table</id>
+    <name>Countdown - Table</name>
+    <author>Core</author>
+    <description>A module for displaying a Countdown timer in a table</description>
+    <icon>fa fa-hourglass-o</icon>
+    <class></class>
+    <compatibilityClass>\Xibo\Widget\Compatibility\CountDownWidgetCompatibility</compatibilityClass>
+    <type>countdown-table</type>
+    <group id="countdown" icon="fa fa-hourglass-o">Countdown</group>
+    <legacyType condition="templateId==countdown3">countdown</legacyType>
+    <dataType></dataType>
+    <schemaVersion>2</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>60</defaultDuration>
+    <thumbnail>countdown-table-thumb</thumbnail>
+    <startWidth>500</startWidth>
+    <startHeight>350</startHeight>
+    <settings></settings>
+    <properties>
+        <property id="countdownType" type="dropdown" mode="single">
+            <title>Countdown Type</title>
+            <helpText>Please select the type of countdown.</helpText>
+            <default>1</default>
+            <options>
+                <option name="1">Widget Duration</option>
+                <option name="2">Custom Duration</option>
+                <option name="3">Use Date</option>
+            </options>
+        </property>
+        <property id="countdownDuration" type="number">
+            <title>Countdown Duration</title>
+            <helpText>The duration in seconds.</helpText>
+            <default></default>
+            <visibility>
+                <test type="or">
+                    <condition field="countdownType" type="eq">2</condition>
+                </test>
+            </visibility>
+            <rule>
+                <test type="or" message="Please enter a positive countdown duration">
+                    <condition type="gt">0</condition>
+                    <condition field="countdownType" type="neq">2</condition>
+                </test>
+            </rule>
+        </property>
+        <property id="countdownDate" type="date" format="DD/MM/YYYY HH:mm:ss" variant="dateTime">
+            <title>Countdown Date</title>
+            <helpText>Select the target date and time.</helpText>
+            <default>10/10/2010 10:10:10</default>
+            <visibility>
+                <test type="or">
+                    <condition field="countdownType" type="eq">3</condition>
+                </test>
+            </visibility>
+            <rule>
+                <test>
+                    <condition type="required"></condition>
+                </test>
+            </rule>
+        </property>
+        <property id="alignmentH" type="dropdown" mode="single">
+            <title>Horizontal Align</title>
+            <helpText>How should this widget be horizontally aligned?</helpText>
+            <default>center</default>
+            <options>
+                <option name="left">Left</option>
+                <option name="center">Centre</option>
+                <option name="right">Right</option>
+            </options>
+        </property>
+        <property id="alignmentV" type="dropdown" mode="single">
+            <title>Vertical Align</title>
+            <helpText>How should this widget be vertically aligned?</helpText>
+            <default>middle</default>
+            <options>
+                <option name="top">Top</option>
+                <option name="middle">Middle</option>
+                <option name="bottom">Bottom</option>
+            </options>
+        </property>
+        <property id="fontFamily" type="fontSelector">
+            <title>Font</title>
+            <helpText>Select a custom font - leave empty to use the default font.</helpText>
+        </property>
+        <property id="headerTextColor" type="color">
+            <title>Header Text Colour</title>
+            <default>#f1f1f1</default>
+        </property>
+        <property id="headerBackgroundColor" type="color">
+            <title>Header Background Colour</title>
+            <default>#747474</default>
+        </property>
+        <property id="evenRowTextColor" type="color">
+            <title>Even Row Text Colour</title>
+            <default>#333</default>
+        </property>
+        <property id="evenRowBackgroundColor" type="color">
+            <title>Even Row Background Colour</title>
+            <default>#d7d7d7</default>
+        </property>
+        <property id="oddRowTextColor" type="color">
+            <title>Odd Row Text Colour</title>
+            <default>#333</default>
+        </property>
+        <property id="oddRowBackgroundColor" type="color">
+            <title>Odd Row Background Colour</title>
+            <default>#ececec</default>
+        </property>
+        <property id="borderColor" type="color">
+            <title>Border Colour</title>
+            <default>#ccc</default>
+        </property>
+    </properties>
+    <preview></preview>
+    <stencil>
+        <width id="width">600</width>
+        <height id="height">400</height>
+        <hbs><![CDATA[
+<div class="countdown-container">
+    <table>
+        <tr class="main-header">
+            <td colspan="2">||Years||</td>
+        </tr>
+        <tr>
+            <td colspan="2">[YY]</td>
+        </tr>
+        <tr class="header">
+            <td>||Months||</td>
+            <td>||Weeks||</td>
+        </tr>
+        <tr>
+            <td>[MM]</td>
+            <td>[WW]</td>
+        </tr>
+        <tr class="header">
+            <td>||Days||</td>
+            <td>||Total Hours||</td>
+        </tr>
+        <tr>
+            <td>[DD]</td>
+            <td>[hha]</td>
+        </tr>
+        <tr class="header">
+            <td>||Total Minutes||</td>
+            <td>||Total Seconds||</td>
+        </tr>
+        <tr>
+            <td>[mma]</td>
+            <td>[ssa]</td>
+        </tr>
+    </table>
+</div>
+        ]]></hbs>
+        <style><![CDATA[
+body {
+    width: 600px !important;
+    height: 400px !important;
+}
+
+table {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 600px;
+    height: 400px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td, th {
+    border: 1px solid #CCC;
+    height: 30px;
+}
+
+td {
+    background: #ececec;
+    text-align: center;
+}
+
+tr.header td {
+    background: #d7d7d7;
+    font-weight: bolder;
+}
+
+tr.main-header td {
+    background: #747474;
+    color: #f1f1f1;
+    font-weight: bolder;
+}
+
+{% if fontFamily %}tr { font-family: {{fontFamily}} !important; }{% endif %}
+{% if headerTextColor %}tr.main-header td { color: {{headerTextColor}} !important; }{% endif %}
+{% if headerBackgroundColor %}tr.main-header td { background: {{headerBackgroundColor}} !important; }{% endif %}
+{% if evenRowTextColor %}tr.header td { color: {{evenRowTextColor}} !important; }{% endif %}
+{% if evenRowBackgroundColor %}tr.header td { background-color: {{evenRowBackgroundColor}} !important; }{% endif %}
+{% if oddRowTextColor %}tr:not(.header):not(.main-header) td { color: {{oddRowTextColor}} !important; }{% endif %}
+{% if oddRowBackgroundColor %}tr:not(.header):not(.main-header) td { background-color: {{oddRowBackgroundColor}} !important; }{% endif %}
+{% if borderColor %}td { border-color: {{borderColor}} !important; }{% endif %}
+        ]]></style>
+    </stencil>
+    <onRender><![CDATA[
+// Make replacements on render for all templates
+var $countdownContainer = $('.countdown-container', target);
+
+// Get countdown container html
+var countdownHTML = $countdownContainer.html();
+
+// Make replacements
+var text = countdownHTML;
+var regex = /\[.*?\]/g;
+countdownHTML = text.replace(regex, function (match) {
+    var replacement = '';
+    var matchParsed = match.replace('[', '').replace(']', '');
+
+    // Replace tags
+    switch (matchParsed) {
+        case 'ss':
+            replacement = '<span class="seconds"></span>';
+            break;
+        case 'ssa':
+            replacement = '<span class="secondsAll"></span>';
+            break;
+        case 'mm':
+            replacement = '<span class="minutes"></span>';
+            break;
+        case 'mma':
+            replacement = '<span class="minutesAll"></span>';
+            break;
+        case 'hh':
+            replacement = '<span class="hours"></span>';
+            break;
+        case 'hha':
+            replacement = '<span class="hoursAll"></span>';
+            break;
+        case 'DD':
+            replacement = '<span class="days"></span>';
+            break;
+        case 'WW':
+            replacement = '<span class="weeks"></span>';
+            break;
+        case 'MM':
+            replacement = '<span class="months"></span>';
+            break;
+        case 'YY':
+            replacement = '<span class="years"></span>';
+            break;
+        default:
+            replacement = 'NULL';
+            break;
+    }
+
+    return replacement;
+});
+
+// Attach html back to container
+$countdownContainer.html(countdownHTML);
+
+// Scale the layout
+$(target).xiboLayoutScaler(properties);
+
+// Render the countdown
+var $contentContainer = $(target).find('#content');
+$contentContainer.xiboCountdownRender(properties, $contentContainer.html());
+]]></onRender>
+    <assets>
+        <asset id="countdown-table-thumb" type="path" cmsOnly="true" mimeType="image/png" path="/modules/assets/template-thumbnails/countdown/countdown-table-thumb.png" />
+    </assets>
+</module>

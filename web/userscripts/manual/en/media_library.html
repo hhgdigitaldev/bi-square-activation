@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="media">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p class="active"><a href="media_library.html">Library Media<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="media_playlists.html">Playlists</a></p>
+</li>
+<li>
+<p><a href="media_datasets.html">DataSets</a></p>
+</li>
+<li>
+<p><a href="media_menuboards.html">Menu Boards</a></p>
+</li>
+<li>
+<p><a href="media_dashboard_service.html">Dashboard Service</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="media_library">Media Library <a href="#media_library" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>BI Square Brand Activation supports a wide variety of media types, from Widgets which are created and stored directly on Layouts and Playlists to file-based media that is uploaded and stored in the CMS Library which can then be reused across multiple Layouts and Playlists.</p>
+<p>Manage all file based media by selecting <strong>Media</strong> under the <strong>Library</strong> section of the main CMS menu:</p>
+<p><img src="img/v4_media_library_grid.png" alt="Media Library" /></p>
+<p>Use the multiple filter fields across the top of the <a href="tour_cms_navigation.html#content-grids">grid</a> to restrict criteria for returned results.</p>
+<blockquote class="tip"><p>Use the <strong>OR/AND</strong> option for <strong>Names</strong> and to filter items that have been assigned multiple <strong>Tags</strong>.</p>
+<p>Images and Videos that have a set thumbnail can also be filtered by <strong>Orientation</strong> once set:</p>
+<ul>
+<li>
+<p>Use the row menu for the item and select <strong>Edit</strong> for an Image/Video file.</p>
+</li>
+<li>
+<p>Scroll down to the bottom of the form and set the intended <strong>Orientation</strong>.</p>
+</li>
+</ul>
+</blockquote>
+<p><a href="tour_folders.html">Folders</a> are used to organise, search and easily <a href="users_features_and_sharing.html">Share</a> User objects with other Users/User Groups.</p>
+<ul>
+<li>Click on a Folder/sub-folder to search the contents of only the selected Folder and return results based on any filters applied.</li>
+</ul>
+<p>or</p>
+<ul>
+<li>Tick <strong>All Folders</strong> to include searching in the Root Folder and return results based on any filters applied.</li>
+</ul>
+<blockquote class="tip"><p>Click the Folders menu to toggle on/off from view.  When the Folder tree is hidden from view, the file path for the selected folder will be shown!</p>
+</blockquote>
+<h2 id="adding_library_media">Adding Library Media <a href="#adding_library_media" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Library media can be either uploaded directly using the <strong>Add Media</strong> button or by providing a URL using the <strong>Add Media (URL)</strong> button.</p>
+<blockquote class="tip"><p>Add Media to the CMS Library and save to <a href="tour_folders.html">Folders</a> to have media ready for use for the appropriate <a href="users_administration.html">Users</a>/<a href="users_groups.html">User Groups</a>!</p>
+<p>Files added to the CMS Library can be easily added to Layouts and Playlists using a <a href="layouts_editor.html#content-library-search">Library Search</a></p>
+</blockquote>
+<h3>Add Media (Upload)</h3>
+<ul>
+<li>
+<p>Select the <strong>Add Media</strong> button</p>
+<p><img src="img/v4_media_library_upload.png" alt="Upload Media" /></p>
+</li>
+<li>
+<p>Click <strong>Add files</strong> and select the file(s) you wish to upload.</p>
+</li>
+</ul>
+<blockquote class="tip"><p>Default thresholds and limits can be specified which are then considered in the event an <a href="media_module_image.html">Image</a> should be resized when uploading an image for example. Further information can be found in <a href="tour_cms_settings.html#content-resizing-images">CMS Settings</a>.</p>
+</blockquote>
+<ul>
+<li>Give your file a <strong>Name</strong> for easier identification in the CMS and optional <a href="tour_tags.html">Tags</a>.</li>
+</ul>
+<blockquote class="tip"><p>If the Name field is left blank, the file will be named as per the original file name on upload!</p>
+</blockquote>
+<p>Upload files to a specified Folder location to inherit the View, Edit, Delete Share options that have been applied to the destination Folder for easy User/User Group access:</p>
+<ul>
+<li>Click on the <strong>Select Folder</strong> button and expand to select the Folder to save in.</li>
+</ul>
+<blockquote class="tip"><p>Users can also right click a Folder to access further options as enabled in the <a href="users_features_and_sharing.html">Feature and Sharing</a> options for a User/User Group.</p>
+</blockquote>
+<ul>
+<li>
+<p>Click in the Folder you wish to upload the file to and click <strong>Done</strong>.</p>
+</li>
+<li>
+<p>The <strong>Current Folder</strong> will now show the selected file path.</p>
+</li>
+<li>
+<p>Click the <strong>Start upload</strong> button to begin the upload of all files. If a Folder has been selected and you have added multiple files, all files will be uploaded to that location.</p>
+</li>
+</ul>
+<p>Files can also be uploaded individually and have different Folder locations specified:</p>
+<ul>
+<li>
+<p>Instead of clicking on the Start upload button, click on the <strong>blue upload</strong> button shown at the end of the row for an added file.</p>
+</li>
+<li>
+<p>Change the Folder location using the <strong>Select Folder</strong> button as before and then click the blue button at the end of the row to upload just that singular file.</p>
+</li>
+</ul>
+<p><img src="img/v4_media_library_single_upload.png" alt="Single Upload" /></p>
+<ul>
+<li>Once all files have been successfully uploaded, click <strong>Done</strong>.</li>
+</ul>
+<blockquote class="tip"><p>Media files can also be uploaded directly to Layouts/Playlists using the upload tool from a <a href="layouts_editor.html#content-library-search">Library Search.</a> Media uploaded to a Playlist have an additional option to set <a href="media_playlists.html#content-widget-expiry-dates">Widget Expiry Dates</a>.</p>
+<p>Media files that are uploaded and added directly to Layouts/Playlists are also saved by default to the CMS Media Library.</p>
+</blockquote>
+<h3>Add Media via URL</h3>
+<ul>
+<li>Select the <strong>Add Media (URL)</strong> button:</li>
+</ul>
+<p><img src="img/v4_media_library_upload_url.png" alt="Upload via URL" /></p>
+<ul>
+<li>Save to a <a href="tour_folders.html">Folder</a> to inherit the View, Edit, Delete Share options that have been applied to the destination Folder for easy User/User Group access.</li>
+<li>Provide the remote URL for the file.</li>
+<li>Give your file a <strong>Name</strong> for easier identification in the CMS.</li>
+</ul>
+<blockquote class="tip"><p>If the Name field is left blank, the file will be named as per the original file name!</p>
+</blockquote>
+<ul>
+<li>Click to <strong>Save</strong>.</li>
+</ul>
+<h2 id="row_menu">Row Menu <a href="#row_menu" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Each item in the <strong>Library</strong> has a row menu where Users can access a list of actions/shortcuts</p>
+<h2 id="edit">Edit <a href="#edit" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Select <strong>Edit</strong> to make changes to <strong>Folder</strong> locations, <strong>Durations</strong> and <strong>Tags</strong> and other settings.</p>
+<ul>
+<li>Notable settings are listed below:</li>
+</ul>
+<h3>Expiry Dates</h3>
+<p>Set an Expiry Date for Library Media to remove the file from any Layouts/Playlists it has been used on.</p>
+<h3>Retire Media</h3>
+<p>Ticking <strong>Retire this Media</strong> will keep the media file assigned to any existing Layouts/Playlists but will not be made available for further selection to add to Layouts/Playlists.</p>
+<h3>Enable Media Stats Collection</h3>
+<ul>
+<li>Set the collection of <a href="displays_metrics.html#proof_of_play">Proof of Play</a> statistics to On / Off / Inherit for the selected media file.</li>
+</ul>
+<blockquote class="tip"><p>Ensure that <strong>Enable Stats Reporting</strong> has been ticked in <a href="displays_settings.html">Display Settings</a> in order to collect Proof of Play stats!</p>
+</blockquote>
+<h3>Update Media</h3>
+<p>Use the check box <strong>Update this Media in all Layouts it is assigned to</strong> so that any edits are reflected in Layouts/Playlists that this media file is currently assigned to.</p>
+<blockquote class="tip"><p>Edits will only be updated in Layouts/Playlists which you have <a href="users_features_and_sharing.html#content-share">access</a> to edit!</p>
+</blockquote>
+<h3>Replace Media</h3>
+<p>It may be necessary to upload a new revision of an existing file by using the <strong>Replace</strong> button at the bottom of the form.</p>
+<ul>
+<li>Upload a replacement file using the same steps as before to <a href="media_library.html#content-add-media-upload">Add Media (Upload).</a>
+</li>
+<li>Tick to <strong>Update</strong> the replacement file to all Layouts/Playlists it is currently assigned to.</li>
+<li>Tick to <strong>Delete</strong> the old file version completely from the CMS.</li>
+</ul>
+<h2 id="delete">Delete <a href="#delete" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Media files can only be deleted from the CMS if they are <strong>not</strong> being used on any existing <strong>Layouts/Playlists</strong>.</p>
+<blockquote class="tip"><p><a href="media_library.html#content-retire-media">Retiring Content</a> rather than deleting it will keep the media file in any existing Layouts/Playlists it has been assigned to, with any scheduled content unaffected. Media will not be available to add to any new Layouts/Playlists.</p>
+</blockquote>
+<ul>
+<li>Tick in the box to enable a hard push using XMDS to completely remove the file from a Players local storage.</li>
+</ul>
+<h3>Usage Report</h3>
+<blockquote class="tip"><p>This report is great to use to make final checks prior to tidying media files!</p>
+</blockquote>
+<p>This will show if the selected <strong>media file</strong> is directly assigned/scheduled to <strong>Displays</strong>.</p>
+<p><img src="img/v4_media_library_usage_report.png" alt="Library Usage Report" /></p>
+<ul>
+<li>Use the Layout tab to see what <strong>Layouts</strong> the media file is currently included in.</li>
+</ul>
+<blockquote class="tip"><p>Use the <a href="tour_cms_navigation.html#content-multi-select---with-selected">With Selected</a> option at the bottom of the Library grid to muti-select rows to easily perform bulk actions!</p>
+</blockquote>
+<h3>Schedule</h3>
+<p>Image and Video Library media files can be directly Scheduled to a Display as full screen content from the row menu.</p>
+<ul>
+<li>Click <strong>Schedule</strong>
+</li>
+</ul>
+<p><img src="img/v4_media_library_schedule_fullscreen.png" alt="Schedule Library Media" /></p>
+<ul>
+<li>Set the <strong>Duration</strong> of the item to determine how long this media file should be shown each time it appears in the schedule. Use the duration,as set in the Media Library by leaving this field blank.</li>
+<li>Optionally select a <strong>Resolution</strong> to use. If left blank a resolution that matches closest in size to the selected media file will be used.</li>
+<li>An optional <strong>Background Colour</strong> can be set to fill any gaps if the media does not fill the entire screen.</li>
+<li>
+<strong>Save</strong>
+</li>
+<li>Complete the rest of the form fields to complete the new <a href="scheduling_events.html">Schedule</a>.</li>
+</ul>
+<h2 id="tidy_library">Tidy Library <a href="#tidy_library" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>As the CMS is used and Layouts/Playlists and Media are added, over time the Library can become cluttered with old content that is no longer in use.</p>
+<p>The Library can be <em>tidied</em> by a User or Super Administrator so that it is kept clean and small.
+<strong>Actions cannot be reversed so this must be used with caution.</strong></p>
+<blockquote class="tip"><p>This might be particularly useful if the CMS is installed on a web server that has quotas or if Users have been assigned their own quotas!</p>
+</blockquote>
+<p>There are two places where the Library can be tidied:</p>
+<ol>
+<li>From <a href="tour_cms_settings.html#content-tidy-library-(global)">CMS Settings</a> - available to all Super Administrators only.</li>
+<li>From the <strong>Library</strong>  - for all Users when <a href="tour_cms_settings.html#content-tidy-from-user-library">Enable Library Tidy</a> is ticked.</li>
+</ol>
+<p>Once enabled Users can click on a <strong>Tidy Library</strong> button located at the top of the Library page:</p>
+<p><img src="img/v4_media_library_tidylibrary.png" alt="Tidy from Library" /></p>
+<p>The form will show the number of files that will be deleted and how much space those files take up.</p>
+<blockquote class="tip"><p>This will only delete files that are owned by the logged in User which are no longer in use on a Layout or Assigned to a Display Group/Display.</p>
+</blockquote>
+<h4>Next…</h4>
+<p><a href="media_modules.html">Modules and Connectors</a></p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

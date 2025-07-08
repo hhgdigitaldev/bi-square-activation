@@ -1,0 +1,36 @@
+library/
+/vendor
+settings.php
+.project/
+.vagrant/
+.idea/
+cache/
+web/swagger-ui/
+./custom
+.DS_Store
+node_modules
+results.xml
+containers/
+web/dist
+cypress/videos/
+modules/bundle*.js*
+modules/assets/pdfjs
+cms-media/
+docker-compose.dev.yml
+docker-compose.prod.yml
+/docker/etc/apache2/sites-available/
+
+# ignore env file
+.env
+.env.*
+
+# The OpenOOH specification
+openooh/
+openooh/specification.json
+
+# PHPStorm config
+tests/http-client.private.env.json
+/.phpunit.result.cache
+
+# Hide module/template translate file
+locale/moduletranslate.php

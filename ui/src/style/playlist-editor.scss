@@ -1,0 +1,853 @@
+// Playlist Editor ( separate from layout editor )
+// Imports
+@import "variables";
+@import "mixins";
+
+// Variables
+$playlist-editor-main-background-color: $xibo-color-primary-l5;
+$playlist-editor-main-fb-color: $xibo-color-neutral-900;
+
+$playlist-editor-widget-bg-color: $xibo-color-primary-l5;
+$playlist-editor-widget-fg-color: $xibo-color-neutral-900;
+$playlist-editor-widget-fg-color2: $xibo-color-neutral-700;
+$playlist-editor-widget-selected-color: lighten($xibo-color-semantic-success, 20%);
+$playlist-editor-widget-multi-selected-color: $xibo-color-accent;
+$playlist-editor-widget-multi-selected-hover-color: lighten($playlist-editor-widget-multi-selected-color, 20%);
+$playlist-editor-widget-hover-bg-color: darken($xibo-color-primary-l5, 10%);
+$playlist-editor-widget-border-color: $xibo-color-neutral-700;
+$playlist-editor-playlist-hover-color-color: lighten($xibo-color-primary, 20%);
+
+$playlist-editor-z-index-background: 1011;
+$playlist-editor-z-index-overlay: 1012;
+$playlist-editor-z-index-select: 1013;
+$playlist-editor-z-index-select-hover: 1014;
+$playlist-editor-z-index-help-button: 1015;
+
+$playlist-editor-timeline-fg-color: $xibo-color-primary;
+$playlist-editor-unsuccess-message-bg-color: $xibo-color-semantic-error;
+
+$left-bar-width: 140px;
+$bottom-bar-height: 38px;
+$timeline-left-margin-width: 140px;
+$timeline-step-height: 22px;
+
+// CSS
+.editor-modal {
+    display: block;
+    z-index: $playlist-editor-z-index-background;
+    overflow: auto;
+    @include set-transparent-color(background, $xibo-color-neutral-900, 0.6);
+    padding-right: 0;
+    padding-left: 60px;
+
+    .back-button {
+        position: fixed;
+        text-transform: uppercase;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background-color: $xibo-color-neutral-0;
+        height: 50px;
+        width: 60px;
+
+        a {
+            width: calc(100% - 1rem);
+            padding: 0.5rem;
+            color: $xibo-color-secondary;
+            margin-top: 4px;
+            margin-left: 6px;
+
+            &:hover {
+                background-color: $xibo-color-primary-l10;
+            }
+        }
+
+        span {
+            margin-left: 6px;
+            font-weight: bold;
+            display: none;
+        }
+    }
+
+    &.toolbar-opened {
+
+
+        .back-button {
+            a {
+                min-width: 100px;
+                width: auto;
+            }
+            span {
+                display: inline;
+            }
+        }
+
+        &[toolbar-level="1"] {
+            padding-left: 220px;
+
+            .back-button {
+                width: 220px;
+            } 
+        }
+
+        &[toolbar-level="2"] {
+            padding-left: 350px;
+
+            .back-button {
+                width: 350px;
+            }   
+        }
+
+        &[toolbar-level="3"] {
+            padding-left: 480px;
+
+            .back-button {
+                width: 480px;
+            }   
+        }
+
+        &[toolbar-level="4"] {
+            padding-left: 660px;
+
+            .back-button {
+                width: 660px;
+            }   
+        }
+    }
+
+    &.source-editor-opened {
+        .back-button {
+            z-index: auto;
+        }
+
+        .editor-side-bar nav.opened {
+            z-index: auto !important;
+        }
+    }
+
+    &.properties-panel-opened {
+        padding-right: 320px;
+    }
+
+    .editor-modal-dialog {
+        max-width: 100%;
+        height: calc(100% - 6rem);
+        margin: 3rem;
+    }
+
+    .editor-modal-content {
+        background: $playlist-editor-main-background-color;
+        height: 100%;
+    }
+
+    .editor-modal-header {
+        height: 50px;
+        padding: 0 1rem;
+        align-items: center;
+        gap: 8px;
+
+        &.modal-header {
+            .modal-header--left {
+                display: flex;
+                column-gap: 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                flex: 1;
+
+                .playlist-info-widgets,
+                .playlist-info-duration {
+                    font-size: 1.5rem;
+                    line-height: 1;
+                    font-weight: bold;
+                }
+            }
+
+            .help-pane {
+                position: relative;
+                z-index: initial;
+                
+                .help-pane-card {
+                    right: 40px;
+                    top: 30px;
+                    position: absolute;
+                    z-index: $playlist-editor-z-index-help-button;
+                }
+            
+                .help-pane-icon {
+                    padding: 10px 2px;
+            
+                    i {
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    .editor-modal-body {
+        padding: 0;
+    }
+
+    .editor-modal-title {
+        line-height: 1;
+        font-weight: bold;
+        color: $playlist-editor-main-fb-color;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .container-designer {
+        height: calc(100% - 50px);
+    }
+
+    #playlist-editor-container {
+        height: 100%;
+    }
+
+    .loading-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 4rem;
+    }
+
+    .editor-side-bar nav.opened {
+        z-index: $playlist-editor-z-index-select-hover !important;
+    }
+}
+
+// Editor view mode
+#layout-editor.view-mode {
+    .widgetDelete {
+        display: none !important;
+    }
+}
+
+// Bootbox custom dialogs
+.second-dialog {
+    z-index: $bootbox-second-dialog-z-index;
+
+    &+.in.modal-backdrop {
+        z-index: calc(#{$bootbox-second-dialog-z-index} - 100);
+    }
+
+    &~.select2-container.select2-container--open {
+        z-index: calc(#{$bootbox-second-dialog-z-index} + 100);
+    }
+}
+
+.inner-modal {
+    z-index: calc(#{$bootbox-second-dialog-z-index} + 1);
+}
+
+.vakata-context {
+    z-index: calc(#{$bootbox-second-dialog-z-index} + 2);
+}
+
+.playlist-widget-preview {
+    z-index: $playlist-editor-z-index-background;
+
+    &.tooltip.right .tooltip-arrow {
+        border-right-color: $xibo-color-secondary;
+    }
+
+    .tooltip-inner-image {
+        min-height: 50px;
+        padding: 4px;
+        background-color: $xibo-color-secondary;
+        border-radius: 4px;
+
+        img {
+            height: 60px;
+            max-width: 200px;
+        }
+    }
+}
+
+.playlist-editor-inline-container {
+    padding: 16px;
+
+    #playlist-timeline {
+        position: relative;
+
+        .loading-container {
+            height: calc(100vh - 140px);
+        }
+    }
+
+    #playlist-editor.multi-select #playlist-timeline {
+        position: initial;
+    }
+}
+
+#playlist-editor {
+    @include border-radius(4px);
+    width: 100%;
+    height: 100%;
+    background-color: $xibo-color-neutral-0;
+    border: 2px solid $playlist-editor-timeline-fg-color;
+    margin-bottom: 10px;
+    position: relative;
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: $xibo-color-primary-l5;
+        @include border-radius(6px);
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: $xibo-color-primary-d60;
+        @include border-radius(4px);
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: lighten($xibo-color-primary-d60, 20%);
+    }
+
+    ::-webkit-scrollbar-corner {
+        @include box-shadow(inset 0 0 5px $xibo-color-neutral-700);
+    }
+
+    #timeline-container {
+        padding: 5px;
+    }
+
+    .properties-panel-playlist-editor {
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    .playlist-editor-container {
+        height: 100%;
+    }
+
+    #timeline-overlay-container {
+        display: none;
+        padding: 5px 0;
+        position: absolute !important;
+        width: 100%;
+        min-height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0.6;
+        z-index: 2;
+
+        .timeline-overlay-step {
+            position: relative;
+            z-index: 2;
+            height: $timeline-step-height;
+            background: darken($xibo-color-primary-l30, 10%);
+            margin-top: calc($timeline-step-height / -2);
+            margin-bottom: calc($timeline-step-height / 2);
+            cursor: pointer;
+
+            &:hover, &.ui-droppable-hover, &.ui-droppable-active:hover {
+                background: $xibo-color-primary-l30;
+                @include box-shadow(0px 0px 3px 1px $xibo-color-primary-l5);
+            }
+        }
+
+        .timeline-overlay-dummy {
+            height: 32px;
+            margin-top: -$timeline-step-height;
+        }
+    }
+
+    .left-margin {
+        height: calc(100% - 38px);
+        position: absolute;
+        background-color: $xibo-color-neutral-300;
+        width: $timeline-left-margin-width;
+    }
+
+    .editor-body {
+        height: calc(100% - $bottom-bar-height);
+        position: relative;
+        overflow: auto;
+
+        .time-grid {
+            position: absolute;
+            color: $xibo-color-neutral-700;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            top: 4px;
+
+            .time-grid-step {
+                height: 2px;
+                min-height: 2px;
+                position: relative;
+                background-color: $xibo-color-neutral-500;
+                left: 90px;
+                width: calc(100% - 90px);
+            }
+
+            .time-grid-step-with-value {
+                left: 30px;
+                width: calc(100% - 30px);
+
+                .step-value {
+                    position: relative;
+                    color: $xibo-color-neutral-700;
+                    top: 0;
+                    left: 0;
+                }
+            }
+
+            &::after {
+                content: ' ';
+                position: absolute;
+                width: calc(100% - $left-bar-width);
+                height: 100%;
+                left: $left-bar-width;
+                top: 0;
+                background-color: $xibo-color-neutral-0;
+                opacity: 0.7;
+            }
+        }
+
+        #playlist-timeline {
+            margin-left: $timeline-left-margin-width;
+            border: 0;
+            @include set-transparent-color(background-color, $xibo-color-neutral-0, 0.65);
+            z-index: 1;
+            @include border-radius(3px);
+
+            .playlist-widget {
+                @include border-radius(2px);
+                background-color: $xibo-color-primary-l10;
+                outline: 1px solid $xibo-color-primary-d60;
+                color: $xibo-color-secondary;
+                width: 100%;
+                padding: 6px 6px 6px 0;
+                display: flex;
+                justify-content: space-between;
+                gap: 6px;
+                position: relative;
+
+                .playlist-widget-left-area {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .widgetLabel {
+                    flex: 0;
+                    color: $playlist-editor-main-background-color;
+                    flex-basis: 48px;
+                    margin: -6px 0;
+                    text-align: center;
+                    float: left;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    padding: 6px 0;
+
+                    .widgetDuration {
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        padding: 0 4px;
+                    }
+
+                    .widgetSubType {
+                        font-size: 1.2rem;
+                    }
+                }
+
+                .widgetName {
+                    flex: 1;
+                    font-weight: bold;
+                    color: $playlist-editor-widget-fg-color;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .widgetProperties {
+                    flex: 1;
+                    font-size: 1.25rem;
+                    display: flex;
+                    align-items: flex-end;
+                }
+
+                .widgetPreview {
+                    flex-basis: 100px;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        @include border-radius(2px);
+                        object-fit: cover;
+                    }
+                }
+
+                .widgetDelete {
+                    display: none;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 25px;
+                    height: 100%;
+                    color: $xibo-color-neutral-100;
+                    background-color: $xibo-color-semantic-error;
+                    opacity: 0.7;
+
+                    i {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+
+                i.editProperty {
+                    cursor: pointer;
+                    padding: 4px;
+                    border-radius: 4px;
+                    width: 2rem;
+                    text-align: center;
+                    color: $playlist-editor-widget-fg-color;
+
+                    &:hover {
+                        color: darken($playlist-editor-widget-fg-color, 20%);
+                        @include set-transparent-color(background-color, $xibo-color-neutral-0, 0.2);
+                    }
+                }
+
+                &:not(.editable) {
+                    @include box-shadow(inset 0 0 4px 2px $xibo-color-neutral-700);
+                }
+
+                &.selectable {
+                    @include user-select-none();
+
+                    &:hover {
+                        background: $playlist-editor-widget-hover-bg-color;
+                    }
+                }
+
+                &.selected {
+                    background: $playlist-editor-widget-selected-color;
+                }
+
+                &.invalid-widget {
+                    @include box-shadow(inset 0px 0px 10px 3px $xibo-color-semantic-error);
+                }
+
+                &:hover {
+                    .widgetDelete {
+                        display: block;
+
+                        &:hover {
+                            opacity: 0.9;
+                        }
+                    }
+                }
+
+                &.minimal-widget {
+                    padding: 0;
+
+                    .widgetName {
+                        font-weight: normal;
+                    }
+
+                    .widgetProperties, .widgetDuration, .widgetPreview {
+                        display: none;
+                    }
+
+                    .widgetLabel {
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    .widgetSubType {
+                        font-size: 0.8rem;
+                        padding: 2px;
+                    }
+                }
+            }
+
+            &.ui-droppable-active {
+                @include z-index-set($playlist-editor-z-index-select);
+                min-height: 100%;
+
+                #timeline-container {
+                    #timeline-overlay-container {
+                        display: block;
+                        background: darken($xibo-color-primary-l60, 15%)  !important;
+                    }
+                }
+            }
+
+            &.ui-droppable-hover, &.ui-droppable-active:hover {
+                #timeline-container {
+                    #timeline-overlay-container {
+                        background: darken($xibo-color-primary-l60, 10%) !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .editor-footer {
+        height: $bottom-bar-height;
+        display: flex;
+
+        .footer-controls {
+            background-color: $xibo-color-primary-d60;
+            min-width: $left-bar-width;
+            height: 100%;
+            display: flex;
+            justify-content: space-evenly;
+
+            .btn {
+                color: $xibo-color-neutral-100;
+                width: 25%;
+                padding: 0;
+                border-radius: 0;
+                border: none;
+                flex: 1;
+
+                i {
+                    font-size: 14px;
+                }
+
+                &:hover {
+                    color: $xibo-color-neutral-0;
+                    background-color: $xibo-color-secondary;
+                }
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+            .btn-scale {
+                display: none;
+            }
+        }
+
+        .footer-info {
+            color: $xibo-color-neutral-100;
+            background-color: $xibo-color-primary;
+            flex: 1;
+            width: calc(100% - 140px);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .selected-info {
+                color: $xibo-color-neutral-0;
+                max-width: calc(100% - 80px);
+                padding: 0 12px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .fa-arrow-right {
+                    margin: 0 12px;
+                }
+
+                .playlist-info-block {
+                    max-width: 50%;
+                    &:first-child {
+                        margin-right: 8px;
+                    }
+
+                    i {
+                        margin-right: 4px;
+                    }
+                }
+
+                .label-name {
+                    line-height: 1;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .footer-actions {
+                font-size: 0;
+
+                button {
+                    color: $xibo-color-neutral-100;
+                    height: $bottom-bar-height;
+                    border-radius: 0;
+
+                    &:hover:not(.inactive) {
+                        color: $xibo-color-neutral-0;
+                        background: darken($xibo-color-primary, 10%);
+                    }
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+
+                    i {
+                        margin: 0 auto;
+                    }
+
+                    &.multiselect-active {
+                        background-color: $xibo-color-accent !important;
+                    }
+
+                    &.inactive {
+                        opacity: 0.6;
+                        cursor: auto;
+                    }
+
+                    &[data-action="remove-widget"] {
+                        background-color: $xibo-color-semantic-error  !important;
+
+                        &:hover:not(.inactive) {
+                            background-color: darken($xibo-color-semantic-error, 10%) !important;
+                        }
+                    }
+
+                    &.hide-on-multi-select {
+                        display: inline-block;
+                    }
+
+                    &.show-on-multi-select {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .playlist-timeline-container {
+        z-index: auto;
+    }
+
+    &.multi-select {
+        .editor-footer {
+            .footer-info {
+                position: relative;
+                z-index: $playlist-editor-z-index-select;
+            }
+
+            .footer-actions {
+                .hide-on-multi-select {
+                    display: none !important;
+                }
+
+                .show-on-multi-select {
+                    display: inline-block !important;
+                }
+            }
+        }
+
+        .editor-side-bar nav.opened {
+            z-index: calc($playlist-editor-z-index-select - 2) !important; 
+        }
+
+        #timeline-container {
+            position: relative;
+
+            .playlist-widget {
+                position: relative;
+                z-index: $playlist-editor-z-index-select;
+
+                .widgetDelete,
+                .widgetProperties {
+                    display: none !important;
+                }
+            }
+        }
+    }
+
+    #playlist-properties-panel {
+        background: $xibo-color-primary-l5;
+        padding: 0;
+        @include border-radius(4px);
+        border: 2px solid $playlist-editor-widget-selected-color;
+
+        .form-container form {
+            padding-top: 10px;
+        }
+
+        /* Select2 width fix */
+        .select2-container {
+            width: auto !important;
+        }
+
+        /* Hide layout designer only messages */
+        .layout-designer-message {
+            display: none;
+        }
+    }
+
+    /* Multi Select */
+    &.multi-select {
+        .playlist-widget {
+            &:hover {
+                background: $playlist-editor-widget-multi-selected-hover-color  !important;
+            }
+
+            &.multi-selected {
+                background: $playlist-editor-widget-multi-selected-color  !important;
+            }
+        }
+    }
+
+    .custom-overlay {
+        z-index: $playlist-editor-z-index-overlay;
+    }
+
+    &.timeline-scaled {
+        .footer-controls {
+            .btn-scale-control {
+                background-color: $xibo-color-neutral-100;
+                color: $xibo-color-primary-d60;
+
+                &:hover {
+                    color: lighten($xibo-color-primary-d60, 20%);
+                    background-color: $xibo-color-neutral-0;
+                }
+            }
+
+            .btn-scale {
+                display: block;
+            }
+        }
+    }
+
+    &.external-playlist-message-on {
+        height: calc(100% - 46px);
+    }
+}
+
+.external-playlist-message-container {
+    background-color: lighten($xibo-color-semantic-warning, 10%);
+    border: 2px solid $xibo-color-semantic-warning;
+    font-weight: bold;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: -4px;
+    justify-content: center;
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="scheduling">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="scheduling_events.html">Scheduling</a></p>
+</li>
+<li>
+<p class="active"><a href="scheduling_management.html">Schedule Management<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="scheduling_geolocation.html">Geo Scheduling</a></p>
+</li>
+<li>
+<p><a href="scheduling_dayparting.html">Dayparting</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="schedule_management">Schedule Management <a href="#schedule_management" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>All Schedules are managed from the <strong>Schedule</strong> page where you <strong>Add</strong>/ <strong>Edit</strong> and <strong>View</strong> all scheduled in a <a href="tour_cms_navigation.html#content-grids">Grid</a> or <strong>Calendar</strong> view.</p>
+<p>Use the filter fields to restrict criteria for returned results to view in a simple list format or use the key to see Events on a Calendar.</p>
+<blockquote class="tip"><p>Leave fields blank to include all Displays/Display Groups and Layouts/Campaigns to view all Schedules.</p>
+</blockquote> 
+<h2 id="grid_view">Grid View <a href="#grid_view" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>Easily view full schedule information for all Displays/Display Groups or use the filters to view specific Display scheduling.</li>
+<li>Use the row menu to <strong>Edit/Delete</strong> an existing Schedule.</li>
+</ul>
+<blockquote class="tip"><p>If too many columns have been selected to view in the grid from the Column Visibility menu, to fit your screen size, additional rows will be hidden. Click on the <code>+</code> icon at the beginning of a row in the grid to view this information.</p>
+</blockquote>
+<h2 id="calendar_view">Calendar View <a href="#calendar_view" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>The Calendar will show associated schedules for selected Display/Display Groups represented by Event Icons with a key to explain each one, located below the calendar.</p>
+<blockquote class="tip"><p>Ensure you select at least one Display/Display Group to view schedules on the Calendar view!</p>
+</blockquote>
+<ul>
+<li>Mouse over an <strong>Event Icon</strong> to view the basic scheduling information:</li>
+</ul>
+<p><img src="img/v4_scheduling_management_calendar_event.png" alt="Calendar Event" /></p>
+<ul>
+<li>Click it to open the form to see the full details and to make edits to the existing schedule.</li>
+</ul>
+<h4>Today/ Select Range</h4>
+<p>This range shows all Events occurring within the specified dates.</p>
+<h4>Week Range</h4>
+<p>This range gives a week overview of scheduled Events.</p>
+<blockquote class="tip"><p>Double click on a date to open the Day View!</p>
+</blockquote>
+<h4>Month Range</h4>
+<p>This range includes Icons to represent the Events that have been scheduled for that Month. Click on a particular day square to see an expanded view for that day. Double click on a day square to open the Day View for that date.</p>
+<blockquote class="tip"><p>Hover over each Icon to view the Event information!</p>
+</blockquote>
+<h4>Year Range</h4>
+<p>This is intended as an overview of the Events scheduled throughout the year and provides a total number of Events scheduled per month. Click in a month to view the Event details.</p>
+<blockquote class="tip"><p>Double-click to open the Month View for that particular month!</p>
+</blockquote>
+<h3>Agenda</h3>
+<p>Events can span multiple days/weeks/months so it is highly useful to be able to see a precise representation of Layouts/Campaigns that will be shown on a selected Display at a point in time.</p>
+<ul>
+<li>Select <strong>Agenda</strong> from the <strong>Range</strong> filter:</li>
+</ul>
+<p><img src="img/v4_scheduling_agenda.png" alt="Agenda" /></p>
+<blockquote class="tip"><p>At least one <strong>Display/Display Group</strong> must be selected in order to view the Agenda. If multiple Displays/Display Groups are selected, these will be presented in separate <strong>tabs</strong> under the slider!</p>
+</blockquote>
+<ul>
+<li>
+<p>Use the slider, to pinpoint the exact time of day to view. Change the date using the <strong>Prev/Today/Next</strong> buttons or by selecting a date using the calendar icon.</p>
+</li>
+<li>
+<p>Click on a Layout to highlight the associated information (associations will turn blue) and view the breadcrumb, to show further Campaign and Display Group information. If nested Display Groups have been configured, these will show in the breadcrumb.</p>
+</li>
+<li>
+<p>Click the map icon to see Display locations as determined by the coordinates entered.</p>
+</li>
+</ul>
+<blockquote class="tip"><p>Scheduled Layouts/Campaigns will be shown in tabular format in the order they will cycle on the Display.</p>
+<p>Use the Preview window to Play a selected Layout and use the buttons to minimise/maximise the viewing window or go to full screen to Play.
+Click on the breadcrumb to view the selected Layout in the Layout Editor and to make necessary edits to the existing schedule!</p>
+</blockquote>
+<ul>
+<li>Click the <strong>Back</strong> button to exit the Agenda view.</li>
+</ul>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

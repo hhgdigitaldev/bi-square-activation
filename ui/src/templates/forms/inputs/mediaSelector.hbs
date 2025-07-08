@@ -1,0 +1,25 @@
+{{#if variant}}
+    {{set "filterOptions" '{"type":"{{variant}}"}'}}
+{{else}}
+    {{set "filterOptions" '{"type":"image"}'}}
+{{/if}}
+
+{{> dropdown id=id name=name value=value title=title selectType="pagedSelect"
+    options=(arr (obj name='' title='')) optionsTitle="title" optionsValue="name"
+    customData=(arr 
+        (obj name='width' value='100%')
+        (obj name='allow-clear' value='true')
+        (obj name='placeholder--id' value=null)
+        (obj name='placeholder--value' value='')
+        (obj name='search-url' value=mediaSearchUrl)
+        (obj name='search-term' value='media')
+        (obj name='search-term-tags' value='tags')
+        (obj name='id-property' value='mediaId')
+        (obj name='text-property' value='name')
+        (obj name='selected-property' value='selected')
+        (obj name='initial-value' value=initialValue)
+        (obj name='initial-key' value=initialKey)
+        (obj name='filter-options' value=filterOptions)
+    )
+    helpText=helpText
+}}

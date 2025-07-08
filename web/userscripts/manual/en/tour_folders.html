@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="tour">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="index.html">Introduction</a></p>
+</li>
+<li>
+<p><a href="tour_user_access.html">User Access</a></p>
+</li>
+<li>
+<p><a href="tour_cms_navigation.html">CMS Navigation</a></p>
+</li>
+<li>
+<p><a href="tour_cms_settings.html">CMS Administrator Settings</a></p>
+</li>
+<li>
+<p><a href="tour_tags.html">Tags</a></p>
+</li>
+<li>
+<p class="active"><a href="tour_folders.html">Folders<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="tour_transitions.html">Transitions</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="folders">Folders <a href="#folders" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p><strong>Folders</strong> can be used throughout the CMS to easily control User/User Group <a href="users_features_and_sharing.html">Share</a> options for all items held within a specific Folder. Folders also provides an additional way to organise and locate user objects within the CMS.</p>
+<h2 id="feature_overview">Feature Overview <a href="#feature_overview" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>Easily control and maintain View/Edit/Delete access for all user objects saved to a Folder.</li>
+<li>Used throughout the CMS.</li>
+<li>Assign Folders to new Users from the on-boarding wizard.</li>
+<li>Set a Home Folder for Users.</li>
+<li>Force saving into a selected Folder.</li>
+<li>Control User access to Folder options.</li>
+<li>Dedicated Folders page for easier management.</li>
+</ul>
+<h3>Folder Search</h3>
+<p>Available from multiple grids throughout the CMS, the Folder tree will first open by default and can be toggled off from view  by clicking on the folder icon:</p>
+<p><img src="img/v4_tour_folders_file_path.png" alt="Folder File Path" /></p>
+<p>When a Folder has been selected, the grid will update to show only objects inside the Folder.</p>
+<blockquote class="tip"><p>Use the <strong>All Folders</strong> tick box to include searching in the Root Folder!</p>
+</blockquote>
+<p>Users can have a set <a href="/manual/en/tour_folders.html#content-home-folder">Home Folder</a> (indicated by a House icon) which will allow full access to their own Media, Layouts, Schedules etc. and access to all other ‘shared’ Folder content.</p>
+<blockquote class="tip"><p>When Folders are toggled off from view, the file path for a selected folder will be shown so you always know where you are looking!</p>
+</blockquote>
+<h3>Saving to Folders</h3>
+<p>Items can be saved to folders from <strong>Add</strong>/<strong>Edit</strong> forms and from an items row menu using <strong>Select Folder</strong> to open the Folder tree.</p>
+<blockquote class="tip"><p>If you already have a folder selected, user objects added via the Add form (Layouts, Campaigns, Media files etc) will be saved into that selected folder!</p>
+</blockquote>
+<h3>Move and Merge Folders</h3>
+<p>Folders can be moved to another Folder location to be added as a Sub-Folder:</p>
+<ul>
+<li>Select the <strong>Folder</strong>
+</li>
+<li>Right click and select <strong>Move</strong>
+</li>
+<li>Highlight the Folder destination to move to</li>
+<li>
+<strong>Save</strong>
+</li>
+</ul>
+<p>The Folder and any contained sub-folders will now be moved as a new sub-folder within the new Folder location maintaining the original Folder structure.</p>
+<p>You can also select the <strong>Merge</strong> option to add the original Folder contents to the main Folder location, with the original Folder being deleted from the Folder tree.</p>
+<h2 id="folder_management">Folder Management <a href="#folder_management" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>A <strong>Folders</strong> page is located under the <strong>Administration</strong> section of the main CMS menu to allow Super Admins to manage all aspects of Folders  (right click a Folder to access the context menu) as well as see detailed information about Folders such as who it has been shared with and a breakdown of its contents!</p>
+<p><img src="img/v4_tour_folders_management_page.png" alt="Folders Management" /></p>
+<h3>Creating Folders</h3>
+<p>Create Folders to hold <strong>Library Media</strong>, <strong>DataSets</strong>, <strong>Playlists</strong>, <strong>Layouts</strong>, <strong>Campaigns</strong>, <strong>Templates</strong>, <strong>Displays</strong> and <strong>Display Groups</strong> which are then accessed from multiple <a href="tour_cms_navigation.html#content-grids">Grids</a> by clicking the <strong>Folder</strong> icon to open the Folder Tree:</p>
+<p><img src="img/v4_tour_folders_grid.png" alt="Folder Grid" /></p>
+<ul>
+<li>Right click the <strong>Root Folder</strong> and select <strong>Create</strong> to add a new Folder to the tree.</li>
+</ul>
+<blockquote class="tip"><p>Only Super Administrator users can create Folders under the Root Folder. Users can be granted <a href="/manual/en/users_features_and_sharing.html">Feature</a> access to create sub-folders under parent Folders they have been given access to.</p>
+</blockquote>
+<ul>
+<li>Further menu options are available to <strong>Create</strong> a sub-folder, <strong>Rename</strong>, <strong>Remove</strong> <strong>Share</strong> and <a href="/manual/en/tour_folders.html#content-move-and-merge-folders">Move Folders</a>:</li>
+</ul>
+<p><img src="img/v4_tour_folders_menu.png" alt="Folder Menu" /></p>
+<blockquote class="tip"><p>Only empty folders can be removed!</p>
+</blockquote>
+<h3>Home Folder</h3>
+<p>Admins are encouraged to assign User Groups to their Users, and then use Folder Sharing to give these Users appropriate access to each other’s content (View/Edit/Delete options can be configured).</p>
+<blockquote class="tip"><p>A Home Folder can be assigned when <a href="/manual/en/users_administration.html#content-adding-users-to-the-cms">Onboarding new Users</a>!</p>
+</blockquote>
+<p>Users can always select their Home Folder and the Root Folder from the Folder Tree.</p>
+<blockquote class="tip"><p>Users can view/edit and delete objects they own by selecting <strong>All Folders</strong>, even if they are in a Folder they cannot view.
+Conversely, users cannot view/edit or delete other Users objects unless shared with them by Direct/Folder sharing.</p>
+</blockquote>
+<p>A Users Home Folder is shown to them in the Folder Tree with a house icon. If a Folder is not selected, or the Folders Feature has been disabled, new content will automatically save into the Home Folder.</p>
+<blockquote class="tip"><p>If you require Group Admins to set a Home Folder for Users, ensure that they have the appropriate <a href="/manual/en/users_features_and_sharing.html">Feature</a> enabled!</p>
+</blockquote>
+<h4>Assign Home Folders for Users (Admins / Group Admins)</h4>
+<p>For an existing User:</p>
+<ul>
+<li>Go to <strong>Users</strong> under the <strong>Administration</strong> section of the main CMS menu.</li>
+<li>Use the row menu for the User and select <strong>Edit</strong>.</li>
+<li>Click on the <strong>Home Folder</strong> tab:</li>
+</ul>
+<p><img src="img/v4_tour_folders_default_folder.png" alt="Home Folder" /></p>
+<ul>
+<li>Select a Folder to use, or right click the Root Folder to create a new Folder.</li>
+</ul>
+<blockquote class="tip"><p>If a new Folder is created, ensure that the correct View/Edit/Delete Share options are applied from the <a href="tour_folders.html#content-folder-management">Folders</a> page!</p>
+</blockquote>
+<p>Users with a Home Folder assigned will have full access to their own Media, Layouts, Schedules etc, and access to all other Folder contents as per the Share options set for their Home Folder.</p>
+<blockquote class="tip"><p>Users can have a Home Folder assigned and Folders disabled as a <a href="/manual/en/users_features_and_sharing.html">Feature</a>, Users would then automatically save to their default Home Folder location without the need to view or interact with Folders in the CMS.</p>
+</blockquote>
+<h3>Force Saving to a Folder</h3>
+<p>Super Admins can prevent Users from saving into the Root Folder which forces them to select a Folder before saving.
+First disable the use of the Root Folder as a default:</p>
+<ul>
+<li>Navigate to <strong>Settings</strong> under the <strong>Administration</strong> section of the main CMS menu.</li>
+<li>Click on the <strong>Sharing</strong> tab:</li>
+</ul>
+<p><img src="img/v4_tour_folders_disable_root.png" alt="Disable Root Folder" /></p>
+<ul>
+<li>Untick <strong>Allow saving in the root folder</strong> option.</li>
+<li>Click the <strong>Save</strong> button at the bottom.</li>
+</ul>
+<h3>Sharing Options</h3>
+<p>For Users to see other Users content, it must be shared with them (Direct Sharing - individual items must be shared). Users can also see other Users content if the Folder has been shared with them (Folder Sharing - multiple items inherit the shared options).</p>
+<p>Each folder can have <a href="users_features_and_sharing.html#content-set-share-options-on-objects">Share options</a> set for Users/User Groups by clicking on <strong>Share</strong> from the menu.</p>
+<blockquote class="tip"><p><strong>Share</strong> options for folders can only be set by Super Administrator users!</p>
+</blockquote>
+<ul>
+<li>Select from the list of Users and User Groups (User Groups are shown in <strong>bold</strong>) and assign <strong>View</strong>, <strong>Edit</strong> and <strong>Delete</strong> options as required for the selected folder.</li>
+</ul>
+<p><img src="img/v4_tour_folders_share.png" alt="Folder Share Options" /></p>
+<p>Once Share options have been set for a folder, all objects contained or moved to that folder will inherit the View, Edit, Delete options that  have been enabled for Users/User Groups.</p>
+<blockquote class="tip"><p>New Users can have <strong>Folders</strong> assigned from the start by following the onboarding wizard to <a href="users_administration.html#content-onboarding-wizard">Add Users</a>!</p>
+</blockquote>
+<p><strong>Please Note:</strong> Sub-Folders added to a Main Folder will inherit any applied Share options from the Main Folder. When viewing Sub-Folders only the directly assigned Share options will be shown, inherited options are not shown.</p>
+<p><img src="img/v4_tour_folders_sub_folder_sharing.png" alt="Sub-Folder Share Options" /></p>
+<p>As shown above:</p>
+<ul>
+<li>The Main Folder is shared with <code>Auser</code>.</li>
+<li>Sub 1 will inherit from the Main Folder so is also shared with <code>Auser</code>.</li>
+<li>
+<code>Not Shared</code> is shown as Sub 1 has no directly applied Share options.</li>
+</ul>
+<h3>Folder Menu Options</h3>
+<p>Control the required access of the Folder Menu for other Users/User Groups using <a href="users_features_and_sharing.html">Features and Share</a> options:</p>
+<p><img src="img/v4_tour_folders_feature_options.png" alt="Feature Options" /></p>
+<p><strong>For Users that need access to Create on the Folders menu:</strong></p>
+<ol>
+<li>Enable <strong>Allow users to create Sub-Folders….</strong> from the Content tab of the Folders Feature set.</li>
+<li>Enable <strong>View</strong> from the <strong>Share options</strong> for the parent folders(s) that can have sub-folders created under them by the User/User Group.</li>
+</ol>
+<blockquote class="tip"><p>Only Super-Admin users can create Folders under the Root Folder!</p>
+</blockquote>
+<p><strong>For Users that need access to Rename on the Folders menu:</strong></p>
+<ol>
+<li>Enable <strong>Rename and Delete existing folders</strong> from the Content tab on the Folders Feature set.</li>
+<li>Enable <strong>Edit</strong> from the <strong>Share options</strong> for the folder(s) that can be renamed by the User/User Group.</li>
+</ol>
+<p><strong>For Users that need access to Delete on the Folders menu:</strong></p>
+<ol>
+<li>Enable <strong>Rename and Delete existing Folders</strong> from the Content tab on the Folders Feature set.</li>
+<li>Enable <strong>Delete</strong> from the <strong>Share options</strong> for the folder(s) that can be removed by the User/User Group.</li>
+</ol>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

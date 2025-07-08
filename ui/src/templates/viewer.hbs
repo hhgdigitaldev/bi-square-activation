@@ -1,0 +1,31 @@
+<div id="border-before" class="layout-viewer-border"></div>
+<div id="border-after" class="layout-viewer-border"></div>
+
+<div class="viewer-object viewer-object-select {{containerStyle}} {{type}} layout-orientation-{{orientation}} theme-{{theme}} droppable"
+    style="width: {{dimensions.width}}px;
+        height: {{dimensions.height}}px;
+        top: {{dimensions.top}}px;
+        left: {{dimensions.left}}px;"
+    id="layout_{{layout.layoutId}}"
+    data-layout-id= "{{layout.layoutId}}"
+>
+    {{!-- Render Layout --}}
+    <div class="layout-live-preview">
+        {{#if renderCanvas}}
+            <div id="{{layout.canvas.id}}" 
+                class="designer-region-canvas"
+                style="
+                    position:absolute;
+                    z-index: {{layout.canvas.zIndex}};">
+            </div>
+        {{/if}}
+        <div id="regions">
+            {{#each layout.regions}}
+                {{#if isViewable}}
+                    {{> viewer-region}}
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
+    <div class="viewer-overlay"></div>
+</div>

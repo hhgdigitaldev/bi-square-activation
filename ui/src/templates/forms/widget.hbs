@@ -1,0 +1,41 @@
+<form class="widget-form">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item"><a class="nav-link active" href="#configureTab" role="tab" data-toggle="tab"><span>{{trans.configure}}</span></a></li>
+        <li class="nav-item d-none"><a class="nav-link" href="#appearanceTab" role="tab" data-toggle="tab"><span>{{trans.appearance}}</span></a></li>
+        <li class="nav-item d-none"><a class="nav-link" href="#fallbackTab" role="tab" data-toggle="tab"><span>{{trans.fallback}}</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#advancedTab" role="tab" data-toggle="tab"><span>{{trans.advanced}}</span></a></li>
+    </ul>
+    <div class="form-content">
+        <form id="widgetFormEdit" class="XiboForm">
+            <div class="tab-content">
+                {{#if showErrorMessage}}
+                    {{> inputs/message variant="danger" customClass="mt-2 mb-2" title=errorMessage}}
+                {{/if}}
+
+                {{#if showWarningMessage}}
+                    {{> inputs/message variant="warning" customClass="mt-2 mb-2" title=warningMessage}}
+                {{/if}}
+
+                <div class="tab-pane active" id="configureTab"></div>
+
+                <div class="tab-pane" id="appearanceTab"></div>
+                <div class="tab-pane" id="fallbackTab"></div>
+
+                <div class="tab-pane" id="advancedTab">
+                    {{set "name" (concat target "_name")}}
+                    {{set "useDuration" (concat target "_useDuration")}}
+                    {{set "duration" (concat target "_duration")}}
+                    {{set "enableStat" (concat target "_enableStat")}}
+                    {{> inputs/text value=commonProperties.name id=name name="name" title=trans.widget.name helpText=trans.widget.nameHelpText }}
+                    {{> inputs/checkbox value=commonProperties.useDuration id=useDuration name="useDuration" title=trans.widget.useDuration helpText=trans.widget.useDurationHelpText }}
+                    {{> inputs/number value=commonProperties.duration id=duration name="duration" title=trans.widget.duration helpText=trans.widget.durationHelpText visibility='{ "field": "useDuration", "type": "eq", "value": "1" }' }}
+                    {{> inputs/dropdown value=commonProperties.enableStat options=(arr (obj title=trans.widget.enableStatOff name='Off') (obj title=trans.widget.enableStatOn name='On') (obj title=trans.widget.enableStatInherit name='Inherit')) optionsTitle="title" optionsValue="name" id=enableStat name="enableStat" title=trans.widget.enableStat helpText=trans.widget.enableStatHelpText }}
+
+                    {{#if repeatDataActive}}
+                        {{> inputs/checkbox value=commonProperties.isRepeatData id=isRepeatData name="isRepeatData" title=trans.widget.isRepeatData helpText=trans.widget.isRepeatData }}
+                    {{/if}}
+                </div>
+            </div>
+        </form>
+    </div>
+</form>

@@ -1,0 +1,64 @@
+.well {
+    background-color: #bf4040;
+    border: 1px solid #00ffcc;
+}
+
+/* dashboard.css */
+body {
+    background: #231f20;
+}
+
+/*Top header*/
+.row.header {
+    background: #231f20;
+}
+
+/* Sidebar background color */
+#sidebar-wrapper {
+    background: #93c43e;
+}
+
+/* Sidebar header and footer color */
+ul.sidebar .sidebar-main a, .sidebar-footer, ul.sidebar .sidebar-list a:hover, #page-wrapper:not(.active) ul.sidebar .sidebar-title.separator {
+    background: #93c441;
+}
+
+/* Sidebar title text colour */
+ul.sidebar .sidebar-title a {
+    color: #ffffff;
+}
+
+/* Sidebar link color*/
+ul.sidebar .sidebar-list a {
+    color: #ffffff;
+}
+
+/* Widget */
+.widget .widget-title {
+    color: #231f20;
+    background-color: #ffffff;
+}
+
+/* Link color*/
+a {
+    color: #ffffff;
+}
+
+/* default navbar */
+.navbar-default {
+    background-color: #93c43e;
+    border-color: #93c43e;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover , .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: #ffffff;
+    background-color: #231f20;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    background-color: #231f20;
+}
+
+.navbar-default .navbar-nav>.show>a, .navbar-default .navbar-nav>.show>a:focus, .navbar-default .navbar-nav>.show>a:hover {
+    background-color: #231f20;
+}

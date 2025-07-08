@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="users">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li class="active">
+<a href="users_administration.html">User Administration<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a>
+</li>
+<li>
+<a href="users_groups.html">User Groups</a>
+</li>
+<li>
+<a href="users_dashboards.html">User Dashboards</a>
+</li>
+<li>
+<a href="users_features_and_sharing.html">Features and Sharing</a>
+</li>
+<li>
+<a href="users_notifications.html">Notifications</a>
+</li>
+</ul>
+</body></html>
+<li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="user_administration">User Administration <a href="#user_administration" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>BI Square Brand Activation allows for individual access for multiple Users provided with a <strong>Username</strong> and <strong>Password</strong> to the CMS.</p>
+<p>Users are added to the CMS by Super Admins and granted access within the CMS from their assigned <a href="users_administration.html#content-user-types">User Type</a> and <a href="users_groups.html">User Group</a> in which they will inherit the applied <a href="users_features_and_sharing.html">Features and Sharing</a>.</p>
+<blockquote class="tip"><p>Users can be assigned to one or multiple User Groups!</p>
+</blockquote>
+<h3>User Ownership</h3>
+<p>All items created in the CMS by an individual User are owned by that User. Ownership of an item (be it a Layout, Media file or Scheduled Event) gives that User full editing rights including the ability to share with other Users.</p>
+<h2 id="user_types">User Types <a href="#user_types" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Every User must be assigned 1 of the 3 available User Types:</p>
+<h3>Super Admin User</h3>
+<p>Super Admin Users have access to all parts of the CMS, regardless of any inherited Feature and Sharing options set to any User Groups they have been assigned to. This also includes full access to ALL Media, Layouts and Schedules added by any other User of the system.</p>
+<blockquote class="tip"><p>A Super Admin User is created during the installation process to have full access rights to the CMS in order to set it up. We suggest having at least one Super Admin User to act as the last contact point for the CMS system.</p>
+</blockquote>
+<h3>Group Admin User</h3>
+<p>Group Admin Users only have access to the parts of the CMS as assigned to the User Group that they belong to. In addition, they will have access to all Media, Layouts and Schedules of all other Users assigned to that User Group as well as their own Media, Layouts and Schedules.</p>
+<h3>User</h3>
+<p>A User will only have access to the parts of the CMS as assigned to the User Group they belong to as well as access to their own Media, Layouts and Schedules.</p>
+<h2 id="adding_users_to_the_cms">Adding Users to the CMS <a href="#adding_users_to_the_cms" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Users are administered in the CMS by clicking on <strong>Users</strong> under the <strong>Administration</strong> section on the CMS main menu. The Users grid will open for you to add and manage Users:</p>
+<p><img src="img/v4_users_admin_grid.png" alt="Users Admin Grid" /></p>
+<blockquote class="cloud"><p>Please ensure that the default user account named <code>cms_admin</code> is not modified or removed so that you can be assisted you with your CMS as and when required.</p>
+</blockquote>
+<ul>
+<li>To add new Users, click on the <strong>Add User</strong> button.</li>
+</ul>
+<p>There are two ways in which Users can be added, via an onboarding wizard using pre-configured User Groups or adding manually.</p>
+<blockquote class="tip"><p>The onboarding wizard and pre-configured Groups are available for new v4 installations and for users who upgrade to v4 who have not previously utilised User Groups in their earlier versions!</p>
+</blockquote>
+<p><img src="img/v4_user_admin_add.png" alt="Add User" /></p>
+<p>Select from one of the pre-configured <strong>User Groups</strong> and continue through the steps of the <strong>Onboarding Wizard</strong> or select the last option <strong>Manually create a user</strong> to be taken to the <a href="users_administration.html#content-add-user-form">Add User</a> form.</p>
+<h3>Onboarding wizard</h3>
+<ul>
+<li>
+<p>Select a <a href="users_groups.html">User Group</a> and click <strong>Next</strong></p>
+<blockquote class="tip"><p><a href="users_features_and_sharing.html">Features</a> have been pre-configured for these groups common functions. These can be further modified to suit by editing the User record!</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>Create a <strong>User Name</strong> and <strong>Password</strong> which will be used as the User login and identify the User within the CMS.</p>
+<blockquote class="tip"><p>The password must contain at least 8 characters and include upper and lower case letters as well as at least one number or special character!</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>Complete the Email address for this user, click <strong>Next</strong></p>
+<blockquote class="tip"><p>A user can enter/edit their email address after login from the <a href="tour_user_access.html#content-edit-profile">User Profile!</a></p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>Select a <a href="tour_folders.html">Folder</a> to easily share user objects with the new User.</p>
+<blockquote class="tip"><p>We recommend using Folders to make sharing user objects with multiple Users a simplified process. All items contained or moved into a Folder will inherit the View, Edit, Delete <a href="users_features_and_sharing.html#content-share">Share</a> options that have been enabled for Users/User Groups.</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>A <a href="tour_folders.html#content-home-folder">Home Folder</a> can be optionally set for a User by right clicking a Folder and selecting the <strong>Set as Home</strong> option:</p>
+<p><img src="img/v4_users_set_home_folder.png" alt="Home Folder" /></p>
+</li>
+<li>
+<p><strong>Save</strong> all changes.</p>
+</li>
+</ul>
+<h3>Add User Form</h3>
+<p>Use the form to manually add a User to the CMS:</p>
+<p><img src="img/v4_users_add_user_form.png" alt="New User Form" /></p>
+<blockquote class="tip"><p>To always show the manual <strong>Add User form</strong> when adding new Users to the system instead of the onboarding wizard, use the option available in <strong>Preferences</strong> from the <a href="tour_user_access.html#content-user-profile">User Profile</a>!</p>
+</blockquote>
+<p>Enter the required information for each tab:</p>
+<ul>
+<li>
+<p>Create a <strong>User Name</strong> and <strong>Password</strong> which will be used as the User login and identify the User within the CMS.</p>
+<blockquote class="tip"><p>The password must contain at least 8 characters and include upper and lower case letters as well as at least one number or special character!</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>Complete the Email address for this user so they can receive notifications from the CMS, click <strong>Next</strong></p>
+<blockquote class="tip"><p>A user can enter/edit their email address after login from the <a href="tour_user_access.html#content-user-profile">User Profile!</a></p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>Use the drop down to select a <strong>User Type</strong></p>
+</li>
+<li>
+<p>Enter a maximum amount of <a href="users_administration.html#content-library-quota">Library Quota</a> allowed to be uploaded to the Library for this User, information can be found in the section below.</p>
+</li>
+<li>
+<p>Select which <a href="users_groups.html">User Group</a> this User should belong to so that they can access the relevant parts of the CMS as required for their role.</p>
+<blockquote class="tip"><p>Use <strong>System Notifications</strong> as the initial User Group for Users that do not require access to anything within the CMS but require notification emails when there are system issues as System Administrators!</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>Use the drop down to select from the choice of <a href="users_dashboards.html">Dashboards</a> for the Users ‘Homepage’ to only allow access to the relevant parts of the CMS. The User will be taken to this Dashboard after first login.</li>
+</ul>
+<h3>Library Quota</h3>
+<p>BI Square Brand Activation includes a Library Quota system so that Users/User Groups can be assigned a quota (expressed in kilobytes) to determine the maximum amount of content a User/User Group can upload. Putting a value of <strong>0</strong> means the User has an unlimited Library Quota.</p>
+<p>The largest quota that can be resolved for the User is always the quota that is applied and excludes the unlimited quota.</p>
+<blockquote class="tip"><p><strong>Example:</strong></p>
+<ul>
+<li>User A has a quota of 100 MB assigned to their User record.</li>
+<li>Group 1 has a quota of 50 MB assigned to the Group record.</li>
+<li>Group 2 has a quota of 120 MB assigned to the Group record.</li>
+</ul>
+<p>User A belongs to Group 1 and Group 2 so therefore their Library Quota is 120 MB (as this is the largest quota applied).</p>
+<p>User A leaves Group 2 so their Library Quota is now 100 MB (as the largest applied quota).</p>
+<p>User A is re-assigned an unlimited quota (0), their Library Quota is now 50 MB as they still belong to Group 1 (which has 50 MB quota applied and therefore any unlimited quota is excluded.)</p>
+</blockquote>
+<h4>Home Folder</h4>
+<p>A <a href="tour_folders.html#content-home-folder">Home Folder</a> can be optionally set for a User by right clicking a Folder (or creating a new Folder) and select the <strong>Set as Home</strong> option.</p>
+<h4>Reference</h4>
+<p>This tab has been included to optionally provide reference information for a User. Once added, this information can be viewed in the Users grid and via the API.</p>
+<h4>Notifications</h4>
+<p>Select the type of notifications the User should receive, <strong>System</strong> or <strong>Display</strong> if applicable.</p>
+<h4>Options</h4>
+<p>Apply further options for the User as required:</p>
+<ul>
+<li>Hide the side navigational bar.</li>
+<li>Hide the New User guide when they log in.</li>
+<li>Force a User to change their password the next time they log in.</li>
+</ul>
+<h3>Force Password Change</h3>
+<p>Use this function from the <strong>Options</strong> tab to ensure that ‘new’ Users change the password first given to them to access the system or if a User account password has been reset:</p>
+<p><img src="img/v4_users_edit_options.png" alt="Users Edit Options" /></p>
+<p>Users will be redirected to a page to reset their password, the next time they log in.</p>
+<h2 id="editing_users">Editing Users <a href="#editing_users" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Use the row menu for a selected User to make changes.</p>
+<blockquote class="tip"><p>Easily manage <a href="users_groups.html">User Group</a> membership, <a href="/manual/en/tour_folders.html#home-folders">Home Folders</a> as well as <a href="users_features_and_sharing.html">Feature</a> access from this menu.</p>
+<p>Make any required changes to the User record by clicking <strong>Edit</strong>.</p>
+</blockquote>
+<h3>Reset Two Factor Authentication</h3>
+<p>If a User loses access to their email or Google Authenticator app and has no access to any saved recovery codes, use the check box from the Edit User form to <strong>Reset Two Factor Authentication</strong>.</p>
+<p>Once ticked the Two Factor Authentication will be set to ‘Off’ for this <strong>User Profile</strong> with any stored secret codes cleared. The User can now set up <a href="tour_user_access.html#content-two-factor-authentication">Two Factor Authentication</a> from the User Profile as before.</p>
+<blockquote class="tip"><p>Use the Column visibility button to dd the <strong>Two Factor</strong> column to the Users grid. This will give you an overview of what Two Factor Authentication Users have set (Disabled / Email / Google Authenticator).</p>
+<p>If you cannot access the CMS then run the following sql directly in the database to clear 2FA data for a specified User <code>{yourUserId}</code> , userId can be found in the User table.</p>
+<pre><code>UPDATE `user` SET `twoFactorSecret` = NULL,
+`twoFactorTypeId` = 0,
+`twoFactorRecoveryCodes` = NULL
+WHERE userId = {yourUserId}
+</code></pre>
+</blockquote> 
+<h2 id="deleting_users">Deleting Users <a href="#deleting_users" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Use the row menu to Delete a User from the CMS. A confirmation form will open up and give you further options regarding the items currently owned by that User.</p>
+<blockquote class="tip"><p>Deleting a User is irreversible and will remove all their owned items including; Media, Layouts and Schedules, even if these items are being used by other Users in the system. <strong>Reassign items</strong> to another User using the selector to make them the new owner of all the items currently owned by the User you wish to delete. Alternatively, use the <strong>Retired</strong> checkbox at the bottom of the Edit User form so that the items remain in use in the system with the User unable to log in.</p>
+<p>BI Square Brand Activation doesn’t place any limits on the number of Users that can be added.</p>
+</blockquote>
+<h4>Next…</h4>
+<p><a href="users_groups.html">User Groups</a></p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

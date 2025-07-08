@@ -1,0 +1,50 @@
+<form class="layout-form">
+    <div class="form-content">
+        <form id="layoutFormEdit" class="XiboForm">
+            <div class="tab-content">
+                <div class="tab-pane active" id="generalTab">
+                    {{> inputs/color value=layout.backgroundColor id="backgroundColor" colorFormat="hex" title=trans.layout.backgroundColor helpText=trans.layout.backgroundColorHelpText }}
+                    
+                    <div class="form-group">
+                        <label class="control-label">
+                            <strong>{{trans.layout.backgroundImage}}</strong>
+                        </label>
+
+                        <div id="backgroundImageContainer">
+                            <div class="text-center background-image-add editable resolution-orientation--{{ orientation }}">
+                                <div id="bg_not_found_icon">
+                                    <i class="fa bg_not_found_icon"></i>
+                                    <div>{{trans.layout.noImageSet}}</div>
+                                </div>
+
+                                <div id="bg_media_name">{{ bgImageName }}</div>
+
+                                <div class="background-image-drop">{{trans.layout.addBackgroundImage}}</div>
+                            </div>
+
+                            <div class="background-image-actions text-center">
+                                <div class="btn-group">
+                                    <button id="backgroundUploadButton" class="btn btn-outline-secondary" type="button" data-add-new-background-url="{{ libraryAddUrl }}">
+                                        <i class="fa fa-upload"></i>
+                                        {{trans.layout.upload}}
+                                    </button>
+
+                                    <button id="backgroundRemoveButton" class="btn btn-outline-danger" type="button">
+                                        <i class="fa fa-remove"></i>
+                                        {{trans.layout.remove}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{> inputs/hidden name="backgroundImageId" value=layout.backgroundImageId }}
+
+                    {{> inputs/dropdown value=resolution.resolutionId options=resolutions optionsTitle="resolution" optionsValue="resolutionId" id="resolutionId" title=trans.layout.resolution helpText=trans.layout.resolutionHelpText }}
+                    {{> inputs/number value=layout.backgroundzIndex id="backgroundzIndex" title=trans.layout.layer helpText=trans.layout.layerHelpText }}
+                    {{> inputs/checkbox value=layout.autoApplyTransitions id="autoApplyTransitions" title=trans.layout.autoApplyTransitions helpText=trans.layout.autoApplyTransitionsHelpText }}
+                </div>
+            </div>
+        </form>
+    </div>
+</form>

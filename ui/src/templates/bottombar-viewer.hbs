@@ -1,0 +1,112 @@
+<nav class="navbar viewer-navbar designer-{{object.type}}-selected">
+    <div class="viewer-navbar-info">
+        {{! Element Info }}
+        {{#eq object.type "widget"}}
+            <div class="info">
+                {{#ifCond object.widgetName '||' object.moduleName}}
+                    <div class="label-name">
+                        <strong title="{{trans.widgetType}}">{{objectTypeName}}</strong> <div class="name" title="{{trans.widgetName}}">{{#if object.widgetName}}"{{object.widgetName}}"{{/if}}{{#if moduleTemplateTitle}}<span class="template-name" title="{{trans.widgetTemplate}}"> | "{{moduleTemplateTitle}}"</span>{{/if}}</div>
+                    </div>
+                {{/ifCond}}
+            </div>
+        {{else eq object.type "element"}}
+            <div class="info">
+                <div class="label-name">
+                    <strong>{{objectTypeName}}</strong> | <div class="mediaTemplate" title="{{trans.templateName}}">{{object.template.title}}</div>
+                    {{#if object.elementName}} - <div class="name" title="{{trans.elementName}}">"{{object.elementName}}"</div>{{/if}}
+                    {{#if object.elementMediaInfo}}
+                        - <div class="mediaInfo">[
+                            <div class="mediaInfoName" title="{{trans.elementMediaInfoName}}">{{object.elementMediaInfo.name}}</div>
+                            <div class="mediaInfoId" title="{{trans.elementMediaInfoId}}">#{{object.elementMediaInfo.id}}</div>
+                        ]</div>{{/if}}
+                </div>
+            </div>
+        {{else eq object.type "element-group"}}
+            <div class="info">
+                <div class="label-name">
+                    <strong>{{objectTypeName}}</strong>{{#if object.elementGroupName}} - <div class="name" title="{{trans.elementGroupName}}">"{{object.elementGroupName}}"</div>{{/if}}
+                </div>
+            </div>
+        {{else if object}}
+            <div class="info">
+                <div class="label-name">
+                    <strong>{{objectTypeName}}</strong> <div class="name" title="{{trans.regionName}}">{{#if object.name}}"{{object.name}}"{{/if}}</div>
+                </div>
+            </div>
+        {{/eq}}
+    </div>
+
+    <div class="viewer-navbar-controls">
+        {{! Left area }}
+        <div class="area-right">
+            {{#if renderLayout}}
+                <button type="button" id="play-btn" class="btn btn-sm" data-toggle="tooltip" data-container=".editor-bottom-bar" data-placement="top" data-title="{{ trans.playPreviewLayout }}">
+                    <i class="fa fa-play-circle" data-toggle="popover" title="{{ trans.playPreviewLayoutPOTitle }}" data-content="{{ trans.playPreviewLayoutPOMessage }}" data-placement="top"></i>
+                </button>
+            {{else}}
+                <button type="button" id="inline-editor-save" class="btn btn-sm" data-toggle="tooltip" data-container=".editor-bottom-bar" data-placement="top"
+                    data-title="{{ trans.saveEditorChanges }}">
+                    <i class="fa fa-save"></i>
+                </button>
+            {{/if}}
+
+            {{#unless readOnlyModeOn}}
+                {{#eq object.type "element"}}
+                    {{#if widget.isPermissionsModifiable}}
+                        <button type="button" id="permissions-btn" class="properties-btn properties-widget btn btn-sm" data-property="Permissions" 
+                            data-toggle="tooltip" data-container=".editor-bottom-bar" data-placement="top" data-title="{{trans.tools.permissions.description}}">
+                            <i class="tool-icon-permissions card-icon"></i>
+                        </button>
+                    {{/if}}
+                {{/eq}}
+
+                {{#eq object.type "widget"}}
+                    {{#if object.isPermissionsModifiable}}
+                        <button type="button" id="permissions-btn" class="properties-btn btn btn-sm" data-property="Permissions" 
+                            data-toggle="tooltip" data-container=".editor-bottom-bar" data-placement="top" data-title="{{trans.tools.permissions.description}}">
+                            <i class="tool-icon-permissions card-icon"></i>
+                        </button>
+                    {{/if}}
+                    {{#if object.isEditable}}
+                        {{#if object.canAttachAudio}}
+                            <button type="button" id="audio-btn" class="properties-btn btn btn-sm" data-property="Audio" 
+                                data-toggle="tooltip" data-container=".editor-bottom-bar" data-placement="top" data-title="{{trans.tools.audio.description}}">
+                                <i class="tool-icon-audio card-icon"></i>
+                            </button>
+                        {{/if}}
+                    {{/if}}
+                {{/eq}}
+
+                {{#eq object.type "region"}}
+                    {{#neq object.subType "zone"}}
+                        {{#if object.isPermissionsModifiable}}
+                            <button type="button" id="permissions-btn" class="properties-btn btn btn-sm" data-property="Permissions" 
+                                data-toggle="tooltip" data-container=".editor-bottom-bar" data-placement="top" data-title="{{trans.tools.permissions.description}}">
+                                <i class="tool-icon-permissions card-icon"></i>
+                            </button>
+                        {{/if}}
+                    {{/neq}}
+                {{/eq}}
+            {{/unless}}
+        </div>
+
+        {{! Right area }}
+        <div class="area-left">
+            {{#unless readOnlyModeOn}}
+                {{#if undoActive}}
+                    <button type="button" id="undo-btn" class="btn btn-sm tooltip-always-on" data-toggle="tooltip" data-container=".editor-bottom-bar" data-placement="top"
+                        data-title="{{trans.undoActiveTitle}}">
+                        <i class="fa fa-undo"></i>
+                    </button>
+                {{/if}}
+
+                {{#if trashActive}}
+                    <button type="button" id="delete-btn" class="btn btn-sm" data-toggle="tooltip" data-container=".editor-bottom-bar" data-placement="top"
+                        data-title="{{trans.trashBinActiveTitle}}">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                {{/if}}
+            {{/unless}}
+        </div>
+    </div>
+</nav>

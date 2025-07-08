@@ -1,0 +1,172 @@
+<!--
+  ~ Copyright (C) 2023 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-worldclock-digital-text</id>
+    <name>World Clock - Text</name>
+    <author>Core</author>
+    <description>Text World Clock</description>
+    <icon>fa fa-globe</icon>
+    <class></class>
+    <compatibilityClass>\Xibo\Widget\Compatibility\WorldClockWidgetCompatibility</compatibilityClass>
+    <type>worldclock-digital-text</type>
+    <group id="worldclock" icon="fa fa-globe">World Clock</group>
+    <legacyType condition="templateId==='worldclock1'">worldclock</legacyType>
+    <dataType></dataType>
+    <schemaVersion>2</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>10</defaultDuration>
+    <thumbnail>worldclock-text-thumb</thumbnail>
+    <settings></settings>
+    <properties>
+        <property type="header">
+            <title>Clocks</title>
+        </property>
+        <property id="worldClocks" type="worldClock"></property>
+        <property id="numCols" type="number">
+            <title>Clock Columns</title>
+            <helpText>Number of columns to display</helpText>
+            <default>1</default>
+            <rule>
+                <test type="and">
+                    <condition type="required"></condition>
+                    <condition type="gte">0</condition>
+                </test>
+            </rule>
+        </property>
+        <property id="numRows" type="number">
+            <title>Clock Rows</title>
+            <helpText>Number of rows to display</helpText>
+            <default>1</default>
+            <rule>
+                <test type="and">
+                    <condition type="required"></condition>
+                    <condition type="gte">0</condition>
+                </test>
+            </rule>
+        </property>
+        <property id="alignmentH" type="dropdown" mode="single">
+            <title>Horizontal Align</title>
+            <helpText>How should this widget be horizontally aligned?</helpText>
+            <default>center</default>
+            <options>
+                <option name="left">Left</option>
+                <option name="center">Centre</option>
+                <option name="right">Right</option>
+            </options>
+        </property>
+        <property id="alignmentV" type="dropdown" mode="single">
+            <title>Vertical Align</title>
+            <helpText>How should this widget be vertically aligned?</helpText>
+            <default>middle</default>
+            <options>
+                <option name="top">Top</option>
+                <option name="middle">Middle</option>
+                <option name="bottom">Bottom</option>
+            </options>
+        </property>
+        <property id="labelFontFamily" type="fontSelector">
+            <title>Label Font</title>
+            <helpText>Select a custom font - leave empty to use the default font.</helpText>
+        </property>
+        <property id="labelColor" type="color">
+            <title>Label Colour</title>
+            <helpText>The colour of the label</helpText>
+            <default>#a1a1a1</default>
+        </property>
+        <property id="fontFamily" type="fontSelector">
+            <title>Date/Time Font</title>
+            <helpText>Select a custom font - leave empty to use the default font.</helpText>
+        </property>
+        <property id="dateTimeColor" type="color">
+            <title>Date/Time Colour</title>
+            <helpText>The colour of the text</helpText>
+            <default>#323232</default>
+        </property>
+        <property id="backgroundColor" type="color">
+            <title>Background Colour</title>
+            <helpText>The selected effect works best with a background colour. Optionally add one here.</helpText>
+        </property>
+    </properties>
+    <preview></preview>
+    <stencil>
+        <width id="width">200</width>
+        <height id="height">80</height>
+        <hbs><![CDATA[
+<div class="digital-clock-template" style="display: none;">
+    <div class="clockContainer">
+        <p class="hourText">[HH:mm]</p>
+        <p>[label]</p>
+    </div>
+</div>
+        ]]></hbs>
+        <style><![CDATA[
+.clockContainer {
+  text-align: center;
+  padding: 5px;
+}
+
+.hourText {
+  font-size: 40px;
+  color: #323232;
+  line-height: 45px;
+}
+
+.world-clock-label {
+  color: #a1a1a1;
+  font-size: 14px;
+  line-height: 15px;
+}
+
+.highlighted .hourText {
+  font-weight: bold;
+}
+
+.clockContainer p {
+  margin: 0;
+}
+
+{% if labelFontFamily %}.world-clock-label { font-family: {{labelFontFamily}}; }{% endif %}
+{% if labelColor %}.world-clock-label { color: {{labelColor}}; }{% endif %}
+{% if fontFamily %}.hourText { font-family: {{fontFamily}}; }{% endif %}
+{% if dateTimeColor %}.hourText { color: {{dateTimeColor}}; }{% endif %}
+{% if backgroundColor %}body { background-color: {{backgroundColor}} !important; }{% endif %}
+        ]]></style>
+    </stencil>
+    <onInitialize><![CDATA[
+// Set moment locale
+moment.locale(globalOptions.locale);
+    ]]></onInitialize>
+    <onRender><![CDATA[
+// Render world clock only once
+if (typeof $(target).data('analogueClockRendered') === 'undefined') {
+    $(target).data('analogueClockRendered', true);
+    $(target).xiboWorldClockRender(properties, $(target).find('.digital-clock-template'));
+}
+
+// Scale the element every time
+$(target).xiboLayoutScaler(properties);
+    ]]></onRender>
+    <assets>
+        <asset id="worldclock-text-thumb" type="path" cmsOnly="true" mimeType="image/png" path="/modules/assets/template-thumbnails/worldclock/worldclock-text-thumb.png" />
+    </assets>
+</module>

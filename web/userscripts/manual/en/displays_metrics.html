@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="displays">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<a href="displays.html">Displays</a>
+</li>
+<li>
+<a href="displays_settings.html">Display Settings</a>
+</li>
+<li>
+<a href="displays_groups.html">Display Groups</a>
+</li>
+<li>
+<a href="displays_sync_groups.html">Sync Groups</a>
+</li>
+<li class="active">
+<a href="displays_metrics.html">Reporting<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a>
+</li>
+<li>
+<a href="displays_command_functionality.html">Command Functionality</a>
+</li>
+</ul>
+</body></html>
+<li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="reporting">Reporting <a href="#reporting" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>BI Square Brand Activation provides useful <strong>metrics</strong> which are <a href="users_features_and_sharing.html">Feature</a> enabled to allow Users to view a variety of reports within the CMS.</p>
+<p>Reports provide a centralised area for analysis into <strong>Display</strong> performance and usage as well as detailed <strong>Proof of Play</strong> and <strong>Library</strong> usage reports. These reports can be viewed from <strong>All Reports</strong> under the <strong>Reporting</strong> section of the main CMS menu:</p>
+<p><img src="img/v4_displays_reporting.png" alt="Reporting" /></p>
+<h2 id="display">Display <a href="#display" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><strong>Display</strong> Reports:</p>
+<h3>Display Statistics: Bandwidth</h3>
+<p>The CMS records the <strong>bandwidth</strong> used by each Display when connecting to XMDS for content and when reporting back Display information.</p>
+<ul>
+<li>Select the range and click on <strong>Apply</strong>. Leaving the Display field empty will show a bandwidth chart total per Display:</li>
+</ul>
+<p><img src="img/v4_displays_bandwidth.png" alt="Display Bandwidth" /></p>
+<ul>
+<li>Filter to just one Display and click on <strong>Apply</strong> to see each call that the Player made to XMDS in isolation:</li>
+</ul>
+<p><img src="img/v4_displays_bandwidth_display.png" alt="Bandwidth one Display" /></p>
+<blockquote class="tip"><p>Filtering to just one Display helps to better understand where bandwidth has been used.</p>
+<p>Did you know…you can set a bandwidth limit per <a href="displays.html">Display</a>!</p>
+</blockquote>
+<p>Use the <strong>All Reports</strong> button to return to the Reporting dashboard or use the <strong>Reports</strong> drop down menu to select another ‘Display’ report to view.</p>
+<h3>Time Connected/Disconnected</h3>
+<p>The CMS records all Displays/Display Groups on/offline events to provide a breakdown regarding a Displays availability.</p>
+<p>The Time Connected Report will give a breakdown of % connected (shown in green) and % disconnected (shown in blue)</p>
+<ul>
+<li>
+<p>Select the <strong>Range</strong> and <strong>Group by</strong> Hour or Day of Month.</p>
+</li>
+<li>
+<p>Leave the Display/Display Group field empty to view all or select  Displays/Display Groups to view.</p>
+</li>
+<li>
+<p>Click <strong>Apply</strong></p>
+</li>
+</ul>
+<p><img src="img/v4_displays_time_connected.png" alt="Time Connected" /></p>
+<p>The <strong>Summary</strong> gives a further breakdown between specified dates for Displays/Display Groups and shows the number of days connected/disconnected:</p>
+<p><img src="img/v4_displays_summary_connected.png" alt="Summary Time Connected" /></p>
+<h2 id="proof_of_play">Proof of Play <a href="#proof_of_play" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><img src="img/v4_displays_proof_of_play_dashboard.png" alt="Proof of Play Dashboard" /></p>
+<p>Each <strong>Display</strong> can collect information to provide Proof of Play Reports on what they have shown:</p>
+<p><strong>Layout</strong> - show all instances of a selected Layout being shown.</p>
+<p><strong>Media</strong> - show all instances of a selected Media file being shown.</p>
+<p><strong>Widget</strong> - give a report on a selected Widget contained within a Layout. (This also includes Widgets that do not contain Library media files, such as Text).</p>
+<p><strong>Event</strong> - If the Player supports collection from external sensors, event stats will be recorded and shown in Reports.</p>
+<p><img src="img/v4_displays_reporting_proof_of_play_type.png" alt="Proof of Play Type" /></p>
+<p>To collect Proof of Play reports ensure that <strong>Enable Stats Reporting</strong> has been enabled and the <strong>Aggregation level</strong> has been set on a <a href="displays_settings.html">Display Profile Setting</a></p>
+<ul>
+<li>
+<strong>Individual</strong> - statistics are recorded at the start and finish of each item individually and sent back to the CMS at each collection interval.</li>
+<li>
+<strong>Hourly</strong> - records each item once, and includes the total number of times played and the length of time played during the hour and is sent back to the CMS on the next collection interval after the hour period has expired.</li>
+<li>
+<strong>Daily</strong> - records each item once, and includes the total number of times played and the length of time played during the day and is sent back to the CMS on the next collection interval after the day has expired.</li>
+</ul>
+<blockquote class="tip"><p>Players aggregate ‘completed records’ only, with collection made at the end of the Widgets duration so if a Widget has a duration of 3 hours, the stat will be recorded one the Widget has expired.</p>
+</blockquote>
+<p><strong>Proof of Play</strong> Reports:</p>
+<h3>Proof of Play: Export</h3>
+<p>View Proof of Play data exported to a CSV for selected Displays and timescales.</p>
+<h3>Proof of Play: Report</h3>
+<ul>
+<li>Select a <strong>Range</strong> from the dropdown or specify your own dates and times and use the filter fields as necessary.</li>
+<li>Click <strong>Apply</strong>
+</li>
+</ul>
+<p><img src="img/v4_displays_proofofplay.png" alt="Proof Of Play" /></p>
+<blockquote class="tip"><p>Click on <strong>All Reports</strong> to return to the Reports Dashboard or use the <strong>Reports</strong> dropdown to select from the available Proof of Play Reports.</p>
+</blockquote>
+<h3>Chart: Summary/Distribution by Layout, Media or Event</h3>
+<p>Charts show an aggregate duration and number of plays the selected Layout, Media or Event.</p>
+<ul>
+<li>Select a <strong>Range</strong>.</li>
+<li>Choose the <strong>Type</strong> and use the drop down to further specify the type selected.</li>
+<li>Click <strong>Apply</strong>.</li>
+</ul>
+<p><img src="img/v4_displays_proofofplay_summary_report.png" alt="Proof of Play Summary Report" /></p>
+<blockquote class="tip"><p>Use the tabs to switch between <strong>Chart</strong> and <strong>Tabular</strong> data for each Report.
+Tabular data can be exported as a CSV.</p>
+</blockquote>
+<h2 id="library">Library <a href="#library" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><strong>Library</strong> Reports:</p>
+<h3>Library Usage</h3>
+<p>View Library usage for all Users of the CMS or filter to have an overview of usage by an individual User/User Group.</p>
+<h2 id="schedule">Schedule <a href="#schedule" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Reports can be scheduled to run on a <strong>Daily</strong>, <strong>Weekly</strong>, <strong>Monthly</strong> or <strong>Yearly</strong> basis.</p>
+<blockquote class="tip"><p><strong>Chart: Distribution</strong> and <strong>Chart: Summary Reports</strong> must have the <strong>Type</strong> and the named Layout/Media/Event selected to activate the <strong>Schedule</strong> button.</p>
+</blockquote>
+<ul>
+<li>
+<p>Click on the <strong>Schedule</strong> button and complete the necessary form fields for the particular report type.</p>
+</li>
+<li>
+<p>A PDF of the report can  be emailed to users by ticking the <strong>Should an email be sent?</strong> checkbox.</p>
+</li>
+</ul>
+<blockquote class="tip"><p>Scheduled Reports can also be emailed to additional email addresses entered in the <strong>Email addresses</strong> field. Ensure that a <strong>Sending email address</strong> has been set on the <a href="tour_cms_settings.html#content-network">Network</a> tab in CMS Settings.</p>
+</blockquote> 
+<h2 id="report_schedules">Report Schedules <a href="#report_schedules" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>Click on the <strong>Report Schedules</strong> button to view all schedules by Owner/Type.</li>
+</ul>
+<blockquote class="tip"><p>Each report has a row menu containing shortcuts and further actions!</p>
+</blockquote>
+<h2 id="saved_reports">Saved Reports <a href="#saved_reports" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Click on <strong>Saved Reports</strong> to view all run reports.</p>
+<blockquote class="tip"><p>Use the checkbox to only view your own run reports!</p>
+</blockquote>
+<p>Use the row menu to view a saved report,schedule, export as a PDF or delete.</p>
+<blockquote class="tip"><p><strong>Report Schedules</strong> and <strong>Saved Reports</strong> can also be accessed directly from the CMS menu under the <strong>Reporting</strong> section.</p>
+</blockquote> 
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

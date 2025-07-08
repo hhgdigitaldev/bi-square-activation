@@ -1,0 +1,35 @@
+<div class="toolbar-card toolbar-card-item {{#if thumbnail}}has-thumb{{/if}} {{#if isRequired}}required-element{{/if}}" 
+    data-type="{{type}}" 
+    data-sub-type="{{#if subType}}{{subType}}{{else}}{{dataType}}{{/if}}"
+    data-data-type="{{dataType}}"
+    data-is-visible="{{isVisible}}"
+    data-target="{{#if target}}{{target}}{{else}}layout element{{/if}}"
+    data-template-id="{{templateId}}"
+    data-template-start-width="{{startWidth}}"
+    data-template-start-height="{{startHeight}}"
+    data-card-title="{{title}}"
+    data-toggle="tooltip" data-title="{{description}}"
+    {{#with extends as | extend |}}
+        data-extends-template="{{extend.template}}"
+        data-extends-override="{{extend.override}}"
+        data-extends-with="{{extend.with}}"
+    {{/with}}
+    >
+
+{{#if thumbnail}}
+    <div class="toolbar-card-thumb">
+        <img src="{{thumbnail}}" />
+    </div>
+{{else}}
+    <i class="element-icon {{icon}} card-icon"></i>
+{{/if}}
+
+{{#if isRequired}}
+    <i class="toolbar-card-is-required fa fa-warning tooltip-always-on"
+        data-toggle="tooltip" data-title="{{trans.isRequired}}"></i>
+{{/if}}
+
+    <div class="toolbar-content" title="{{title}}">
+        <span class="card-title">{{title}}</span>
+    </div>
+</div>

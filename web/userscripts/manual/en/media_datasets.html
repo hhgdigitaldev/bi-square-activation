@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="media">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="media_library.html">Library Media</a></p>
+</li>
+<li>
+<p><a href="media_playlists.html">Playlists</a></p>
+</li>
+<li>
+<p class="active"><a href="media_datasets.html">DataSets<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="media_menuboards.html">Menu Boards</a></p>
+</li>
+<li>
+<p><a href="media_dashboard_service.html">Dashboard Service</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="datasets">DataSets <a href="#datasets" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>DataSets are used to design and store tabular data which are created and managed independently to <a href="layouts.html">Layouts</a> and <a href="media_playlists.html">Playlists</a>. Once created, DataSets are added to Layouts and Playlists using the <a href="media_module_dataset.html">DataSet</a> Widget.</p>
+<p>DataSets can also be used to create your own <a href="media_datasets.html#content-view-rss">RSS Feeds</a> to add to the <a href="media_module_ticker.html">Ticker</a> Widget.</p>
+<h2 id="feature_overview:">Feature Overview: <a href="#feature_overview:" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>Define the data structure.</li>
+<li>Data can be manually added.</li>
+<li>Import data from a CSV file.</li>
+<li>Use a JSON formatted data source via the API.</li>
+<li>Sync from a 3rd party data source remotely on a schedule.</li>
+<li>Maintain content without accessing Layouts/Playlists.</li>
+<li>Re-use across multiple Widgets/Layouts/Playlists.</li>
+<li>Create an RSS feed from a DataSet.</li>
+</ul>
+<p>DataSets have been designed to be versatile so that they can be configured in a number of ways with the DataSet Widget as well as a source of data for a custom Module. A DataSet provides a convenient way to import and display data from other systems in BI Square Brand Activation.</p>
+<p>Examples of where DataSets could be utilised:</p>
+<ul>
+<li>A drinks menu at a bar</li>
+<li>Tee times at a golf club</li>
+<li>Meeting room bookings</li>
+<li>Bus timetables</li>
+</ul>
+<p>DataSets are created and managed independently to Layouts and Playlists and therefore do not require user access to Layouts the Layout Editor or Playlists to add or manage the data held within a DataSet.</p>
+<p><img src="img/v4_media_dataset_flow.png" alt="DataSet Flow" /></p>
+<h2 id="creating_a_dataset">Creating a DataSet <a href="#creating_a_dataset" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>DataSets are created and managed by selecting  <strong>DataSets</strong> under the <strong>Library</strong> section of the main CMS menu:</p>
+<p><img src="img/v4_media_dataset_grid.png" alt="DataSet Grid" /></p>
+<ul>
+<li>Select the <strong>Add DataSet</strong> button and complete the form fields to create a new record:</li>
+</ul>
+<p><img src="img/v4_media_dataset_add.png" alt="DataSet Add" /></p>
+<p><a href="tour_folders.html">Folders</a> are used to organise, search and easily <a href="users_features_and_sharing.html#content-share">Share</a> User objects with other Users/User Groups. DataSets saved to a Folder will inherit the access options applied to that Folder.</p>
+<ul>
+<li>Give your DataSet a <strong>Name</strong> for easy identification in the CMS. Provide an optional internal <strong>Description</strong> and enter a <strong>Code</strong> if referencing this DataSet via the API.</li>
+</ul>
+<p>If the DataSet is going to be connected to sync with a <strong>Remote</strong> data source, tick to enable and continue with the <a href="media_datasets.html#content-creating-remote-datasets">Creating Remote DataSets</a> configuration.</p>
+<p>If the DataSet is <strong>not Remote</strong>, click to Save the DataSet record and continue from the <a href="media_datasets.html#content-create-and-configure-columns">Create and Configure Columns</a> section.</p>
+<h3>Creating Remote DataSets</h3>
+<p>Remote DataSets are a special type of DataSet which will periodically sync from a 3rd party data source. BI Square Brand Activation will call the URL at a chosen time period and parse the data according to instructions set on the DataSet record and any Columns that have been defined as <strong>Remote</strong>.</p>
+<p>On selecting Remote, additional tabbed fields are made available so that the Remote DataSet record can be fully completed:</p>
+<p><img src="img/v4_media_dataset_remote.png" alt="Remote DataSet Options" /></p>
+<ul>
+<li>
+<h4>Remote</h4>
+<p>Set the type of request method and enter the URL for the remote data source.</p>
+</li>
+<li>
+<h4>Authentication</h4>
+<p>Provide authentication information. Custom Headers are available to provide an optional string of custom HTTP headers.</p>
+</li>
+<li>
+<h4>Data</h4>
+<p>Set the remote data source:</p>
+</li>
+</ul>
+<h3>JSON Source</h3>
+<p>JSON data is populated according to the Columns defined as Remote types. When specifying a <strong>Remote Column</strong> a ‘data path’ needs to be entered which is the JSON syntax path to the data for that column, in respect to the <strong>Data Root</strong> specified.</p>
+<blockquote class="tip"><p>Consider an example JSON data source:</p>
+<pre><code class="language-json">{
+    &quot;base&quot;: &quot;EUR&quot;,
+    &quot;date&quot;: &quot;2017-12-22&quot;,
+    &quot;rates&quot;: {
+        &quot;GBP&quot;: 0.88568,
+        &quot;THB&quot;: 38.83,
+        &quot;USD&quot;: 1.1853
+    }
+}
+</code></pre>
+<p>If we wanted two columns to capture the currency <strong>Symbol</strong> and <strong>Value</strong>, we would need to set the <strong>Data Root</strong> to <code>rates</code> and have Columns for:</p>
+<ul>
+<li>
+<strong>Symbol</strong> - data path = 0</li>
+<li>
+<strong>Value</strong> - data path = 1</li>
+</ul>
+</blockquote>
+<p>Use the <strong>Test data URL</strong> to ensure that the desired structure is returned.</p>
+<h3>CSV Source</h3>
+<p>The remote data source can be selected as a CSV.</p>
+<p>If the CSV source contains headers, tick to ignore the first row.</p>
+<p>Use the <strong>Test data URL</strong> to ensure that the desired structure is returned.</p>
+<h4>Advanced</h4>
+<ul>
+<li>Set how often the remote data should be fetched and imported.</li>
+</ul>
+<blockquote class="tip"><p>The fetch remote DataSet task is run hourly by default. Remote DataSets are intended for data which updates infrequently and not in real time.</p>
+</blockquote>
+<ul>
+<li>
+<p>Set a timescale to Truncate data.</p>
+</li>
+<li>
+<p>Use the drop down to select a DataSet if using dependants.</p>
+</li>
+<li>
+<p>Optionally set a row limit and what should happen if this limit is exceeded.</p>
+</li>
+<li>
+<p>Click to <strong>Save</strong>.</p>
+</li>
+</ul>
+<h2 id="create_and_configure_columns">Create and Configure Columns <a href="#create_and_configure_columns" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Columns define the structure of your data:</p>
+<ul>
+<li>Use the row menu for a DataSet record and select <strong>View Columns</strong>:</li>
+</ul>
+<p><img src="img/v4_media_datasets_add_columns.png" alt="DataSets Add columns" /></p>
+<blockquote class="tip"><p>By default, all new DataSets will have a <strong>Col1</strong> added. This should be edited or removed using the row menu for Col1!</p>
+</blockquote>
+<ul>
+<li>Delete Col1 from the row menu and click on the <strong>Add Column</strong> button to create a new column</li>
+</ul>
+<p>​	or</p>
+<ul>
+<li>Use the row menu for Col1 and select <strong>Edit</strong>.</li>
+</ul>
+<p><img src="img/v4_media_columns_form.png" alt="DataSet Columns Form" /></p>
+<ul>
+<li>Include a <strong>Heading</strong> to identify this Column.</li>
+<li>Use the drop down to select a <strong>Type</strong> of Column to use.</li>
+</ul>
+<h3>Column Types:</h3>
+<h4>Value</h4>
+<p>Enter a list of items to be presented in a combo box.</p>
+<ul>
+<li>Use the drop down to select the <strong>Data Type</strong>.</li>
+<li>Provide a comma-separated list of values that can be selected for this column.</li>
+<li>Set the position this Column should appear when viewing/editing Data.</li>
+<li>Provide an optional tooltip message to display when entering data for this column.</li>
+</ul>
+<p>Use the additional options to enable <strong>Filters</strong>, <strong>Sorting</strong> and <strong>Required Values</strong> for this column.</p>
+<h4>Formula</h4>
+<p>Enter a MySQL statement.</p>
+<ul>
+<li>Use the drop down to select the Data Type.</li>
+<li>Set the position this Column should appear when viewing/editing Data.</li>
+<li>Provide a MySQL statement suitable to use in a ‘SELECT’ statement or a string to format a date field.</li>
+</ul>
+<blockquote class="tip"><p><code>	$dateFormat(&lt;col&gt;,&lt;format&gt;,&lt;language&gt;)</code>
+Ensure that <code>&lt;col&gt;</code>has a date and time specified for the date format to work. If the language has not been set, it will default to English.</p>
+<p>Two substitutions are available for Formula columns: <code>[DisplayId]</code> and <code>[DisplayGeoLocation]</code> which will be substituted at run time with the Display ID / Display Geo Location (MySQL GEOMETRY).</p>
+</blockquote>
+<p>Use the additional options to enable <strong>Filters</strong> and <strong>Sorting</strong> for this column.</p>
+<h4>Remote</h4>
+<p>Provide a JSON syntax string.</p>
+<ul>
+<li>Use the drop down to select the Data Type.</li>
+<li>Enter a JSON syntax string showing how to access the data from a 3rd party data source.</li>
+<li>Set the position this Column should appear when viewing/editing Data.</li>
+</ul>
+<p>Use the additional options to enable <strong>Filters</strong> and <strong>Sorting</strong> for this column.</p>
+<p>Continue to add and configure Columns as required. There is no theoretical limit to the number of Columns BI Square Brand Activation can support, although a smaller DataSet is often easier to manage and display.</p>
+<blockquote class="tip"><p>Columns can be viewed/added and edited by using the row menu for a DataSet record from the DataSets page.</p>
+<p>The ordering and list content of Columns can be changed after Data has been collected.</p>
+</blockquote>
+<h2 id="adding_data_to_columns">Adding Data to Columns <a href="#adding_data_to_columns" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Once Columns have been defined, data needs to be added. This can be achieved a number of ways:</p>
+<ul>
+<li>Manually through the CMS User interface</li>
+<li>Imported via a CSV file</li>
+<li>Using the API</li>
+<li>Remotely Sync</li>
+</ul>
+<h3>Manually</h3>
+<p>Data is added using the <strong>View Data</strong> button on the Columns page.</p>
+<blockquote class="tip"><p>Data can be viewed/added and edited by using the row menu for a DataSet record from the DataSets page!</p>
+</blockquote>
+<p>The data table will show each of the Columns added to the DataSet as they have been configured.</p>
+<p><img src="img/v4_media_dataset_row.png" alt="Dataset Row" /></p>
+<ul>
+<li>Add a new row of data by clicking on the <strong>Add Row</strong> button and complete for each non-formula Column type.</li>
+<li>Click <strong>Next</strong> to continue adding data to add more rows.</li>
+<li>When all data has been completed, click <strong>Save</strong>
+</li>
+</ul>
+<blockquote class="tip"><p>Click in any row to Edit Data. Click on the cross at the end of a selected row to Delete.</p>
+<p>Users can toggle to a <strong>Multi Select Mode</strong> using the button at the top of the grid. In this mode, Users can select multiple rows and click on <strong>Delete Rows</strong> to remove in bulk.</p>
+<p>Once complete click on the <strong>Edit Mode</strong> button to come out of multi-select mode.</p>
+</blockquote>
+<h3>Importing a CSV</h3>
+<p>The CMS has a DataSet CSV importer that can be used to extract data from a <strong>CSV file</strong> and put it into a DataSet. The <strong>Import CSV</strong> function can be accessed through the row menu of any DataSet record (with the exception of DataSets configured for Remote data sources).</p>
+<p><img src="img/v4_media_dataset_importcsv_form.png" alt="Dataset Import CSV" /></p>
+<p>The importer has options to overwrite the existing data held in the import file as well as an option to ignore the first row of the CSV when importing if your file has headings.</p>
+<p>The Remote Columns in the DataSet will be listed with a field next to them to indicate the column number in the CSV file that corresponds with the listed Column Header.</p>
+<blockquote class="tip"><p>It is important to ensure that your CSV file has the correct file encoding if you are using non-ASCII characters. Non-ASCII characters are very common for languages outside of English. The file encoding most commonly used is UTF-8.</p>
+<p>If you have edited your CSV file using Excel, you will need to make sure you select “Unicode (UTF-8)” from the Tools -&gt; Web Options -&gt; Encoding tab on the ‘Save as’ dialogue.</p>
+</blockquote>
+<h3>Through the API</h3>
+<p>You can write your own application which syncs data into a DataSet using the BI Square Brand Activation API. Data can be added row by row or by importing whole JSON structures.</p>
+<h3>Remotely</h3>
+<p>Remote DataSets are kept in sync with a Task called <strong>Fetch Remote DataSets</strong>. This task is configured by default and runs once per minute.</p>
+<ul>
+<li>
+<h4>Dependents</h4>
+A remote DataSet can depend on another DataSet to formulate its request. Each row in the dependent DataSet will be used to create a request using the parent DataSet’s request parameters.</li>
+</ul>
+<h2 id="row_menu">Row Menu <a href="#row_menu" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Each DataSet has a row menu where Users can access a list of actions/shortcuts.</p>
+<ul>
+<li>Notable settings are listed below:</li>
+</ul>
+<h3>View RSS</h3>
+<p>Create your own RSS feed using the data held in a DataSet.</p>
+<ul>
+<li>Select <strong>View RSS</strong> from the row menu of a DataSet.</li>
+<li>Click on the <strong>Add RSS</strong> button.</li>
+</ul>
+<p><img src="img/v4_media_datasets_add_rss.png" alt="Add RSS" /></p>
+<ul>
+<li>Complete the form fields, selecting the Columns to use.</li>
+<li>On Saving a URL will be generated which can be copied and added to the <a href="media_module_ticker.html">Ticker</a> Widget.</li>
+</ul>
+<h3>Delete</h3>
+<p>DataSets can only be deleted if they are not in use.</p>
+<p>Multiple DataSets can be selected and deleted in bulk using the <a href="tour_cms_navigation.html#content-multi-select---with-selected">With Selected</a> option at the bottom of the DataSets grid.</p>
+<h3>Share</h3>
+<p>Set <a href="users_features_and_sharing.html#content-share">Share</a> options for User/User Group access to individual DataSets.</p>
+<h4>Next…</h4>
+<p><a href="media_module_dataset.html">DataSet Widget</a></p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

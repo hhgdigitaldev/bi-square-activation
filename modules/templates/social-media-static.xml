@@ -1,0 +1,3084 @@
+<!--
+  ~ Copyright (C) 2023 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<templates>
+    <template>
+        <id>social_media_custom_html</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <showIn>none</showIn>
+        <properties>
+            <property id="customTemplate" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="moduleType" type="hidden">
+                <default>social-media</default>
+            </property>
+            <property id="widgetDesignWidth" type="number">
+                <title>Original Width</title>
+                <helpText>This is the intended width of the template and is used to scale the Widget within its region when the template is applied.</helpText>
+            </property>
+            <property id="widgetDesignHeight" type="number">
+                <title>Original Height</title>
+                <helpText>This is the intended height of the template and is used to scale the Widget within its region when the template is applied.</helpText>
+            </property>
+            <property id="widgetDesignGap" type="number">
+                <title>Original Padding</title>
+                <helpText>This is the intended padding of the template and is used to position the Widget within its region when the template is applied.</helpText>
+            </property>
+            <property id="template" type="code" allowLibraryRefs="true" parseTranslations="true" variant="html">
+                <title>Main Template</title>
+            </property>
+            <property id="styleSheet" type="code" allowLibraryRefs="true" variant="css">
+                <title>Optional Stylesheet Template</title>
+            </property>
+            <property id="javaScript" type="code" allowLibraryRefs="true" variant="javascript">
+                <title>Optional JavaScript</title>
+                <helpText>Add JavaScript to be included immediately before the closing body tag. Do not use [] array notation as this is reserved for library references. Do not include script tags.</helpText>
+            </property>
+            <property id="resultContent" type="dropdown" mode="single">
+                <default>1</default>
+                <title>Content Type</title>
+                <helpText>This is the intended tweet content type.</helpText>
+                <options>
+                    <option name="0">All Posts</option>
+                    <option name="1">Posts with text only content</option>
+                    <option name="2">Posts with text and image content</option>
+                </options>
+            </property>
+            <property id="dateFormat" type="text" variant="dateFormat">
+                <title>Date Format</title>
+                <helpText>The format to apply to all dates returned by the Widget.</helpText>
+                <default>#DATE_FORMAT#</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <twig><![CDATA[
+{% if javaScript %}<script type="text/javascript">{{javaScript|raw}}</script>{% endif %}
+
+<div class="item-template" style="display: none;">
+{{template|raw}}
+</div>
+
+<div class="twitter-white-logo" data-url="[[assetAlias=providerLogoWhite]]" style="display: none;">
+<div class="twitter-blue-logo" data-url="[[assetAlias=providerLogo]]" style="display: none;">
+            ]]></twig>
+        <style><![CDATA[
+/* Legacy properties from bootstrap */
+.social-media-item {
+    float: left;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+.container:after, .container:before {
+    clear: both;
+    display: table;
+    content: " ";
+}
+
+body {
+    font-size: 14px;
+}
+
+{{styleSheet|raw}}
+        ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .social-media-item'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="fulltime-np" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/fulltime-np.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_1</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 1 - text, profile image</title>
+        <thumbnail>fulltime-np</thumbnail>
+        <startWidth>400</startWidth>
+        <startHeight>500</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="dateFormat" type="text" variant="dateFormat">
+                <title>Date Format</title>
+                <helpText>The format to apply to all dates returned by the Widget.</helpText>
+                <default>#DATE_FORMAT#</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postBackground" type="color">
+                <title>Post Background Colour</title>
+                <helpText>The colour of the post background</helpText>
+                <default>#ecf0f1</default>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#333</default>
+            </property>
+            <property id="postHeaderTextColor" type="color">
+                <title>Post Header Text Colour</title>
+                <helpText>The colour of the post header text</helpText>
+                <default>#95a5a6</default>
+            </property>
+            <property id="profileBorderColor" type="color">
+                <title>Profile Border Colour</title>
+                <helpText>The colour of the profile border</helpText>
+                <default>#ecf0f1</default>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">1000</width>
+            <height id="height">200</height>
+            <gapBetweenHbs id="gapBetweenHbs">24</gapBetweenHbs>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="social-container">
+        <div class="profileimage">
+            <img src="{{userProfileImage}}"/>
+        </div>
+        <div class="message-container">
+            <div class="message">
+                <div class="user"><span>{{user}}</span></div>
+                <div class="date"><span>{{date}}</span></div>
+                <div class="social"><span>{{text}}</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+.item {
+    float: left;
+}
+
+.social {
+    height: 120px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container {
+    width: 1000px !important;
+    height: 200px !important;
+    display: inline-block;
+}
+
+.social-container {
+    font-size: 24px;
+    line-height: 1.25;
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: lucida sans unicode, lucida grande, sans-serif;
+    {% endif %}
+    position: relative;
+    top: 8px;
+    left: 8px;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+}
+
+div.profileimage {
+    width: 100px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+div.profileimage img {
+    width: 90px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid {{profileBorderColor}};
+    position: relative;
+}
+
+div.message-container {
+    width: 820px;
+    height: 100%;
+    padding-left: 20px;
+    vertical-align: top;
+    display: inline-block;
+    color: {{postTextColor}};
+}
+
+.message-container .user {
+    height: 30px;
+    font-weight: 700;
+    display: inline-block;
+    color: {{postHeaderTextColor}};
+    padding: 5px;
+}
+
+.message-container .date {
+    padding: 5px;
+    float: right;
+    height: 30px;
+}
+
+.message {
+    width: 100%;
+    padding: 10px;
+    background-color: {{postBackground}};
+    position: relative;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
+    text-align: left;
+    display: inline-block;
+    max-height: 180px;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+if (properties.dateFormat) {
+    $(target).find('.date > span').each((_idx, el)=> {
+        $(el).html(moment($(el).html()).format(properties.dateFormat));
+    });
+}
+
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="fulltime-np" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/fulltime-np.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_2</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 2 - text, profile image, photo</title>
+        <thumbnail>fulltime</thumbnail>
+        <startWidth>1200</startWidth>
+        <startHeight>300</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>2</default>
+            </property>
+            <property id="dateFormat" type="text" variant="dateFormat">
+                <title>Date Format</title>
+                <helpText>The format to apply to all dates returned by the Widget.</helpText>
+                <default>#DATE_FORMAT#</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postBackground" type="color">
+                <title>Post Background Colour</title>
+                <helpText>The colour of the post background</helpText>
+                <default>#ecf0f1</default>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#333</default>
+            </property>
+            <property id="postHeaderTextColor" type="color">
+                <title>Post Header Text Colour</title>
+                <helpText>The colour of the post header text</helpText>
+                <default>#95a5a6</default>
+            </property>
+            <property id="profileBorderColor" type="color">
+                <title>Profile Border Colour</title>
+                <helpText>The colour of the profile border</helpText>
+                <default>#ecf0f1</default>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">1000</width>
+            <height id="height">900</height>
+            <gapBetweenHbs id="gapBetweenHbs">24</gapBetweenHbs>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="social-container">
+        <div class="profileimage">
+            <img src="{{userProfileImage}}"/>
+        </div>
+        <div class="message-container">
+            <div class="message">
+                <div class="user"><span>{{user}}</span></div>
+                <div class="date"><span>{{date}}</span></div>
+                <div class="social"><span>{{text}}</span></div>
+                <div class="photo">
+                    <img src="{{photo}}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+.item {
+    float: left;
+}
+
+.social {
+    padding: 10px;
+}
+
+.main-container {
+    width: 1000px !important;
+    height: 900px !important;
+    display: inline-block;
+    font-size: 25px;
+    line-height: 1.3;
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: lucida sans unicode, lucida grande, sans-serif;
+    {% endif %}
+}
+
+.social-container {
+    position: relative;
+    top: 8px;
+    left: 8px;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+}
+
+div.profileimage {
+    width: 110px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+div.profileimage img {
+    width: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid {{profileBorderColor}};
+    position: relative;
+}
+
+div.message-container {
+    width: 800px;
+    height: inherit;
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    vertical-align: top;
+    display: inline-block;
+    color: {{postTextColor}};
+}
+
+.message-container .user {
+    height: 30px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: .2em;
+    color: {{postHeaderTextColor}};
+    padding: 10px;
+}
+
+.message-container .date {
+    padding: 10px;
+    float: right;
+    height: 30px;
+}
+
+.message-container .photo {
+    text-align: center;
+    height: auto;
+    max-height: 640px;
+    overflow: hidden;
+}
+
+.message-container .photo img {
+    width: 100%;
+    height: auto !important;
+    vertical-align: middle;
+}
+
+.message {
+    width: 100%;
+    padding: 10px;
+    background-color: {{postBackground}};
+    position: relative;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
+    text-align: left;
+    display: inline-block;
+    max-height: 880px;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+if (properties.dateFormat) {
+    $(target).find('.date > span').each((_idx, el)=> {
+        $(el).html(moment($(el).html()).format(properties.dateFormat));
+    });
+}
+
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="fulltime" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/fulltime.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_3</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 3 - text</title>
+        <thumbnail>textonly</thumbnail>
+        <startWidth>400</startWidth>
+        <startHeight>500</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#333</default>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">600</width>
+            <height id="height">150</height>
+            <gapBetweenHbs id="gapBetweenHbs">12</gapBetweenHbs>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="social-container">
+        <p>
+            <span>{{text}}</span>
+        </p>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+.main-container {
+    width: 600px !important;
+    height: 150px !important;
+    display: inline-block;
+    color: {{postTextColor}};
+}
+
+.social-container {
+    font-size: 20px;
+    line-height: 1.2;
+    max-height: 150px;
+    overflow: hidden;
+}
+
+.social-container > p {
+    margin: 10px;
+}
+
+.social-container > p > span {
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: lucida sans unicode, lucida grande, sans-serif;
+    {% endif %}
+}
+
+.item {
+    float: left;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="textonly" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/textonly.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_4</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 4 - text, profile image</title>
+        <thumbnail>profileleft</thumbnail>
+        <startWidth>400</startWidth>
+        <startHeight>500</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#333</default>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">800</width>
+            <height id="height">100</height>
+            <gapBetweenHbs id="gapBetweenHbs">12</gapBetweenHbs>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="social-container">
+        <div class="profilepic vcenter"><img src="{{userProfileImageBigger}}"/></div>
+        <div class="text vcenter">{{text}}</div>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+.main-container {
+    width: 800px !important;
+    height: 100px !important;
+    display: inline-block;
+    color: {{postTextColor}};
+}
+
+.social-container {
+    width: 100%;
+    height: 100%;
+    font-size: 19px;
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: lucida sans unicode, lucida grande, sans-serif;
+    {% endif %}
+    line-height: 1.1;
+    display: table;
+    table-layout: fixed;
+}
+
+.item {
+    float: left;
+}
+
+.profilepic {
+    width: 10%;
+}
+
+.social {
+    width: 90%;
+}
+
+.vcenter {
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+    overflow: hidden;
+}
+
+.vcenter > img {
+    width: calc(100% - 16px);
+    padding: 8px;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="profileleft" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/profileleft.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_5</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 5 - text, profile image</title>
+        <thumbnail>profileright</thumbnail>
+        <startWidth>400</startWidth>
+        <startHeight>500</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#333</default>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">800</width>
+            <height id="height">100</height>
+            <gapBetweenHbs id="gapBetweenHbs">12</gapBetweenHbs>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="social-container">
+        <div class="text vcenter">{{text}}</div>
+        <div class="profilepic vcenter"><img src="{{userProfileImage}}"/></div>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+.main-container {
+    width: 800px !important;
+    height: 100px !important;
+    display: inline-block;
+    color: {{postTextColor}};
+}
+
+.social-container {
+    width: 100%;
+    height: 100%;
+    font-size: 19px;
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: lucida sans unicode, lucida grande, sans-serif;
+    {% endif %}
+    line-height: 1.1;
+    display: table;
+    table-layout: fixed;
+}
+
+.item {
+    float: left;
+}
+
+.profilepic {
+    width: 10%;
+}
+
+.social {
+    width: 90%;
+}
+
+.vcenter {
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+    overflow: hidden;
+    text-align: right;
+}
+
+.vcenter > img {
+    width: calc(100% - 16px);
+    padding: 8px;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="profileright" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/profileright.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_6</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 6 - text, profile image</title>
+        <thumbnail>twitter1</thumbnail>
+        <startWidth>300</startWidth>
+        <startHeight>550</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="dateFormat" type="text" variant="dateFormat">
+                <title>Date Format</title>
+                <helpText>The format to apply to all dates returned by the Widget.</helpText>
+                <default>#DATE_FORMAT#</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postBackground" type="color">
+                <title>Post Background Colour</title>
+                <helpText>The colour of the post background</helpText>
+                <default>rgba(255, 255, 255, 0.6)</default>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#434343</default>
+            </property>
+            <property id="dateTextColor" type="color">
+                <title>Date Text Colour</title>
+                <helpText>The colour of the date text</helpText>
+                <default>#6e6e6e</default>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">960</width>
+            <height id="height">350</height>
+            <gapBetweenHbs id="gapBetweenHbs">24</gapBetweenHbs>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="social-container">
+        <div class="social-col col-left">
+            <div class="pic-container center-block">
+                <img src="{{userProfileImage}}"/>
+            </div>
+        </div>
+        <div class="social-col col-right">
+            <div class="social-col main-text">{{text}}</div>
+            <div class="social-col social-date">{{date}}</div>
+            <div class="social-col social-location">{{location}}</div>
+        </div>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+.item {
+    float: left;
+}
+
+body {
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: "Helvetica", "Arial", sans-serif;
+    {% endif %}
+    line-height: 1;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.pic-container {
+    width: 270px;
+    height: 270px;
+    overflow: hidden;
+    padding: 32px;
+}
+
+.pic-container img {
+    height: 100%;
+    width: 100%;
+}
+
+#content {
+    font-size: 0;
+}
+
+.container {
+    width: 960px !important;
+    height: 350px !important;
+    display: inline-block;
+}
+
+.social-container {
+    border: 1px solid #eee;
+    background-color: {{postBackground}};
+    width: 100%;
+    height: 100%;
+}
+
+.main-text {
+    font-size: 28px;
+    padding: 42px 16px 8px 0px;
+    line-height: 120%;
+    color: {{postTextColor}};
+    overflow: hidden;
+    max-height: 220px;
+    width: 100%;
+}
+
+.social-date, .social-location {
+    margin-top: 20px;
+    margin-right: 8px;
+    font-size: 17px;
+    color: {{postTextColor}};
+    font-weight: bold;
+}
+
+.social-date {
+    color: {{dateTextColor}};
+}
+
+.col-left {
+    width: 334px;
+}
+
+.col-right {
+    width: calc(100% - 334px);
+}
+
+.social-col {
+    float: left;
+    position: relative;
+    min-height: 1px;
+}
+
+.social-col.user {
+    width: fit-content;
+    overflow-y: hidden;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+if (properties.dateFormat) {
+    $(target).find('.social-date').each((_idx, el)=> {
+        $(el).html(moment($(el).html()).format(properties.dateFormat));
+    });
+}
+
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="twitter1" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/twitter1.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_7</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 7 - text, profile image</title>
+        <thumbnail>twitter2</thumbnail>
+        <startWidth>200</startWidth>
+        <startHeight>700</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="dateFormat" type="text" variant="dateFormat">
+                <title>Date Format</title>
+                <helpText>The format to apply to all dates returned by the Widget.</helpText>
+                <default>#DATE_FORMAT#</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postBackground" type="color">
+                <title>Post Background Colour</title>
+                <helpText>The colour of the post background</helpText>
+                <default>rgba(255, 255, 255, 0.6)</default>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#434343</default>
+            </property>
+            <property id="usernameTextColor" type="color">
+                <title>User Name Text Colour</title>
+                <helpText>The colour of the username text</helpText>
+                <default>#434343</default>
+            </property>
+            <property id="dateTextColor" type="color">
+                <title>Date Text Colour</title>
+                <helpText>The colour of the date text</helpText>
+                <default>#434343</default>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">600</width>
+            <height id="height">460</height>
+            <gapBetweenHbs id="gapBetweenHbs">16</gapBetweenHbs>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="social-container">
+        <div class="social-col col-12">
+            <div class="social-col col-2 img-container">
+                <img src="{{userProfileImage}}"/>
+            </div>
+            <div class="social-col col-10">
+                <div class="name">{{user}}</div>
+                <div class="username">{{screenName}}</div>
+            </div>
+        </div>
+        <div class="social-col col-12 ">
+            <div class="main-text">{{text}}</div>
+            <div class="social-col social-date">{{date}}</div>
+            <div class="social-col social-location text-right ">{{location}}</div>
+        </div>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+.item {
+    float: left;
+}
+
+body {
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: "Helvetica", "Arial", sans-serif;
+    {% endif %}
+    line-height: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.main-container {
+    width: 600px !important;
+    height: 460px !important;
+    display: inline-block;
+}
+
+.social-container {
+    padding: 18px;
+    background-color: {{postBackground}};
+    background: {{postBackground}};
+    display: inline-block;
+}
+
+.img-container img {
+    width: 80px;
+    height: 80px;
+    border: 3px solid #fff;
+}
+
+.main-text {
+    font-size: 26px;
+    padding-top: 12px;
+    overflow: hidden;
+    line-height: 130%;
+    color: {{postTextColor}};
+    height: 270px;
+}
+
+.social-date, .social-location {
+    margin-top: 30px;
+    font-size: 17px;
+    color: {{dateTextColor}};
+    font-weight: bold;
+    width: 50%;
+}
+
+.social-location {
+    text-align: right;
+}
+
+.name {
+    font-size: 25px;
+    font-weight: bold;
+    color: {{usernameTextColor}};
+    margin-top: 5px;
+}
+
+.username {
+    margin-top: 5px;
+    color: {{usernameTextColor}};
+}
+
+.avatar {
+    border: 3px solid #fff;
+}
+
+.col-2 {
+    width: 16.66666667%;
+}
+
+.col-10 {
+    width: 83.33333333%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.social-col {
+    float: left;
+    position: relative;
+    min-height: 1px;
+}
+
+.social-col.user {
+    width: fit-content;
+    overflow-y: hidden;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+if (properties.dateFormat) {
+    $(target).find('.social-date').each((_idx, el)=> {
+        $(el).html(moment($(el).html()).format(properties.dateFormat));
+    });
+}
+
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="twitter2" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/twitter2.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_8</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 8 - text, profile image</title>
+        <thumbnail>twitter4</thumbnail>
+        <startWidth>250</startWidth>
+        <startHeight>750</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postBackground" type="color">
+                <title>Post Background Colour</title>
+                <helpText>The colour of the post background</helpText>
+                <default>rgba(255, 255, 255, 0.6)</default>
+            </property>
+            <property id="postInnerBackground" type="color">
+                <title>Inner Post Background Colour</title>
+                <helpText>The colour of the inner post background</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="postInnerBorder" type="color">
+                <title>Inner Post Border Colour</title>
+                <helpText>The colour of the inner post border</helpText>
+                <default>#eee</default>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#434343</default>
+            </property>
+            <property id="usernameTextColor" type="color">
+                <title>User Name Text Colour</title>
+                <helpText>The colour of the username text</helpText>
+                <default>#434343</default>
+            </property>
+            
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">340</width>
+            <height id="height">200</height>
+            <gapBetweenHbs id="gapBetweenHbs">0</gapBetweenHbs>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="social-container">
+        <div class="mini-widget">
+            <div class="social-col col-2 img-container">
+                <img src="{{userProfileImage}}"/>
+            </div>
+            <div class="social-col col-10">
+                <div class="name">{{user}}</div>
+                <div class="username">{{screenName}}</div>
+            </div>
+
+            <div class="social-col col-12">
+                <div class="main-text">{{text}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+.item {
+    float: left;
+}
+
+body {
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: "Helvetica", "Arial", sans-serif;
+    {% endif %}
+    line-height: 1;
+    background-image: url('../clouds.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.img-container {
+    height: 50px;
+}
+
+.img-container img {
+    width: 50px;
+    height: 50px;
+}
+
+.main-container {
+    width: 340px !important;
+    height: 200px !important;
+    display: inline-block;
+}
+
+.social-container {
+    padding: 10px;
+    background-color: {{postBackground}};
+    background: {{postBackground}};
+}
+
+.main-text {
+    font-size: 14px;
+    padding: 8px 0px;
+    line-height: 120%;
+    color: {{postTextColor}};
+}
+
+.mini-widget {
+    height: 162px;
+    padding: 8px;
+    border: 1px solid {{postInnerBorder}};
+    background-color: {{postInnerBackground}};
+    overflow: hidden;
+}
+
+.social-date, .social-location {
+    margin-top: 30px;
+    font-size: 17px;
+    color: {{postTextColor}};
+    font-weight: bold;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
+    color: {{usernameTextColor}};
+    margin-top: 5px;
+}
+
+.username {
+    margin-top: 4px;
+    color: {{usernameTextColor}};
+}
+
+.avatar {
+    border: 3px solid #fff;
+}
+
+.col-2 {
+    width: 20%;
+}
+
+.col-10 {
+    width: 80%;
+}
+
+
+.col-12 {
+    width: 100%;
+}
+
+.social-col {
+    float: left;
+    position: relative;
+    overflow: hidden;
+    min-height: 1px;
+}
+
+.social-col.user {
+    width: fit-content;
+    overflow-y: hidden;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="twitter4" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/twitter4.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_9</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 9 - text, logo</title>
+        <thumbnail>twitter6np</thumbnail>
+        <startWidth>400</startWidth>
+        <startHeight>800</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#434343</default>
+            </property>
+            <property id="postBackground" type="color">
+                <title>Post Background Colour</title>
+                <helpText>The colour of the post background</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="footerTextColor" type="color">
+                <title>Footer Text Colour</title>
+                <helpText>The colour of the footer text</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="footerBackground" type="color">
+                <title>Footer Background Colour</title>
+                <helpText>The colour of the footer background</helpText>
+                <default>#1da1f2</default>
+            </property>
+            <property id="borderColor" type="color">
+                <title>Border Colour</title>
+                <helpText>The colour of the border</helpText>
+                <default>#ddd</default>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">400</width>
+            <height id="height">160</height>
+            <gapBetweenHbs id="gapBetweenHbs">8</gapBetweenHbs>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="post">
+        <div class="main-text">
+            <div>
+                {{text}}
+            </div>
+        </div>
+        <div class="footer">
+            <div class="social-col col-2 img-container">
+                <img class="center-block img-responsive" src="[[assetAlias=providerLogoWhite]]" />
+            </div>
+            <div class="social-col col-10 user">{{screenName}}</div>
+        </div>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+.item {
+    float: left;
+}
+
+body {
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: "Helvetica", "Arial", sans-serif;
+    {% endif %}
+    line-height: 1;
+}
+
+.main-container {
+    height: 160px !important;
+    width: 400px !important;
+    display: inline-block;
+}
+
+.post {
+    border: 1px solid {{borderColor}};
+    background: {{postBackground}};
+    width: 100%;
+}
+
+.main-text {
+    font-size: 14px;
+    padding: 10px 15px;
+    line-height: 130%;
+    color: {{postTextColor}};
+    height: 100px;
+    text-align: justify;
+}
+
+.main-text > div {
+    overflow: hidden;
+    height: 100%;
+}
+
+.footer {
+    background: {{footerBackground}};
+    width: 100%;
+    height: 38px;
+}
+
+.user {
+    font-size: 14px;
+    font-weight: bold;
+    color: {{footerTextColor}};
+    margin-top: 9px;
+    letter-spacing: 1px;
+    padding-left: 0px;
+}
+
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-2 {
+    width: 20%;
+}
+
+.col-10 {
+    width: 80%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.img-responsive {
+    width: 100%;
+    height: 34px;
+    padding-top: 2px;
+}
+
+.social-col {
+    float: left;
+    min-height: 1px;
+    margin-left: 8px;
+    width: 38px;
+}
+
+.social-col.user {
+    width: fit-content;
+    overflow-y: hidden;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="twitter6np" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/twitter6np.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_10</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 10 - text, photo, logo</title>
+        <thumbnail>twitter6pl</thumbnail>
+        <startWidth>1100</startWidth>
+        <startHeight>250</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>2</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#434343</default>
+            </property>
+            <property id="postBackground" type="color">
+                <title>Post Background Colour</title>
+                <helpText>The colour of the post background</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="footerTextColor" type="color">
+                <title>Footer Text Colour</title>
+                <helpText>The colour of the footer text</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="footerBackground" type="color">
+                <title>Footer Background Colour</title>
+                <helpText>The colour of the footer background</helpText>
+                <default>#1da1f2</default>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">400</width>
+            <height id="height">450</height>
+            <gapBetweenHbs id="gapBetweenHbs">8</gapBetweenHbs>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="post">
+        <div class="mainpic">
+            <img src="{{photo}}"/>
+        </div>
+        <div class="main-text">{{text}}</div>
+        <div class="footer">
+            <div class="social-col col-2 center-block">
+                <img class="center-block img-responsive" src="[[assetAlias=providerLogoWhite]]" />
+            </div>
+            <div class="social-col col-10 user">{{screenName}}</div>
+        </div>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+.item {
+    float: left;
+}
+
+body {
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: "Helvetica", "Arial", sans-serif;
+    {% endif %}
+    line-height: 1;
+}
+
+.main-container {
+    width: 400px !important;
+    height: 450px !important;
+    display: inline-block;
+}
+
+.post {
+    width: 398px !important;
+    height: 448px !important;
+    border: 1px solid #ddd;
+    background: {{postBackground}};
+}
+
+.main-text {
+    font-size: 14px;
+    padding: 12px 14px;
+    line-height: 130%;
+    color: {{postTextColor}};
+    height: 88px;
+    text-align: justify;
+    overflow: hidden;
+}
+
+.mainpic {
+    height: 300px;
+    width: 400px;
+}
+
+.mainpic img {
+    display: block;
+    width: 400px;
+    clip: rect(0px, 398px, 299px, 0px);
+    position: absolute;
+}
+
+.footer {
+    background: {{footerBackground}};
+    width: 100%;
+    height: 37px;
+}
+
+.user {
+    font-size: 14px;
+    font-weight: bold;
+    color: {{footerTextColor}};
+    margin-top: 9px;
+    letter-spacing: 1px;
+    padding-left: 0px;
+}
+
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-2 {
+    width: 16.66666667%;
+}
+
+.col-10 {
+    width: 83.33333333%;
+}
+
+
+.col-12 {
+    width: 100%;
+}
+
+.social-col {
+    float: left;
+    position: relative;
+    min-height: 1px;
+    margin-left: 12px;
+    width: 38px;
+}
+
+.social-col.user {
+    width: fit-content;
+    overflow-y: hidden;
+}
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="twitter6pl" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/twitter6pl.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_11</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 11 - text, logo</title>
+        <thumbnail>twitter7</thumbnail>
+        <startWidth>400</startWidth>
+        <startHeight>800</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#434343</default>
+            </property>
+            <property id="postBackground" type="color">
+                <title>Post Background Colour</title>
+                <helpText>The colour of the post background</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="headerTextColor" type="color">
+                <title>Header Text Colour</title>
+                <helpText>The colour of the header text</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="headerBackground" type="color">
+                <title>Header Background Colour</title>
+                <helpText>The colour of the header background</helpText>
+                <default>#1da1f2</default>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">400</width>
+            <height id="height">160</height>
+            <gapBetweenHbs id="gapBetweenHbs">8</gapBetweenHbs>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="post">
+        <div class="header">
+            <div class="social-col user">{{user}}</div>
+            <div class="social-col pull-right icon">
+                <img class="img-responsive" src="[[assetAlias=providerLogoWhite]]" />
+            </div>
+        </div>
+        <div class="arrow_box">&nbsp;</div>
+        <div class="main-text ">
+            <div class="text">{{text}}</div>
+        </div>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+.item {
+    float: left;
+}
+
+body {
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: "Helvetica", "Arial", sans-serif;
+    {% endif %}
+    line-height: 1;
+}
+
+.main-container {
+    height: 160px !important;
+    width: 400px !important;
+    display: inline-block;
+}
+
+.post {
+    overflow: hidden;
+    height: 100%;
+    float: left;
+    border: 1px solid #ddd;
+    background: {{postBackground}};
+    width: 100%;
+}
+
+.main-text {
+    font-size: 14px;
+    padding: 20px 10px 8px 10px;
+    line-height: 120%;
+    color: {{postTextColor}};
+    height: 88px;
+}
+
+.main-text .text {
+    overflow: hidden;
+    text-align: justify;
+}
+
+.header {
+    background: {{headerBackground}};
+    width: 100%;
+    height: 40px;
+}
+
+.user {
+    font-size: 14px;
+    font-weight: bold;
+    color: {{headerTextColor}};
+    margin-top: 12px;
+    letter-spacing: 1px;
+    padding-left: 0px;
+}
+
+.arrow_box {
+    height: 6px;
+    position: relative;
+    background: {{headerBackground}};
+}
+
+.arrow_box:after, .arrow_box:before {
+    top: 96%;
+    left: 50%;
+    border: solid;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-top-color: {{headerBackground}};
+    border-width: 16px;
+    margin-left: -16px;
+}
+
+.arrow_box:before {
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: {{headerBackground}};
+    border-width: 16px;
+    margin-left: -16px;
+}
+
+.social-col {
+    float: left;
+    position: relative;
+    min-height: 1px;
+    height: 34px;
+    width: 320px;
+    margin-left: 10px;
+}
+
+.social-col.icon {
+    text-align: right;
+    height: 38px;
+    width: 50px;
+    padding: 4px 0;
+    margin-right: 10px;
+}
+
+.img-responsive {
+    max-width: 100%;
+    height: 100%;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="twitter7" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/twitter7.png" />
+        </assets>
+    </template>
+    <template>
+        <id>social_media_static_12</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Template 12 - text, profile image, logo</title>
+        <thumbnail>twitter8</thumbnail>
+        <startWidth>1000</startWidth>
+        <startHeight>400</startHeight>
+        <properties>
+            <property id="resultContent" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="dateFormat" type="text" variant="dateFormat">
+                <title>Date Format</title>
+                <helpText>The format to apply to all dates returned by the Widget.</helpText>
+                <default>#DATE_FORMAT#</default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items Per Page</title>
+                <helpText>The number of items to show per page (default = 5).</helpText>
+                <default>5</default>
+            </property>
+            <property id="displayDirection" type="dropdown" mode="single">
+                <title>Items direction</title>
+                <helpText>The display order if there's more than one item.</helpText>
+                <default>0</default>
+                <options>
+                    <option name="0"></option>
+                    <option name="1">Horizontal</option>
+                    <option name="2">Vertical</option>
+                </options>
+                <visibility>
+                    <test>
+                        <condition field="itemsPerPage" type="gt">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="postTextColor" type="color">
+                <title>Post Text Colour</title>
+                <helpText>The colour of the post text</helpText>
+                <default>#4d4d4d</default>
+            </property>
+            <property id="dateTextColor" type="color">
+                <title>Date Text Colour</title>
+                <helpText>The colour of the date text</helpText>
+                <default>#4d4d4d</default>
+            </property>
+            <property id="postBackground" type="color">
+                <title>Post Background Colour</title>
+                <helpText>The colour of the post background</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="headerTextColor" type="color">
+                <title>Header Text Colour</title>
+                <helpText>The colour of the header text</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="headerBackground" type="color">
+                <title>Header Background Colour</title>
+                <helpText>The colour of the header background</helpText>
+                <default>#1da1f2</default>
+            </property>
+            <property id="profileBorderColor" type="color">
+                <title>Profile Border Colour</title>
+                <helpText>The colour of the profile border</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">350</width>
+            <height id="height">650</height>
+            <hbs><![CDATA[
+<div class="container main-container">
+    <div class="social">
+        <div class="header">
+            <div class="social-col image-div">
+                <img src="{{userProfileImage}}"/>
+            </div>
+            <div class="social-col user">{{user}}</div>
+        </div>
+        <div class="body">
+            <div class="main-text">{{text}}</div>
+            <div class="social-col date">{{date}}</div>
+            <div class="social-col logo"><img class="img-responsive" src="[[assetAlias=providerLogo]]" /></div>
+        </div>
+    </div>
+</div>
+            ]]></hbs>
+            <style><![CDATA[
+body {
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: "Helvetica", "Arial", sans-serif;
+    {% endif %}
+    line-height: 1;
+}
+
+#content {
+    font-size: 0;
+}
+
+.container {
+    width: 350px !important;
+    height: 650px !important;
+    display: inline-block;
+}
+
+.social-col {
+    float: left;
+    position: relative;
+    min-height: 1px;
+}
+
+.social {
+    overflow: hidden;
+    border: 1px solid #ddd;
+    width: 340px;
+    height: 640px;
+    margin: 5px;
+}
+
+.header {
+    font-size: 1rem;
+    background: {{headerBackground}};
+    width: 100%;
+    height: 110px;
+}
+
+.image-div {
+    overflow: hidden;
+    height: 100%;
+    width: 30%;
+}
+
+.user {
+    font-size: 20px;
+    font-weight: bold;
+    color: {{headerTextColor}};
+    margin-top: 35px;
+    letter-spacing: 1px;
+    width: 64%;
+    padding: 3%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.image-div img {
+    border-radius: 50%;
+    position: absolute;
+    width: 70px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%, -50%);
+    border: 3px solid {{profileBorderColor}};
+}
+
+.body {
+    background: {{postBackground}};
+    height: 530px;
+    position: relative;
+}
+
+.main-text {
+    font-size: 24px;
+    padding: 24px 16px;
+    line-height: 150%;
+    color: {{postTextColor}};
+    height: 450px;
+}
+
+.date {
+    width: 240px;
+    padding: 0 16px;
+    font-size: 14px;
+    color: {{dateTextColor}}
+}
+
+.logo {
+    width: 65px;
+    height: 65px;
+    text-align: center;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+}
+
+.logo img {
+    max-width: 100%;
+    max-height: 100%;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+if (properties.dateFormat) {
+    $(target).find('.date').each((_idx, el)=> {
+        $(el).html(moment($(el).html()).format(properties.dateFormat));
+    });
+}
+
+$(target).xiboLayoutScaler(properties);
+$(target).xiboTextRender(properties, $(target).find('#content > .main-container'));
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="twitter8" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/social-media/twitter8.png" />
+        </assets>
+    </template>
+    <template>
+        <id>metro_social</id>
+        <type>static</type>
+        <dataType>social-media</dataType>
+        <title>Metro Social</title>
+        <thumbnail>colors1</thumbnail>
+        <startWidth>1150</startWidth>
+        <startHeight>650</startHeight>
+        <propertyGroups>
+            <propertyGroup id="colors" expanded="true">
+                <title>Colors</title>
+                <helpText>Select colors to be randomly applied to the metro cells</helpText>
+            </propertyGroup>
+        </propertyGroups>
+        <properties>
+            <property id="dateFormat" type="text" variant="dateFormat">
+                <title>Date Format</title>
+                <helpText>The format to apply to all dates returned by the Widget.</helpText>
+                <default>#DATE_FORMAT#</default>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="colorTemplateId" type="dropdown" mode="single">
+                <title>Colours Template</title>
+                <helpText>Select the template colours you would like to apply values to the colours below.</helpText>
+                <default>custom</default>
+                <options>
+                    <option name="custom">Custom</option>
+                    <option name="default" image="colors1" set="#99b433,#00a300,#ff0097,#9f00a7,#00aba9,#2b5797,#da532c,#b91d47">Colours 1 - Default</option>
+                    <option name="full" image="colors2" set="#2364aa,#3da5d9,#73bfb8,#fec601,#ea7317,,,">Colours 2 - Full</option>
+                    <option name="gray" image="colors3" set="#757575,#989898,#666666,#404040,,,,">Colours 3 - Gray Scale</option>
+                    <option name="light" image="colors4" set="#fffd98,#bde4a7,#b3d2b2,#9fbbcc,#7a9cc6,,,">Colours 4 - Light</option>
+                    <option name="soft" image="colors5" set="#aa7e7e,#94c88d,#a9a7d7,#dee29c,#e4c4df,,,">Colours 5 - Soft</option>
+                    <option name="vivid" image="colors6" set="#fa7921,#fe9920,#b9a44c,#566e3d,#0c4767,,,">Colours 6 - Vivid</option>
+                </options>
+            </property>
+            <property id="color1" name="color" type="color" propertyGroupId="colors">
+                <title>Colour 1</title>
+                <dependsOn>colorTemplateId[0]</dependsOn>
+            </property>
+            <property id="color2" name="color" type="color" propertyGroupId="colors">
+                <title>Colour 2</title>
+                <dependsOn>colorTemplateId[1]</dependsOn>
+            </property>
+            <property id="color3" name="color" type="color" propertyGroupId="colors">
+                <title>Colour 3</title>
+                <dependsOn>colorTemplateId[2]</dependsOn>
+            </property>
+            <property id="color4" name="color" type="color" propertyGroupId="colors">
+                <title>Colour 4</title>
+                <dependsOn>colorTemplateId[3]</dependsOn>
+            </property>
+            <property id="color5" name="color" type="color" propertyGroupId="colors">
+                <title>Colour 5</title>
+                <dependsOn>colorTemplateId[4]</dependsOn>
+            </property>
+            <property id="color6" name="color" type="color" propertyGroupId="colors">
+                <title>Colour 6</title>
+                <dependsOn>colorTemplateId[5]</dependsOn>
+            </property>
+            <property id="color7" name="color" type="color" propertyGroupId="colors">
+                <title>Colour 7</title>
+                <dependsOn>colorTemplateId[6]</dependsOn>
+            </property>
+            <property id="color8" name="color" type="color" propertyGroupId="colors">
+                <title>Colour 8</title>
+                <dependsOn>colorTemplateId[7]</dependsOn>
+            </property>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000) or the Marquee Speed in a low to high scale (normal = 1).</helpText>
+                <visibility>
+                    <test>
+                        <condition field="effect" type="neq">none</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="alignmentH" type="dropdown" mode="single">
+                <title>Horizontal Align</title>
+                <helpText>How should this widget be aligned?</helpText>
+                <default>center</default>
+                <options>
+                    <option name="left">Left</option>
+                    <option name="center">Center</option>
+                    <option name="right">Right</option>
+                </options>
+            </property>
+            <property id="alignmentV" type="dropdown" mode="single">
+                <title>Vertical Align</title>
+                <helpText>How should this widget be vertically aligned?</helpText>
+                <default>middle</default>
+                <options>
+                    <option name="top">Top</option>
+                    <option name="middle">Middle</option>
+                    <option name="bottom">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <hbs><![CDATA[
+<div class="metro-cell-template" style="display: none;">
+    <div class="cell-[itemType] {{#if photo}}shadow darken-container{{/if}} cell" id="item-[itemId]" {{#if photo}}style="background-image: url({{photo}});"{{/if}}>
+        <div class="item-container {{#if photo}}shadow darken-container{{/if}}" {{#unless photo}}style="background-color: [Color];"{{/unless}}>
+            <div class="item-text">{{text}}</div>
+            <div class="userData">
+                <div class="post-profilePic">
+                    <img class="img-responsive" src="{{userProfileImage}}" />
+                </div>
+                <div class="post-userData">
+                    <div class="user">{{user}}</div>
+                    <small>{{date}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            ]]></hbs>
+            <twig><![CDATA[
+<div class="metro-render-container"></div>
+            ]]></twig>
+            <style><![CDATA[
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    {% if fontFamily %}
+        font-family: {{fontFamily}};
+    {% else %}
+        font-family: "Helvetica", "Arial", sans-serif;
+    {% endif %}
+    line-height: 1;
+    margin: 0;
+}
+
+.metro-render-container {
+    background: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 1);
+}
+
+.metro-render-container.orientation-landscape {
+    width: 1920px !important;
+    height: 1080px !important;
+}
+
+.metro-render-container.orientation-portrait {
+    width: 1080px !important;
+    height: 1920px !important;
+}
+
+.metro-render-container.orientation-landscape .row-1 {
+    height: 360px;
+}
+
+.metro-render-container.orientation-portrait .row-1 {
+    height: 320px;
+}
+
+.page {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.metro-render-container.orientation-landscape .cell-1 {
+    width: 310px;
+}
+
+.metro-render-container.orientation-landscape .cell-2 {
+    width: 630px;
+}
+
+.metro-render-container.orientation-landscape .cell-3 {
+    width: 950px;
+}
+
+.metro-render-container.orientation-portrait .cell-1 {
+    width: 350px;
+}
+
+.metro-render-container.orientation-portrait .cell-2 {
+    width: 710px;
+}
+
+.metro-render-container.orientation-portrait .cell-3 {
+    width: 1070px;
+}
+
+.cell-1, .cell-2, .cell-3 {
+    height: inherit;
+    margin: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 50%;
+    background-position-y: 50%;
+}
+
+.item-container {
+    padding: 10px;
+    color: #fff;
+}
+
+.metro-render-container.orientation-landscape .item-container {
+    height: 350px;
+}
+
+.metro-render-container.orientation-portrait .item-container {
+    height: 310px;
+}
+
+.userData {
+    height: 50px;
+}
+
+.darken-container {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.post-profilePic {
+    width: 20%;
+    float: left;
+}
+
+.post-profilePic img {
+    width: 48px;
+}
+
+.post-userData {
+    width: 80%;
+    float: left;
+    text-align: right;
+}
+
+.item-text {
+    padding: 8px 6px 12px 6px;
+    color: #fff;
+    overflow: hidden;
+}
+
+.cell-1 .item-text {
+    line-height: 30px;
+    font-size: 25px;
+}
+
+.metro-render-container.orientation-landscape .cell-1 .item-text {
+    height: 280px;
+}
+
+.metro-render-container.orientation-portrait .cell-1 .item-text {
+    height: 240px;
+}
+
+.cell-2 .item-text {
+    line-height: 34px;
+    font-size: 32px;
+}
+
+.metro-render-container.orientation-landscape .cell-2 .item-text {
+    height: 280px;
+}
+
+.metro-render-container.orientation-portrait .cell-2 .item-text {
+    height: 240px;
+}
+
+.cell-3 .item-text {
+    line-height: 38px;
+    font-size: 36px;
+    height: 280px;
+}
+
+.metro-render-container.orientation-landscape .cell-3 .item-text {
+    height: 280px;
+}
+
+.metro-render-container.orientation-portrait .cell-3 .item-text {
+    height: 240px;
+}
+
+.user {
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.shadow {
+    text-shadow: 1px 1px 2px rgba(0, 0, 3, 1);
+}
+
+.no-shadow {
+    text-shadow: none !important;
+}
+
+small {
+    font-size: 70%;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+// Set widget design width and height based on the window orientation
+var orientation = 'landscape';
+if($(window).width() >= $(window).height()) {
+    properties.widgetDesignWidth = 1920;
+    properties.widgetDesignHeight = 1080;
+} else {
+    properties.widgetDesignWidth = 1080;
+    properties.widgetDesignHeight = 1920;
+    orientation = 'portrait';
+}
+
+// Scale the layout
+$(target).xiboLayoutScaler(properties);
+
+// Get an array of items from the templates generated
+var itemsHTML = $(target).find('.metro-cell-template').map(function(_k, el) {
+    if (properties.dateFormat) {
+        var date = $(el).find('.post-userData > small').html();
+        $(el).find('.post-userData > small').html(moment(date).format(properties.dateFormat));
+    }
+
+    return $(el).html();
+});
+
+// Get metro render container
+var $metroRenderContainer = $(target).find('.metro-render-container');
+
+// Mark container as landscape or portrait
+$metroRenderContainer.removeClass('orientation-landscape orientation-portrait').
+    addClass('orientation-' + orientation);
+
+// Get colours array
+var colors = [];
+
+for (var i = 1; i <= 8; i++) {
+    if (properties['color' + i] !== '') {
+        colors.push(properties['color' + i]);
+    }
+}
+
+// Render the items with metro render
+$metroRenderContainer.xiboMetroRender(properties, itemsHTML, colors);
+
+// Render the images
+$metroRenderContainer.find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="colors1" type="path" mime="image/png" path="/modules/assets/metro-colors/colors1.png" cmsOnly="true"></asset>
+            <asset id="colors2" type="path" mime="image/png" path="/modules/assets/metro-colors/colors2.png" cmsOnly="true"></asset>
+            <asset id="colors3" type="path" mime="image/png" path="/modules/assets/metro-colors/colors3.png" cmsOnly="true"></asset>
+            <asset id="colors4" type="path" mime="image/png" path="/modules/assets/metro-colors/colors4.png" cmsOnly="true"></asset>
+            <asset id="colors5" type="path" mime="image/png" path="/modules/assets/metro-colors/colors5.png" cmsOnly="true"></asset>
+            <asset id="colors6" type="path" mime="image/png" path="/modules/assets/metro-colors/colors6.png" cmsOnly="true"></asset>
+        </assets>
+    </template>
+</templates>

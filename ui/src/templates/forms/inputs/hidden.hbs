@@ -1,0 +1,7 @@
+<input name="{{#if name}}{{name}}{{else}}{{id}}{{/if}}" class="{{customClass}}" type="hidden" id="input_{{ id }}" value="{{ value }}"
+    {{#each customData}}
+        data-{{this.name}}="{{this.value}}"
+    {{/each}}
+    {{#if visibility}}data-visibility="{{visibility}}"{{/if}}
+    {{#if dependsOn}}data-depends-on="{{dependsOn}}"{{/if}}
+/>

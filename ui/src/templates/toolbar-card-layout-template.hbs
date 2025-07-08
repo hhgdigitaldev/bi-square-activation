@@ -1,0 +1,42 @@
+<div class="toolbar-card {{#if provider}}from-provider{{/if}} hide-content"
+    data-type="layout_template"
+    data-target="layout"
+    data-template-id="{{id}}"
+    data-data-type="{{dataType}}"
+    data-source="{{#if provider}}remote{{else}}local{{/if}}"
+    data-download="{{download}}"
+    data-card-title="{{title}}"
+    data-toggle="tooltip" data-title="{{description}}">
+
+    <div class="toolbar-card-preview">
+        <img class="thumb" src="{{thumbnail}}" alt="{{title}}">
+
+        {{#if provider}}
+            {{#neq provider.link "#"}}
+                <a class="provider" href="{{provider.link}}" target="_blank" rel="noopener noreferrer">
+                    <img src="{{provider.logoUrl}}"></img>
+                </a>
+            {{else}}
+                <div class="provider">
+                    <img src="{{provider.logoUrl}}"></img>
+                </div>
+            {{/neq}}
+        {{/if}}
+
+        {{#if duration}}
+            <div class="media-duration" data-title="{{trans.duration}}" data-toggle="tooltip" data-placement="top">
+                {{duration}}
+            </div>
+        {{/if}}
+    </div>
+    <span class="media-title" title="{{title}}">{{title}}</span>
+
+    <div class="badges">
+        {{#if orientation}}
+            <span class="badge badge-pill badge-primary">{{orientation}}</span>
+        {{/if}}
+        {{#each tags}}
+            <span class="badge badge-pill badge-info">{{this}}</span>
+        {{/each}}
+    </div>
+</div>

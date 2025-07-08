@@ -1,0 +1,143 @@
+<!--
+  ~ Copyright (C) 2023 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<templates>
+    <template>
+        <id>article_title</id>
+        <extends override="text" with="data.title">text</extends>
+        <title>Title</title>
+        <type>element</type>
+        <dataType>article</dataType>
+        <icon>fas fa-font</icon>
+        <canRotate>true</canRotate>
+        <startWidth>500</startWidth>
+        <startHeight>100</startHeight>
+    </template>
+    <template>
+        <id>article_summary</id>
+        <extends override="text" with="data.summary">text</extends>
+        <title>Summary</title>
+        <type>element</type>
+        <dataType>article</dataType>
+        <icon>fas fa-font</icon>
+        <canRotate>true</canRotate>
+        <startWidth>500</startWidth>
+        <startHeight>250</startHeight>
+    </template>
+    <template>
+        <id>article_content</id>
+        <extends override="text" with="data.content" escapeHtml="false">text</extends>
+        <title>Content</title>
+        <type>element</type>
+        <dataType>article</dataType>
+        <icon>fas fa-font</icon>
+        <canRotate>true</canRotate>
+        <startWidth>500</startWidth>
+        <startHeight>500</startHeight>
+        <properties>
+            <property id="removeNewLines" type="checkbox">
+                <title>Remove new lines?</title>
+                <default>0</default>
+                <helpText>Should new lines (\n) be removed from content?</helpText>
+            </property>
+        </properties>
+        <onElementParseData><![CDATA[
+// value - element to be parsed
+// properties
+if (
+    (
+        properties.removeNewLines === true ||
+        properties.removeNewLines === 1
+    ) &&
+    value != ''
+) {
+    return value.replaceAll('\n', '');
+} else {
+    return value;
+}
+        ]]></onElementParseData>
+    </template>
+    <template>
+        <id>article_author</id>
+        <extends override="text" with="data.author">text</extends>
+        <title>Author</title>
+        <type>element</type>
+        <dataType>article</dataType>
+        <icon>fas fa-user</icon>
+        <canRotate>true</canRotate>
+        <startWidth>400</startWidth>
+        <startHeight>100</startHeight>
+    </template>
+    <template>
+        <id>article_date</id>
+        <extends override="date" with="data.date">date</extends>
+        <title>Date</title>
+        <type>element</type>
+        <dataType>article</dataType>
+        <icon>fas fa-calendar-week</icon>
+        <canRotate>true</canRotate>
+        <startWidth>400</startWidth>
+        <startHeight>100</startHeight>
+    </template>
+    <template>
+        <id>article_publishedDate</id>
+        <extends override="date" with="data.publishedDate">date</extends>
+        <title>Published Date</title>
+        <type>element</type>
+        <dataType>article</dataType>
+        <icon>fas fa-calendar-week</icon>
+        <canRotate>true</canRotate>
+        <startWidth>400</startWidth>
+        <startHeight>100</startHeight>
+    </template>
+    <template>
+        <id>article_image</id>
+        <extends override="url" with="data.image">global_image</extends>
+        <title>Image</title>
+        <type>element</type>
+        <dataType>article</dataType>
+        <icon>fas fa-image</icon>
+        <canRotate>true</canRotate>
+        <startWidth>200</startWidth>
+        <startHeight>200</startHeight>
+    </template>
+    <template>
+        <id>article_link</id>
+        <extends override="text" with="data.link">text</extends>
+        <title>Link</title>
+        <type>element</type>
+        <dataType>article</dataType>
+        <icon>fas fa-link</icon>
+        <canRotate>true</canRotate>
+        <startWidth>480</startWidth>
+        <startHeight>100</startHeight>
+    </template>
+    <template>
+        <id>article_permalink</id>
+        <extends override="text" with="data.permalink">text</extends>
+        <title>Permalink</title>
+        <type>element</type>
+        <dataType>article</dataType>
+        <icon>fas fa-link</icon>
+        <canRotate>true</canRotate>
+        <startWidth>480</startWidth>
+        <startHeight>100</startHeight>
+    </template>
+</templates>

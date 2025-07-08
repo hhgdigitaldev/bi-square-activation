@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="tour">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p class="active"><a href="index.html">Introduction<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="tour_user_access.html">User Access</a></p>
+</li>
+<li>
+<p><a href="tour_cms_navigation.html">CMS Navigation</a></p>
+</li>
+<li>
+<p><a href="tour_cms_settings.html">CMS Administrator Settings</a></p>
+</li>
+<li>
+<p><a href="tour_tags.html">Tags</a></p>
+</li>
+<li>
+<p><a href="tour_folders.html">Folders</a></p>
+</li>
+<li>
+<p><a href="tour_transitions.html">Transitions</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="bi_square_brand_activation_user_manual">BI Square Brand Activation User Manual <a href="#bi_square_brand_activation_user_manual" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p><strong>Revision: 4</strong></p>
+<p>The BI Square Brand Activation software comprises of a central <strong>Content Management System (CMS)</strong> where content is created/uploaded and scheduled to Displays. A <strong>Player</strong> application downloads new content and schedules from the CMS to display on screens:</p>
+<p><img src="img/v4_tour_system_architecture.png" alt="System Architecture" /></p>
+<ul>
+<li>The Player application runs on hardware attached to each screen.</li>
+<li>The Player regularly connects to the CMS to check for any new/edited content or schedules which it needs to download.</li>
+</ul>
+<p>This User documentation has been created to cover core concepts and CMS features to educate and showcase BI Square Brand Activation capabilities to Users. Pages have been catagorised into clear neat sections to make it easier to find the relevant documentation to match your User role within the CMS.</p>
+<blockquote class="tip"><p>We recommend that all Users start with the <strong>Tour</strong> section of this manual to assist Users with <a href="tour_user_access.html">First Time Access</a> and to get started <a href="tour_cms_navigation.html">Navigating the CMS</a>!</p>
+</blockquote>
+<h1 id="digital_signage_for_all!">Digital Signage For All! <a href="#digital_signage_for_all!" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>BI Square Brand Activation provides a flexible and powerful application which has a core ethos in “Digital Signage for all”, regardless of skill level or technological knowledge.</p>
+<p>The BI Square Brand Activation software centers on 5 core concepts:</p>
+<h2 id="users">Users <a href="#users" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><a href="users_administration.html">Users</a> are added to the CMS by Administrators and given a <strong>Username</strong> and <strong>Password</strong> to securely log in.</p>
+<blockquote class="tip"><p>For a corporate environment BI Square Brand Activation can also integrate with SAML identity providers such as Active Directory and ADFS!</p>
+</blockquote>
+<p>BI Square Brand Activation supports 3 <a href="users_administration.html#content-user-types">User Types</a> as well as <a href="users_groups.html">User Groups</a> and multi-level <a href="users_features_and_sharing.html">Feature and Sharing</a> access to all system and user objects within the CMS.</p>
+<h2 id="displays">Displays <a href="#displays" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>A <a href="displays.html">Display</a> is the connection from the Player to the CMS which groups together content and schedule information. Each Display is uniquely identified in the CMS so that each Display can have its own <strong>Media</strong> content, <strong>Layout</strong> designs and <strong>Schedules</strong> available each with uniquely identified <a href="displays_metrics.html">Reporting</a> statistics.</p>
+<h2 id="media">Media <a href="#media" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Media is the content we want to show on Displays which is generally split into two categories:</p>
+<ul>
+<li>
+<strong>File based media</strong> - media uploaded and stored in the <a href="media_library.html">Library</a> (images and video files for example)</li>
+<li>
+<strong>Layout based media</strong> - media configured directly on a Layout which does not have an associated file (RSS feeds and Weather forecasts for example)</li>
+</ul>
+<blockquote class="tip"><p>BI Square Brand Activation uses powerful <a href="layouts_editor.html#content-widgets">Widgets</a> which integrate dynamic third-party content from a variety of sources!</p>
+</blockquote>
+<h2 id="layouts">Layouts <a href="#layouts" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>A <a href="layouts.html">Layout</a> is the complete content design to be shown on Displays.  With a powerful <a href="layouts_editor.html">Layout Editor</a> Users can easily create eye catching content without having to leave the BI Square Brand Activation CMS. Layouts can then be added to <a href="layouts_campaigns.html">Campaigns</a> to play sequentially when scheduled.</p>
+<h2 id="scheduling">Scheduling <a href="#scheduling" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><a href="scheduling_events.html">Scheduling</a> is highly flexible and supports scheduling to single Displays as well as to <a href="displays_groups.html">Display Groups</a>. Displays check for new scheduled content periodically and will download new items in advance of playback.</p>
+<blockquote class="tip"><p><a href="displays.html#content-default-layout">Default Layouts</a> should be assigned to Displays to be shown when nothing else is scheduled!</p>
+</blockquote>
+<h2 id="core_workflows">Core Workflows <a href="#core_workflows" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>BI Square Brand Activation gives Users 2 main workflow options:</p>
+<ol>
+<li>Creating content from the <a href="layouts_editor.html">Layout Editor</a>
+</li>
+</ol>
+<p><img src="img/v4_tour_workflow_1.png" alt="Workflow 1" /></p>
+<ol start="2">
+<li>Selecting <strong>Video</strong>/<strong>Image</strong> files or saved <strong>Playlists</strong> to directly <a href="scheduling_events.html#content-media-scheduling">Schedule</a>:</li>
+</ol>
+<p><img src="img/v4_tour_workflow_2.png" alt="Workflow 2" /></p>
+<h4>Next…</h4>
+<p><a href="tour_user_access.html">First time User Access</a></p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

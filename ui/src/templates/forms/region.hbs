@@ -1,0 +1,47 @@
+<form class="region-form">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item"><a class="nav-link active" href="#generalTab" role="tab" data-toggle="tab"><span>{{trans.general}}</span></a></li>
+        {{#if showExitTransition}}
+            <li class="nav-item"><a class="nav-link" href="#transitionTab" role="tab" data-toggle="tab"><span>{{trans.transition}}</span></a></li>
+        {{/if}}
+    </ul>
+    <div class="form-content">
+        <form id="regionFormEdit" class="XiboForm">
+            <div class="tab-content">
+                <div class="tab-pane active" id="generalTab">
+                    {{> inputs/hidden id="type" value=region.type customClass="region-input" }}
+                    {{> inputs/text value=region.name id="name" title=trans.region.name helpText=trans.region.nameHelpText customClass="region-input" }}
+
+                    {{#eq region.type 'playlist' }}
+                        {{> inputs/text value=region.syncKey id="syncKey" title=trans.region.syncKey helpText=trans.region.syncKeyHelpText customClass="region-input" }}
+                    {{/eq}}
+
+                    {{#eq region.type 'frame' }}
+                        {{> inputs/checkbox value=(getOption regionOptions "loop") id="loop" title=trans.region.loop helpText=trans.region.loopHelpText customClass="region-input" }}
+                        {{> inputs/message messageType="info" title=trans.region.loopMessage1}}
+                        {{> inputs/message messageType="info" title=trans.region.loopMessage2}}
+                        {{> inputs/message messageType="info" title=trans.region.loopMessage3}}
+                    {{/eq}}
+                </div>
+
+                {{#if showExitTransition}}
+                    <div class="tab-pane" id="transitionTab">
+                        {{> inputs/dropdown value=(getOption regionOptions "transitionType") options=(arrMerge (arr (obj code='' transition='Off')) transitions.out) optionsTitle="transition" optionsValue="code" id="transitionType" title=trans.region.exitTransitionTitle helpText=trans.region.exitTransitionHelpText }}
+                        {{> inputs/number value=(getOption regionOptions "transitionDuration") id=duration name="transitionDuration" title=trans.region.exitTransitionDurationTitle helpText=trans.region.exitTransitionDurationHelpText visibility='{ "field": "transitionType", "type": "neq", "value": "" }' }}
+                        {{> inputs/dropdown value=(getOption regionOptions "transitionDirection") options=transitions.compassPoints optionsTitle="name" optionsValue="id" id="transitionDirection" title=trans.region.exitTransitionDirectionTitle helpText=trans.region.exitTransitionDirectionHelpText visibility='{ "field": "transitionType", "type": "neq", "value": "" }' }}
+                    </div>
+                {{/if}}
+
+                {{#neq region.type 'playlist' }}
+                    {{#neq region.type 'zone' }}
+                        {{> inputs/hidden value=region.zIndex id="zIndex" }}
+                        {{> inputs/hidden value=region.top id="top" }}
+                        {{> inputs/hidden value=region.left id="left" }}
+                        {{> inputs/hidden value=region.width id="width" }}
+                        {{> inputs/hidden value=region.height id="height" }}
+                    {{/neq}}
+                {{/neq}}
+            </div>
+        </form>
+    </div>
+</form>

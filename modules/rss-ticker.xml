@@ -1,0 +1,285 @@
+<!--
+  ~ Copyright (C) 2024 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-rss-ticker</id>
+    <name>RSS Ticker</name>
+    <author>Core</author>
+    <description>Display articles from an RSS feed</description>
+    <icon>fa fa-rss</icon>
+    <class>\Xibo\Widget\RssProvider</class>
+    <compatibilityClass>\Xibo\Widget\Compatibility\RssWidgetCompatibility</compatibilityClass>
+    <type>rss-ticker</type>
+    <legacyType>ticker</legacyType>
+    <dataType>article</dataType>
+    <dataCacheKey>%uri%_%numItems%_%stripTags%_%imageSource%_%imageSourceTag%</dataCacheKey>
+    <fallbackData>1</fallbackData>
+    <schemaVersion>2</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>60</defaultDuration>
+    <settings>
+        <property id="updateIntervalImages" type="number">
+            <title>Update Interval Images (mins)</title>
+            <helpText>Please enter the update interval for images in minutes. This should be kept as high as possible. For example, if the data will only change once per hour this could be set to 60.</helpText>
+            <default>240</default>
+            <rule>
+                <test type="and">
+                    <condition type="required"></condition>
+                    <condition type="gte">0</condition>
+                </test>
+            </rule>
+        </property>
+        <property id="cachePeriod" type="number">
+            <title>Cache Period (mins)</title>
+            <helpText>Please enter the number of minutes you would like to cache RSS feeds.</helpText>
+            <default>1440</default>
+        </property>
+    </settings>
+    <properties>
+        <property id="uri" type="text" variant="uri">
+            <title>Feed URL</title>
+            <helpText>The Link for the RSS feed</helpText>
+            <default></default>
+            <rule>
+                <test>
+                    <condition type="required"></condition>
+                </test>
+            </rule>
+        </property>
+        <property id="numItems" type="number">
+            <title>Number of Items</title>
+            <helpText>The Number of RSS items you want to display</helpText>
+            <default>15</default>
+            <rule>
+                <test type="or" message="When duration is per item then number of items must be 1 or higher">
+                    <condition type="gte">1</condition>
+                    <condition field="durationIsPerItem" type="eq">0</condition>
+                </test>
+            </rule>
+        </property>
+        <property id="durationIsPerItem" type="checkbox">
+            <title>Duration is per item</title>
+            <helpText>The duration specified is per item otherwise it is per feed.</helpText>
+            <default>0</default>
+        </property>
+        <property id="takeItemsFrom" type="dropdown" mode="single">
+            <title>Take items from the</title>
+            <helpText>Take the items from the beginning or the end of the list</helpText>
+            <default>start</default>
+            <options>
+                <option name="start">Start of the Feed</option>
+                <option name="end">End of the Feed</option>
+            </options>
+        </property>
+        <property id="reverseOrder" type="checkbox">
+            <title>Reverse Order</title>
+            <helpText>Should we reverse the order of the feed items?</helpText>
+            <default>0</default>
+        </property>
+        <property id="randomiseItems" type="checkbox">
+            <title>Randomise</title>
+            <helpText>Should the order of the feed be randomised? When enabled each time the Widget is shown the items will be randomly shuffled and displayed in a random order.</helpText>
+            <default>0</default>
+        </property>
+        <property id="imageSource" type="dropdown" mode="single">
+            <title>Image Tag</title>
+            <helpText>Choose the tag in the feed to get an image URL</helpText>
+            <default>enclosure</default>
+            <options>
+                <option name="enclosure">Enclosure</option>
+                <option name="mediaContent">Media Content</option>
+                <option name="image">Image</option>
+                <option name="custom">Custom</option>
+            </options>
+        </property>
+        <property id="imageSourceTag" type="text">
+            <title>Custom Tag</title>
+            <helpText>A valid tag name which appears in this feed and will be used to get an image URL.</helpText>
+            <default></default>
+            <visibility>
+                <test>
+                    <condition field="imageSource" type="eq">custom</condition>
+                </test>
+            </visibility>
+        </property>
+        <property id="imageSourceAttribute" type="text">
+            <title>Custom Tag Attribute</title>
+            <helpText>If the image URL is on an attribute of the custom tag, provide the attribute name.</helpText>
+            <default></default>
+            <visibility>
+                <test>
+                    <condition field="imageSource" type="eq">custom</condition>
+                </test>
+            </visibility>
+        </property>
+        <property id="allowedAttributes" type="text">
+            <title>Allowable Attributes</title>
+            <helpText>A comma separated list of attributes that should not be stripped from the incoming feed.</helpText>
+            <default></default>
+        </property>
+        <property id="stripTags" type="text">
+            <title>Strip Tags</title>
+            <helpText>A comma separated list of HTML tags that should be stripped from the feed in addition to the default ones.</helpText>
+            <default></default>
+        </property>
+        <property id="userAgent" type="text">
+            <title>User Agent</title>
+            <helpText>Optionally set specific User Agent for this request, provide only the value, relevant header will be added automatically.</helpText>
+            <default></default>
+        </property>
+        <property id="decodeHtml" type="checkbox">
+            <title>Decode HTML</title>
+            <helpText>Should we decode the HTML entities in this feed before parsing it?</helpText>
+            <default>0</default>
+        </property>
+        <property id="disableDateSort" type="checkbox">
+            <title>Disable Date Sort</title>
+            <helpText>Should the date sort applied to the feed be disabled?</helpText>
+            <default>0</default>
+        </property>
+        <property id="updateInterval" type="number">
+            <title>Update Interval (mins)</title>
+            <helpText>Please enter the update interval in minutes. This should be kept as high as possible. For example, if the data will only change once per hour this could be set to 60.</helpText>
+            <default>60</default>
+        </property>
+        <property id="updateIntervalImages" type="number">
+            <title>Update Interval Images (mins)</title>
+            <helpText>Override the update interval for images. This should be kept as high as possible and can be set for all Tickers in Module Settings.</helpText>
+            <default>%updateIntervalImages%</default>
+        </property>
+    </properties>
+    <onDataLoad><![CDATA[
+// items: The items to render
+// meta: Metadata
+// properties: The properties for the widget
+
+// Filter the items array we have been given
+if (parseInt(properties.randomiseItems) === 1) {
+    // Sort the items in a random order (considering the entire list)
+    // Durstenfeld shuffle
+    // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+    // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+    for (var i = items.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = items[i];
+        items[i] = items[j];
+        items[j] = temp;
+    }
+}
+
+if (properties.takeItemsFrom === 'end') {
+    // If it's an array, reverse it
+    if (Array.isArray(items)) {
+      items.reverse();
+    } else {
+      // If it's an object, reverse the keys
+      var newItems = {};
+      Object.keys(items).reverse().forEach(function(key) {
+        newItems[key] = items[key];
+      });
+      items = $(newItems);
+    }
+}
+
+// Make sure the num items is not greater than the actual number of items
+if (properties.numItems > items.length || properties.numItems === 0) {
+    properties.numItems = items.length;
+}
+
+// Get a new array with only the first N elements
+if (properties.numItems && properties.numItems > 0) {
+    items = items.slice(0, properties.numItems);
+}
+
+// Reverse the items again (so they are in the correct order)
+if ((properties.takeItemsFrom === 'end' && properties.reverseOrder === 0) ||
+        (properties.takeItemsFrom === 'start' && properties.reverseOrder === 1)
+    ) {
+    // console.log("[Xibo] Reversing items");
+    // If it's an array, reverse it
+    if (Array.isArray(items)) {
+        items.reverse();
+    } else {
+        // If it's an object, reverse the keys
+        var newItems = {};
+        Object.keys(items).reverse().forEach(function(key) {
+            newItems[key] = items[key];
+        });
+        items = $(newItems);
+    }
+}
+return {dataItems: items};
+    ]]></onDataLoad>
+    <sampleData><![CDATA[
+[{
+    "author": "sample@example.com (Author 1)",
+    "content": "<p>Sample Content 1</p>",
+    "date": "2000-01-01T01:00:30+00:00",
+    "image": "",
+    "link": "https://www.example.com",
+    "permalink": null,
+    "publishedDate": "2000-01-01T01:00:30+00:00",
+    "summary": "Sample Summary 1",
+    "title": "Sample Title 1"
+},{
+    "author": "sample@example.com (Author 2)",
+    "content": "<p>Sample Content 2</p>",
+    "date": "2000-01-01T01:00:30+00:00",
+    "image": "",
+    "link": "https://www.example.com",
+    "permalink": null,
+    "publishedDate": "2000-01-01T01:00:30+00:00",
+    "summary": "Sample Summary 2",
+    "title": "Sample Title 2"
+},{
+    "author": "sample@example.com (Author 3)",
+    "content": "<p>Sample Content 3</p>",
+    "date": "2000-01-01T01:00:30+00:00",
+    "image": "",
+    "link": "https://www.example.com",
+    "permalink": null,
+    "publishedDate": "2000-01-01T01:00:30+00:00",
+    "summary": "Sample Summary 3",
+    "title": "Sample Title 3"
+},{
+    "author": "sample@example.com (Author 4)",
+    "content": "<p>Sample Content 4</p>",
+    "date": "2000-01-01T01:00:30+00:00",
+    "image": "",
+    "link": "https://www.example.com",
+    "permalink": null,
+    "publishedDate": "2000-01-01T01:00:30+00:00",
+    "summary": "Sample Summary 4",
+    "title": "Sample Title 4"
+},{
+    "author": "sample@example.com (Author 5)",
+    "content": "<p>Sample Content 5</p>",
+    "date": "2000-01-01T01:00:30+00:00",
+    "image": "",
+    "link": "https://www.example.com",
+    "permalink": null,
+    "publishedDate": "2000-01-01T01:00:30+00:00",
+    "summary": "Sample Summary 5",
+    "title": "Sample Title 5"
+}]
+]]></sampleData>
+</module>

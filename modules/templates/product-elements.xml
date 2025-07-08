@@ -1,0 +1,473 @@
+<!--
+  ~ Copyright (C) 2023 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<templates>
+    <template>
+        <id>product_name</id>
+        <extends override="text" with="data.name">text</extends>
+        <title>Name</title>
+        <type>element</type>
+        <dataType>product</dataType>
+        <icon>fas fa-font</icon>
+        <canRotate>true</canRotate>
+        <startWidth>500</startWidth>
+        <startHeight>100</startHeight>
+        <properties>
+            <property id="dimWhenUnavailable" type="checkbox">
+                <title>Dim when unavailable?</title>
+                <default>0</default>
+            </property>
+            <property id="dimColor" type="color">
+                <title>Dim Colour</title>
+                <default>#888</default>
+                <visibility>
+                    <test>
+                        <condition field="dimWhenUnavailable" type="eq">1</condition>
+                    </test>
+                </visibility>
+            </property>
+        </properties>
+        <onTemplateRender><![CDATA[
+if (properties.dimWhenUnavailable && properties.data && properties.data.availability === 0) {
+    $(target).find('div:first').css('color', properties.dimColor);
+}
+
+if(properties.fitToArea) {
+    // Set target for the text
+    properties.fitTarget = 'div';
+
+    // Scale text to container
+    $(target).find('.global-elements-text').xiboTextScaler(properties);
+}
+        ]]></onTemplateRender>
+    </template>
+    <template>
+        <id>product_description</id>
+        <extends override="text" with="data.description">text</extends>
+        <title>Description</title>
+        <type>element</type>
+        <dataType>product</dataType>
+        <icon>fas fa-font</icon>
+        <canRotate>true</canRotate>
+        <startWidth>500</startWidth>
+        <startHeight>100</startHeight>
+    </template>
+    <template>
+        <id>product_price</id>
+        <extends override="text" with="data.price">text</extends>
+        <title>Price</title>
+        <type>element</type>
+        <dataType>product</dataType>
+        <icon>fas fa-money-bill-alt</icon>
+        <canRotate>true</canRotate>
+        <startWidth>500</startWidth>
+        <startHeight>100</startHeight>
+        <properties>
+            <property id="currencyCode" type="text">
+                <title>Currency Code</title>
+                <helpText>The 3 digit currency code to apply to the price, e.g. USD/GBP/EUR</helpText>
+                <default></default>
+            </property>
+            <property id="prefix" type="text">
+                <title>Prefix</title>
+                <default></default>
+            </property>
+            <property id="suffix" type="text">
+                <title>Suffix</title>
+                <default></default>
+            </property>
+        </properties>
+        <onElementParseData><![CDATA[
+// value - element to be parsed
+// properties
+if (String(value).length === 0) {
+    return '';
+}
+
+var options = {};
+if (properties.currencyCode && properties.currencyCode !== '') {
+    options.style = 'currency';
+    options.currency = properties.currencyCode;
+} else {
+    options.minimumFractionDigits = 2;
+}
+
+value = new Intl.NumberFormat(undefined, options).format(value);
+
+if (properties.prefix && properties.prefix !== '') {
+    value = properties.prefix + '' + value;
+}
+
+if (properties.suffix && properties.suffix !== '') {
+    value = value + '' + properties.suffix;
+}
+
+return value;
+        ]]></onElementParseData>
+    </template>
+    <template>
+        <id>product_allergy_info</id>
+        <extends override="text" with="data.allergyInfo">text</extends>
+        <title>Allergy info</title>
+        <type>element</type>
+        <dataType>product</dataType>
+        <icon>fas fa-allergies</icon>
+        <canRotate>true</canRotate>
+        <startWidth>500</startWidth>
+        <startHeight>100</startHeight>
+    </template>
+    <template>
+        <id>product_photo</id>
+        <extends override="url" with="data.image">global_image</extends>
+        <type>element</type>
+        <dataType>product</dataType>
+        <icon>fas fa-image</icon>
+        <title>Photo</title>
+        <startWidth>100</startWidth>
+        <startHeight>100</startHeight>
+    </template>
+    <template>
+        <id>product_options_name</id>
+        <title>Options: Name</title>
+        <type>element</type>
+        <dataType>product</dataType>
+        <icon>fas fa-list</icon>
+        <canRotate>true</canRotate>
+        <startWidth>500</startWidth>
+        <startHeight>100</startHeight>
+        <properties>
+            <property id="optionSlot" type="number">
+                <title>Option slot</title>
+                <default>1</default>
+            </property>
+            <property id="fitToArea" type="checkbox">
+                <title>Fit to selection</title>
+                <helpText>Fit to selected area instead of using the font size?</helpText>
+                <default>0</default>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font Family</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="fontSize" type="number">
+                <title>Font Size</title>
+                <default>24</default>
+                <visibility>
+                    <test>
+                        <condition field="fitToArea" type="neq">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontColor" type="color">
+                <title>Font Colour</title>
+                <default>%THEME_COLOR%</default>
+            </property>
+            <property id="prefix" type="text">
+                <title>Prefix</title>
+                <default></default>
+            </property>
+            <property id="suffix" type="text">
+                <title>Suffix</title>
+                <default></default>
+            </property>
+            <property id="horizontalAlign" type="dropdown">
+                <title>Horizontal Align</title>
+                <default>center</default>
+                <visibility>
+                    <test>
+                        <condition field="fitToArea" type="neq">1</condition>
+                    </test>
+                </visibility>
+                <options>
+                    <option name="flex-start">Left</option>
+                    <option name="center">Center</option>
+                    <option name="flex-end">Right</option>
+                </options>
+            </property>
+            <property id="verticalAlign" type="dropdown">
+                <title>Vertical Align</title>
+                <default>center</default>
+                <options>
+                    <option name="flex-start">Top</option>
+                    <option name="center">Middle</option>
+                    <option name="flex-end">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <hbs><![CDATA[
+<div class="product-elements-options-name"
+    style="
+    display: flex;
+    {{#if fitToArea}}
+        white-space: nowrap;
+    {{else}}
+        {{#if horizontalAlign}}
+            justify-content: {{horizontalAlign}};
+        {{/if}}
+        {{#if fontFamily}}font-family: {{fontFamily}};{{/if}}
+        {{#if fontSize}}font-size: {{fontSize}}px;{{/if}}
+        {{#eq horizontalAlign "flex-start"}}text-align: left;{{/eq}}
+        {{#eq horizontalAlign "center"}}text-align: center;{{/eq}}
+        {{#eq horizontalAlign "flex-end"}}text-align: right;{{/eq}}
+    {{/if}}
+    {{#if fontColor}}color: {{fontColor}};{{/if}}
+    {{#if verticalAlign}}align-items: {{verticalAlign}};{{/if}}
+    overflow: hidden;
+    width: 100%; height: 100%;"
+><div></div>
+</div>
+            ]]></hbs>
+        </stencil>
+        <onTemplateRender><![CDATA[
+var optionSlot = Number(properties.optionSlot) - 1;
+var $productContainer = null;
+
+if ($(target).is('.element-content')) {
+    $productContainer = $(target).find('.product-elements-options-name');
+} else {
+    $productContainer = $(target);
+}
+
+if (
+    properties.data &&
+    properties.data.productOptions &&
+    properties.data.productOptions.length > 0 &&
+    properties.data.productOptions[optionSlot]
+) {
+    var option = properties.data.productOptions[optionSlot];
+    var name = option.name;
+
+    if (properties.prefix && properties.prefix !== '') {
+        name = properties.prefix + '' + name;
+    }
+
+    if (properties.suffix && properties.suffix !== '') {
+        name = name + '' + properties.suffix;
+    }
+
+    $productContainer.find('div').html(name);
+}
+
+if(properties.fitToArea) {
+    // Set target for the text
+    properties.fitTarget = 'div';
+
+    // Scale text to container
+    $(target).find('.product-elements-options-name').xiboTextScaler(properties);
+}
+        ]]></onTemplateRender>
+    </template>
+    <template>
+        <id>product_options_value</id>
+        <title>Options: Value</title>
+        <type>element</type>
+        <dataType>product</dataType>
+        <icon>fas fa-money-bill-alt</icon>
+        <canRotate>true</canRotate>
+        <startWidth>500</startWidth>
+        <startHeight>100</startHeight>
+        <properties>
+            <property id="optionSlot" type="number">
+                <title>Option slot</title>
+                <default>1</default>
+            </property>
+            <property id="fitToArea" type="checkbox">
+                <title>Fit to selection</title>
+                <helpText>Fit to selected area instead of using the font size?</helpText>
+                <default>0</default>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font Family</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="fontSize" type="number">
+                <title>Font Size</title>
+                <default>24</default>
+                <visibility>
+                    <test>
+                        <condition field="fitToArea" type="neq">1</condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fontColor" type="color">
+                <title>Font Colour</title>
+                <default>%THEME_COLOR%</default>
+            </property>
+            <property id="currencyCode" type="text">
+                <title>Currency Code</title>
+                <helpText>The 3 digit currency code to apply to the price, e.g. USD/GBP/EUR</helpText>
+                <default></default>
+            </property>
+            <property id="prefix" type="text">
+                <title>Prefix</title>
+                <default></default>
+            </property>
+            <property id="suffix" type="text">
+                <title>Suffix</title>
+                <default></default>
+            </property>
+            <property id="horizontalAlign" type="dropdown">
+                <title>Horizontal Align</title>
+                <default>center</default>
+                <visibility>
+                    <test>
+                        <condition field="fitToArea" type="neq">1</condition>
+                    </test>
+                </visibility>
+                <options>
+                    <option name="flex-start">Left</option>
+                    <option name="center">Center</option>
+                    <option name="flex-end">Right</option>
+                </options>
+            </property>
+            <property id="verticalAlign" type="dropdown">
+                <title>Vertical Align</title>
+                <default>center</default>
+                <options>
+                    <option name="flex-start">Top</option>
+                    <option name="center">Middle</option>
+                    <option name="flex-end">Bottom</option>
+                </options>
+            </property>
+        </properties>
+        <stencil>
+            <hbs><![CDATA[
+<div class="product-elements-options-value"
+    style="
+    display: flex;
+    {{#if fitToArea}}
+        white-space: nowrap;
+    {{else}}
+        {{#if horizontalAlign}}
+            justify-content: {{horizontalAlign}};
+        {{/if}}
+        {{#if fontFamily}}font-family: {{fontFamily}};{{/if}}
+        {{#if fontSize}}font-size: {{fontSize}}px;{{/if}}
+        {{#eq horizontalAlign "flex-start"}}text-align: left;{{/eq}}
+        {{#eq horizontalAlign "center"}}text-align: center;{{/eq}}
+        {{#eq horizontalAlign "flex-end"}}text-align: right;{{/eq}}
+    {{/if}}
+    {{#if fontColor}}color: {{fontColor}};{{/if}}
+    {{#if verticalAlign}}align-items: {{verticalAlign}};{{/if}}
+    overflow: hidden;
+    width: 100%; height: 100%;"
+><div></div>
+</div>
+            ]]></hbs>
+        </stencil>
+        <onTemplateRender><![CDATA[
+var optionSlot = Number(properties.optionSlot) - 1;
+var $productContainer = null;
+
+if ($(target).is('.element-content')) {
+    $productContainer = $(target).find('.product-elements-options-value');
+} else {
+    $productContainer = $(target);
+}
+
+if (
+    properties.data &&
+    properties.data.productOptions &&
+    properties.data.productOptions.length > 0 &&
+    properties.data.productOptions[optionSlot]
+) {
+    var option = properties.data.productOptions[optionSlot];
+    var value = option.value;
+
+    var options = {};
+    if (properties.currencyCode && properties.currencyCode !== '') {
+        options.style = 'currency';
+        options.currency = properties.currencyCode;
+    }
+
+    value = new Intl.NumberFormat(undefined, options).format(value);
+
+    if (properties.prefix && properties.prefix !== '') {
+        value = properties.prefix + '' + value;
+    }
+
+    if (properties.suffix && properties.suffix !== '') {
+        value = value + '' + properties.suffix;
+    }
+
+    $productContainer.find('div').html(value);
+}
+
+if(properties.fitToArea) {
+    // Set target for the text
+    properties.fitTarget = 'div';
+
+    // Scale text to container
+    $(target).find('.product-elements-options-value').xiboTextScaler(properties);
+}
+        ]]></onTemplateRender>
+    </template>
+    <template>
+        <id>product_calories</id>
+        <extends override="text" with="data.calories">text</extends>
+        <title>Calories</title>
+        <type>element</type>
+        <dataType>product</dataType>
+        <icon>fas fa-weight</icon>
+        <canRotate>true</canRotate>
+        <startWidth>500</startWidth>
+        <startHeight>100</startHeight>
+        <properties>
+            <property id="units" type="text">
+                <title>Units</title>
+                <default>kcal</default>
+            </property>
+            <property id="unitMargin" type="number">
+                <title>Units margin</title>
+                <default>4</default>
+                <visibility>
+                    <test>
+                        <condition field="units" type="neq"></condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="unitColor" type="color">
+                <title>Units color</title>
+                <default></default>
+                <visibility>
+                    <test>
+                        <condition field="units" type="neq"></condition>
+                    </test>
+                </visibility>
+            </property>
+            <property id="fitToArea" type="hidden">
+            </property>
+        </properties>
+        <onTemplateRender><![CDATA[
+if (properties.units != '') {
+    $(target).find('div:first').append('<span class="calories-label">' + properties.units + '</span>');
+
+    if (properties.unitMargin > 0) {
+        $(target).find('.calories-label').css('margin-left', properties.unitMargin + 'px');
+    }
+
+    if (properties.unitColor != '') {
+        $(target).find('.calories-label').css('color', properties.unitColor);
+    }
+}
+        ]]></onTemplateRender>
+    </template>
+</templates>

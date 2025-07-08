@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="widgets">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<a href="media_modules.html">Modules</a>
+</li>
+<li>
+<a href="media_modules_connectors.html">Connectors</a>
+</li>
+<li>
+<a href="media_module_audio.html">Audio</a>
+</li>
+<li>
+<a href="media_module_calendar.html">Calendar</a>
+</li>
+<li>
+<a href="media_module_clock.html">Clock</a>
+</li>
+<li>
+<a href="media_module_countdown.html">Countdown</a>
+</li>
+<li>
+<a href="media_module_currencies.html">Currencies</a>
+</li>
+<li>
+<a href="media_module_dashboard.html">Dashboard</a>
+</li>
+<li>
+<a href="media_module_dataset.html">DataSet</a>
+</li>
+<li>
+<a href="media_module_embedded.html">Embedded</a>
+</li>
+<li>
+<a href="media_module_emergency_alerts.html">Emergency Alert</a>
+</li>
+<li>
+<a href="media_module_flash.html">Flash</a>
+</li>
+<li class="active">
+<a href="media_module_googletraffic.html">Google Traffic<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a>
+</li>
+<li>
+<a href="media_module_hls.html">HLS</a>
+</li>
+<li>
+<a href="media_module_htmlpackage.html">HTML Package</a>
+</li>
+<li>
+<a href="media_module_image.html">Image</a>
+</li>
+<li>
+<a href="media_module_localvideo.html">Local Video</a>
+</li>
+<li>
+<a href="media_module_mastodon.html">Mastodon</a>
+</li>
+<li>
+<a href="media_module_menuboards_category.html">Menu Board Category</a>
+</li>
+<li>
+<a href="media_module_menuboards_products.html">Menu Board Products</a>
+</li>
+<li>
+<a href="media_module_national_weather_service.html">National Weather Service</a>
+</li>
+<li>
+<a href="media_module_notifications.html">Notifications</a>
+</li>
+<li>
+<a href="media_module_pdf.html">PDF</a>
+</li>
+<li>
+<a href="media_module_powerpoint.html">PowerPoint</a>
+</li>
+<li>
+<a href="media_module_shellcommand.html">Shell Command</a>
+</li>
+<li>
+<a href="media_module_stocks.html">Stocks</a>
+</li>
+<li>
+<a href="media_module_ticker.html">Ticker</a>
+</li>
+<li>
+<a href="media_module_video.html">Video</a>
+</li>
+<li>
+<a href="media_module_video_in.html">Video In</a>
+</li>
+<li>
+<a href="media_module_weather.html">Weather</a>
+</li>
+<li>
+<a href="media_module_webpage.html">Webpage</a>
+</li>
+<li>
+<a href="media_module_world_clock.html">World Clock</a>
+</li>
+</ul>
+</body></html>
+<li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="google_traffic">Google Traffic <a href="#google_traffic" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Display traffic data configured with a Google Maps API key on Layouts and Playlists.</p>
+<h2 id="installation">Installation <a href="#installation" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>The Google Traffic Module must be configured with a Google Maps API key before use. The “<a href="https://developers.google.com/maps/documentation/javascript/get-api-key">get a key</a>” documentation describes the process and differences between the keys.</p>
+<p>The Google Traffic Module is installed from the <strong>Modules</strong> page under the <strong>Administration</strong> section of the main CMS menu.</p>
+<ul>
+<li>
+<p>Click on the <strong>Install Module</strong> button and select the Module to install.</p>
+</li>
+<li>
+<p>After installation, select the Module from the grid and use the row menu to select <strong>Edit</strong>.</p>
+</li>
+<li>
+<p>Complete the form fields and include the <strong>API key</strong>.</p>
+</li>
+</ul>
+<p>This form also contains settings to provide a <strong>default duration</strong> and a <strong>minimum duration</strong>. Please make sure you understand these two settings and configure them in a suitable way for your environment.</p>
+<blockquote class="tip"><p>Until an API key is entered the Widget will not render in the Layout Editor or the Player, although you can still add the Widget to your Layouts.</p>
+<p>This Module requires a <strong>valid internet connection</strong> on the Player in order to function.</p>
+</blockquote>
+<p>The Google Maps API terms of use must be read and understood before using this Module. At the time of writing these terms can be found <a href="https://developers.google.com/maps/terms">here</a>.</p>
+<h2 id="overview">Overview <a href="#overview" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>
+<p>Enter the Latitude and Longitude to use.</p>
+</li>
+<li>
+<p>Use the Display Location to use the Latitude and Longitude recorded for a Display.</p>
+</li>
+<li>
+<p>Easily re-use 1 Layout on multiple Displays to show the traffic in the correct location for each Display using the Display Location setting.</p>
+</li>
+</ul>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

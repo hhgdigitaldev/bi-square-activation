@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="tour">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="index.html">Introduction</a></p>
+</li>
+<li>
+<p><a href="tour_user_access.html">User Access</a></p>
+</li>
+<li>
+<p><a href="tour_cms_navigation.html">CMS Navigation</a></p>
+</li>
+<li>
+<p class="active"><a href="tour_cms_settings.html">CMS Administrator Settings<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="tour_tags.html">Tags</a></p>
+</li>
+<li>
+<p><a href="tour_folders.html">Folders</a></p>
+</li>
+<li>
+<p><a href="tour_transitions.html">Transitions</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="cms_administrator_settings">CMS Administrator Settings <a href="#cms_administrator_settings" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Like any complex application, the BI Square Brand Activation CMS comes with a number of configurable options.  These are located from the <strong>Settings</strong> page under the <strong>Administration</strong> section of the main CMS menu.</p>
+<p>Settings are split into related category tabs:</p>
+<p><img src="img/v4_tour_cms_settings_admin.png" alt="CMS Settings" /></p>
+<h2 id="configuration">Configuration <a href="#configuration" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>From this tab view the <strong>CMS Secret Key</strong> which is used to authenticate Players with the CMS and apply a <strong>Theme</strong> to pages (if applicable) as well as setting the default positioning for the <a href="tour_cms_navigation.html">Navigation Menu</a>.</p>
+<h2 id="defaults">Defaults <a href="#defaults" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Use this tab to apply defaults to all <a href="media_library.html">Media</a> files and set default <a href="tour_transitions.html">Transitions</a>.</p>
+<p>You can also set Layouts to <strong>automatically Publish</strong> 30 minutes after the last recorded edit by enabling the checkbox for this setting.</p>
+<h3>Resizing Images</h3>
+<p>Default thresholds and limits can be specified which are then considered in the event an image should be resized. This could be when uploading an image or an image being downloaded by a Widget - NASA RSS in a Ticker Widget for example.</p>
+<ul>
+<li>
+<h4>Resize Threshold</h4>
+</li>
+</ul>
+<p>Set a maximum threshold (based on the longest side) that should be considered for resizing an image.</p>
+<blockquote class="tip"><p>If you set a Resize Threshold of 1920 and you upload/download an image which is 800, this image would not need resizing. If you uploaded/downloaded an image which was 2400, this would then be resized to 1920.</p>
+</blockquote>
+<ul>
+<li>
+<h4>Resize Limit</h4>
+</li>
+</ul>
+<p>Set a limit (based on the longest side) for uploaded/downloaded images. Images that exceed this limit will not be processed and should be replaced with another image that is within the limit.</p>
+<p>This setting will determine whether the image file is too large to be processed.</p>
+<ul>
+<li>
+<h4>DataSet maximum number of Rows</h4>
+</li>
+</ul>
+<p>Set the maximum permitted number of rows a User can create in a DataSet.</p>
+<h2 id="<strong>displays</strong>"><strong>Displays</strong> <a href="#<strong>displays</strong>" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Set defaults for <strong>Latitude</strong> and <strong>Longitude</strong> for all Geo aware previews throughout the CMS.</p>
+<h3>Default Layout</h3>
+<p>The Default Layout set here will be automatically assigned to all Displays to be shown when no other content is scheduled or if there is an issue which prevents a scheduled Event from being shown.</p>
+<p>This global Default Layout can be overridden for individual Displays by selecting an alternative <a href="displays.html#content-default-layout">Default Layout</a> to be used.</p>
+<h3>Proof of Play Default Settings</h3>
+<p>Set the <strong>Aggregation level</strong> of collection of <a href="displays_metrics.html">Proof of Play</a> statistics to be applied to all <strong>Layouts</strong> / <strong>Media</strong> and <strong>Widget items</strong> as default.</p>
+<ul>
+<li>
+<strong>Individual</strong> - statistics are recorded at the start and finish of each item individually and sent back to the CMS at each collection interval.</li>
+<li>
+<strong>Hourly</strong> - records each item once, and includes the total number of times played and the length of time played during the hour and is sent back to the CMS on the next collection interval after the hour period has expired.</li>
+<li>
+<strong>Daily</strong> - records each item once, and includes the total number of times played and the length of time played during the day and is sent back to the CMS on the next collection interval after the day has expired.</li>
+</ul>
+<blockquote class="tip"><p>Players aggregate ‘completed records’ only, with collection made at the end of the Widgets duration so if a Widget has a duration of 3 hours, the stat will be recorded once the Widget has expired!</p>
+</blockquote>
+<ul>
+<li>Use this box to <strong>enable the collection</strong> of Proof of Play statistics to all <strong>Displays</strong> as default.</li>
+</ul>
+<blockquote class="tip"><p>This can be toggled on/off by editing <a href="displays_settings.html#content-editing-profiles">Display Setting Profiles</a>.</p>
+</blockquote>
+<ul>
+<li>Tick the box to set the default to on for the collection of Proof of Play statistics for all newly added <strong>Layouts</strong>.</li>
+</ul>
+<blockquote class="tip"><p>Collection can be disabled by unticking the box on the <strong>Add/Edit</strong> Layout form.</p>
+</blockquote>
+<p>Use the settings to enable the collection of Proof of Play statistics to apply to all <strong>Media</strong>, <strong>Playlist</strong> and <strong>Widgets</strong> (Off/On/Inherit).</p>
+<blockquote class="tip"><p>It is intended to have <strong>Widget</strong> always set to Inherit so that Layout and Media options control the collection!</p>
+</blockquote>
+<h2 id="general">General <a href="#general" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>View/set the address for the <strong>User Manual</strong> and tick to send <strong>anonymous statistics</strong> to help improve the software.</p>
+<h3>Tidy Library (Global)</h3>
+<p>The Library can be <em>tidied</em> by a Super Administrator or User so that it is kept clean and small.
+<strong>Actions cannot be reversed so this must be used with caution.</strong></p>
+<blockquote class="tip"><p>This might be of particular interest if the CMS is installed on a web server that has quotas or if Users have been assigned their own quotas.</p>
+</blockquote>
+<p>Administrators can initiate a system-wide Library tidy operation by clicking the <strong>Tidy Library</strong> button in the right hand corner of the Settings page:</p>
+<p><img src="img/v4_tour_cms_settings_tidy_library.png" alt="Settings Tidy Library" /></p>
+<p>As this functionality is system-wide and therefore operates on <strong>ALL</strong> User files, confirmation is required to remove unused and old revisions.</p>
+<p>This option is more comprehensive and removes:</p>
+<ul>
+<li>Temporary files</li>
+<li>Orphaned files</li>
+<li>Thumbnails</li>
+<li>Media revisions that aren’t used anywhere</li>
+<li>Media that isn’t used anywhere (on any Layouts / Display Groups / Displays)</li>
+<li>Generic files uploaded to the CMS</li>
+</ul>
+<h4>Orphaned files</h4>
+<p>Orphaned files are a rare occurrence where a file stored on disk in the Library folder is not deleted when the Media item is deleted from the Library. This means that the file exists but the CMS doesn’t know anything about it.</p>
+<h3>Tidy from User Library</h3>
+<p>Allow a User to tidy files from the <a href="media_library.html#content-tidy-library">Library</a> page by using the checkbox to <strong>Enable Library Tidy</strong>.</p>
+<h2 id="maintenance">Maintenance <a href="#maintenance" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>From here <strong>Enable Maintenance</strong> and <strong>Email Alerts</strong> to be sent and set the maximum retention ages for <strong>Logs</strong> and <strong>Statistics</strong>.</p>
+<h2 id="network">Network <a href="#network" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>From the Network tab complete an <strong>Admin email address</strong> for the overall CMS administrator. All email notifications generated by the CMS will be sent to this address.</p>
+<p>Ensure that the <strong>Sending email address</strong> and <strong>name</strong> is completed prior to setting up any further email notifications throughout the CMS.</p>
+<h2 id="sharing">Sharing <a href="#sharing" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Use the dropdown to change how Widget colour appears in Playlists for Users.</p>
+<ul>
+<li>
+<strong>Media Colouring</strong> will use the colours from the <strong>theme</strong> for each Widget.</li>
+<li>
+<strong>Sharing Colouring</strong> will show the Widget colour based on <strong>User access</strong> from <strong>Sharing</strong> options. (Green = editable)</li>
+</ul>
+<p>From here you can set if Users should have the ability to schedule to Displays when <a href="users_features_and_sharing.html#content-2-share">Share</a> options are set to View for the User as well as being able to set whether Users should be able to see the names of Layouts in schedules that have not been shared with them.</p>
+<p>Tick to allow Users to save their content into the top level <a href="tour_folders.html">Root Folder</a> or disable to force Users to select a Folder to save to.</p>
+<h2 id="regional">Regional <a href="#regional" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>From this tab set the <strong>Language</strong> and default <strong>Timezone</strong> and <strong>Date Format</strong> to use across the CMS.</p>
+<blockquote class="tip"><p>Select the nearest major city in your timezone!</p>
+</blockquote>
+<p>Use the checkbox to detect the <strong>browser language</strong> to use for the CMS and select which type of <strong>Calendar</strong> should be used.</p>
+<h2 id="troubleshooting">Troubleshooting <a href="#troubleshooting" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>This tab is used to to set Log Levels which are useful for capturing php errors and environment issues.</p>
+<h2 id="users">Users <a href="#users" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Select the System User and set the Default User Group and User Type when onboarding new Users.</p>
+<blockquote class="tip"><p>We recommend that the <strong>Default User Type</strong> is set to <strong>User</strong>!</p>
+</blockquote>
+<h3>Password Policy</h3>
+<p>Enter any valid regular expression in the <strong>Password Policy Regular Expression</strong> field so all password change requests and newly created passwords are tested against this.</p>
+<blockquote class="tip"><p>A text description will be shown to Users when their passwords do not meet the required policy as a prompt!</p>
+</blockquote>
+<h3>Password Reminder</h3>
+<p>Enable to provide a <strong>Forgotten your Password</strong> reset link for <strong>Users</strong> at login so they can easily regain access to the CMS.</p>
+<blockquote class="tip"><p>Ensure that a valid <strong>Sending email address</strong> has been entered on the <strong>Network</strong> tab before enabling this functionality!</p>
+</blockquote>
+<p>The User will be shown a link which once clicked will send a <strong>Password Reset Notification</strong> to their email address as recorded on their User Profile.</p>
+<blockquote class="tip"><p><strong>Users</strong> can also change their own passwords, once logged into the CMS, from their <a href="tour_user_access.html#content-edit-profile">User Profile</a></p>
+</blockquote>
+<h2 id="two_factor_authentication">Two Factor Authentication <a href="#two_factor_authentication" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><a href="tour_user_access.html#content-two-factor-authentication">Two Factor Authentication</a> can be set by a User for added security once logged in.</p>
+<p>Once configured, a User would need to enter the code sent via email or as displayed in the Google Authenticator app to complete login to gain access to the CMS.</p>
+<blockquote class="tip"><p>Ensure that an Email address has been provided by the user to receive the generated email!</p>
+</blockquote>
+<p>Set a valid <strong>Sending email address</strong> has been entered on the <strong>Network</strong> tab and a name has been entered in the <strong>Two Factor Issuer</strong> field to make it clear on the Google Authenticator app and email when authenticated codes are generated for login to the CMS.</p>
+<p><a href="users_administration.html#content-reset-two-factor-authentication">Reset Two Factor Authentication</a> for Users from their User Profile.</p>
+<h2 id="applications">Applications <a href="#applications" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>BI Square Brand Activation contains an API that allows 3rd party applications to connect and consume its data.</p>
+<p>Applications are added and configured from <strong>Applications</strong> under the <strong>Administration</strong> section of the main CMS menu.</p>
+<blockquote class="tip"><p>Before using an Application, each User must authorise the application to act on their behalf within the CMS.
+Users can view authorised Applications from the <a href="tour_user_access.html#content-my-applications">My Applications</a> section of their <strong>User Profile</strong>.</p>
+</blockquote>
+<p>At the current time the CMS does not provide individual Users with a method of revoking access to an application. Only an Administrator can remove an application completely.</p>
+<h2 id="fonts">Fonts <a href="#fonts" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>BI Square Brand Activation comes with a set of standard fonts which can be set on many Widgets:</p>
+<ul>
+<li>Aileron Heavy Regular (Aileron-Heavy.otf)</li>
+<li>Aileron Regular (Aileron-Regular.otf)</li>
+<li>Dancing Script Regular (DancingScript-Regular.ttf)</li>
+<li>Railway Regular (Railway.ttf)</li>
+<li>Linear Regular (linear-by-braydon-fuller.otf)</li>
+</ul>
+<p>Manage from the <strong>Fonts</strong> page under the <strong>Administration</strong> section of the main CMS menu.</p>
+<ul>
+<li>Use the row menu to view a Fonts <strong>Details</strong> and see an example of the font style:</li>
+</ul>
+<p><img src="img/v4_tour_settings_fonts.png" alt="Font Details" /></p>
+<p>Additional fonts can be added by clicking the <strong>Upload Font</strong> button and using the file uploader tool.</p>
+<blockquote class="tip"><p>If the new font does not show in the text editor after upload, try clearing the browser cache!</p>
+</blockquote>
+<h4>Next…</h4>
+<h3>Further Administration set up</h3>
+<p>Please see the following pages for further <strong>Administration</strong> set up:</p>
+<ul>
+<li>
+<a href="users_administration.html">User Administration</a>
+</li>
+<li>
+<a href="users_groups.html">User Groups</a>
+</li>
+<li>
+<a href="media_modules.html">Modules</a>
+</li>
+<li>
+<a href="tour_transitions.html">Transitions</a>
+</li>
+<li>
+<a href="tour_tags.html">Tags</a>
+</li>
+<li>
+<a href="tour_folders.html#content-folder-management">Folders</a>
+</li>
+</ul>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

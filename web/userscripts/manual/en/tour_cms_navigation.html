@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="tour">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="index.html">Introduction</a></p>
+</li>
+<li>
+<p><a href="tour_user_access.html">User Access</a></p>
+</li>
+<li>
+<p class="active"><a href="tour_cms_navigation.html">CMS Navigation<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="tour_cms_settings.html">CMS Administrator Settings</a></p>
+</li>
+<li>
+<p><a href="tour_tags.html">Tags</a></p>
+</li>
+<li>
+<p><a href="tour_folders.html">Folders</a></p>
+</li>
+<li>
+<p><a href="tour_transitions.html">Transitions</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="navigating_the_cms">Navigating the CMS <a href="#navigating_the_cms" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>All pages within the CMS are categorised into sections and accessible from the <strong>CMS main menu</strong> for all Users.</p>
+<p>The menu will only show the sections/pages which have been <a href="users_features_and_sharing.html">Feature</a> enabled for the logged in User to access.</p>
+<p><img src="img/v4_tour_cms_navigation_cms_menu.png" alt="CMS Main Menu" /></p>
+<blockquote class="tip"><p>Select where this menu can be placed, vertically on the left hand side or horizontally along the top of the CMS,  from the <a href="tour_user_access.html#content-preferences">User Preference</a> settings!</p>
+</blockquote>
+<p>Click on <strong>Dashboard</strong> to take you back to your <a href="users_dashboards.html">User Dashboard</a> homepage.</p>
+<h2 id="grids">Grids <a href="#grids" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>The CMS presents many of the entities, <strong>Layouts</strong>, <strong>Media</strong> and <strong>Displays</strong> for example, as tabular data in <strong>Grids</strong>. These grids have a number of elements that combine to create a flexible administration tool that is easy to read and understand.</p>
+<p>The following screenshot shows the <strong>Layout Grid</strong>  as an example, annotated with each of its elements:</p>
+<p><img src="img/v4_tour_cms_navigation_grids.png" alt="Grids" /></p>
+<ul>
+<li>
+<h4>Action Buttons</h4>
+</li>
+</ul>
+<p>Common Action buttons for each page, such as <strong>Add Layout</strong>, are located in the top right of grids for ease of access across the CMS.</p>
+<ul>
+<li>
+<h4>Tabs</h4>
+</li>
+</ul>
+<p>Tabs provide filtering options to make finding items easier. Use the <strong>Advanced</strong> tab to access further filtering options:</p>
+<p><img src="img/v4_tour_cms_navigation_grids_advanced.png" alt="Advanced Tab" /></p>
+<ul>
+<li>
+<h4>Filters</h4>
+</li>
+</ul>
+<p>Use the multiple <strong>filter</strong> fields to restrict criteria for returned results. For example all Layouts belonging to a particular <strong>Owner</strong> can be the only results shown in the grid.</p>
+<blockquote class="tip"><p>Use the checkbox to apply advanced filtering options for Names using Regex. Provide AND/OR criteria using comma separated terms!</p>
+</blockquote>
+<ul>
+<li>
+<h4>Folders</h4>
+</li>
+</ul>
+<p><a href="tour_folders.html">Folders</a> are used to organise, search and easily <a href="users_features_and_sharing.html">Share</a> User objects with other Users/User Groups.</p>
+<ul>
+<li>Click on a Folder/sub-folder to search the contents of only the selected Folder and return results based on any filters applied.</li>
+</ul>
+<p>or</p>
+<ul>
+<li>Tick <strong>All Folders</strong> to include searching in the Root Folder and return results based on any filters applied.</li>
+</ul>
+<blockquote class="tip"><p>Click the Folders menu to toggle on/off from view.  When the Folder tree is hidden from view, the file path for the selected folder will be shown!</p>
+</blockquote>
+<ul>
+<li>
+<h4>Results</h4>
+</li>
+</ul>
+<p>Returned results are shown in columns.</p>
+<blockquote class="tip"><p>Most columns can be sorted by default. Where the column has an up or down arrow the <strong>Shift</strong> key can be used to multi-sort the column!</p>
+</blockquote>
+<p>Use the <strong>Column Visibility</strong> button to see available columns.</p>
+<ul>
+<li>Select/de-select which columns should be visible in the data table:</li>
+</ul>
+<p><img src="img/v4_tour_cms_navigation_column_visibility.png" alt="Column Visibility" /></p>
+<p>If too many columns have been selected to fit your screen size additional rows will be hidden. These can be viewed by clicking on the + icon at the beginning of the row:</p>
+<p><img src="img/v4_tour_cms_navigation_grids_addtional_rows.png" alt="Additional Rows" /></p>
+<p><img src="img/v4_tour_cms_navigation_grids_visible_rows.png" alt="Visible Rows" /></p>
+<ul>
+<li>
+<h4>Row Menu</h4>
+</li>
+</ul>
+<p>Select an item and use the row menu to access a list of shortcuts and actions:</p>
+<p><img src="img/v4_tour_cms_navigation_grids_row_menu.png" alt="Row Menu" /></p>
+<blockquote class="tip"><p>Row menu contents for items will differ dependent on the page selected!</p>
+</blockquote>
+<h3>Multi-select - With Selected</h3>
+<p>At the bottom of selected grids a <strong>With Selected</strong> option is available to multi-select rows to easily perform bulk actions:</p>
+<p><img src="img/v4_tour_cms_navigation_multi_select.png" alt="Multi Select" /></p>
+<ul>
+<li>
+<h4>Edit Tags</h4>
+<p>This function allows you to add new <a href="tour_tags.html">Tags</a> in bulk with the option of also removing any existing Tags from multiple selections:</p>
+<p><img src="img/v4_tour_cms_navigation_tags.png" alt="Bulk Tags" /></p>
+</li>
+<li>
+<h4>Share</h4>
+<p>Use to edit multiple <a href="users_features_and_sharing.html">Sharing</a> options for selected items.</p>
+<p>Elements that are shown with an indeterminate status <code>-</code> are the result of a difference in options already set. Any changes made here will be applied to all selected elements.</p>
+<blockquote class="tip"><p><strong>Example scenario</strong>:</p>
+</li>
+</ul>
+<p>Two Layouts are selected which already have the following Share options applied:</p>
+<p>Layout 1 - view 1, Edit 0, Delete 0</p>
+<p>Layout 2 - View 1, Edit 1, Delete 0</p>
+<p>When multi-selected it would show the following:</p>
+<p>View 1, Edit <code>-</code>, Delete 0</p>
+<p>A User makes changes and toggles to:</p>
+<p>View 0, Edit <code>-</code>, Delete 1 (leaving Edit in its current status)</p>
+<p>The two Layouts would now have the following Share options set:</p>
+<p>Layout 1 - View 0, Edit 0, Delete 0</p>
+<p>Layout 2 - View 0, Edit 1, Delete 1</p>
+</blockquote>
+<blockquote class="tip"><p>Available multi-select options are dependent on the page selected!</p>
+</blockquote>
+<h2 id="forms">Forms <a href="#forms" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>The CMS presents most transactions (actions that <strong>add</strong>/<strong>edit</strong> or <strong>delete</strong> in some way) using <strong>Forms</strong>.</p>
+<p>The screenshot below gives an example of a how a form may look using the <strong>Edit Layout</strong> form:</p>
+<p><img src="img/v4_tour_cms_navigation_forms.png" alt="Add Layout Form" /></p>
+<ul>
+<li>
+<h4>Tabs</h4>
+</li>
+</ul>
+<p>Forms may only have one or could have multiple tabs which provide further details and options to Users.</p>
+<h4>Folders</h4>
+<p><a href="tour_folders.html">Folders</a> are used to organise, search and easily <a href="users_features_and_sharing.html">Share</a> User objects with other Users/User Groups.</p>
+<p>Click on <strong>Select Folder</strong> and select/create the destination folder to save the item into.</p>
+<blockquote class="tip"><p>Right click a Folder/sub-folder to view further options in the <strong>Folder Menu</strong>.</p>
+<p>Items that are saved in Folders will inherit the View, Edit, Delete <strong>Share</strong> options that have been applied to the destination Folder for User/User Group access!</p>
+</blockquote>
+<h4>Form Fields</h4>
+<p>Each Form has fields that require completion as well as optional fields.</p>
+<p>Each field has a title that explains what the field represents and help text for additional guidance.</p>
+<h4>Check Boxes</h4>
+<p>Options which can be enabled/disabled are presented with check boxes.</p>
+<blockquote class="tip"><p>Forms accessed from a row menu may contain an <a href="tour_cms_navigation.html#content-automatic-submission-of-forms">‘auto submit capability’</a>, which when selected allows for forms to be automatically submitted.</p>
+</blockquote>
+<h4>Buttons</h4>
+<p>Every form has a button bar at the bottom to commit or cancel the additions/edits they have made.</p>
+<blockquote class="tip"><p>Most forms also include a <strong>Help</strong> button, which provides a link to sections of this <strong>User Manual</strong> for additional guidance.</p>
+</blockquote>
+<h3>Automatic Submission of Forms</h3>
+<p>Selected actions, such as, <strong>Checkout</strong> from the Layouts grid <strong>Check Licence</strong> and <strong>Authorise</strong> from the <strong>Displays</strong> grid or <strong>Clear Cache</strong> from the <strong>Modules</strong> grid, allow for <strong>Forms</strong> to be automatically submitted by clicking on the action from the row menu.</p>
+<p>Actions that have an ‘auto submit’ capability will clearly display a checkbox option to enable on the form:</p>
+<p><img src="img/v4_tour_cms_navigation_auto_submit.png" alt="Auto Submit" /></p>
+<p>Once saved, this particular action will be automatically submitted the next time it is selected.</p>
+<blockquote class="tip"><p>Forms that you have enabled to ‘auto submit’ can be reset from your <a href="tour_user_access.html#content-user-profile">User Profile</a> settings.</p>
+</blockquote>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

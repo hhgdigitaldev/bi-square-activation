@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="using_library_searches">Using Library Searches <a href="#using_library_searches" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>BI Square Brand Activation supports a variety of file based Media types. Along with Image, Video and Audio files, show PDF’s, PowerPoints as well as complete HTML Packages on your Displays.</p>
+<p>File based Media can be first uploaded to the <strong>CMS Library</strong> ahead of time, or added directly using the file uploader when creating <strong>Layouts</strong> and <strong>Playlists</strong>.</p>
+<p>Media already saved to the Library, can be easily selected by using a <strong>Library Search</strong> function.</p>
+<p>Available from the <strong>Toolbox</strong>, each <strong>Media</strong> file type can be viewed and added from here.</p>
+<p>When using the <strong>Other Media</strong> search, use the <strong>Type</strong> drop down to select from the available options.</p>
+<ul>
+<li>Use filters to limit returned results for searches and make it easier to find the content to use.</li>
+</ul>
+<p>New Media files can be directly uploaded and added by using the file uploader for a selected Media type.</p>
+<ul>
+<li>Drag and drop or click to add the uploader.</li>
+</ul>
+<p>Once uploaded, the file will be added to the <strong>CMS Library</strong> and will be shown for future selection in relevant Library Searches.</p>
+<blockquote class="tip"><p>Try using the expander function by clicking the icon at the bottom of the <strong>Toolbox</strong> for easier media assignment!</p>
+</blockquote>
+<h2 id="pixabay">Pixabay <a href="#pixabay" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Pixabay integration gives Users easy access to additional Image and Video resources from within the CMS.</p>
+<p>Any Images/videos used from Pixabay will automatically be added to your CMS Library and made available for future use from the Image/Video Library Search functions.</p>
+<p>Clicking in the top right of a thumbnail will play a preview in a separate window. This window can also be enlarged using the arrow in the top left and can be added to the canvas from here by clicking the <code>+</code> button at the top.</p>
+<h2 id="further_reading">Further Reading <a href="#further_reading" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><a href="layout_editor_overview.html">Navigating the Layout Editor</a></p>
+<p><a href="showing_a_playlist_on_displays.html">Showing Playlists on Displays</a></p>
+<p><a href="media_module_htmlpackage.html">Displaying complete HTML Packages</a></p>
+<p><a href="media_module_pdf.html">Displaying PDF Files</a></p>
+<p><a href="media_module_powerpoint.html">Displaying PowerPoint Presentations</a></p>
+<h2 id="faq’s">FAQ’S <a href="#faq’s" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><em><strong>I don’t see Pixabay in the Toolbox?</strong></em></p>
+<p>Pixabay is enabled from the <strong>Administration</strong> section of the CMS by clicking <strong>Applications</strong>. Scroll down to the <strong>Connectors</strong> section and select <strong>Configure</strong> to enable.</p>
+<blockquote class="noncloud"><p>After clicking <strong>Configure</strong>, you will need to enter your API Key from signing up for a Pixabay account: <a href="https://pixabay.com/api/docs/">PixabayAPI Documentation</a> to enable.</p>
+</blockquote>
+<p><em><strong>I don’t see all 4 levels when I click the expander?</strong></em></p>
+<p>It will only expand to a sensible level dependent on the screen size you are working on. When using on screens with less than 1600px it will limit the total number of available levels to view. m</p>
+<p><em><strong>How do I show a PowerPoint on my non-Windows Displays?</strong></em></p>
+<p>Use the option on the file menu inside the PowerPoint application to convert to Video and export to upload to the CMS as a Video file.</p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

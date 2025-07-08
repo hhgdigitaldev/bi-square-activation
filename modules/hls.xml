@@ -1,0 +1,125 @@
+<!--
+  ~ Copyright (C) 2023 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-hls</id>
+    <name>HLS</name>
+    <author>Core</author>
+    <description>A module for displaying HLS video streams</description>
+    <icon>fa fa-video-camera</icon>
+    <class></class>
+    <type>hls</type>
+    <dataType></dataType>
+    <schemaVersion>1</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>60</defaultDuration>
+    <settings>
+        <property id="defaultMute" type="checkbox">
+            <title>Default Mute?</title>
+            <helpText>Should new widgets default to Muted?</helpText>
+            <default>1</default>
+        </property>
+        <property id="defaultSubtitle" type="checkbox">
+            <title>Default Subtitle?</title>
+            <helpText>Should new widgets default to Enabled Subtitles?</helpText>
+            <default>1</default>
+        </property>
+    </settings>
+    <properties>
+        <property id="uri" type="text" variant="uri" includeInXlf="true">
+            <title>Video Path</title>
+            <helpText>A URL to the HLS video stream. Requires Player running Windows 8.1 or later, or Android 6 or later. Earlier Android devices may play HLS via the LocalVideo widget.</helpText>
+            <rule>
+                <test type="and">
+                    <condition type="required"></condition>
+                    <condition type="uri"></condition>
+                </test>
+            </rule>
+        </property>
+        <property id="mute" type="checkbox" includeInXlf="true">
+            <title>Mute?</title>
+            <helpText>Should the video be muted?</helpText>
+            <default>%defaultMute%</default>
+        </property>
+        <property id="enableSubtitles" type="checkbox" includeInXlf="true">
+            <title>Enable Subtitles?</title>
+            <helpText>Show subtitles if available in the HLS stream. Note that not all streams include captions, and some may have them permanently embedded in the video.</helpText>
+            <default>%defaultSubtitle%</default>
+        </property>
+    </properties>
+    <preview></preview>
+    <stencil>
+        <twig><![CDATA[
+<video id='video' poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=" {% if mute == 1 %}muted{% endif %}></video>
+<script type="text/javascript">
+    $(document).ready(function() {
+        if(Hls.isSupported()) {
+            var video = document.getElementById("video");
+            var hls = new Hls({
+                autoStartLoad: true,
+                startPosition : -1,
+                capLevelToPlayerSize: false,
+                debug: false,
+                defaultAudioCodec: undefined,
+                enableWorker: true
+            });
+            hls.loadSource('{{uri|url_decode}}');
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                // Play only when the visible flag is set to true
+                var runOnVisible = function() { video.play(); };
+                (xiboIC.checkVisible()) ? runOnVisible() : xiboIC.addToQueue(runOnVisible);
+            });
+            hls.subtitleDisplay = {% if enableSubtitles == 1 %}true{% else %}false{% endif %};
+            hls.on(Hls.Events.ERROR, function (event, data) {
+                if (data.fatal) {
+                    switch(data.type) {
+                        case Hls.ErrorTypes.NETWORK_ERROR:
+                            // try to recover network error
+                            //console.log("fatal network error encountered, try to recover");
+                            hls.startLoad();
+                            break;
+
+                        case Hls.ErrorTypes.MEDIA_ERROR:
+                            //console.log("fatal media error encountered, try to recover");
+                            hls.recoverMediaError();
+                            break;
+
+                        default:
+                            // cannot recover
+                            hls.destroy();
+                            break;
+                    }
+                }
+            });
+        }
+    });
+</script>
+        ]]></twig>
+        <style><![CDATA[
+video {
+    width: 100%;
+    height: 100%;
+}
+        ]]></style>
+    </stencil>
+</module>

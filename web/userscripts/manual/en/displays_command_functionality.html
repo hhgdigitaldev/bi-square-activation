@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="displays">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<a href="displays.html">Displays</a>
+</li>
+<li>
+<a href="displays_settings.html">Display Settings</a>
+</li>
+<li>
+<a href="displays_groups.html">Display Groups</a>
+</li>
+<li>
+<a href="displays_sync_groups.html">Sync Groups</a>
+</li>
+<li>
+<a href="displays_metrics.html">Reporting</a>
+</li>
+<li class="active">
+<a href="displays_command_functionality.html">Command Functionality<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a>
+</li>
+</ul>
+</body></html>
+<li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="command_functionality">Command Functionality <a href="#command_functionality" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>The Command Functionality in BI Square Brand Activation is used to configure a set of Commands for a User to select to execute via <strong>XMR</strong>, in a <strong>Schedule</strong> or include in a <strong>Layout</strong>.</p>
+<blockquote class="tip"><p>Commands can have Command Strings to apply to all Players or have a different Command String per Player which is particularly useful if your network  is mixed / connected to different Displays or have slightly different Player hardware.</p>
+</blockquote>
+<p>A <strong>Command record</strong> is created which allows for a “generic command” to be created which can be used across <strong>Display Profiles</strong>, <strong>Scheduled Events</strong> and the <strong>Shell Command Widget</strong>.</p>
+<blockquote class="tip"><p>Commands provide easy access to functionality for RS232, Android Intents and Philips SoC (system on chip)!</p>
+</blockquote>
+<h2 id="command_management">Command Management <a href="#command_management" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Commands are created and managed from <strong>Commands</strong> under the <strong>Displays</strong> section of the main CMS menu:</p>
+<p><img src="img/v4_displays_commands.png" alt="Display Commands" /></p>
+<p>Use the row menu for a Command to Edit, Delete and set <a href="users_features_and_sharing.html#content-share">Share</a> options.</p>
+<h3>Add Command</h3>
+<p>Click on the <strong>Add Command</strong> button and complete the relevant form fields:</p>
+<p><img src="img/v4_displays_commands_add_command.png" alt="add_command" /></p>
+<p>Use the <strong>Command</strong> drop down menu to select from one of the following options to configure:</p>
+<h4>Free Text</h4>
+<p>Type in a Command String</p>
+<blockquote class="tip"><p>The Command String represents the final executed Command and can be a direct call to the shell or can have a <strong>helper</strong> specified, see “Helpers” section below.</p>
+</blockquote>
+<h4>Philips Android</h4>
+<p>The following commands can be used to control LED’s located on the sides of some commercial Phillips Displays:</p>
+<pre><code>tpv_led|off
+tpv_led|red
+tpv_led|green
+tpv_led|blue
+tpv_led|white
+</code></pre>
+<p>From Android v2 R215, integration has been added to power on/off the screen backlight by using the following commands:</p>
+<pre><code>tpv|backlighton
+tpv|backlightoff
+</code></pre>
+<blockquote class="tip"><p>The below commands can be used for one specific Android 4 model only; 2016 model <a href="https://www.philips.co.uk/p-p/10BDL3051T_00/signage-solutions-multi-touch-display">10BDL3051T</a></p>
+<pre><code>tpv|screenoff
+tpv|screenon
+</code></pre>
+<p><code>screenoff</code> will turn the screen off and put in a lower power state which can then be turned back on with <code>screenon</code>.</p>
+<p>For all other models, please use <code>backlighton/off</code> as <code>screenoff</code> will power completely off resulting in the need for an on site restart!</p>
+</blockquote>
+<p>Mute/unmute commands have also been added from v2 R215:</p>
+<pre><code>tpv|mute
+tpv|unmute
+</code></pre>
+<p><strong>Please note:</strong> <code>backlighton/off</code> doesn’t mute audio, so if you have audio playing you will will also want to schedule  the above <code>mute/unmute</code> commands at the same time.</p>
+<h4>RS232</h4>
+<p>RS232 commands can be executed on Players by using the <code>rs232</code> prefix in the Command String. The format of the command is <code>rs232|&lt;connection string&gt;|&lt;command&gt;</code>.</p>
+<p>The connection string should be provided in the following format on Windows:</p>
+<pre><code>&lt;COM#&gt;,&lt;Baud Rate&gt;,&lt;Data Bits&gt;,&lt;Parity|None,Odd,Even,Mark,Space&gt;,&lt;StopBits|None,One,Two,OnePointFive&gt;,&lt;Handshake|None,XOnXOff,RequestToSend,RequestToSendXOnXOff&gt;,&lt;HexSupport|0,1,default 0&gt;
+</code></pre>
+<p><strong>Please note:</strong> If you need to send your Command in HEX format, you should specify the byte string in the Command String, for example: <code>7E 00 00 FF 00 00 00 00 00 00 00 00 00 00 00 00 00 FF</code> , this will be converted to a byte stream by the player. You will need to set the <code>HexSupport</code> element of the connection string to <code>1</code>.</p>
+<p>The connection string should be provided in the following format on Android:</p>
+<pre><code>&lt;DeviceName&gt;,&lt;Baud Rate&gt;,&lt;Data Bits&gt;,&lt;Parity&gt;,&lt;StopBits&gt;,&lt;FlowControl&gt;
+</code></pre>
+<p>Each setting is represented by a corresponding number:</p>
+<pre><code>DATA_BITS_5 = 5;
+DATA_BITS_6 = 6;
+DATA_BITS_7 = 7;
+DATA_BITS_8 = 8;
+PARITY_NONE = 0;
+PARITY_ODD = 1;
+PARITY_EVEN = 2;
+PARITY_MARK = 3;
+PARITY_SPACE = 4;
+STOP_BITS_1 = 1;
+STOP_BITS_15 = 3;
+STOP_BITS_2 = 2;
+FLOW_CONTROL_OFF = 0;
+FLOW_CONTROL_RTS_CTS = 1;
+FLOW_CONTROL_DSR_DTR = 2;
+FLOW_CONTROL_XON_XOFF = 3;
+</code></pre>
+<p>The Command itself is a string which gets sent over RS232 using the connection details.</p>
+<h4>Android Intent</h4>
+<p>Android Display Profiles can use the <code>intent</code> helper to specify an intent that should be called when the Command executes. The format of the Command is <code>intent|&lt;type|activity,service,broadcast&gt;|&lt;activity&gt;|[&lt;extras&gt;]</code> .</p>
+<p><code>[&lt;extras&gt;]</code> is an optional parameter available from <strong>Android v2 R206</strong> used to provide additional data to the Intent. This must be a JSON formatted string containing an array with at least one object. The object format is below and must be on one line.</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;&lt;extra name&gt;&quot;,
+  &quot;type&quot;: &quot;&lt;type|string,int,bool,intArray&gt;&quot;,
+  &quot;value&quot;: &lt;the value of the above type&gt;
+}
+</code></pre>
+<p>For example, on some devices you can program the firmware to set on/off times.</p>
+<pre><code>[{
+  &quot;name&quot;: &quot;timeon&quot;,
+  &quot;type&quot;: &quot;intArray&quot;,
+  &quot;value&quot;: [2018, 7, 28, 8, 40]
+}, {
+  &quot;name&quot;: &quot;timeoff&quot;,
+  &quot;type&quot;: &quot;intArray&quot;,
+  &quot;value&quot;: [2018, 7, 28, 21, 40]
+}]
+</code></pre>
+<p>This would be set on the command as:</p>
+<pre><code>intent|broadcast|activity|[{ &quot;name&quot;: &quot;timeon&quot;, &quot;type&quot;: &quot;intArray&quot;, &quot;value&quot;: [2018, 7, 28, 8, 40] }, { &quot;name&quot;: &quot;timeoff&quot;, &quot;type&quot;: &quot;intArray&quot;, &quot;value&quot;: [2018, 7, 28, 21, 40] }]
+</code></pre>
+<blockquote class="tip"><p>Commands containing an intent helper are ignored in the Windows Player!</p>
+</blockquote>
+<h3>Helpers</h3>
+<p><strong>Command Helpers</strong> are prefixes that can be added to the Command String in order to take a more advanced action. Commands without a prefix are executed in the shell of the operating system which runs the Player. <code>cmd.exe</code> on Windows and <code>shell</code> on Android.</p>
+<h3>Validation</h3>
+<p>The <strong>Validation String</strong> is used as a comparison to the <strong>Command</strong> output and if it matches then the Command is considered a success. The Validation String must be an exact match.</p>
+<p>This could be useful for a network of mixed Windows and Android Players with a command called ‘Reboot’. The Command String for ‘Reboot’ on Windows being <code>shutdown /r /t 0</code>, and on Android, it is <code>reboot</code>.</p>
+<blockquote class="tip"><p>The same can also be useful with a non-mixed network - imagine a network of Windows players with different monitors connected over HDMI/RS232. A single Command called ‘Monitor On’ can be created with the different brands of monitor represented by different Display Settings Profiles, each can have a different Command String to turn the monitor on/off.</p>
+</blockquote>
+<h3>Available on</h3>
+<p>Select which type of Display the Command will be available on, leave blank to apply the Command to all types of Display.</p>
+<blockquote class="tip"><p><strong>Command</strong> and <strong>Validation</strong> strings can be overridden by editing a <a href="displays_settings.html#setting_on_the_display">Display Profile</a> and using the <strong>Command</strong> tab!</p>
+</blockquote>
+<h2 id="send_command_xmr">Send Command XMR <a href="#send_command_xmr" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Execute Commands via <strong>XMR</strong> from Displays/Display Groups using the row menu:</p>
+<h2 id="scheduling_commands">Scheduling Commands <a href="#scheduling_commands" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><strong>Schedule Commands</strong> so that they are executed at a specific time</p>
+<ul>
+<li>
+<p>Click on <strong>Schedule</strong> from the main CMS menu.</p>
+</li>
+<li>
+<p>Select <a href="scheduling_events.html#content-add-event">Add Event</a> from the top of the Schedule grid.</p>
+</li>
+<li>
+<p>From the Event Type drop down select <strong>Command</strong>.</p>
+</li>
+<li>
+<p>Complete the form fields and select the <strong>Command</strong> to use and <strong>Start Time</strong>.</p>
+</li>
+</ul>
+<blockquote class="tip"><p>Scheduled commands are executed once on the Player and only require a <strong>Start</strong> date and time. The Command can be executed up to 10 seconds after the time selected.</p>
+</blockquote>
+<h2 id="shell_commands">Shell Commands <a href="#shell_commands" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Use the <a href="media_module_shellcommand.html">Shell Command Widget</a> to run external Commands based on the Layouts activity.</p>
+<p>Shell Commands with a Command as their source act in the same fashion as normal shell commands. The Command is executed when the Widget is shown on the Layout.</p>
+<p>A Shell Command can also be a Command String with options for all Players provided. This allows Users to add Commands ‘ad-hoc’ for one-time use.</p>
+<blockquote class="tip"><p>We recommend that Administrators create predefined commands when possible!</p>
+</blockquote>
+<h2 id="monitor_on/off">Monitor ON/OFF <a href="#monitor_on/off" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<h3>HDMI-CEC</h3>
+<p>HDMI-CEC is a bus that is implemented on nearly all new large-screen TVs that have HDMI connectors. This bus (which is physically connected within normal HDMI cables) supports control signals that can perform power-on, power off, volume adjusts, selection of video source and many of the features that are accessible via the TV’s remote control. It can also control most other hardware on the HDMI bus.</p>
+<p>BI Square Brand Activation doesn’t provide a direct interface to HDMI-CEC as there are many different manufacturer specifications, however, it is possible to control HDMI-CEC via a batch file.</p>
+<h3>Serial/RS232</h3>
+<p>Industry grade monitors often have a serial interface for turning the monitor panel on and off. BI Square Brand Activation can use the RS232 Command helper to send these Commands to the monitor - usually in HEX mode.</p>
+<p>The following monitors and Commands have been tested:</p>
+<h4>NEC E464</h4>
+<ul>
+<li>Power On - <code>rs232|COM1,9600,8,None,One,None,1|01 30 41 30 41 30 43 02 43 32 30 33 44 36 30 30 30 31 03 73 0d</code>
+</li>
+<li>Power Off - <code>rs232|COM1,9600,8,None,One,None,1|01 30 41 30 41 30 43 02 43 32 30 33 44 36 30 30 30 34 03 76 0d</code>
+</li>
+</ul>
+<h4>Sharp LC-42D69U</h4>
+<ul>
+<li>Power On - <code>rs232|COM1,9600,8,None,One,None,1|50 4F 57 52 31 20 20 20 0D</code>
+</li>
+<li>Power Off - <code>rs232|COM1,9600,8,None,One,None,1|50 4F 57 52 00 20 20 20 0D</code>
+</li>
+</ul>
+<h4>LG 55LK520</h4>
+<ul>
+<li>Power On - <code>rs232|COM1,9600,8,None,One,None,1|6B 61 20 30 30 20 30 31 0D</code>
+</li>
+<li>Power Off - <code>rs232|COM1,9600,8,None,One,None,1|6B 61 20 30 30 20 30 30 0D</code>
+</li>
+</ul>
+<blockquote class="tip"><p>It should be noted that other models of each brand should also use the same Commands.</p>
+</blockquote>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

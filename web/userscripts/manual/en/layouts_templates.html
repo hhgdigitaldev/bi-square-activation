@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="layouts">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="layouts.html">Introduction</a></p>
+</li>
+<li>
+<p><a href="layouts_editor.html">Layout Editor</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_widgets.html">Widgets</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_data_widgets.html">Data Widgets</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_global_elements.html">Global Elements</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_library_search.html">Library Search</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_playlists.html">Add Playlists</a></p>
+</li>
+<li>
+<p><a href="layouts_interactive_actions.html">Interactive Actions</a></p>
+</li>
+<li>
+<p class="active"><a href="layouts_templates.html">Layout Templates<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="layouts_editor_publish_options.html">Publish Options</a></p>
+</li>
+<li>
+<p><a href="layouts_campaigns.html">Campaigns - Layout List</a></p>
+</li>
+<li>
+<p><a href="layouts_ad_campaigns.html">Ad Campaigns</a></p>
+</li>
+<li>
+<p><a href="layouts_overlay.html">Overlay Layouts</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="templates">Templates <a href="#templates" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Use Templates to speed up the design process and ensure a corporate standard is maintained.</p>
+<h2 id="feature_overview:">Feature Overview: <a href="#feature_overview:" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>Use existing published Layout designs to easily save as Templates.</li>
+<li>Create and manage Templates from a dedicated page for easier management.</li>
+<li>Add Zones to Templates to act as content placeholders on a Layout.</li>
+<li>Set Share options to restrict User access to selected zones on a Template.</li>
+<li>Show Published Templates for selection in the Layout Editor.</li>
+<li>Speed up the entire Layout design process for all Users.</li>
+<li>Apply a standardised look to all Layouts.</li>
+</ul>
+<p>Create new <a href="layouts_templates.html#content-create-template">Templates</a> or save your existing <a href="layouts_templates.html#content-save-layout-as-template">Layout</a> designs to use as Templates for future Layouts.</p>
+<h2 id="create_template">Create Template <a href="#create_template" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Templates are created by selecting <strong>Templates</strong> under the <strong>Design</strong> section of the main CMS menu.</p>
+<ul>
+<li>Select the <strong>Add Template</strong> button and complete the form fields.</li>
+</ul>
+<p><img src="img/v4_layouts_add_template_form.png" alt="Add Template Form" /></p>
+<p><a href="tour_folders.html">Folders</a> are used to organise, search and easily <a href="users_features_and_sharing.html#content-share">Share</a> User objects with other Users/User Groups. Templates saved to a Folder will inherit the access options applied to that Folder.</p>
+<blockquote class="tip"><p>If Users should also have access to the content of the Template (image media files for example), ensure that these are also saved to the same Folder!</p>
+</blockquote>
+<ul>
+<li>
+<p>Give your Template a <strong>Name</strong> for easy identification in the CMS and include optional <a href="tour_tags.html">Tags</a>.</p>
+</li>
+<li>
+<p>Select the <a href="layouts#content-resolutions">Resolution.</a></p>
+</li>
+</ul>
+<p>On <strong>Saving</strong>, the <a href="layouts_editor.html">Layout Editor</a> will automatically open with one full size <strong>Zone</strong>.</p>
+<p>Zones are used to define areas on a Layout which content can be added to.</p>
+<blockquote class="tip"><p>If you don’t want to include any Zones and add content directly to the Template, remove the Zone from the canvas by right clicking and selecting <strong>Delete</strong>. Add content in the same way as creating a <a href="layouts.html">Layout</a>.</p>
+</blockquote>
+<h3>Adding Zones</h3>
+<blockquote class="tip"><p>Zones are only available for use with Templates!</p>
+</blockquote>
+<ul>
+<li>Click anywhere on the zone to resize and position:</li>
+</ul>
+<p><img src="img/v4_layouts_templates_editor.png" alt="Template Layout Editor" /></p>
+<blockquote class="tip"><p>Use the buttons, in the bottom right to select to <strong>Snap to Grid</strong>, <strong>Snap to Borders</strong> or <strong>Snap to Elements</strong> for easier positioning when adding items.</p>
+</blockquote>
+<p><strong>Zones</strong> can be added from the toolbar:</p>
+<ul>
+<li>Click on the top <strong>Widget</strong> button.</li>
+</ul>
+<p><img src="img/v4_layouts_templates_add_zone.png" alt="Add Zone" /></p>
+<ul>
+<li>Select the Zone and drag and drop or click to add.</li>
+<li>Resize and Position.</li>
+</ul>
+<blockquote class="tip"><p>Set to <strong>Loop</strong> only if the Zone contains a Widget that needs to update periodically (e.g. RSS Ticker) and it needs to update more frequently than the duration of the overall Layout.</p>
+</blockquote>
+<h3>Layering</h3>
+<p>From the Properties Panel, select the Positioning tab to set <a href="layouts_editor.html#content-layering">Layering</a> for overlapping Zones/ added content.</p>
+<blockquote class="tip"><p>Right click to show a <a href="layouts_editor.html#content-context-menu">Context Menu</a> and easily move items backwards and forwards.</p>
+<p><a href="users_features_and_sharing.html#content-share">Sharing</a> options are particularly useful if you want a User to only have access to a section of the Layout to manage.</p>
+</blockquote>
+<p>Add both <a href="layouts_editor.html#content-toolbox">content</a> from the Toolbox and Zones to build your Template design.</p>
+<blockquote class="tip"><p>Adding multiple media items to one zone will automatically create a <a href="layouts_editor_playlists.html">Playlist</a>!</p>
+</blockquote>
+<p>Once your Template is complete, use the menu at the top of the editor to <strong>Publish</strong>:</p>
+<p><img src="img/v4_layouts_templates_publish.png" alt="Publish Template" /></p>
+<p>Published <strong>Templates</strong> will show for selection from the Toolbox of the Layout Editor.</p>
+<h2 id="save_layout_as_template">Save Layout as Template <a href="#save_layout_as_template" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Published Layouts can be saved as a <strong>Template</strong> from two locations:</p>
+<ul>
+<li>From the <a href="layouts_editor.html">Layout Editor</a>:
+<ul>
+<li>After <strong>Publishing</strong> go back to the menu and select <strong>Save Template</strong>:</li>
+</ul>
+</li>
+</ul>
+<p><img src="img/v4_layouts_templates_save_as_template.png" alt="Save Template Editor" /></p>
+<ul>
+<li>From the <a href="layouts.html#content-layout-grid">Layouts</a> grid:
+<ul>
+<li>Use the row menu for a <strong>Published</strong> Layout and <strong>select Save Template</strong>.</li>
+</ul>
+</li>
+</ul>
+<p>Complete all relevant form fields to save the selected Layout as a Template.</p>
+<blockquote class="tip"><p>Optionally use the tick box to also include all added <strong>Widgets</strong> to the Template!</p>
+</blockquote>
+<ul>
+<li>
+<strong>Save</strong>
+</li>
+</ul>
+<blockquote class="tip"><p>Layouts that are saved as a Template can be viewed and edited from the <strong>Templates</strong> grid under the <strong>Design</strong> section of the main CMS menu.</p>
+<p><strong>Tagging</strong> a Layout as a ‘Template’ will also add your designs to your Template list!</p>
+</blockquote>
+<h2 id="row_menu">Row Menu <a href="#row_menu" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>All Templates have a row menu where Users can access a list of actions/shortcuts.</p>
+<ul>
+<li>Notable settings are listed below:</li>
+</ul>
+<h4>Alter Template</h4>
+<p>Select to make design changes to the Template in the Layout Editor.</p>
+<h4>Checkout</h4>
+<p>To make edits to a Published Template click to <strong>Checkout</strong> and create a draft. Once edited the Template can be published to make the changes permanent overwriting the existing Template. Discard will revert the Template back to its original published state.</p>
+<blockquote class="tip"><p>Take your time with any edits you need to make as using <strong>Checkout</strong> ensures that no changes are made to your published version or shown on scheduled <strong>Displays</strong> until you choose to do so. <strong>Publish</strong> confirms changes have been made and will overwrite your published version. <strong>Discard</strong> will delete the draft with the published version remaining untouched.</p>
+</blockquote>
+<h4>Publish</h4>
+<p>Publish will ensure that the Template is shown for selection from the Toolbox.</p>
+<h4>Discard</h4>
+<p>Discard all changes made to a draft and revert back to the previous Published version.</p>
+<h4>Share</h4>
+<p>Set <a href="users_features_and_sharing.html#content-share">Share</a> options for User/User Group access to individual Templates.</p>
+<h4>Export</h4>
+<p>Export the Template including all associated Widgets/Media/DataSet structures to a ZIP file, so it can be easily shared.</p>
+<blockquote class="tip"><p>When exporting a Template, all assigned <strong>Layout</strong>, <strong>Playlist</strong> and <strong>Media Tags</strong> will be exported. Select the <strong>Import Tags</strong> option to add these Tags on Layout Import.</p>
+<p>Use the <strong>With Selected</strong> option at the bottom of the Templates grid to perform bulk actions for multiple Templates!</p>
+</blockquote>
+<h4>Next…</h4>
+<p><a href="layouts_overlay.html">Overlay Layouts</a></p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

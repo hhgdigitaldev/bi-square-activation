@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="scheduling">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p class="active"><a href="scheduling_events.html">Scheduling<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="scheduling_management.html">Schedule Management</a></p>
+</li>
+<li>
+<p><a href="scheduling_geolocation.html">Geo Scheduling</a></p>
+</li>
+<li>
+<p><a href="scheduling_dayparting.html">Dayparting</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="scheduling">Scheduling <a href="#scheduling" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>BI Square Brand Activation has a sophisticated system to allow for the simple creation of complex schedules across one or more <a href="displays.html">Displays</a>/<a href="displays_groups.html">Display</a> Groups.</p>
+<h2 id="creating_a_schedule">Creating a Schedule <a href="#creating_a_schedule" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Schedules are created from the <strong>Schedule</strong> page of the main CMS menu.</p>
+<p>Users can create one of the following:</p>
+<ul>
+<li>Schedule Event using the <a href="scheduling_events.html#content-add-event">Add Event</a> button</li>
+<li>Synchronised Event using the <a href="scheduling_events.html#content-synchronised-events">Add Synchronised Event</a> button</li>
+</ul>
+<h2 id="add_event">Add Event <a href="#add_event" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>Click on the <strong>Add Event</strong> button at the top of the schedule grid to open the <strong>Schedule Event</strong> form and start by selecting the <strong>Event Type</strong> to schedule.</li>
+</ul>
+<blockquote class="tip"><p>Schedules can also be easily created using the <strong>row menu</strong> for an object, selecting <strong>Schedule</strong>, with the exception of Interrupt Layout, Command and Action Event Types!</p>
+</blockquote>
+<p>The CMS supports scheduling for the following types:</p>
+<h3>Layout</h3>
+<p>Select a published <a href="layouts.html">Layout</a></p>
+<h3>Command</h3>
+<p>Select a <a href="displays_command_functionality.html">Command</a> to be executed by the Player at a specific point in time.</p>
+<blockquote class="tip"><p>Command Events do not require a <code>toDt</code>.</p>
+<p><a href="scheduling_events.html#content-display-order">Display Order</a> and <a href="scheduling_events.html#content-priority">Priority</a> are irrelevant when it comes to executing Commands, but may be set in the CMS for organisational purposes.</p>
+</blockquote>
+<h3>Overlay Layout</h3>
+<p>Layouts that have been designed as an <a href="layouts_overlay.html">Overlay Layout</a> will be scheduled at the same time as existing Layouts to create an overlay of content when displayed.</p>
+<h3>Interrupt Layout</h3>
+<p>An Interrupt Layout will schedule a selected <a href="layouts.html">Layout</a> to play <strong>in-between</strong> other Layouts in the ‘usual schedule’.</p>
+<p>BI Square Brand Activation will work out when it will be played using how many <strong>seconds per hour</strong> or as a <strong>Percentage</strong> entered on the schedule.</p>
+<blockquote class="tip"><p>This can be useful if you have Announcements that need to be shown for a particular amount of time within the usual schedule!</p>
+</blockquote>
+<ul>
+<li>Select <strong>Interrupt Layout</strong> as the Event Type from the drop down menu when adding an <a href="scheduling_events.html">Event</a>.</li>
+<li>Complete the form fields to create the schedule.</li>
+</ul>
+<h4>Share of Voice</h4>
+<p>Enter the amount of time the Layout should be shown in seconds per hour or as a percentage (0 - 100%) of the events duration (the difference between the from date and the to date) that the <strong>Interrupt Layout</strong> should occupy the usual schedule.</p>
+<blockquote class="tip"><p><strong>Please note:</strong> If your ‘main’ Layout has a long duration, the Interrupt Layout may show in a block in order to satisfy the SoV criteria entered!</p>
+</blockquote>
+<h3>Campaign</h3>
+<p>Select a <strong>Layout List</strong> <a href="layouts_campaigns">Campaign</a></p>
+<h3>Action</h3>
+<p><strong>Scheduled Actions</strong> listen for a Trigger Code coming in on a webhook to Navigate to a Layout or to run a Command.</p>
+<ul>
+<li>
+<strong>Navigate to Layout</strong> - enter the code identifier for the Layout the Player should navigate to when triggered. This code is created when adding a new Layout or from editing an existing from the Layouts grid.</li>
+<li>
+<strong>Command</strong> - select the Command to run.</li>
+</ul>
+<h3>Media Scheduling</h3>
+<p>Video and Image files saved to the <a href="media_library.html">Library</a> or a <a href="media_playlists.html">Playlist</a> can be scheduled to be shown full screen without having to first add it to a Layout.</p>
+<ul>
+<li>Complete the form fields to create the Schedule.</li>
+</ul>
+<p>Clicking <strong>Choose</strong> from the <strong>Media/Playlist</strong> field will show a pop up:</p>
+<p><img src="img/v4_scheduling_events_full_screen_media.png" alt="Full Screen Media" /></p>
+<p>Use the drop down menu to select the <strong>Media</strong> file or <strong>Playlist</strong> to use.</p>
+<p>On <strong>Saving</strong>, further options will be shown:</p>
+<ul>
+<li>
+<strong>Video/Image files</strong> only: Override the Media duration set in the Library by providing a <strong>Duration in loop</strong>.</li>
+<li>Select a specific <strong>Resolution</strong> to use.</li>
+<li>Set a <strong>Background Colour</strong> to fill any gaps if the item does not fill the entire screen.</li>
+</ul>
+<blockquote class="tip"><p>Schedule Images and Videos directly from the <a href="media_library.html">Library</a> and <a href="media_playlists.html">Playlists</a> from the Playlists grid. Use the row menu and click Schedule!</p>
+</blockquote>
+<h2 id="synchronised_events">Synchronised Events <a href="#synchronised_events" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<blockquote class="tip"><p>Synchronised Events are used in conjunction with <a href="displays_sync_groups.html">Sync Groups</a> to show mirrored or a video wall configuration across 2 or more Displays.</p>
+<p>Ensure you have created and configured a <strong>Sync Group</strong> prior to scheduling!</p>
+</blockquote>
+<p>Click on the <strong>Add Synchronised Event</strong> button at the top of the schedule grid to open the <strong>Add Synchronised Event</strong> form.</p>
+<p>Select a <a href="displays_sync_groups.html">Sync Group</a> from the drop down menu.</p>
+<ul>
+<li>Use the <strong>Layout</strong> drop down to select which content should be shown on each Display within the group.</li>
+</ul>
+<blockquote class="tip"><p>When selecting different content to show in a wall configuration on Displays, the total duration will be enforced by the content on the Lead Display.</p>
+<p>The Lead Display will issue instructions to change the sequence based on its assigned content. Please bear in mind that other Displays within the group could fall out of sync if their content is not similar in design (same number of items, durations etc).</p>
+</blockquote>
+<ul>
+<li>Select <strong>Mirror</strong> to automatically set the same item on each Display within the group automatically.</li>
+</ul>
+<blockquote class="tip"><p>Sync <a href="media_module_playlist.html">Playlists</a> on different Layouts by using a <strong>Content Synchronisation Key</strong>!</p>
+</blockquote>
+<h3>Dayparts</h3>
+<ul>
+<li>Events are scheduled using <strong>Dayparting</strong> information:
+<ul>
+<li>Select <strong>Custom</strong> to enter your own start and end times. Use the <strong>Relative time</strong> checkbox to input the Hours and Minutes when creating a Scheduled Event (not available for Synchronised Events).</li>
+<li>Select <strong>Always</strong> to have the content always scheduled on the selected Display.</li>
+</ul>
+</li>
+</ul>
+<blockquote class="tip"><p>Create your own defined <a href="scheduling_dayparting.html">Dayparts</a> to select for even easier scheduling!</p>
+</blockquote>
+<ul>
+<li>Use the drop down to select what needs to be scheduled from the list.</li>
+</ul>
+<h3>Display Order</h3>
+<ul>
+<li>Use <strong>Display Order</strong> to determine the order in which the event will play in rotation with other content when scheduled at the same time as other events. Ordering is a simple numerical sort, lowest to highest numbers (events marked with 1 will be played before events marked with 2.)</li>
+</ul>
+<blockquote class="tip"><p>To ensure the play order of Layouts we recommend including them in a <a href="layouts_campaigns.html">Campaign</a>. The Display Order can then be used to determine the order in which entire Campaigns should play. If Campaigns have the same Display Order or nothing is set, the Campaigns will play according to the Play List order (<strong>Interleaved</strong> or <strong>Block</strong>) defined for the individual Campaign.</p>
+</blockquote>
+<h3>Priority</h3>
+<ul>
+<li>Set the <strong>Priority</strong> of an Event with 0 considered the lowest Priority.</li>
+</ul>
+<p>Events of the same Event Type with the highest number will play in preference to lower numbers.</p>
+<blockquote class="tip"><p>Layouts/Campaigns/Images/Videos and Playlists will be treated as the same Event Type when taking Priorities into consideration.</p>
+</blockquote>
+<p>A good example to use Priority would be in a way to alter the scheduling of a loop of Layouts at a specific time. For example, a normal rotation of Layouts during the day with a Priority Event at lunchtime which shows specific ‘lunch’ information (i.e. Lunchtime specials on a cafe menu).</p>
+<p>If a Player had a schedule containing Events of the same Event Type which were all Priority 0, then all of the Events will be shown in rotation together.</p>
+<p>If 1 of these Events had a Priority of 1, then this would be the only Event shown.</p>
+<p>If there were some Events with Priority 0, some with Priority 1 and some with Priority 2 only the Priority 2 Events will be shown, in a rotation for that Scheduled period (as the highest Priority)</p>
+<h3>Maximum Plays per Hour</h3>
+<ul>
+<li>Set a number to limit the amount of times this Event is shown per hour on Displays.</li>
+</ul>
+<p>Leave as the default 0 for unlimited plays.</p>
+<h3>Run at CMS time</h3>
+<ul>
+<li>Select this option to play the Event at the time determined by the <strong>CMS</strong> rather than using the local Display time.</li>
+</ul>
+<blockquote class="tip"><p><strong>Scenario</strong></p>
+<ul>
+<li>CMS Time = GMT</li>
+<li>Display 1 = GMT</li>
+<li>Display 2 = GMT -4</li>
+</ul>
+<p>An event scheduled for 11:00 with Run at CMS time <strong>deselected</strong> will show on <strong>Display 1</strong> at 11:00 and <strong>Display 2</strong> at 11:00. These two displays will not show the same content at the same time, because display 2 is 4 hours behind.</p>
+<p>With Run at CMS time <strong>selected</strong>, <strong>Display 1</strong> will show at 11:00 as before but <strong>Display 2</strong> will run at 07:00.</p>
+</blockquote>
+<h2 id="repeats">Repeats <a href="#repeats" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Rather than creating numerous schedules to ensure that your content is shown, Events can be configured to Repeat Per Minute, Hourly, Daily, Weekly, Monthly or Yearly.</p>
+<ul>
+<li>From the <strong>Repeats</strong> tab, use the drop down to select the type of Repeat.</li>
+<li>Determine the Repeat frequency by entering a number here.</li>
+</ul>
+<blockquote class="tip"><p>For example with a <strong>Weekly Repeat</strong> you could select Wednesday and Friday as the days of the week to Repeat the Event, and enter a 2 to Repeat Every other week on those days.</p>
+<p><strong>Monthly Repeats</strong> can be configured by the Event date or by which day in the month the Event falls on. For example, an Event which is scheduled on Saturday 15/07/2023 can be set to Repeat every month on the 3rd Saturday.</p>
+</blockquote>
+<ul>
+<li>
+<strong>Until</strong> controls when the Repeat should finish.</li>
+</ul>
+<blockquote class="tip"><p>Ensure the time selected here is after the final repetition of the defined Event so as to not cut the play back of content short!</p>
+</blockquote>
+<p><strong>Recurring Events</strong> can be removed from the Schedule in their entirety or by individual recurrence:</p>
+<ul>
+<li>Select <strong>Delete</strong> at the bottom of the Schedule form to completely remove all instances of the Recurring Event.</li>
+<li>From the [Calendar] view, click on the <strong>Recurring Event</strong> by date:</li>
+</ul>
+<p><img src="img/v4_scheduling_recurring_instance.png" alt="Recurring Instance Calendar" /></p>
+<p>The instance details will be clearly shown at the bottom of the form:</p>
+<p><img src="img/v4_scheduling_delete_from_schedule.png" alt="Delete from Scheduling" /></p>
+<ul>
+<li>Click <strong>Delete from Schedule</strong> to remove only this instance from scheduling. All other instances will remain scheduled.</li>
+</ul>
+<blockquote class="tip"><p>Care should be taken if amendments are made to a recurring Schedule after deleting an individual instance. Previously deleted instances could be recreated with edits made to an existing recurring Schedule!</p>
+</blockquote>
+<h2 id="reminders">Reminders <a href="#reminders" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Create a set of <strong>Reminders</strong> to be sent to the <a href="users_notifications.html#content-notification-drawer">Notification Center</a> or emailed.</p>
+<blockquote class="tip"><p>Please ensure that an Administrator has entered a <strong>Sending Email address</strong> in the <a href="tour_cms_settings.html#content-network">CMS Settings</a>!</p>
+</blockquote>
+<ul>
+<li>From the <strong>Reminder</strong> tab, use the form fields to define a reminder. Use the <code>+</code> icon to add additional rows if required.</li>
+</ul>
+<p><img src="img/v4_scheduling_event_reminders.png" alt="Event Reminders" /></p>
+<ul>
+<li>Tick the box to send an email to the address set for your <a href="tour_user_access.html#content-edit-profile">User Profile</a>.</li>
+</ul>
+<h2 id="geo_location">Geo Location <a href="#geo_location" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Use the checkbox to make this Event location aware. Further information can be found at <a href="scheduling_geolocation.html">Geo Scheduling</a></p>
+<h2 id="edit_/_delete">Edit / Delete <a href="#edit_/_delete" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Make changes to Events from the Schedule grid or Calendar view. Further information can be found at <a href="scheduling_management.html">Schedule Management</a></p>
+<h2 id="duplicate">Duplicate <a href="#duplicate" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>The Duplicate button at the bottom of the Schedule form allows for event details to be easily duplicated and configured to create new Events.</p>
+<blockquote class="tip"><p>On clicking Duplicate, a pop up will appear to confirm that a new form has been loaded with the same details. The new loaded form will not have a Duplicate button.</p>
+</blockquote>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

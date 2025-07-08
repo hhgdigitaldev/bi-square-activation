@@ -1,0 +1,62 @@
+<div id="content-{{menuIndex}}"
+    class="toolbar-pane toolbar-{{name}}-pane {{state}} {{#eq contentType 'media'}}toolbar-library-pane{{/eq}} {{#eq contentType 'layout_templates'}}toolbar-library-pane{{/eq}} {{#eq contentType 'template_exchange'}}toolbar-library-pane toolbar-template_exchange-pane{{/eq}} {{#eq contentType 'playlists'}}toolbar-library-pane{{/eq}}"
+    data-menu-index="{{menuIndex}}"
+>
+    
+    <div class="content-header">
+        <div class="close-content" data-toggle="tooltip" data-placement="right" data-title="{{trans.closeTab}}">
+            <i class="fa fa-close"></i>
+        </div>
+        <div class="content-title">{{title}}</div>
+    </div>
+
+    {{#if content}}
+        {{> toolbar-search-form trans=trans filters=filters class="module-search-form" autocomplete="off"}}
+
+        <div class="toolbar-pane-container">
+            <div class="toolbar-pane-content">
+                {{!-- Show content cards if not marked as hidden --}}
+                {{#if content.favourites}}
+                    <div class="toolbar-header">{{trans.favourites}}</div>
+                {{/if}}
+                {{#each content.favourites}}
+                    {{#unless hideCard}}
+                        {{!-- Load cards according to type searchItem/Widget --}}
+                        {{> toolbar-card contentType=../name trans=../trans iconType=../iconType}}
+                    {{/unless}}
+                {{/each}}
+
+                {{#if content.cards}}
+                    <div class="toolbar-header">{{content.contentHeader}}</div>
+                {{/if}}
+                {{#each content.cards}}
+                    {{#unless hideCard}}
+                        {{!-- Load cards according to type searchItem/Widget --}}
+                        {{> toolbar-card contentType=../name trans=../trans iconType=../iconType}}
+                    {{/unless}}
+                {{/each}}
+
+                {{#if content.alternativeCards}}
+                    <div class="toolbar-header">{{content.contentAlternativeHeader}}</div>
+                {{/if}}
+                {{#each content.alternativeCards}}
+                    {{#unless hideCard}}
+                        {{!-- Load cards according to type searchItem/Widget --}}
+                        {{> toolbar-card contentType=../name trans=../trans iconType=../iconType}}
+                    {{/unless}}
+                {{/each}}
+
+                {{#unless content.favourites}}
+                    {{#unless content.cards}}
+                        {{#unless content.alternativeCards}}
+                            <div class="no-results-message">{{ content.noCardsToShow }}</div>
+                        {{/unless}}
+                    {{/unless}}
+                {{/unless}}
+            </div>
+        </div>
+    {{else}}
+        {{!-- Show generic container --}}
+        <div id="{{contentType}}-container-{{menuIndex}}" class="toolbar-pane-container"></div>
+    {{/if}}
+</div>

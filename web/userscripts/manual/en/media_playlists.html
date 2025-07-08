@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="media">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="media_library.html">Library Media</a></p>
+</li>
+<li>
+<p class="active"><a href="media_playlists.html">Playlists<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="media_datasets.html">DataSets</a></p>
+</li>
+<li>
+<p><a href="media_menuboards.html">Menu Boards</a></p>
+</li>
+<li>
+<p><a href="media_dashboard_service.html">Dashboard Service</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="playlists">Playlists <a href="#playlists" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Playlists are used to show a sequence of media items (such as an image slideshow). There are two ways to create a Playlist:</p>
+<ul>
+<li>Create <a href="media_playlists">Playlists</a> independently to a Layout. Global Playlists can be scheduled to Displays without the creation of a Layout. Playlists created outside of the Layout Editor are still shown for selection from the Add Playlist function from the Layout Editor.</li>
+<li>
+<a href="layouts_editor_playlists.html#content-add-playlists">Add Playlists</a> directly to a Layout from the Layout Editor. Local Playlists can be converted to be saved for re-use as a global Playlist. Saved Playlists will be shown in the Layout Editor to add to Layouts.</li>
+</ul>
+<h2 id="feature_overview:">Feature Overview: <a href="#feature_overview:" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>Create and configure independently to Layouts.</li>
+<li>Add and maintain content <a href="media_playlists.html#content-dynamically-adding-media">dynamically</a>.</li>
+<li>Update Playlist content without accessing Layouts.</li>
+<li>Schedule directly from the Playlist grid without the need to add to a Layout.</li>
+<li>Combine content from a variety of Playlists to be shown.</li>
+<li>Set the maximum number of items to be shown from a Playlist.</li>
+<li>Control how long each item on a Playlist should show before moving onto the next item.</li>
+<li>Set Expiry Dates for media items added to a Playlist.</li>
+</ul>
+<h2 id="creating_a_playlist">Creating a Playlist <a href="#creating_a_playlist" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Streamline resources and save time by creating Playlists to hold multiple items of content to be shown on Displays. Create Playlists to target and collate content for specific requirements, locations, subject categories etc.</p>
+<p>Playlists that are created independently to Layouts and do not require additional User access to Layouts or the Layout Editor in order to add or manage content on Playlists.  Any changes made to a Playlist will be updated in all Layouts/Schedules that already contain that Playlist.</p>
+<ul>
+<li>
+<p>Select <strong>Playlists</strong> under the <strong>Library</strong> section of the main CMS menu.</p>
+</li>
+<li>
+<p>Click the <strong>Add Playlist</strong> button and complete the form fields:</p>
+</li>
+</ul>
+<p><img src="img/v4_media_playlists_add.png" alt="Add Playlist" /></p>
+<p><a href="https://test.xibo.org.uk/manual/en/tour_folders.html">Folders</a> are used to organise, search and easily <a href="https://test.xibo.org.uk/manual/en/users_features_and_sharing.html#content-share">Share</a> User objects with other Users/User Groups. Playlists saved to a Folder will inherit the access options applied to that Folder.</p>
+<blockquote class="tip"><p>If Users should also have access to the content of the Playlist (image/video media files for example), ensure that these are also saved to the same Folder!</p>
+</blockquote>
+<ul>
+<li>Give your Playlist a <strong>Name</strong> for easy identification in the CMS and include optional <a href="tour_tags.html">Tags.</a>
+</li>
+</ul>
+<p>There are two options for adding <a href="media_library">Media</a> content to Playlists:</p>
+<ul>
+<li>Automatically assigning Library based media on criteria using the <a href="media_playlists.html#content-dynamically-adding-media">Dynamic</a> option.</li>
+<li>Manually assigning media using the <a href="media_playlists.html#content-media-playlists">Playlist Editor</a>, which will open on saving the form.</li>
+</ul>
+<h2 id="dynamically_adding_media">Dynamically adding Media <a href="#dynamically_adding_media" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>Once ticked, click on the <strong>Filter</strong> tab and set the required criteria in order to populate matching Library Media.</li>
+<li>Provide a <strong>maximum number</strong> of Library Media files to limit the number that can be automatically assigned.</li>
+</ul>
+<p>Media already in the CMS Library that matches the criteria set will be shown:</p>
+<p><img src="img/v4_media_playlists_dynamic.png" alt="Dynamic Assignment" /></p>
+<p>Any future media files that are added to the Library that satisfy the set criteria for this Playlist will be automatically added to this list.</p>
+<blockquote class="tip"><p>Library Media can also be prepopulated as a one-time assignment to a Playlist by setting criteria but leaving the Dynamic option unticked!</p>
+</blockquote>
+<ul>
+<li>Click to <strong>Save</strong>.</li>
+</ul>
+<blockquote class="tip"><p>Did you know a Dynamic Playlist can be scheduled to be shown on Displays full screen without first adding it to a Layout? Use the row menu for the Playlist and select Schedule!</p>
+</blockquote>
+<h2 id="playlist_editor">Playlist Editor <a href="#playlist_editor" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>From the Toolbox, select content to add to the Playlist.</li>
+<li>Configuration options will load in the properties panel.</li>
+</ul>
+<p><img src="img/v4_media_playlists_timeline.png" alt="Playlist Timeline" /></p>
+<blockquote class="tip"><p>The <strong>Playlist Editor</strong> contains two additional Widgets, a <strong>Rich Text Editor</strong> to provide text, Html or JavaScript and a <strong>Spacer</strong> to create an empty ‘slot’ within a Playlist.</p>
+</blockquote>
+<p>Durations will update to show the minutes/seconds as items are added to the Playlist timeline.</p>
+<ul>
+<li>
+<p>Re-order the sequence by drag and drop.</p>
+</li>
+<li>
+<p>Click the ruler icon to <strong>Change Scale mode</strong>:</p>
+</li>
+</ul>
+<p><img src="img/v4_media_playlists_scale_mode.png" alt="Scale Mode" /></p>
+<p>Use the scale options to zoom in and out to decrease/increase the visible time span.</p>
+<p>Items can be added to a specific point in the list, drag or click to add content to a position marker within the Playlist.</p>
+<p><img src="img/v4_media_playlists_add_timeline.png" alt="Add to Timeline" /></p>
+<blockquote class="tip"><p>Use the Undo button at the bottom of the toolbar to revert a change.</p>
+</blockquote>
+<p>An additional <a href="layouts_editor.html#content-context-menu">Context Menu</a> of options can be accessed by right clicking on an item which includes setting <a href="media_playlists.html#content-widget-expiry-dates">Widget Expiry Dates</a> and <a href="tour_transitions.html#content-playlist-transitions">Playlist Transitions</a>.</p>
+<blockquote class="tip"><p>When Transitions are applied to a Widget by default, the properties panel will be blank. Only manually entered Transitions will show on forms!</p>
+</blockquote>
+<p>Use the <strong>Select Multiple Widgets</strong> button at the bottom of the Playlist Editor to delete multiple selections with one click:</p>
+<p><img src="img/v4_media_playlists_multi_select.png" alt="Mutli Select" /></p>
+<blockquote class="tip"><p>Did you know a ‘global’ Playlist can be scheduled to be shown on Displays full screen without first adding it to a Layout? Use the row menu for the Playlist and select Schedule!</p>
+</blockquote>
+<h2 id="widget_expiry_dates">Widget Expiry Dates <a href="#widget_expiry_dates" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Items added to a Playlist have an additional option of setting Start and End times.</p>
+<ul>
+<li>Right click on an item in a Playlist to <strong>Edit Expiry Dates</strong> or set when <a href="media_library.html#content-add-media-upload">uploading media</a> directly to a Playlist.</li>
+</ul>
+<p>Uploading from a <a href="layouts_editor.html#content-library-search">Library Search</a> will have an additional <strong>Set Expiry Date</strong> option:</p>
+<p><img src="img/v4_media_playlists_upload_expiry.png" alt="Expiry Dates" /></p>
+<p>When uploading multiple media files, clicking the <strong>Start upload</strong> button will upload all files with the same date/time and Folder location set.</p>
+<blockquote class="tip"><p>Items can also be uploaded individually using the <strong>blue upload</strong> button at the end of the row for a file to have different set Expiry Dates and Folder locations for each file uploaded.</p>
+</blockquote>
+<p>Any items on a Playlist that have <strong>Expiry Dates</strong> set show an icon, which when moused over will show further information:</p>
+<p><img src="img/v4_media_playlists_expiry_dates.png" alt="Expiry Dates" /></p>
+<blockquote class="tip"><p>Once the End date has passed the item will be removed from the Playlist. Expired items that have not been set to Delete on Expiry will remain visible in the Playlist Editor only so that Start and End times can be re-adjusted if needed.</p>
+</blockquote>
+<ul>
+<li>Click on an icon to open to make any changes/remove from the item.</li>
+</ul>
+<h2 id="embedding_playlists">Embedding Playlists <a href="#embedding_playlists" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Playlists can be added to other Playlist timelines in order to define how much content should be shown, for how long as well as determine a play order.</p>
+<ul>
+<li>From the Playlist Editor select to add a New or select from the list of available ‘global’ Playlists from the Toolbox.</li>
+<li>Options for configuration are shown in the Properties Panel:</li>
+</ul>
+<p><img src="img/v4.1_media_playlists_embedding.png" alt="Embedding Playlists" /></p>
+<ul>
+<li>
+<p>Use the dropdown menu to select <strong>Playlists</strong> using the <code>+</code> button to add and configure multiple Playlists if required.</p>
+</li>
+<li>
+<p><strong>Spot</strong> options are used to define how much content from Playlists should be shown and for how long.</p>
+</li>
+</ul>
+<p>Spots also have an option to use a Playlists content as filler only and add content from this Playlist to <strong>Fill</strong> or <strong>Pad</strong> other selected Playlists:</p>
+<ul>
+<li>This Playlist must be the <strong>first</strong> added Playlist in the list.</li>
+<li>Enter a <strong>0</strong> in the <strong>Spots</strong> field so that the entire Playlist will be ignored and omitted from the play order. Select how the content from this Playlist should be distributed with the other Playlists using <strong>Spot Fill</strong> options.</li>
+</ul>
+<p>Use the drop-down menu for the <strong>Spot Fill</strong> field to select how any remaining Spots should be filled in the event that there are not enough Widgets on the selected Playlist to fulfil the specified play spots.</p>
+<blockquote class="tip"><p><strong>Spots</strong>, <strong>Spot Length</strong> and <strong>Spot Fill</strong> are all optional and can be left blank if this functionality is not required!</p>
+</blockquote>
+<p>Use the drop-down for <strong>Playlist Ordering</strong> to select how all Playlists should be ordered to play.</p>
+<blockquote class="tip"><p><strong>Auto</strong> uses the total count of items in each list and divides it by the smallest list to determine how often to take items from each list to ensure an even play from each Playlist.</p>
+</blockquote>
+<p>Select from the <strong>Remaining Widgets</strong> options to handle any content that is left unordered at the end of a Playlist.</p>
+<blockquote class="tip"><p>Adding Playlists to a <strong>New Playlist</strong> on a Layout has an additional <a href="layouts_editor_playlists.html#content-cycle-based-playback">Cycle Based Playback</a> option which includes a <strong>Random Widget</strong> feature.
+Cycle based playback is not supported when adding Playlists to a global Playlist!</p>
+</blockquote>
+<h2 id="playlist_grid">Playlist Grid <a href="#playlist_grid" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Saved Playlists can be viewed from <strong>Playlists</strong> under the <strong>Library</strong> section of the main CMS menu:</p>
+<p><img src="img/v4.1_media_playlists_grid.png" alt="Playlist Grid" /></p>
+<p>Each Playlist has a row menu which is used to access a menu of actions/shortcuts, notable settings are listed below:</p>
+<ul>
+<li>
+<strong>Timeline</strong> - open the Playlist Editor to make changes to content on the timeline.</li>
+<li>
+<strong>Edit</strong> - use the Filter tab for Dynamic Playlists to view the list of dynamically assigned media and make changes to criteria.</li>
+<li>
+<strong>Usage Report</strong> - view where Playlists are being shown and what Layouts they have been included on.</li>
+<li>
+<strong>Schedule</strong> - directly Schedule a Playlist to be shown full screen on Displays.</li>
+</ul>
+<blockquote class="tip"><p>Any changes made to a Scheduled Playlist will be automatically pushed to Players as they are made.</p>
+</blockquote>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

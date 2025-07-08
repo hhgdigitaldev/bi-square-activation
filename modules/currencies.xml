@@ -1,0 +1,117 @@
+<!--
+  ~ Copyright (C) 2024 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-currencies</id>
+    <name>Currencies</name>
+    <author>Core</author>
+    <description>A module for showing Currency pairs and exchange rates</description>
+    <icon>fa fa-line-chart</icon>
+    <class>\Xibo\Widget\CurrenciesAndStocksProvider</class>
+    <compatibilityClass>\Xibo\Widget\Compatibility\CurrenciesWidgetCompatibility</compatibilityClass>
+    <type>currencies</type>
+    <dataType>currency</dataType>
+    <dataCacheKey>%items%_%base%</dataCacheKey>
+    <fallbackData>1</fallbackData>
+    <schemaVersion>2</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>30</defaultDuration>
+    <settings></settings>
+    <properties>
+        <property type="header" variant="main">
+            <title>Configuration</title>
+        </property>
+        <property id="items" type="text">
+            <title>Currencies</title>
+            <helpText>A comma separated list of Currency Acronyms/Abbreviations, e.g. GBP,USD,EUR. For the best results enter no more than 5 items.</helpText>
+            <rule>
+                <test>
+                    <condition type="required"></condition>
+                </test>
+            </rule>
+        </property>
+        <property id="base" type="text">
+            <title>Base</title>
+            <helpText>The base currency.</helpText>
+            <rule>
+                <test>
+                    <condition type="required"></condition>
+                </test>
+            </rule>
+        </property>
+        <property id="reverseConversion" type="checkbox">
+            <title>Reverse conversion?</title>
+            <helpText>Tick if you would like your base currency to be used as the comparison currency for each currency you've entered. For example base/compare becomes compare/base - USD/GBP becomes GBP/USD.</helpText>
+            <default>0</default>
+        </property>
+        <property id="durationIsPerItem" type="checkbox">
+            <title>Duration is per item</title>
+            <helpText>The duration specified is per page/item otherwise the widget duration is divided between the number of pages/items.</helpText>
+            <default>0</default>
+        </property>
+        <property id="alignmentH" type="dropdown" mode="single">
+            <title>Horizontal Align</title>
+            <helpText>How should this widget be horizontally aligned?</helpText>
+            <default>center</default>
+            <options>
+                <option name="left">Left</option>
+                <option name="center">Centre</option>
+                <option name="right">Right</option>
+            </options>
+        </property>
+        <property id="alignmentV" type="dropdown" mode="single">
+            <title>Vertical Align</title>
+            <helpText>How should this widget be vertically aligned?</helpText>
+            <default>middle</default>
+            <options>
+                <option name="top">Top</option>
+                <option name="middle">Middle</option>
+                <option name="bottom">Bottom</option>
+            </options>
+        </property>
+        <property id="updateInterval" type="number">
+            <title>Update Interval (mins)</title>
+            <helpText>Please enter the update interval in minutes. This should be kept as high as possible. For example, if the data will only change once per hour this could be set to 60.</helpText>
+            <default>60</default>
+        </property>
+    </properties>
+    <preview></preview>
+    <stencil>
+        <twig><![CDATA[]]></twig>
+    </stencil>
+    <sampleData><![CDATA[
+[{
+    "NameShort": "Sample Currency 1",
+    "RawLastTradePriceOnly": "54.89",
+    "ChangeStyle": "value-up",
+    "ChangePercentage": "3",
+    "ChangeIcon": "up-arrow"
+},
+{
+    "NameShort": "Sample Currency 2",
+    "RawLastTradePriceOnly": "69.10",
+    "ChangeStyle": "value-up",
+    "ChangePercentage": "5",
+    "ChangeIcon": "up-arrow"
+}]
+]]></sampleData>
+</module>

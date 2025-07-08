@@ -1,0 +1,26 @@
+<div class="toolbar-card toolbar-card-template {{#if thumbnail}}has-thumb{{/if}}" 
+    data-type="template" 
+    data-sub-type="{{subType}}"
+    data-target="{{#if target}}{{target}}{{else}}layout playlist drawer zone{{/if}}"
+    data-template-type="{{dataType}}"
+    data-template-id="{{templateId}}"
+    data-start-width="{{startWidth}}"
+    data-start-height="{{startHeight}}"
+    data-card-title="{{title}}"
+    data-toggle="tooltip" data-title="{{description}}"
+>
+
+{{#if thumbnail}}
+    <div class="toolbar-card-thumb">
+        <img src="{{thumbnail}}"  alt="{{title}}"/>
+    </div>
+{{else}}
+    {{#if icon}}
+        <i class="element-icon {{icon}} card-icon"></i>
+    {{/if}}
+{{/if}}
+
+    <div class="toolbar-content" title="{{title}}">
+        <span class="card-title">{{title}}</span>
+    </div>
+</div>

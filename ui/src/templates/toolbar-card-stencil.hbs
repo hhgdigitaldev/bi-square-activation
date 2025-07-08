@@ -1,0 +1,27 @@
+<div class="toolbar-card toolbar-card-stencil {{#if thumbnail}}has-thumb{{/if}}" 
+    data-type="{{type}}" 
+    data-sub-type="{{#if subType}}{{subType}}{{else}}{{dataType}}{{/if}}"
+    data-data-type="{{dataType}}"
+    data-target="{{#if target}}{{target}}{{else}}layout{{/if}}"
+    data-template-id="{{templateId}}"
+    data-template-start-width="{{startWidth}}"
+    data-template-start-height="{{startHeight}}"
+    {{#with extends as | extend |}}
+        data-extends-template="{{extend.template}}"
+        data-extends-override="{{extend.override}}"
+        data-extends-with="{{extend.with}}"
+    {{/with}}
+    data-card-title="{{title}}"
+    data-toggle="tooltip" data-title="{{description}}"
+    >
+
+{{#if thumbnail}}
+    <div class="toolbar-card-thumb">
+        <img src="{{thumbnail}}" />
+    </div>
+{{/if}}
+    
+    <div class="toolbar-content" title="{{title}}">
+        <span class="card-title">{{title}}</span>
+    </div>
+</div>

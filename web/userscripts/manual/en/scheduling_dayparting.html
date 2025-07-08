@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="scheduling">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="scheduling_events.html">Scheduling</a></p>
+</li>
+<li>
+<p><a href="scheduling_management.html">Schedule Management</a></p>
+</li>
+<li>
+<p><a href="scheduling_geolocation.html">Geo Scheduling</a></p>
+</li>
+<li>
+<p class="active"><a href="scheduling_dayparting.html">Dayparting<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="dayparting">Dayparting <a href="#dayparting" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<blockquote class="tip"><p>In broadcast programming, dayparting is the practice of dividing the broadcast day into several parts, in which a different type of radio or television program apropos for that time period is aired.
+– Wikipedia</p>
+</blockquote>
+<p>BI Square Brand Activation supports the creation of multiple Dayparts, which can include day of the week exceptions. This means that a single day can be split into as many <strong>pre-defined</strong> parts as necessary.</p>
+<blockquote class="tip"><p>A typical use case would be a hospitality User who has different content to display for Breakfast, Lunch and Dinner. Dayparting allows that User to create a Breakfast, Lunch and Dinner daypart, each of which starts and ends on a different day for selection to simplify day to day scheduling.</p>
+</blockquote>
+<h2 id="add_daypart">Add Daypart <a href="#add_daypart" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Dayparts are created and administered from <strong>Dayparting</strong> on the main CMS menu.</p>
+<ul>
+<li>Select the <strong>Add Daypart</strong> button.</li>
+<li>Complete the form fields to configure.</li>
+</ul>
+<blockquote class="tip"><p>Include <strong>Exceptions</strong> to define different start and end timings for selected days!</p>
+</blockquote>
+<p>On Saving, the Daypart will be available for selection in the <strong>Dayparting</strong> drop down menu of the schedule form when adding an <a href="scheduling_events.html">Event</a>.</p>
+<blockquote class="tip"><p>The below Daypart form shows an example Breakfast Daypart:</p>
+<p><img src="img/v4_scheduling_daypart_form.png" alt="Exanple Breakfast Daypart" /></p>
+<p>Saturday and Sunday have been configured as exceptions so that breakfast starts and ends at different times on those days:</p>
+<p><img src="img/v4_scheduling_daypart_form_exceptions.png" alt="Daypart form exceptions tab" /></p>
+<p>On Scheduling, the <strong>Breakfast</strong> Daypart will appear in the drop-down for selection. On selecting, the from/to date time selectors will change to date only selectors and the time will be taken from the Daypart configuration - according to the day of the week the Event occurs on.</p>
+</blockquote>
+<h2 id="edit_dayparts">Edit Dayparts <a href="#edit_dayparts" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Make edits to existing Dayparts using the row menu.</p>
+<blockquote class="tip"><p>Add Sharing options for Dayparts to <a href="users_features_and_sharing.html#content-share">Share</a> with other Users/User Groups!</p>
+<p>Updating the start/end times or exceptions for a Daypart will cause existing future events to be updated with the newly defined times.</p>
+<p>Existing <a href="scheduling_events.html#content-repeats">recurring Schedules</a>, set to recur beyond the current time, will have new Schedules created to reflect the updated information.</p>
+</blockquote>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,110 @@
+<!--
+  ~ Copyright (C) 2024 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-stocks</id>
+    <name>Stocks</name>
+    <author>Core</author>
+    <description>A module for showing Stock quotes</description>
+    <icon>fa fa-bar-chart</icon>
+    <class>\Xibo\Widget\CurrenciesAndStocksProvider</class>
+    <compatibilityClass>\Xibo\Widget\Compatibility\StocksWidgetCompatibility</compatibilityClass>
+    <type>stocks</type>
+    <dataType>stock</dataType>
+    <dataCacheKey>%items%</dataCacheKey>
+    <fallbackData>1</fallbackData>
+    <schemaVersion>2</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>30</defaultDuration>
+    <settings></settings>
+    <properties>
+        <property type="header" variant="main">
+            <title>Configuration</title>
+        </property>
+        <property id="items" type="connectorProperties" variant="autocomplete">
+            <title>Stock Symbols</title>
+            <helpText>A comma separated list of Stock Ticker Symbols, e.g. GOOGL,NVDA,AMZN. For the best results enter no more than 5 items.</helpText>
+            <default></default>
+            <rule>
+                <test>
+                    <condition type="required"></condition>
+                </test>
+            </rule>
+        </property>
+        <property id="durationIsPerItem" type="checkbox">
+            <title>Duration is per item</title>
+            <helpText>The duration specified is per page/item otherwise the widget duration is divided between the number of pages/items.</helpText>
+            <default>0</default>
+        </property>
+        <property id="alignmentH" type="dropdown" mode="single">
+            <title>Horizontal Align</title>
+            <helpText>How should this widget be horizontally aligned?</helpText>
+            <default>center</default>
+            <options>
+                <option name="left">Left</option>
+                <option name="center">Centre</option>
+                <option name="right">Right</option>
+            </options>
+        </property>
+        <property id="alignmentV" type="dropdown" mode="single">
+            <title>Vertical Align</title>
+            <helpText>How should this widget be vertically aligned?</helpText>
+            <default>middle</default>
+            <options>
+                <option name="top">Top</option>
+                <option name="middle">Middle</option>
+                <option name="bottom">Bottom</option>
+            </options>
+        </property>
+        <property id="updateInterval" type="number">
+            <title>Update Interval (mins)</title>
+            <helpText>Please enter the update interval in minutes. This should be kept as high as possible. For example, if the data will only change once per hour this could be set to 60.</helpText>
+            <default>60</default>
+        </property>
+    </properties>
+    <preview></preview>
+    <stencil>
+        <twig><![CDATA[]]></twig>
+    </stencil>
+    <sampleData><![CDATA[
+[{
+    "SymbolTrimmed": "Sample Stock Symbol 1",
+    "NameTrimmed": "Sample Stock Name 1",
+    "Name": "Sample Stock Name 1",
+    "LastTradePriceOnly": "105.41",
+    "CurrencyUpper": "",
+    "ChangeStyle": "value-down",
+    "ChangePercentage": "-0.11",
+    "ChangeIcon": "down-arrow"
+},
+{
+    "SymbolTrimmed": "Sample Stock Symbol 2",
+    "NameTrimmed": "Sample Stock Name 2",
+    "Name": "Sample Stock Name 2",
+    "LastTradePriceOnly": "201.11",
+    "CurrencyUpper": "",
+    "ChangeStyle": "value-up",
+    "ChangePercentage": "2.11",
+    "ChangeIcon": "up-arrow"
+}]
+]]></sampleData>
+</module>

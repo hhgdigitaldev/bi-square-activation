@@ -1,0 +1,65 @@
+<div class="back-button">
+    <a id="closePlaylistEditorBtn" class="btn btn-lg" data-toggle="tooltip"  data-placement="bottom" title="{{trans.exit}}">
+        <i class="fa fa-caret-left"></i>
+        <span>{{trans.exit}}</span>
+    </a>
+</div>
+
+<div class="editor-toolbar editor-main-toolbar editor-side-bar editor-side-bar-playlist-editor">
+    <!--TOOLBAR-->
+</div>
+
+<div id="playlist-editor-container">
+    <div class="editor-body">
+        <div class="time-grid">
+            {{!--TIME GRID--}}
+        </div>
+        <div id="playlist-timeline" class="editable">
+            {{!--TIMELINE--}}
+        </div>
+    </div>
+    <div class="editor-footer">
+        <div class="footer-controls">
+            <button class="btn btn-scale-control" data-action="toggle-scale-mode" data-toggle="tooltip"  data-placement="top" title="{{trans.zoomControls.scaleMode}}">
+                <i class="fas fa-ruler"></i>
+            </button>
+            <button class="btn btn-scale" data-action="zoom-in" data-toggle="tooltip"  data-placement="top" title="{{trans.zoomControls.in}}">
+                <i class="fa fa-search-plus"></i>
+            </button>
+            <button class="btn btn-scale" data-action="zoom-out" data-toggle="tooltip"  data-placement="top" title="{{trans.zoomControls.out}}">
+                <i class="fa fa-search-minus"></i>
+            </button>
+            <button class="btn btn-scale" data-action="zoom-reset" data-toggle="tooltip"  data-placement="top" title="{{trans.zoomControls.default}}">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <div class="footer-info">
+            <div class="selected-info">
+                {{!-- SELECTED INFO --}}
+            </div>
+            <div class="footer-actions d-flex">
+                <button class="btn inactive hide-on-multi-select" data-action="undo">
+                    <i class="fa fa-undo"></i>
+                </button>
+                <button class="btn" data-action="multi-select">
+                    <i class="fa fa-object-group"></i>
+                </button>
+                <button class="btn inactive show-on-multi-select" data-action="remove-widget">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="properties-panel-container properties-panel-playlist-editor">
+    <div id="properties-panel" class="bootbox properties-panel">
+        <!--PROPERTIES PANEL-->
+    </div>
+</div>
+
+<div id="layout-manager">
+    {{!--MANAGER--}}
+</div>
+
+<div class="custom-overlay"></div>

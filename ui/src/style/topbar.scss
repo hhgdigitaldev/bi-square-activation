@@ -1,0 +1,238 @@
+/*!
+ * Copyright (C) 2023 Xibo Signage Ltd
+ *
+ * Xibo - Digital Signage - https://xibosignage.com
+ *
+ * This file is part of Xibo.
+ *
+ * Xibo is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * Xibo is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@import "variables";
+@import "mixins";
+
+.editor-top-bar nav {
+    border: none;
+    // Hide for now
+    // min-height: 40px;
+    z-index: $header-z-index;
+    margin: 0;
+    background: $xibo-color-neutral-0;
+    color: $xibo-color-primary;
+    right: 0;
+    left: 0;
+    border-radius: 0;
+}
+
+@media (max-width: 768px) {
+    .editor-top-bar nav {
+        .layout-info-duration, .layout-info-dimensions {
+            display: none;
+        }
+    }
+}
+
+.editor-toolbar .container-toolbar {
+    .left-area {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        height: $toolbar-header-height;
+        gap: 8px;
+        top: 0;
+        left: 6px;
+    }
+
+    .navbar-text.layout-info,
+    .navbar-text.playlist-info {
+        color: $xibo-color-secondary;
+        line-height: 24px;
+        display: inline-block;
+
+        & > span {
+            margin-right: 10px;
+            line-height: 24px;
+        }
+
+        .layout-info-icon {
+            margin-right: 2px;
+        }
+
+        .layout-info-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 300px;
+            float: left;
+
+            &:hover {
+                border-bottom: 1px solid black;
+            }
+        }
+
+        #layout-info-status {
+            float: left;
+            padding: 0 5px;
+            min-width: 24px;
+
+            &.clickable {
+                cursor: pointer;
+            }
+
+            i {
+                font-size: 1rem;
+            }
+        }
+
+        .popover {
+            color: $xibo-color-neutral-900;
+            min-width: 250px;
+
+            .popover-title {
+                padding: 4px;
+                font-weight: bold;
+                text-align: center;
+                border: none;
+            }
+
+            .popover-content {
+                padding: 3px 6px;
+            }
+
+            .popover-content .status-message {
+                padding: 6px;
+                margin: 0px -1px 3px -1px;
+                border-radius: 6px;
+                background: $xibo-color-semantic-error;
+                color: $xibo-color-primary-l5;
+            }
+
+            .popover-content .status-title {
+                padding: 4px;
+                font-weight: bold;
+            }
+        }
+
+    }
+
+    .navbar-text.layout-info {
+        cursor: pointer;
+    }
+
+    .layout-action-menu {
+        margin: 0;
+        padding: 0;
+        // Fix position for now
+        position: fixed;
+        top: 0;
+        right: 114px;
+        // Fix position for now
+
+        #layoutJumpListContainer {
+            min-width: 120px;
+            margin: 10px 6px;
+
+            .select2-selection {
+                max-height: 30px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+            }
+        }
+    }
+
+    .navbar-submenu-options-container {
+        a:not(.page-link) {
+            color: $xibo-color-secondary !important;
+            background-color: unset !important;
+
+            &:hover, &:focus {
+                color: $xibo-color-primary !important;
+            }
+        }
+
+        .dropdown-item:hover, .dropdown-item:focus {
+            background-color: $xibo-color-neutral-0;
+        }
+    }
+
+    .interactive-control {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-weight: bold;
+
+        .interactive-control-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding-right: 4px;
+            border-radius: 4px;
+            border: 1px solid $xibo-color-primary;
+            color: $xibo-color-primary;
+
+            i {
+                padding: 6px;
+                font-size: 16px;
+                background-color: $xibo-color-primary;
+                color: $xibo-color-neutral-0;
+            }
+        }
+
+        &[data-status="on"] {
+            .interactive-control-container {
+                color: $xibo-color-neutral-0;
+                background-color: darken($xibo-color-primary, 5%) !important;
+                border-color: darken($xibo-color-primary, 5%) !important;
+            }
+
+            i {
+                background-color: darken($xibo-color-primary, 5%) !important;
+            }
+
+            .interactive-control-status-on {
+                display: initial;
+            }
+            .interactive-control-status-off {
+                display: none;
+            }
+        }
+
+        &[data-status="off"] {
+            .interactive-control-container {
+                background-color: $xibo-color-neutral-0;
+            }
+            .interactive-control-status-on {
+                display: none;
+            }
+            .interactive-control-status-off {
+                display: initial;
+            }
+        }
+
+        &:hover {
+            .interactive-control-container {
+                border-color: darken($xibo-color-primary, 5%) !important;
+                color: darken($xibo-color-primary, 5%) !important;
+
+                i {
+                    background-color: darken($xibo-color-primary, 5%) !important;
+                }
+            }
+
+            &[data-status="on"] .interactive-control-container {
+                color: $xibo-color-neutral-0 !important;
+            }
+        }
+    }
+}

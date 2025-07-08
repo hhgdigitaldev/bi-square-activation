@@ -1,0 +1,217 @@
+<!--
+  ~ Copyright (C) 2024 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-forecastio</id>
+    <name>Weather</name>
+    <author>Core</author>
+    <description>A module for displaying weather information. Uses the Forecast API</description>
+    <icon>fa fa-cloud</icon>
+    <class></class>
+    <compatibilityClass>\Xibo\Widget\Compatibility\WeatherWidgetCompatibility</compatibilityClass>
+    <validatorClass>\Xibo\Widget\Validator\DisplayOrGeoValidator</validatorClass>
+    <type>forecastio</type>
+    <dataType>forecast</dataType>
+    <dataCacheKey>%useDisplayLocation%_%latitude%_%longitude%_%units%_%lang%</dataCacheKey>
+    <schemaVersion>2</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>60</defaultDuration>
+    <settings></settings>
+    <requiredElements>weather_attribution</requiredElements>
+    <properties>
+        <property id="useDisplayLocation" type="checkbox">
+            <title>Use the Display Location</title>
+            <helpText>Use the location configured on the display</helpText>
+            <default>1</default>
+        </property>
+        <property id="latitude" type="number">
+            <title>Latitude</title>
+            <helpText>The Latitude for this widget</helpText>
+            <default>#DEFAULT_LAT#</default>
+            <visibility>
+                <test>
+                    <condition field="useDisplayLocation" type="eq">0</condition>
+                </test>
+            </visibility>
+        </property>
+        <property id="longitude" type="number">
+            <title>Longitude</title>
+            <helpText>The Longitude for this widget</helpText>
+            <default>#DEFAULT_LONG#</default>
+            <visibility>
+                <test>
+                    <condition field="useDisplayLocation" type="eq">0</condition>
+                </test>
+            </visibility>
+        </property>
+        <property id="units" type="forecastUnitsSelector">
+            <title>Units</title>
+            <helpText>Select the units you would like to use.</helpText>
+            <default>auto</default>
+        </property>
+        <property id="lang" type="languageSelector" variant="momentLocales" sendToElements="true">
+            <title>Language</title>
+            <helpText>Select the language you would like to use.</helpText>
+            <default>en</default>
+        </property>
+        <property id="dayConditionsOnly" type="checkbox">
+            <title>Only show Daytime weather conditions</title>
+            <helpText>Tick if you would like to only show the Daytime weather conditions.</helpText>
+            <default></default>
+        </property>
+        <property id="alignmentH" type="dropdown" mode="single">
+            <title>Horizontal Align</title>
+            <helpText>How should this widget be horizontally aligned?</helpText>
+            <default>center</default>
+            <options>
+                <option name="left">Left</option>
+                <option name="center">Centre</option>
+                <option name="right">Right</option>
+            </options>
+        </property>
+        <property id="alignmentV" type="dropdown" mode="single">
+            <title>Vertical Align</title>
+            <helpText>How should this widget be vertically aligned?</helpText>
+            <default>middle</default>
+            <options>
+                <option name="top">Top</option>
+                <option name="middle">Middle</option>
+                <option name="bottom">Bottom</option>
+            </options>
+        </property>
+    </properties>
+    <preview></preview>
+    <onRender><![CDATA[
+// Set moment locale
+if (properties.lang !== null && String(properties.lang).length > 0) {
+    moment.locale(properties.lang);
+} else {
+    moment.locale(globalOptions.locale);
+}
+
+// Make replacements [] with target data
+var makeReplacement = function(html, item) {
+    // Make replacements [] with item data
+    var replacer = function(match, key) {
+        if (key === 'time' || key.indexOf('time|') === 0) {
+            if (key.indexOf('time|') === 0) {
+                return moment.unix(item.time).format(key.split('|')[1]);
+            }
+            // Else return the time
+            return moment.unix(item.time).format('h:mm a');
+        }
+
+        // If its [icon] or [wicon] and we have properties.dayConditionsOnly then return the day icon
+        if(properties.dayConditionsOnly == 1 && (key === 'icon' || key === 'wicon')) {
+            return item[key].replace('-night', '');
+        }
+
+        // If its [poweredBy] then return the powered by html
+        if (key === 'Attribution') {
+            return meta.Attribution;
+        }
+        return item[key];
+    };
+    return html.replace(/\[([^\]]+)\]/g, replacer);
+}
+
+// Get content container
+var $content = $(target).find('#content');
+
+// Clear content container
+$content.empty();
+
+// Get current day (main) template and clone its contents
+var currentContainerHTML = $(target).find('.current-day-template').html();
+if (currentContainerHTML) {
+    // Make replacements [] with current day data
+    currentContainerHTML = makeReplacement(currentContainerHTML, items[0]);
+
+    // Add current day (main) template to content container
+    $content.append(currentContainerHTML);
+}
+
+// Make replacements if we have bg-div
+var bgDivHTML = $(target).find('.bg-div').prop('outerHTML');
+if (bgDivHTML) {
+    // Make replacements [] with current day data
+    bgDivHTML = makeReplacement(bgDivHTML, items[0]);
+
+    // Replace bg-div with current day data
+    $(target).find('.bg-div').replaceWith(bgDivHTML);
+}
+
+// Get the forecast container from current day template
+var $forecastContainer = $content.find('.forecast-container');
+
+// Get the forecast template
+var forecastTemplateHTML = $(target).find('.forecast-day-template').html();
+
+// If we have a forecast container
+// Get the number of days to show for the forecast
+var daysNum = $forecastContainer.data('days-num');
+
+// Check if we have forecast days to add
+if (daysNum > 0) {
+    // Empty container
+    $forecastContainer.empty();
+
+    var slicer = function(day, index) {
+        // Check if we are within the number of days
+        if (index < daysNum) {
+            // Make replacements [] with forecast day data
+            var forecastDayHTML = makeReplacement(forecastTemplateHTML, day);
+
+            // Add forecast day to forecast container
+            $forecastContainer.append(forecastDayHTML);
+        }
+    };
+
+    // Add the forecast days
+    items.slice(1).forEach(slicer);
+}
+
+// Handle images and scaling
+$content.xiboLayoutScaler(properties);
+$(target).find("img").xiboImageRender(properties);
+    ]]></onRender>
+    <assets>
+        <asset id="animate" type="path" mimeType="text/css" path="/modules/assets/forecastio/animate.css"></asset>
+        <asset id="weather-icons" type="path" mimeType="text/css" path="/modules/assets/forecastio/weather-icons.min.css"></asset>
+        <asset id="weathericons-regular-webfont.eot" type="path" mimeType="application/vnd.ms-fontobject" path="/modules/assets/forecastio/weathericons-regular-webfont.eot"></asset>
+        <asset id="weathericons-regular-webfont.svg" type="path" mimeType="image/svg+xml" path="/modules/assets/forecastio/weathericons-regular-webfont.svg"></asset>
+        <asset id="weathericons-regular-webfont.ttf" type="path" mimeType="application/x-font-ttf" path="/modules/assets/forecastio/weathericons-regular-webfont.ttf"></asset>
+        <asset id="weathericons-regular-webfont.woff" type="path" mimeType="application/font-woff" path="/modules/assets/forecastio/weathericons-regular-webfont.woff"></asset>
+        <asset id="weathericons-regular-webfont.woff2" type="path" mimeType="application/font-woff2" path="/modules/assets/forecastio/weathericons-regular-webfont.woff2"></asset>
+        <asset id="WeatherIcons-Regular.otf" type="path" mimeType="application/x-font-opentype" path="/modules/assets/forecastio/WeatherIcons-Regular.otf"></asset>
+        <asset id="wi-cloudy" type="path" mimeType="image/jpeg" path="/modules/assets/forecastio/wi-cloudy.jpg"></asset>
+        <asset id="wi-day-cloudy" type="path" mimeType="image/jpeg" path="/modules/assets/forecastio/wi-day-cloudy.jpg"></asset>
+        <asset id="wi-day-sunny" type="path" mimeType="image/jpeg" path="/modules/assets/forecastio/wi-day-sunny.jpg"></asset>
+        <asset id="wi-fog" type="path" mimeType="image/jpeg" path="/modules/assets/forecastio/wi-fog.jpg"></asset>
+        <asset id="wi-hail" type="path" mimeType="image/jpeg" path="/modules/assets/forecastio/wi-hail.jpg"></asset>
+        <asset id="wi-night-clear" type="path" mimeType="image/jpeg" path="/modules/assets/forecastio/wi-night-clear.jpg"></asset>
+        <asset id="wi-night-partly-cloudy" type="path" mimeType="image/jpeg" path="/modules/assets/forecastio/wi-night-partly-cloudy.jpg"></asset>
+        <asset id="wi-rain" type="path" mimeType="image/jpeg" path="/modules/assets/forecastio/wi-rain.jpg"></asset>
+        <asset id="wi-snow" type="path" mimeType="image/jpeg" path="/modules/assets/forecastio/wi-snow.jpg"></asset>
+        <asset id="wi-windy" type="path" mimeType="image/jpeg" path="/modules/assets/forecastio/wi-windy.jpg"></asset>
+    </assets>
+</module>

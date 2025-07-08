@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="layouts">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="layouts.html">Introduction</a></p>
+</li>
+<li>
+<p><a href="layouts_editor.html">Layout Editor</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_widgets.html">Widgets</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_data_widgets.html">Data Widgets</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_global_elements.html">Global Elements</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_library_search.html">Library Search</a></p>
+</li>
+<li>
+<p class="active"><a href="layouts_editor_playlists.html">Add Playlists<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="layouts_interactive_actions.html">Interactive Actions</a></p>
+</li>
+<li>
+<p><a href="layouts_templates.html">Layout Templates</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_publish_options.html">Publish Options</a></p>
+</li>
+<li>
+<p><a href="layouts_campaigns.html">Campaigns - Layout List</a></p>
+</li>
+<li>
+<p><a href="layouts_ad_campaigns.html">Ad Campaigns</a></p>
+</li>
+<li>
+<p><a href="layouts_overlay.html">Overlay Layouts</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="playlists">Playlists <a href="#playlists" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Playlists are used to show a sequence of media items (such as an image slideshow). There are two ways to create a Playlist:</p>
+<ul>
+<li>
+<a href="layouts_editor_playlists.html#content-add-playlists">Add Playlists</a> directly to a Layout from the Layout Editor. Local Playlists can be converted to be saved for re-use as a global Playlist. Saved Playlists will be shown in the Layout Editor to add to Layouts.</li>
+<li>Create <a href="media_playlists.html#content-creating-a-playlist">Playlists</a> independently to a Layout. Global Playlists can be scheduled to Displays without the creation of a Layout. Playlists created outside of the Layout Editor are still shown for selection from the Add Playlist function from the Layout Editor.</li>
+</ul>
+<h2 id="add_playlists">Add Playlists <a href="#add_playlists" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Create new or select existing Playlists to use from the <strong>Layout editor</strong> to create a timeline of content to show on a Layout.</p>
+<h2 id="feature_overview:">Feature Overview: <a href="#feature_overview:" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>Create and configure directly on a Layout.</li>
+<li>Convert a Playlist created on a Layout to a Global Playlist to save for future use.</li>
+<li>Easily display a ‘slide-show’ of content held in one or more Playlists.</li>
+<li>Sync with Playlists on other Layouts which are part of a Synchronised Event.</li>
+<li>Combine content from a variety of Playlists to be shown.</li>
+<li>Set the maximum number of items to be shown from a Playlist.</li>
+<li>Control how long each item on a Playlist should show before moving onto the next item.</li>
+<li>Set Expiry Dates for media items added to a Playlist.</li>
+<li>Play one item per cycle for a specified Play Count.</li>
+<li>Select a Random Widget to play at each cycle.</li>
+<li>Cycle through items contained on a Playlist in the viewer to easily see the sequence.</li>
+</ul>
+<h2 id="adding_playlists_to_a_layout">Adding Playlists to a Layout <a href="#adding_playlists_to_a_layout" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>From the <a href="layouts_editor">Layout Editor</a>, click on <strong>Add Playlists</strong> from the <strong>Toolbox</strong>:</li>
+</ul>
+<p><img src="img/v4.1_layouts_editor_add_playlists.png" alt="Add Playlists" /></p>
+<ul>
+<li>Click to Add or drag on a <strong>New Playlist</strong> or a named Playlist which has already been created.</li>
+<li>Resize and position:</li>
+</ul>
+<p><img src="img/v4.1_layouts_editor_synchronisation_key.png" alt="Content Synchronisation Key" /></p>
+<p>From the <strong>Properties Panel</strong>, use the <strong>Content Synchronisation Key</strong> to sync with Playlists on other Layouts. Playlists with the same key will be synchronised when the Layout is scheduled as a <a href="scheduling_events.html#content-synchronised-events">Synchronised Event.</a></p>
+<blockquote class="tip"><p><strong>Scenario:</strong></p>
+<p>You have a Synchronised Event with 3 Displays and 3 different Layouts. Each Layout has some Text at the top and a Playlist in the middle which all 3 need to play in sync.</p>
+<p>You could also set two different Playlists to sync differently which you could set to <code>sync_1</code> and <code>sync-2</code> for example.</p>
+</blockquote>
+<ul>
+<li>Optionally set <a href="tour_transitions.html#content-playlist-transitions">Transitions</a> for items on a Playlist from the Properties Panel.</li>
+</ul>
+<blockquote class="tip"><p>When default Transitions have been applied, the properties panel will be blank. Only manually entered Transitions will show on forms.
+Defaults can be overridden by unticking the <strong>Automatically apply Transitions</strong> check box from the Properties Panel for the Layout.</p>
+</blockquote>
+<ul>
+<li>Click the icon in the right hand corner of the Playlist to open the <a href="media_playlists.html#content-playlist-editor">Playlist Editor</a> to add and configure content.</li>
+</ul>
+<blockquote class="tip"><p>The <a href="media_playlists.html#content-playlist-editor">Playlist Editor</a> includes <strong>Spacer</strong> and <strong>Rich Text</strong> Widgets that are only available for use with Playlists.</p>
+<p>Media added to a Playlist can also have Start and End times using <a href="media_playlists.html#content-widget-expiry-dates">Expiry Dates</a>.</p>
+</blockquote>
+<ul>
+<li>Click the <strong>Back</strong> button at the top to exit the Playlist Editor and return to the Layout Editor.</li>
+</ul>
+<p>View all the content that has been added to the Timeline of the Playlist by using the arrows in the bottom right of the Playlist on the Layout.</p>
+<ul>
+<li>Cycle through the order of content:</li>
+</ul>
+<p><img src="img/v4.1_layouts_editor_playlists_preview_content.png" alt="Preview Timeline Content" /></p>
+<h2 id="convert_playlist">Convert Playlist <a href="#convert_playlist" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>If you add a <strong>New Playlist</strong> to the Layout you can opt to convert this into a saved Playlist. Converted Playlists will be shown for Playlist selection in the Layout Editor and from the <a href="media_playlists.html#content-playlists-grid">Playlists</a> grid.</p>
+<ul>
+<li>Click the Playlist on the Layout to select and give it a <strong>Name</strong> from the <strong>General</strong> tab of the <strong>Properties Panel</strong>.</li>
+<li>Right click and select <strong>Convert Playlist</strong> from the menu.</li>
+</ul>
+<p><img src="img/v4.1_layouts_editor_convert_playlist.png" alt="Convert Playlist" /></p>
+<p>You will see a pop up message at the bottom of the Layout Editor to say that the Playlist has been saved as a Global Playlist.</p>
+<blockquote class="tip"><p>Click the <strong>Show more</strong> button to see your Playlist added to the list of available Playlists!</p>
+</blockquote>
+<p>Converted Playlists will be saved to the <a href="media_playlists.html#content-playlist-grid">Playlists Grid</a>.</p>
+<h2 id="add_to_playlist">Add to Playlist <a href="#add_to_playlist" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>If you have a <strong>New Playlist</strong> on a Layout, you can add a new or global Playlist to the Timeline to open further options in the Properties Panel for configuration:</p>
+<p><img src="img/v4.1_layouts_editor_playlist_spots.png" alt="Playlist Spots" /></p>
+<ul>
+<li>Select Playlists, Spot Options and Playlist Ordering, when selecting more than one Playlist to <a href="media_playlists.html#content-embedding-playlists">Embed</a> from the Properties Panel.</li>
+</ul>
+<p>Adding a <strong>Playlist</strong> to a <strong>New Playlist</strong> on a Layout has additional <a href="layouts_editor_playlists.html#content-cycle-based-playback">Cycle Based Playback</a> options which includes a Random Widget feature.</p>
+<blockquote class="tip"><p>If you want to add more than one Playlist to combine the play order, we recommend that you should only add one Playlist to the Timeline and then use the options in the Properties Panel to select the additional Playlists and configure.</p>
+</blockquote>
+<ul>
+<li>
+<h3>Cycle Based Playback</h3>
+</li>
+</ul>
+<p>Once enabled all Playlists selected will be treated as one “list” and will only show one Widget each time the Layout is played, cycling through the content from all Playlists added:</p>
+<ul>
+<li>Tick Enable cycle based playback from the Properties Panel.</li>
+<li>Provide a <strong>Play Count</strong> to determine how many plays each Widget on the Playlist should have before moving onto the next Widget in the timeline.</li>
+</ul>
+<p><img src="img/v4.1_layouts_editor_playlist_cycle_playback.png" alt="Cycle Playback" /></p>
+<p>Using the <strong>Random Widget each cycle</strong> option will play a Widget from the timeline at random for each cycle.</p>
+<blockquote class="tip"><p>Did you know <a href="media_playlists.html">Playlists</a> created and managed independently to Layouts do not require further user access rights to Layouts or the Layout Editor to add and manage content!</p>
+<p>These global Playlists can also be directly <a href="scheduling_events.html#content-media-scheduling">Scheduled</a> without the need to first create and add to a Layout!</p>
+</blockquote>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,266 @@
+<!--
+  ~ Copyright (C) 2023 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-countdown-text</id>
+    <name>Countdown - Simple Text</name>
+    <author>Core</author>
+    <description>A module for displaying a Countdown timer with Simple Text</description>
+    <icon>fa fa-hourglass-o</icon>
+    <class></class>
+    <compatibilityClass>\Xibo\Widget\Compatibility\CountDownWidgetCompatibility</compatibilityClass>
+    <type>countdown-text</type>
+    <group id="countdown" icon="fa fa-hourglass-o">Countdown</group>
+    <legacyType condition="templateId==countdown1">countdown</legacyType>
+    <dataType></dataType>
+    <schemaVersion>2</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>60</defaultDuration>
+    <thumbnail>countdown-text-thumb</thumbnail>
+    <startWidth>300</startWidth>
+    <startHeight>180</startHeight>
+    <settings></settings>
+    <properties>
+        <property id="countdownType" type="dropdown" mode="single">
+            <title>Countdown Type</title>
+            <helpText>Please select the type of countdown.</helpText>
+            <default>1</default>
+            <options>
+                <option name="1">Widget Duration</option>
+                <option name="2">Custom Duration</option>
+                <option name="3">Use Date</option>
+            </options>
+        </property>
+        <property id="countdownDuration" type="number">
+            <title>Countdown Duration</title>
+            <helpText>The duration in seconds.</helpText>
+            <default></default>
+            <visibility>
+                <test type="or">
+                    <condition field="countdownType" type="eq">2</condition>
+                </test>
+            </visibility>
+            <rule>
+                <test type="or" message="Please enter a positive countdown duration">
+                    <condition type="gt">0</condition>
+                    <condition field="countdownType" type="neq">2</condition>
+                </test>
+            </rule>
+        </property>
+        <property id="countdownDate" type="date" format="DD/MM/YYYY HH:mm:ss" variant="dateTime">
+            <title>Countdown Date</title>
+            <helpText>Select the target date and time.</helpText>
+            <default>10/10/2010 10:10:10</default>
+            <visibility>
+                <test type="or">
+                    <condition field="countdownType" type="eq">3</condition>
+                </test>
+            </visibility>
+            <rule>
+                <test>
+                    <condition type="required"></condition>
+                </test>
+            </rule>
+        </property>
+        <property id="countdownWarningDuration" type="number">
+            <title>Warning Duration</title>
+            <helpText>The countdown will show in a warning mode from the end duration entered.</helpText>
+            <default></default>
+            <visibility>
+                <test type="or">
+                    <condition field="countdownType" type="eq">1</condition>
+                    <condition field="countdownType" type="eq">2</condition>
+                </test>
+            </visibility>
+            <rule onStatus="false">
+                <test type="or" message="Warning duration needs to be lower than the countdown main duration.">
+                    <condition type="eq"></condition>
+                    <condition field="countdownType" type="neq">2</condition>
+                    <condition field="countdownDuration" type="lt"></condition>
+                </test>
+                <test type="or" message="Warning duration needs to be lower than the widget duration.">
+                    <condition field="countdownType" type="neq">1</condition>
+                    <condition field="duration" type="lt"></condition>
+                    <condition type="eq"></condition>
+                </test>
+                <test type="or" message="Please enter a positive warning duration">
+                    <condition type="gt">0</condition>
+                    <condition type="eq"></condition>
+                </test>
+            </rule>
+        </property>
+        <property id="countdownWarningDate" type="date" format="DD/MM/YYYY HH:mm:ss" variant="dateTime">
+            <title>Warning Date</title>
+            <helpText>The countdown will show in a warning mode from the warning date entered.</helpText>
+            <default></default>
+            <visibility>
+                <test type="or">
+                    <condition field="countdownType" type="eq">3</condition>
+                </test>
+            </visibility>
+            <rule>
+                <test type="or" message="Warning date needs to be before countdown date.">
+                    <condition field="countdownType" type="neq">3</condition>
+                    <condition field="countdownDate" type="lt"></condition>
+                    <condition type="eq"></condition>
+                </test>
+            </rule>
+        </property>
+        <property id="alignmentH" type="dropdown" mode="single">
+            <title>Horizontal Align</title>
+            <helpText>How should this widget be horizontally aligned?</helpText>
+            <default>center</default>
+            <options>
+                <option name="left">Left</option>
+                <option name="center">Centre</option>
+                <option name="right">Right</option>
+            </options>
+        </property>
+        <property id="alignmentV" type="dropdown" mode="single">
+            <title>Vertical Align</title>
+            <helpText>How should this widget be vertically aligned?</helpText>
+            <default>middle</default>
+            <options>
+                <option name="top">Top</option>
+                <option name="middle">Middle</option>
+                <option name="bottom">Bottom</option>
+            </options>
+        </property>
+        <property id="fontFamily" type="fontSelector">
+            <title>Font</title>
+            <helpText>Select a custom font - leave empty to use the default font.</helpText>
+        </property>
+        <property id="textColor" type="color">
+            <title>Text Colour</title>
+            <default>#222</default>
+        </property>
+        <property id="dividerTextColor" type="color">
+            <title>Divider Colour</title>
+            <default>#222</default>
+        </property>
+        <property id="warningColor" type="color">
+            <title>Warning Colour</title>
+            <default>orange</default>
+        </property>
+        <property id="finishedColor" type="color">
+            <title>Finished Colour</title>
+            <default>red</default>
+        </property>
+    </properties>
+    <preview></preview>
+    <stencil>
+        <width id="width">280</width>
+        <height id="height">100</height>
+        <hbs><![CDATA[
+<div class="countdown-container">
+    <p style="text-align: center;">
+        <span style="font-size:72px;">[hha]:[mm]:[ss]</span>
+    </p>
+</div>
+        ]]></hbs>
+        <style><![CDATA[
+body {
+    width: 280px !important;
+    height: 100px !important;
+    color: #222;
+}
+
+#content>p {
+    margin-bottom: 0;
+    padding: 9px 0;
+}
+
+{% if fontFamily %}.hoursAll, .hours, .minutes, .seconds { font-family: {{fontFamily}}; }{% endif %}
+{% if textColor %}.hoursAll, .hours, .minutes, .seconds  { color: {{textColor}}; }{% endif %}
+{% if dividerTextColor %}.countdown-container > p > span { color: {{dividerTextColor}}; }{% endif %}
+{% if warningColor %}.warning .seconds, .warning .minutes, .warning .hours, .warning .hoursAll {color: {{warningColor}};}{% endif %}
+{% if finishedColor %}.finished .seconds, .finished .minutes, .finished .hours, .finished .hoursAll {color: {{finishedColor}};}{% endif %}
+        ]]></style>
+    </stencil>
+    <onRender><![CDATA[
+// Make replacements on render for all templates
+var $countdownContainer = $('.countdown-container', target);
+
+// Get countdown container html
+var countdownHTML = $countdownContainer.html();
+
+// Make replacements
+var text = countdownHTML;
+var regex = /\[.*?\]/g;
+countdownHTML = text.replace(regex, function (match) {
+    var replacement = '';
+    var matchParsed = match.replace('[', '').replace(']', '');
+
+    // Replace tags
+    switch (matchParsed) {
+        case 'ss':
+            replacement = '<span class="seconds"></span>';
+            break;
+        case 'ssa':
+            replacement = '<span class="secondsAll"></span>';
+            break;
+        case 'mm':
+            replacement = '<span class="minutes"></span>';
+            break;
+        case 'mma':
+            replacement = '<span class="minutesAll"></span>';
+            break;
+        case 'hh':
+            replacement = '<span class="hours"></span>';
+            break;
+        case 'hha':
+            replacement = '<span class="hoursAll"></span>';
+            break;
+        case 'DD':
+            replacement = '<span class="days"></span>';
+            break;
+        case 'WW':
+            replacement = '<span class="weeks"></span>';
+            break;
+        case 'MM':
+            replacement = '<span class="months"></span>';
+            break;
+        case 'YY':
+            replacement = '<span class="years"></span>';
+            break;
+        default:
+            replacement = 'NULL';
+            break;
+    }
+
+    return replacement;
+});
+
+// Attach html back to container
+$countdownContainer.html(countdownHTML);
+
+// Scale the layout
+$(target).xiboLayoutScaler(properties);
+
+// Render the countdown
+var $contentContainer = $(target).find('#content');
+$contentContainer.xiboCountdownRender(properties, $contentContainer.html());
+]]></onRender>
+    <assets>
+        <asset id="countdown-text-thumb" type="path" cmsOnly="true" mimeType="image/png" path="/modules/assets/template-thumbnails/countdown/countdown-text-thumb.png" />
+    </assets>
+</module>

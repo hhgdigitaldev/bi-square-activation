@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="layouts">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="layouts.html">Introduction</a></p>
+</li>
+<li>
+<p><a href="layouts_editor.html">Layout Editor</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_widgets.html">Widgets</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_data_widgets.html">Data Widgets</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_global_elements.html">Global Elements</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_library_search.html">Library Search</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_playlists.html">Add Playlists</a></p>
+</li>
+<li>
+<p><a href="layouts_interactive_actions.html">Interactive Actions</a></p>
+</li>
+<li>
+<p><a href="layouts_templates.html">Layout Templates</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_publish_options.html">Publish Options</a></p>
+</li>
+<li>
+<p class="active"><a href="layouts_campaigns.html">Campaigns - Layout List<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="layouts_ad_campaigns.html">Ad Campaigns</a></p>
+</li>
+<li>
+<p><a href="layouts_overlay.html">Overlay Layouts</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="campaigns">Campaigns <a href="#campaigns" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>BI Square Brand Activation has two  <strong>Campaign</strong> types:</p>
+<ul>
+<li>
+<a href="layouts_campaigns.html#content-create-a-layout-list">Layout List</a> - a collection of Layouts in an ordered list.</li>
+<li>
+<a href="layouts_ad_campaigns.html">Ad Campaign</a> - allows for the creation of advertising campaigns (<a href="users_features_and_sharing.html#content-features">Feature</a> enabled).</li>
+</ul>
+<h2 id="create_a_layout_list">Create a Layout List <a href="#create_a_layout_list" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>A <strong>Layout List Campaign</strong> allows a User to set the playback of a group of Layouts in a defined order.</p>
+<blockquote class="tip"><p>If you think of a Layout as a single slide in a presentation deck, a Campaign is the entire presentation!</p>
+</blockquote>
+<p>Click on <strong>Campaigns</strong> under the <strong>Design</strong> section of the main CMS menu:</p>
+<p><img src="img/v4_layouts_campaigns_grid.png" alt="Campaigns" /></p>
+<ul>
+<li>
+<p>Click the <strong>Add Campaign</strong> button at the top of the grid.</p>
+</li>
+<li>
+<p>Select <strong>Layout List</strong> from the drop down and complete the form fields:</p>
+</li>
+</ul>
+<p><img src="img/v4_layouts_campaign_add_layout_list.png" alt="Add Layout List Campaign" /></p>
+<p><a href="tour_folders.html">Folders</a> are used to organise, search and easily <a href="users_features_and_sharing.html#content-share">Share</a> User objects with other Users/User Groups. Campaigns saved to a Folder will inherit the access options applied to that Folder.</p>
+<blockquote class="tip"><p>If users should also have access to the Layouts/Layout content, ensure that this is also saved to the same Folder!</p>
+</blockquote>
+<ul>
+<li>Give your Campaign a <strong>Name</strong> for easy identification in the CMS including optional <a href="tour_tags.html">Tags</a>.</li>
+</ul>
+<blockquote class="tip"><p>Tags and Folders can also be assigned to multiple Campaigns using the <a href="tour_cms_navigation.html#content-multi-select---with-selected">With Selected</a> option at the bottom of the Campaign grid!</p>
+</blockquote>
+<h3>Cycle Based Playback</h3>
+<p>When a <strong>Campaign</strong> is scheduled with <strong>Cycle Based Playback</strong> enabled, 1 Layout will be shown for a set Play Count. The same Layout will be shown each Schedule loop until the Play Count has been achieved.</p>
+<p>Once enabled, provide a <strong>Play Count</strong> to determine how many ‘plays’ a Layout should have before moving onto the next Layout in the Campaign.</p>
+<h3>List Play Order</h3>
+<p>For Campaigns that do not have Cycle Based Playback enabled, <strong>List Play Order</strong> options can be used to determine how Layouts assigned to the Campaign will play when scheduled at the same time as another Campaign with the same Display Order:</p>
+<p><strong>Round Robin</strong> - Layouts from each Campaign will play interleaved.</p>
+<p><strong>Block</strong> - Layouts will play in their entirety from a Campaign before moving onto the next Campaign.</p>
+<h2 id="add_layouts_to_a_campaign">Add Layouts to a Campaign <a href="#add_layouts_to_a_campaign" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>On <strong>Saving</strong>, the form will re-open with additional tabs.</p>
+<p>Use the <strong>Layouts</strong> tab to select which Layouts to add:</p>
+<p><img src="img/v4_campaigns_assign_layouts.png" alt="Assign Layouts" /></p>
+<ul>
+<li>
+<p>Using the <code>+</code> icon to select which <strong>Layouts</strong> to add.</p>
+</li>
+<li>
+<p>Selected Layouts will be added to the ‘staging area’ at the top of the form.</p>
+</li>
+<li>
+<p>Layouts can be <strong>re-ordered</strong> from here by drag and drop.</p>
+</li>
+<li>
+<p>Remove a Layout by clicking the  <code>-</code> icon.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong> to keep changes.</p>
+</li>
+</ul>
+<blockquote class="tip"><p>The Reference tab can be used to provide reference information for the selected Campaign. Once added, this information can be viewed in the Campaign grid and via the API.</p>
+</blockquote>
+<p>Use the row menu from the Campaign grid to easily make copies of a Campaign as well as enable <a href="users_features_and_sharing.html#content-share">Share</a> options for selected Users/User Groups.</p>
+<blockquote class="tip"><p>Layouts can be directly assigned to Campaigns from the <a href="layouts.html#content-layout-grid">Layouts</a> grid. Use the row menu for the Layout to add and click <strong>Assign to Campaign</strong>. Layouts will be assigned to the end of the selected Campaign by default!</p>
+</blockquote>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

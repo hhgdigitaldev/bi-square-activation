@@ -1,0 +1,53 @@
+<!--
+  ~ Copyright (C) 2023 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-htmlpackage</id>
+    <name>HTML Package</name>
+    <author>Core</author>
+    <description>Upload a complete package to distribute to Players</description>
+    <icon>fa fa-file-code-o</icon>
+    <class></class>
+    <type>htmlpackage</type>
+    <dataType></dataType>
+    <schemaVersion>1</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>0</regionSpecific>
+    <renderAs>native</renderAs>
+    <defaultDuration>60</defaultDuration>
+    <settings>
+        <property id="validExtensions" type="text">
+            <title>Valid Extensions</title>
+            <helpText>The Extensions allowed on files uploaded using this module. Comma Separated.</helpText>
+            <default>htz</default>
+        </property>
+    </settings>
+    <properties>
+        <property id="nominatedFile" type="text" variant="uri">
+            <title>Nominated File</title>
+            <helpText>Enter a nominated file name that player will attempt to open after extracting the .htz archive</helpText>
+            <default>index.html</default>
+        </property>
+    </properties>
+    <preview></preview>
+    <stencil>
+        <twig><![CDATA[]]></twig>
+    </stencil>
+</module>

@@ -1,0 +1,88 @@
+<div class="back-button back-button-playlist">
+    <a id="backToLayoutEditorBtn" class="btn btn-lg hidden">
+        <i class="fa fa-caret-left"></i>
+        <span>{{trans.back}}</span>
+    </a>
+</div>
+
+<div class="editor-toolbar editor-top-bar">
+    <!--TOPBAR-->
+</div>
+
+<div class="container-designer layout-editor-flex">
+    <div class="flex-h flex-grow-0">
+        <div class="editor-toolbar editor-main-toolbar editor-side-bar">
+            <!--TOOLBAR-->
+        </div>
+    </div>
+
+    <div class="flex-v justify-content-between min-fix">
+        <div class="flex-h overflow-hidden">
+            <div class="main-panel">
+                <div id="layout-viewer-container">
+                    <div class="main-panel-wrapper">
+                        <div id="layout-viewer" class="viewer-object-select droppable layout-wrapper">
+                            <!--VIEWER-->
+                        </div>
+
+                        <div id="layerManager" class="layer-manager">
+                            <!--LAYER MANAGER-->
+                        </div>
+
+                        {{!-- Full screen button --}}
+                        <button type="button" id="fullscreenBtn" class="btn btn-sm btn-light" data-toggle="tooltip" data-placement="bottom"
+                            data-title="{{ trans.toggleFullscreen }}">
+                            <i class="fas fa-arrows-alt hide-on-fs"></i>
+                            <i class="fas fa-compress-arrows-alt show-on-fs"></i>
+                        </button>
+
+                        {{!-- Layer manager button --}}
+                        <button type="button" id="layerManagerBtn" class="btn btn-sm btn-light" data-toggle="tooltip" data-placement="top"
+                            data-title="{{ trans.layerManager }}">
+                            <i class="fas fa-layer-group"></i>
+                        </button>
+
+                        {{!-- Snap controls --}}
+                        <div class="snap-controls" style="display: none;">
+                            <input type="number" class="snap-to-grid-value" name="snapToGridValue" style="display: none;">
+                            <button type="button" id="snapToGrid" class="btn btn-sm btn-light" data-toggle="tooltip" data-placement="bottom"
+                                data-title="{{ trans.snapToGrid }}">
+                                <i class="fa-border-all fas"></i>
+                            </button>
+                            <button type="button" id="snapToBorders" class="btn btn-sm btn-light" data-toggle="tooltip" data-placement="bottom"
+                                data-title="{{ trans.snapToBorders }}">
+                                <i class="fa-border-style fas"></i>
+                            </button>
+                            <button type="button" id="snapToElements" class="btn btn-sm btn-light" data-toggle="tooltip" data-placement="bottom"
+                                data-title="{{ trans.snapToElements }}">
+                                <i class="fas fa-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="editor-toolbar editor-bottom-bar">
+                    <!--BOTTOMBAR-->
+                </div>
+            </div>
+            <div class="playlist-panel hidden">
+                <!--PLAYLIST PANEL-->
+            </div>
+
+            <div class="properties-panel-container layout-module toggle-flex">
+                <div id="properties-panel" class="bootbox properties-panel">
+                    <!--PROPERTIES PANEL-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="layout-manager">
+    <!--MANAGER-->
+</div>
+
+<div id="asset-container">
+    <!--ASSET CONTAINER-->
+</div>
+
+<div class="custom-overlay"></div>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="what_is_a_display?">What is a Display? <a href="#what_is_a_display?" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>BI Square Brand Activation helps you display content on your screens; whether you have existing content or need to create your own, to show on 1 screen or a 100.000, BI Square Brand Activation makes it easy!</p>
+<p>BI Square Brand Activation uses the concept of Displays which are managed from the CMS to control when and how content is shown as well as provide device management tools for Users.</p>
+<p>A <strong>Display</strong> is an essential part of digital signage as is it bridges the communication between the <strong>CMS</strong> software (Content Management System) and <strong>Media Player App</strong>.</p>
+<p>The <strong>Player App</strong> is installed onto a <strong>Media Player</strong>, which can be a separate physical hardware device attached to a screen or an integrated Media Player found in supported System on Chip (SoC) professional signage monitors. A hardware key is generated on installing the Player App which creates a unique <strong>Display</strong> record in the CMS.</p>
+<p>Once installed, the Player App must be <strong>Connected</strong> to the CMS by using a <strong>Code</strong> or by providing a <strong>CMS Key</strong>. Once connected a <strong>Display</strong> will be registered awaiting <strong>Authorisation</strong> in the CMS before it will become a managed device and start displaying content from the CMS.</p>
+<h2 id="creating_a_display">Creating a Display <a href="#creating_a_display" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ol>
+<li>
+<strong>Download</strong> the Player App</li>
+<li>
+<strong>Install</strong> to the Player device. Some supported (SoC) System on Chip models will already have the Player App installed.</li>
+<li>
+<strong>Connect</strong> the Player App to the CMS.</li>
+<li>
+<strong>Authorise</strong> the Display using the row menu from the <strong>Displays</strong> page in the CMS.</li>
+</ol>
+<p>The Display will regularly connect to the CMS to check for any updated schedule information or any new content to download. The Displays grid will update to show the status, indicate if the Display has logged in recently, show the date and time stamp of when the Display was last accessed etc, to help you manage your network.</p>
+<blockquote class="tip"><p>Any updates will be downloaded and saved to the Player App. This means that if a connection issue were to arise between the Display and CMS, the Display would continue to show scheduled content offline until the connection was restored.</p>
+</blockquote>
+<p>Manage <strong>Displays</strong> from the CMS to and use the range of device management tools to effectively control your network.</p>
+<h2 id="further_reading">Further Reading <a href="#further_reading" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><a href="configuration_of_displays.html">Display Configuration</a></p>
+<h2 id="faq’s">FAQ’s <a href="#faq’s" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><em><strong>Which Players can connect to the CMS using code?</strong></em></p>
+<p>All Players, at the latest version support connecting via a code, with the exception of the Linux Player.</p>
+<p><em><strong>Do the Player and CMS versions have to match?</strong></em></p>
+<p>Our recommendation is that your CMS and Players should be of the same major version for the best results.</p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

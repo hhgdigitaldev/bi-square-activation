@@ -1,0 +1,215 @@
+<!--
+  ~ Copyright (C) 2023 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-pdf</id>
+    <name>PDF</name>
+    <author>Core</author>
+    <description>Upload PDF files to assign to Layouts</description>
+    <icon>fa fa-file-pdf-o</icon>
+    <class>\Xibo\Widget\PdfProvider</class>
+    <type>pdf</type>
+    <dataType></dataType>
+    <schemaVersion>1</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>0</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>60</defaultDuration>
+    <settings>
+        <property id="validExtensions" type="text">
+            <title>Valid Extensions</title>
+            <helpText>The Extensions allowed on files uploaded using this module. Comma Separated.</helpText>
+            <default>pdf</default>
+        </property>
+    </settings>
+    <properties>
+        <property id="durationIsPerItem" type="checkbox">
+            <title>Duration is per page</title>
+            <helpText>The duration specified is per page otherwise it is per document.</helpText>
+        </property>
+    </properties>
+    <stencil>
+        <twig><![CDATA[
+<div class="pdf-container">
+  <canvas id="the-canvas"></canvas>
+</div>
+        ]]></twig>
+        <style><![CDATA[
+.pdf-container {
+  text-align: center;
+}
+        ]]></style>
+    </stencil>
+<onInitialize><![CDATA[
+// Get widgetData from xic
+var widgetData = xiboIC.get(id, 'widgetData');
+var url = widgetData.libraryId;
+pdfjsLib.GlobalWorkerOptions.workerSrc = "[[assetId=pdfWorkerSrc]]";
+
+var pdfDoc = null,
+  pageNum = 1,
+  pageRendering = false,
+  pageNumPending = null,
+  scale = 1,
+  width,
+  height,
+  interval;
+
+var pdfLoaded = false;
+
+var canvas = document.getElementById('the-canvas');
+var ctx = canvas.getContext('2d');
+
+width = $(window).width();
+height = $(window).height();
+
+canvas.width = width;
+canvas.height = height;
+
+/**
+* Get page info from document, resize canvas accordingly, and render page.
+* @param num Page number.
+*/
+function renderPage(num) {
+  pageRendering = true;
+  // Using promise to fetch the page
+  pdfDoc.getPage(num).then(function(page) {
+    // Get new window size
+    width = $(window).width();
+    height = $(window).height();
+    
+    var unscaledViewport = page.getViewport({scale: 1});
+    var scale = Math.min((height / unscaledViewport.height), (width / unscaledViewport.width));
+    var viewport = page.getViewport({scale: scale});
+
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    // Render PDF page into canvas context
+    var renderContext = {
+      canvasContext: ctx,
+      transform: null,
+      viewport: viewport
+    };
+    var renderTask = page.render(renderContext);
+
+    // Wait for rendering to finish
+    renderTask.promise.then(function() {
+      pageRendering = false;
+      if (pageNumPending !== null) {
+        // New page rendering is pending
+        renderPage(pageNumPending);
+        pageNumPending = null;
+      }
+    });
+  });
+}
+
+/**
+* If another page rendering in progress, waits until the rendering is
+* finised. Otherwise, executes rendering immediately.
+*/
+function queueRenderPage(num) {
+  if (pageRendering) {
+    pageNumPending = num;
+  } else {
+    renderPage(num);
+  }
+}
+
+/**
+* Displays previous page.
+*/
+function onPrevPage() {
+  if (pageNum <= 1) {
+    return;
+  }
+  pageNum--;
+  queueRenderPage(pageNum);
+}
+
+/**
+* Displays next page.
+*/
+function onNextPage() {
+  if (pageNum >= pdfDoc.numPages) {
+    pageNum = 0;
+  }
+  pageNum++;
+  queueRenderPage(pageNum);
+}
+
+/** 
+* Back to first page
+*/
+function onFirstPage() {
+  pageNum = 1;
+  queueRenderPage(pageNum);
+}
+
+/**
+* Asynchronously downloads PDF.
+*/
+pdfjsLib.getDocument({url: url, isEvalSupported: false}).promise.then(function(pdfDoc_) {
+  pdfDoc = pdfDoc_;
+  pdfLoaded = true;
+
+  var startInterval = function(interval) {
+    // Set a timer
+    setInterval(function() {
+      onNextPage();
+    }, interval * 1000);
+  };
+
+  // Initial/first page rendering
+  renderPage(pageNum);
+
+  if (properties.durationIsPerItem) {
+    // Set new widget duration by number of pages
+    xiboIC.setWidgetDuration(
+      (properties.duration * pdfDoc.numPages),
+      {
+        done: function() { // Callback after the request
+          // Start interval ( the defined duration )
+          startInterval(properties.duration);
+        },
+        error: function() {
+          // If the call fails, keep the defalt behaviour
+          startInterval(properties.duration / pdfDoc.numPages);
+        }
+      }
+    );
+  } else {
+    // Start interval ( total duration divided by the number of pages )
+    startInterval(properties.duration / pdfDoc.numPages);
+  }
+});
+
+// Render page on window resize
+window.addEventListener('resize', function(event) {
+  if(pdfLoaded) {
+    onFirstPage();
+  }
+}, true);
+    ]]></onInitialize>
+    <assets>
+        <asset id="pdfWorkerSrc" type="path" mimeType="text/javascript" isAutoInclude="false" path="/modules/assets/pdfjs/pdf.worker.js"></asset>
+    </assets>
+</module>

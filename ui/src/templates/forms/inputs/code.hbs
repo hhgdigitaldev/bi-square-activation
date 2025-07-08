@@ -1,0 +1,25 @@
+<div class="form-group code-input-group xibo-code-input xibo-form-input {{customClass}}"
+    {{#if visibility}}data-visibility="{{visibility}}"{{/if}}
+    {{#if dependsOn}}data-depends-on="{{dependsOn}}"{{/if}}
+>
+    <label for="input_{{id}}" class="control-label"><strong>{{title}}</strong></label>
+    <div class="input-info-container">
+        {{#if helpText}}
+            {{>add-ons/helpText helpText=helpText}}
+        {{/if}}
+    </div>
+    <textarea class="form-control code-input d-none" id="input_{{id}}" name="{{#if name}}{{name}}{{else}}{{id}}{{/if}}" rows="{{rows}}" data-code-type="{{variant}}"
+        {{#each customData}}
+            data-{{this.name}}="{{this.value}}"
+        {{/each}}
+    >{{value}}</textarea>
+    <div class="code-input-editor-container non-scroll">
+        <div class="code-input-editor-scrollable">
+            <div class="code-input-editor"></div>
+        </div>
+        <button type="button" class="code-input-fs-btn btn btn-sm btn-white">
+            <i class="fas fa-arrows-alt hide-on-code-fs"></i>
+            <i class="fas fa-compress-arrows-alt show-on-code-fs"></i>
+        </button>
+    </div>
+</div>

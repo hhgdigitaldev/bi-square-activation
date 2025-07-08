@@ -1,0 +1,123 @@
+<!--
+  ~ Copyright (C) 2023 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-clock-digital</id>
+    <name>Clock - Digital</name>
+    <author>Core</author>
+    <description>Digital Clock</description>
+    <icon>fa fa-clock-o</icon>
+    <class></class>
+    <compatibilityClass>\Xibo\Widget\Compatibility\ClockWidgetCompatibility</compatibilityClass>
+    <type>clock-digital</type>
+    <group id="clock" icon="fa fa-clock">Clock</group>
+    <legacyType condition="clockTypeId==2">clock</legacyType>
+    <dataType></dataType>
+    <schemaVersion>2</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>10</defaultDuration>
+    <thumbnail>clock-digital-thumb</thumbnail>
+    <startWidth>300</startWidth>
+    <startHeight>150</startHeight>
+    <settings></settings>
+    <properties>
+        <property type="message">
+            <title>Enter a format for the Digital Clock e.g. [HH:mm] or [DD/MM/YYYY]. See the manual for more information.</title>
+        </property>
+        <property id="format" type="richText" allowLibraryRefs="true">
+            <title>Enter text in the box below.</title>
+            <default><![CDATA[
+<span style="font-size: 48px; color:#1c1c1c;">[HH:mm:ss]</span>
+            ]]></default>
+        </property>
+        <property id="dateFormatSnippets" type="snippet" mode="options" target="format">
+            <title>Date Formats</title>
+            <helpText>Choose from a preset date format</helpText>
+            <options>
+                <option name="HH:mm">Time only</option>
+                <option name="DD/MM/YYYY">Day/Month/Year</option>
+                <option name="LT">Localised - Time</option>
+                <option name="LTS">Localised - Time with seconds</option>
+                <option name="L">Localised - Month numeral, day of month, year</option>
+                <option name="LL">Localised - Month name, day of month, year</option>
+                <option name="LLL">Localised - Month name, day of month, year, time</option>
+                <option name="LLLL">Localised - Month name, day of month, day of week, year, time</option>
+            </options>
+        </property>
+        <property id="lang" type="languageSelector" variant="momentLocales">
+            <title>Language</title>
+            <helpText>Select the language you would like to use.</helpText>
+        </property>
+        <property id="offset" type="number">
+            <title>Offset</title>
+            <helpText>The offset in minutes that should be applied to the current time.</helpText>
+            <default></default>
+        </property>
+    </properties>
+    <preview></preview>
+    <onInitialize><![CDATA[
+// Set moment locale
+moment.locale(properties.lang || globalOptions.locale);
+
+// Parse any Clock elements
+// Use regex to out the bit between the [] brackets and use that as the format mask for moment.
+var text = properties.format;
+var regex = /\[.*?\]/g;
+
+properties.format = text.replace(regex, function (match) {
+    return '<span class="clock" format="' + match.replace('[', '').replace(']', '') + '"></span>';
+});
+
+// Replace content with the parsed text
+$(target).find('#content').html(properties.format);
+
+// Create updateClock method and save to the interactive controller
+xiboIC.set(
+    id,
+    'updateClock',
+    function updateClock() {
+        var offset = properties.offset || 0;
+        $(".clock").each(function() {
+            $(this).html(moment().format($(this).attr("format")));
+            $(this).html(moment().add(offset, "m").format($(this).attr("format")));
+        });
+    }
+);
+    ]]></onInitialize>
+    <onVisible><![CDATA[
+var updateClock = xiboIC.get(id, 'updateClock');
+// Run update clock if it's defined in the template
+if (typeof updateClock === 'function') {
+    // Start the first time
+    updateClock();
+
+    // Update every second
+    setInterval(updateClock, 1000);
+}
+    ]]></onVisible>
+    <onRender><![CDATA[
+    $('body').xiboLayoutScaler(properties);
+]]></onRender>
+    <assets>
+        <asset id="clock-digital-thumb" type="path" cmsOnly="true" mimeType="image/png" path="/modules/assets/template-thumbnails/clock/clock-digital-thumb.png" />
+    </assets>
+</module>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="layouts">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="layouts.html">Introduction</a></p>
+</li>
+<li>
+<p class="active"><a href="layouts_editor.html">Layout Editor<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="layouts_editor_widgets.html">Widgets</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_data_widgets.html">Data Widgets</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_global_elements.html">Global Elements</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_library_search.html">Library Search</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_playlists.html">Add Playlists</a></p>
+</li>
+<li>
+<p><a href="layouts_interactive_actions.html">Interactive Actions</a></p>
+</li>
+<li>
+<p><a href="layouts_templates.html">Layout Templates</a></p>
+</li>
+<li>
+<p><a href="layouts_editor_publish_options.html">Publish Options</a></p>
+</li>
+<li>
+<p><a href="layouts_campaigns.html">Campaigns - Layout List</a></p>
+</li>
+<li>
+<p><a href="layouts_ad_campaigns.html">Ad Campaigns</a></p>
+</li>
+<li>
+<p><a href="layouts_overlay.html">Overlay Layouts</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="layout_editor">Layout Editor <a href="#layout_editor" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>The Layout Editor is the heart of <strong>content creation</strong> in BI Square Brand Activation. Each time a new Layout is added, or an existing one needs a design change, the Layout Editor is used.</p>
+<p><strong>Add</strong> a new Layout or click <strong>Design</strong> from the row menu of an existing Layout to open the <strong>Layout Editor</strong>:</p>
+<p><img src="img/v4.1_layouts_layout_editor_overview.png" alt="Layout Designer" /></p>
+<p>New Layouts are added as ‘untitled’ and need to be named:</p>
+<ul>
+<li>Click on the ‘<strong>Untitled text</strong>’ to enter a <strong>Name</strong> and complete further form fields as required.</li>
+</ul>
+<p><img src="img/v4.1_layouts_add_layout.png" alt="Add Layout" /></p>
+<ul>
+<li>
+<a href="tour_folders.html">Folders</a> are used to organise as well as easily share user objects (Layouts, Playlists, media files etc.) with other Users/User Groups. Layouts saved to a Folder will inherit share options already applied to that Folder.</li>
+</ul>
+<blockquote class="tip"><p>If users will need access to any of the Layout content, (image files which need to be added to the Layout for example), ensure that these are also saved to the same Folder!</p>
+</blockquote>
+<ul>
+<li>Include optional <a href="tour_tags.html">Tags</a>.</li>
+</ul>
+<blockquote class="tip"><p>Tags and Folders can also be assigned to multiple Layouts using the <a href="tour_cms_navigation.html#content-multi-select---with-selected">With Selected</a> option at the bottom of the Layout grid!</p>
+</blockquote>
+<ul>
+<li>A string can be used as a <strong>Code Identifier</strong> for the Layout when using <a href="layouts_interactive_actions.html">Interactive Actions.</a>
+</li>
+<li>The collection of statistics for <a href="displays_metrics.html">Proof of Play Reports</a> can be enabled for the Layout.</li>
+</ul>
+<blockquote class="tip"><p>Prior to enabling the collection for Proof of Play for the Layout, ensure that the <strong>Enable Stats Collection</strong> check box has been enabled for the <strong>Display</strong> the Layout will be scheduled to by using <a href="displays_settings.html">Display Profile Settings</a>.</p>
+</blockquote>
+<ul>
+<li>Click to <strong>Save</strong> the new Layout record.</li>
+</ul>
+<blockquote class="tip"><p>If you are looking to use a <a href="layouts_templates">Template</a> as a basis for your design you can add from the <strong>Toolbar</strong> inside the Layout Editor!</p>
+</blockquote>
+<h2 id="status_bar">Status Bar <a href="#status_bar" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>In the top left of the editor you can see the current “play” status of the Layout as well as make edits to the Layout record and view the overall duration of the Layout:</p>
+<p><img src="img/v4_layouts_status_bar.png" alt="Status Bar" /></p>
+<p>The Icons shown here represent the current status of the Layout:</p>
+<ul>
+<li>
+<p><strong>Blue cog</strong> - the Layout has yet to be built.</p>
+</li>
+<li>
+<p><strong>Green tick</strong> - the Layout is valid and can be published and scheduled.</p>
+</li>
+<li>
+<p><strong>Red cross</strong> - the Layout is invalid and should not be published for scheduling.</p>
+</li>
+<li>
+<p><strong>Orange exclamation mark</strong> - the Layout contains media that can only be assessed Player side and can be published and scheduled.</p>
+</li>
+</ul>
+<blockquote class="tip"><p>You can mouse over the icon to see the details as to the current status.</p>
+<p>The Orange exclamation mark is a normal Layout status to have if your Layout contains online content, such as a webpage. The CMS cannot determine that the Player will display the content as this type of content is not sent directly from the CMS and is instead cached (stored) Player side.  The Player will need to have a reliable internet connection to successfully display such content.</p>
+</blockquote>
+<p>The current <strong>Name</strong> of the Layout is shown next to the status icon. This can be clicked to make edits to the naming,  Folder location, Tags etc.</p>
+<p>The total <strong>Duration</strong> of the Layout is shown here in minutes and seconds and is based on the longest running item on the Layout.</p>
+<blockquote class="tip"><p>Each item has a default duration which can be overridden from the <strong>Advanced</strong> tab from the <strong>Properties Panel</strong> when selected.</p>
+</blockquote>
+<p>The dimensions of the Layout are set from the <strong>Resolution</strong> selected from the <strong>Properties Panel</strong> for the Layout configuration.</p>
+<p>Top right, the Layout jump list provides easy navigation between all Layouts, the logged in User has access to edit, without having to leave the Layout Editor to switch:</p>
+<p><img src="img/v4_layouts_jump_list.png" alt="Jump List" /></p>
+<p>Next to the Layout jump list is a menu of items which show available actions dependent on if the Layout is <a href="layouts.html#content-layouts-in-a-published-status">Published</a> or in a <a href="layouts.html#content-layouts-in-a-draft-status">Draft</a> status.</p>
+<h2 id="properties_panel">Properties Panel <a href="#properties_panel" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>The <strong>Properties Panel</strong> is used to configure all items added to the Layout as well as the Layout itself.</p>
+<blockquote class="tip"><p>Configuration options and available tabs will differ across items added.</p>
+</blockquote>
+<p>On adding a new Layout with no content, configuration options are shown in the Properties Panel:</p>
+<p><img src="img/v4_layouts_layout_properties.png" alt="Layout Properties" /></p>
+<blockquote class="tip"><p>Return to the Layout properties at any stage of creating the Layout by clicking anywhere on the background!</p>
+</blockquote>
+<p>Select to use a colour or an image as your background:</p>
+<ul>
+<li>
+<p>Click on the <strong>Background Colour</strong> field and select a colour to use.</p>
+</li>
+<li>
+<p>Drag an image from the <a href="layouts_editor_library_search.html">Image Library Search</a> from the Toolbar, to the <strong>Background Image</strong> box.</p>
+</li>
+<li>
+<p>Use <strong>Upload</strong> to select and add a new image.</p>
+</li>
+</ul>
+<blockquote class="tip"><p>Images uploaded here will automatically be saved to your CMS Library!</p>
+</blockquote>
+<ul>
+<li>Use the drop down to set the <a href="layouts.html#content-resolutions">Resolution</a> that best matches your display.</li>
+</ul>
+<blockquote class="tip"><p>Custom Resolutions can be created by a Super Administrator!</p>
+</blockquote>
+<ul>
+<li>Tick to apply default <a href="tour_transitions.html">Transition</a> settings to all Widgets added to the Layout.</li>
+</ul>
+<h2 id="layering">Layering <a href="#layering" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Template Zones, Layout content and the Layout background can be ordered using z-index settings.</p>
+<p>Everything added to the Layout will get a new Layer (Video files, Playlists etc.) Elements get their own Canvas Layer to hold all added Elements which can be moved up and down the layers as one.</p>
+<blockquote class="tip"><p>To set the Layer for a Background Image, click on the background and set from the Properties Panel.</p>
+</blockquote>
+<ul>
+<li>Click in the item to open the configuration options in the Properties Panel .</li>
+<li>Select the positioning tab (with the grid icon).</li>
+<li>Enter a number to determine the layer.</li>
+</ul>
+<p><img src="img/v4_layouts_layering.png" alt="Layering" /></p>
+<blockquote class="tip"><p>The higher the number the higher the Layer.</p>
+<p>Use the <a href="layouts_editor.html#content-context-menu">Context Menu</a> and  <a href="layouts_editor.html#content-layer-control">Layer Control Panel</a> to easily move selected items forwards and backwards.</p>
+</blockquote>
+<h2 id="toolbox">Toolbox <a href="#toolbox" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>The Toolbox is used to access various content types to add to Layouts:</p>
+<p><img src="img/v4_layouts_toolbar.png" alt="Toolbar" /></p>
+<blockquote class="tip"><p>Click on the expander icon at the bottom to change the media thumbnail view for easier media assignment!</p>
+<p>It will only expand to a sensible level dependent on the screen size you are working on. Using the Layout Editor on screens less than 1600px will limit the total number of available levels to view.</p>
+</blockquote>
+<p><a href="layouts_templates.html">Templates</a> are selected from inside the Layout Editor from the Toolbox.</p>
+<h2 id="arranging_layout_content">Arranging Layout Content <a href="#arranging_layout_content" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Position content exactly where you want it with flexible drag and drop, rotation and resizing tools:</p>
+<p><img src="img/v4_layouts_snap_to_buttons.png" alt="Snap Buttons" /></p>
+<blockquote class="tip"><p>Use the “Snap to buttons” at the bottom right to select to <strong>Snap to Grid</strong>, <strong>Snap to Borders</strong> or <strong>Snap to Elements</strong> for easier positioning when adding items to the Layout.</p>
+</blockquote>
+<p>Move multiple items added to a Layout in a block.</p>
+<ul>
+<li>Click and hold an on the background.</li>
+<li>Drag to create a rectangle outline.</li>
+</ul>
+<p>Ensure that all items that need to be moved are contained within the rectangle.</p>
+<p><img src="img/v4_layouts_editor_drag_selector.png" alt="Drag Selector" /></p>
+<ul>
+<li>Click to re-position the block of items on the Layout:</li>
+</ul>
+<p><img src="img/v4_layouts_editor_move_block.png" alt="Move Block" /></p>
+<ul>
+<li>Click anywhere outside of the block to return to separate items once positioned.</li>
+</ul>
+<h2 id="layer_control">Layer Control <a href="#layer_control" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>View Layering and item durations of all items added to the Layout from the <strong>Layer Control</strong> located at the bottom left:</p>
+<p><img src="img/v4_layouts_editor_layer_control.png" alt="Layer Control" /></p>
+<blockquote class="tip"><p>Use the Layer Control to easily select items that are positioned behind other items to make edits!</p>
+</blockquote>
+<h2 id="context_menu">Context Menu <a href="#context_menu" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Items added to a Layout have an additional menu of items which are accessed from right clicking in a selected item:</p>
+<p><img src="img/v4_layouts_editor_context_menu.png" alt="Context Menu" /></p>
+<blockquote class="tip"><p>Options shown are dependent on the item selected!</p>
+</blockquote>
+<p>Widgets have further options which are show under the Widget name/type:</p>
+<p><img src="img/v4_layouts_editor_widget_options.png" alt="Widget Options" /></p>
+<p>Options include attaching an <a href="media_module_audio.html">Audio</a> file to a Widget as well as controlling <a href="users_features_and_sharing.html">Sharing</a> options to View, Edit and Delete selected items for Users/User Groups.</p>
+<h2 id="preview">Preview <a href="#preview" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Play a full <strong>Preview</strong> of your Layout by clicking on the <strong>Play</strong> button:</p>
+<p><img src="img/v4_layouts_play_preview.png" alt="Layout Preview" /></p>
+<blockquote class="tip"><p>Before the Layout can start all <strong>Media</strong> must be downloaded to your browser and verified so you may experience a slight delay whilst this is in process.</p>
+<p>View in full screen by clicking on the icon in the top right corner of the preview window before pressing play!</p>
+</blockquote>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

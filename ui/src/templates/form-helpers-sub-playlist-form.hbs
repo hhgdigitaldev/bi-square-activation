@@ -1,0 +1,22 @@
+<div class="subplaylist-item-row form-inline flex-nowrap p-1">
+    <div class="btn subplaylist-item-sort"><i class="fa fa-arrows-v"></i></div>
+    <button type="button" class="btn btn-white subplaylist-item-btn"><i class="fa fa-minus"></i></button>
+    <div class="form-group subplaylist-id-container">
+        <select class="form-control subplaylist-id" name="playlistId[]" data-field-id="{{playlistId}}">
+            <option value=""></option>
+        </select>
+    </div>
+    <div class="form-group subplaylist-spots-container">
+        <input class="form-control subplaylist-spots" name="spots[]" type="number" value="{{ spots }}" />
+    </div>
+    <div class="form-group subplaylist-spots-length-container">
+        <input class="form-control subplaylist-spots-length" name="spotLength[]" type="number" value="{{ spotLength }}" />
+    </div>
+    <div class="form-group subplaylist-spots-fill-container">
+        <select class="form-control subplaylist-spots-fill" name="spotFill[]">
+            <option value="repeat" {{#eq "repeat" spotFill}}selected{{/eq}} data-template-result="{{ repeatHelpText }}">{{ repeatTitle }}</option>
+            <option value="fill" {{#eq "fill" spotFill}}selected{{/eq}} data-template-result="{{ fillHelpText }}">{{ fillTitle }}</option>
+            <option value="pad" {{#eq "pad" spotFill}}selected{{/eq}} data-template-result="{{ padHelpText }}">{{ padTitle }}</option>
+        </select>
+    </div>
+</div>

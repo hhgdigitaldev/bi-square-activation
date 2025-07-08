@@ -1,0 +1,63 @@
+<!--
+  ~ Copyright (C) 2024 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-notificationview</id>
+    <name>Notification</name>
+    <author>Core</author>
+    <description>Display messages created in the Notification Drawer of the CMS</description>
+    <icon>fa fa-bell-o</icon>
+    <class>\Xibo\Widget\NotificationProvider</class>
+    <compatibilityClass>\Xibo\Widget\Compatibility\NotificationViewCompatibility</compatibilityClass>
+    <type>notificationview</type>
+    <dataType>message</dataType>
+    <showIn>layout</showIn>
+    <dataCacheKey>%age%_%displayId%</dataCacheKey>
+    <fallbackData>1</fallbackData>
+    <schemaVersion>2</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>10</defaultDuration>
+    <settings></settings>
+    <properties>
+        <property id="age" type="number">
+            <title>Age</title>
+            <helpText>What is the maximum notification age in minutes, 0 for no restrictions.</helpText>
+            <default>0</default>
+        </property>
+        <property id="durationIsPerItem" type="checkbox">
+            <title>Duration is per item</title>
+            <helpText>The duration specified is per item otherwise it is per feed.</helpText>
+            <default>0</default>
+        </property>
+        <property id="numItems" type="number">
+            <title>Number of items</title>
+            <helpText>The number of items you want to display.</helpText>
+            <rule>
+                <test type="or" message="When duration is per item then number of items must be 1 or higher">
+                    <condition type="gte">1</condition>
+                    <condition field="durationIsPerItem" type="eq">0</condition>
+                </test>
+            </rule>
+        </property>
+    </properties>
+    <preview></preview>
+</module>

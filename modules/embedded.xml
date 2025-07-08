@@ -1,0 +1,102 @@
+<!--
+  ~ Copyright (C) 2024 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-embedded</id>
+    <name>Embedded</name>
+    <author>Core</author>
+    <description>Embed HTML and JavaScript</description>
+    <icon>fa fa-code</icon>
+    <class></class>
+    <type>embedded</type>
+    <dataType></dataType>
+    <schemaVersion>1</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>60</defaultDuration>
+    <startWidth>400</startWidth>
+    <startHeight>600</startHeight>
+    <settings></settings>
+    <properties>
+        <property id="transparency" type="checkbox" includeInXlf="true">
+            <title>Background transparent?</title>
+            <helpText>Should the Widget be shown with a transparent background? Also requires the embedded content to have a transparent background.</helpText>
+            <default>0</default>
+        </property>
+        <property id="scaleContent" type="checkbox">
+            <title>Scale Content?</title>
+            <helpText>Should the embedded content be scaled along with the layout?</helpText>
+            <default>0</default>
+            <playerCompatibility windows="v2 R253+"></playerCompatibility>
+        </property>
+        <property id="isPreNavigate" type="checkbox" includeInXlf="true">
+            <title>Preload?</title>
+            <helpText>Should this Widget be loaded entirely off-screen so that it is ready when shown? Dynamic content will start running off screen.</helpText>
+            <default>0</default>
+        </property>
+        <property id="embedHtml" type="code" allowLibraryRefs="true" variant="html" includeInXlf="true">
+            <title>HTML</title>
+            <helpText>Add HTML to be included between the BODY tag.</helpText>
+        </property>
+        <property id="embedStyle" type="code" allowLibraryRefs="true" variant="css">
+            <title>Style Sheet</title>
+            <helpText>Add CSS to be included immediately before the closing body tag. Please do not include style tags.</helpText>
+        </property>
+        <property id="embedJavaScript" type="code" allowLibraryRefs="true" variant="javascript">
+            <title>JavaScript</title>
+            <helpText>Add JavaScript to be included immediately before the closing body tag. Do not use [] array notation as this is reserved for library references. Do not include script tags.</helpText>
+        </property>
+        <property id="embedScript" type="code" variant="html">
+            <title>HEAD</title>
+            <helpText>Add additional tags to appear immediately before the closing head tag, such as meta, link, etc. If your JavaScript uses the [] array notation add it inside script tags here.</helpText>
+        </property>
+    </properties>
+    <preview></preview>
+    <stencil>
+        <head><![CDATA[
+{{embedScript|raw}}
+        ]]></head>
+        <twig><![CDATA[
+{{embedHtml|raw}}
+<script type="text/javascript">
+    {{embedJavaScript|raw}}
+</script>
+        ]]></twig>
+        <style><![CDATA[
+{{embedStyle|raw}}
+        ]]></style>
+    </stencil>
+    <onInitialize><![CDATA[
+// id: The id of the widget
+// target: The target element to render
+// properties: The properties for the widget
+// -------------------------------------------
+if(typeof EmbedInit === 'function') {
+    EmbedInit();
+}
+    ]]></onInitialize>
+    <onRender><![CDATA[
+if(properties.scaleContent) {
+    window.scaleContent = true;
+    $(target).xiboLayoutScaler(globalOptions);
+}
+]]></onRender>
+</module>

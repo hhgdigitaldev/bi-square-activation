@@ -1,0 +1,135 @@
+<div class="context-menu-overlay" oncontextmenu="return false">
+    <div class="context-menu context-menu-{{type}}">
+        {{#if isSortable}}
+            <div class="sort-controls-container">
+                <div class="context-menu-btn" data-title="{{trans.moveTopLeft}}" data-action="Move" data-action-type="topLeft" data-toggle="tooltip" data-container=".context-menu">
+                    <i class="fa fa-fast-backward"></i>
+                </div>
+                <div class="context-menu-btn" data-title="{{trans.moveLeft}}" data-action="Move" data-action-type="oneLeft" data-toggle="tooltip" data-container=".context-menu">
+                    <i class="fa fa-backward"></i>
+                </div>
+                <div class="context-menu-btn" data-title="{{trans.moveRight}}" data-action="Move" data-action-type="oneRight" data-toggle="tooltip" data-container=".context-menu">
+                    <i class="fa fa-forward"></i>
+                </div>
+                <div class="context-menu-btn" data-title="{{trans.moveTopRight}}" data-action="Move" data-action-type="topRight" data-toggle="tooltip" data-container=".context-menu">
+                    <i class="fa fa-fast-forward"></i>
+                </div>
+            </div>
+        {{/if}}
+
+        <div class="main-button-container d-flex flex-column">
+            {{#if canChangeLayer}}
+                <div class="context-menu-btn" data-title="{{trans.bringToFront}}" data-action="Layer" data-action-type="bringToFront" data-toggle="tooltip" data-container=".context-menu">
+                    <i class="fas fa-caret-square-up"></i><span>{{trans.bringToFront}}</span>
+                </div>
+                <div class="context-menu-btn" data-title="{{trans.bringForward}}" data-action="Layer" data-action-type="bringForward" data-toggle="tooltip" data-container=".context-menu">
+                    <i class="fas fa-caret-up"></i><span>{{trans.bringForward}}</span>
+                </div>
+                <div class="context-menu-btn" data-title="{{trans.sendBackwards}}" data-action="Layer" data-action-type="sendBackwards" data-toggle="tooltip" data-container=".context-menu">
+                    <i class="fas fa-caret-down"></i><span>{{trans.sendBackwards}}</span>
+                </div>
+                <div class="context-menu-btn" data-title="{{trans.sendToBack}}" data-action="Layer" data-action-type="sendToBack" data-toggle="tooltip" data-container=".context-menu">
+                    <i class="fas fa-caret-square-down"></i><span>{{trans.sendToBack}}</span>
+                </div>
+            {{/if}}
+
+            {{#if canUngroup}}
+                <div class="context-menu-btn" data-title="{{trans.ungroupElements}}" data-action="Ungroup" data-toggle="tooltip" data-container=".context-menu">
+                    <i class="fas fa-chain-broken"></i><span>{{trans.ungroupElements}}</span>
+                </div>
+            {{/if}}
+
+            {{#if isEditableWidget}}
+                {{#if canAttachAudio}}
+                    <div class="context-menu-btn widget-property" data-title="{{trans.editAudio}}" data-property="Audio" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                        <i class="tool-icon-audio"></i><span>{{trans.editAudio}}</span>
+                    </div>
+                {{/if}}
+
+                {{#eq editor "playlist"}}
+                    <div class="context-menu-btn widget-property" data-title="{{trans.editExpiry}}" data-property="Expiry" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                        <i class="tool-icon-expiry"></i><span>{{trans.editExpiry}}</span>
+                    </div>
+            
+                    <div class="context-menu-btn widget-property" data-title="{{trans.editTransIn}}" data-property="Transition" data-property-type="in" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                        <i class="tool-icon-transitionIn"></i><span>{{trans.editTransIn}}</span>
+                    </div>
+                    
+                    <div class="context-menu-btn widget-property" data-title="{{trans.editTransOut}}" data-property="Transition" data-property-type="out" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                        <i class="tool-icon-transitionOut"></i><span>{{trans.editTransOut}}</span>
+                    </div>
+                {{/eq}}
+            {{/if}}
+
+            {{#if isPlaylist}}
+                {{#unless isDynamicPlaylist}}
+                    <div class="context-menu-btn editPlaylistBtn" data-title="{{trans.editPlaylist}}" data-action="editPlaylist" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                        <i class="fa fa-edit"></i><span>{{trans.editPlaylist}}</span>
+                    </div>
+
+                    {{#if playlistCanBeConverted}}
+                        <div class="context-menu-btn convertPlaylistButton" data-title="{{trans.convertPlaylistHelpText}}" data-action="convertPlaylist" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                            <i class="fa fa-refresh"></i><span>{{trans.convertPlaylist}}</span>
+                        </div>
+                    {{/if}}
+                {{/unless}}
+            {{/if}}
+
+            {{#if isFrameOrZone}}
+                {{#if widget.isPermissionsModifiable}}
+                    <div class="context-menu-btn permissionsBtn" data-title="{{trans.editPermissions}}" data-property="PermissionsWidget" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                        <i class="tool-icon-permissions"></i><span>{{trans.editPermissions}}</span>
+                    </div>
+                {{/if}}
+            {{else if isPlaylist}}
+                {{#if isPermissionsModifiable}}
+                    <div class="context-menu-btn permissionsBtn" data-title="{{trans.editPlaylistPermissions}}" data-property="Permissions" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                        <i class="tool-icon-permissions"></i><span>{{trans.editPlaylistPermissions}}</span>
+                    </div>
+                {{/if}}
+            {{else if isElementBased}}
+                {{#if elementWidget.isPermissionsModifiable}}
+                    <div class="context-menu-btn permissionsBtn" data-title="{{trans.editWidgetPermissions}}" data-property="PermissionsCanvasWidget" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                        <i class="tool-icon-permissions"></i><span>{{trans.editWidgetPermissions}}</span>
+                    </div>
+                {{/if}}
+            {{else}}
+                {{#if isPermissionsModifiable}}
+                    <div class="context-menu-btn permissionsBtn" data-title="{{trans.editPermissions}}" data-property="Permissions" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                        <i class="tool-icon-permissions"></i><span>{{trans.editPermissions}}</span>
+                    </div>
+                {{/if}}
+            {{/if}}
+
+            {{#if canBeCopied}}
+                <div class="context-menu-btn copyBtn" data-title="{{trans.copy}}" data-action="Copy" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                    <i class="fa fa-copy"></i><span>{{trans.copy}}</span>
+                </div>
+            {{/if}}
+
+            {{#if canHaveNewConfig}}
+                <div class="context-menu-btn newConfigBtn" data-title="{{trans.newConfig}}" data-action="newConfig" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                    <i class="fa fa-plus-square"></i><span>{{trans.newConfig}}</span>
+                </div>
+            {{/if}}
+
+            {{#if canEditText}}
+                <div class="context-menu-btn editText" data-title="{{trans.editText}}" data-action="editText" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                    <i class="fa fa-edit"></i><span>{{trans.editText}}</span>
+                </div>
+            {{/if}}
+
+            {{#if isFrameOrZone}}
+                <div class="context-menu-btn editFrameBtn" data-title="{{trans.options}}" data-action="editFrame" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                    <i class="fa fa-cog"></i><span>{{trans.options}}</span>
+                </div>
+            {{/if}}
+
+            {{#if isDeletable}}
+                <div class="context-menu-btn deleteBtn" data-title="{{trans.delete}}" data-action="Delete" data-toggle="tooltip" data-container=".context-menu" data-placement="bottom">
+                    <i class="fa fa-trash"></i><span>{{trans.delete}}</span>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

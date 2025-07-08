@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="configuration_of_displays">Configuration of Displays <a href="#configuration_of_displays" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Once Displays have been connected, they are configured and managed from the <strong>Displays</strong> page inside the CMS.</p>
+<p>In order to start showing content, <strong>Displays</strong> must be <strong>Authorised</strong> with the CMS. Check the Displays grid to make sure the right Displays are showing as <strong>Authorised</strong>, as a first step.</p>
+<ul>
+<li>Give the <strong>Display</strong> a friendly name for easier identification within the CMS by using the <strong>Edit</strong> option from the row menu.</li>
+</ul>
+<p>Now is a great time to assign your Display a <strong>Default Layout</strong>.</p>
+<ul>
+<li>Scroll down the form to select a Layout to use as the default .This Layout will be shown when there is no content scheduled or an issue arises that prevents scheduled content from showing on your Display.</li>
+</ul>
+<blockquote class="tip"><p>When creating your own Default Layouts, keep in mind that designs should be kept simple, avoiding any complex media and web content!</p>
+</blockquote>
+<ul>
+<li>
+<p>Click on the <strong>Details</strong> tab to provide further information about your Display.</p>
+</li>
+<li>
+<p>Setting the <strong>Latitude</strong> and <strong>Longitude</strong> of the Display, will show its location on the map view.</p>
+</li>
+</ul>
+<p>The <strong>Displays</strong> map can be viewed by clicking the icon next to the <strong>Folders</strong> toggle from the Displays grid:</p>
+<p><img src="img/display_configuration_map_view_icon.png" alt="Display Map Icon" /></p>
+<ul>
+<li>Set <strong>Timezones</strong> to ensure that content is shown at the right time for your Display location.</li>
+</ul>
+<p>Each Display is assigned a default profile which will automatically apply its settings to all Displays of the same type. For example, you edit the Collect Interval for your Android Display Profile. Once saved, the new collection time will be applied to all Displays assigned this as a Display Profile.</p>
+<p><strong>Display Setting Profiles</strong> can be customised for automatic management and configuration of your Display Network.</p>
+<h2 id="further_reading">Further Reading <a href="#further_reading" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><a href="what_is_a_display.html">What is a Display?</a></p>
+<h2 id="faq’s">FAQ’s <a href="#faq’s" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><em><strong>What happens if I have no content scheduled, and my default layout has an issue with downloading it’s content?</strong></em></p>
+<p>The splash screen will be shown until the issue with the default layout is resolved or content is scheduled to show on the Display.</p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

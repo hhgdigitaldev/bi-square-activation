@@ -1,0 +1,908 @@
+/*!
+ * Copyright (C) 2023 Xibo Signage Ltd
+ *
+ * Xibo - Digital Signage - https://xibosignage.com
+ *
+ * This file is part of Xibo.
+ *
+ * Xibo is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * Xibo is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+@import "variables";
+@import "mixins";
+
+
+.input-info-container {
+    float: right;
+    padding-top: 6px;
+
+    .input-info {
+        float: right;
+        margin-left: 4px;
+        color: $xibo-color-primary-l60;
+
+        &.checkbox-popup {
+            padding-top: 3px;
+        }
+    }
+}
+
+.text-area-buttons {
+    display: flex;
+    justify-content: flex-end;
+    background-color: $xibo-color-primary-l10;
+    border-radius: 0.25rem 0.25rem 0 0;
+}
+
+/* Code input */
+.code-input-editor-container {
+    border: 2px solid $xibo-color-neutral-600;
+    border-radius: 0.25rem;
+    position: relative;
+    overflow-y: auto;
+
+    &.non-scroll {
+        overflow-y: unset;
+    }
+
+    .code-input-editor-scrollable {
+        overflow-y: auto;
+        min-height: 160px;
+        max-height: 300px;
+    }
+
+    .code-input-fs-btn {
+        display: none;
+        position: absolute;
+        right: 6px;
+        top: 6px;
+
+        .hide-on-code-fs {
+            display: block;
+        }
+
+        .show-on-code-fs {
+            display: none;
+        }
+    }
+
+    .code-input-editor {
+        width: 100%;
+        height: 100%;
+
+        .cm-focused {
+            outline: none !important;
+        }
+    }
+
+    .cm-gutters {
+        display: none;
+    }
+
+    &:hover {
+        .code-input-fs-btn {
+            display: block;
+            opacity: 0.4;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    &.code-input-fs {
+        position: fixed;
+        width: 60vw;
+        height: 60vh;
+        left: 20vw;
+        top: 20vh;
+        z-index: $code-editor-fullscreen-z-index;
+        background-color: $xibo-color-neutral-0;
+
+        .code-input-editor-scrollable {
+            max-height: 100%;
+        }
+
+        .code-input-fs-btn {
+            display: block;
+        }
+
+        .hide-on-code-fs {
+            display: none;
+        }
+
+        .show-on-code-fs {
+            display: block;
+        }
+    }
+}
+
+.code-fs-placeholder {
+    border: 2px solid $xibo-color-neutral-600;
+    border-radius: 0.25rem;
+    background-color: $xibo-color-neutral-300;
+    min-height: 160px;
+    max-height: 400px;
+}
+
+.code-fs-overlay {
+    z-index: $code-editor-fullscreen-overlay-z-index !important;
+}
+
+/* Data input */
+.date-input-group {
+
+    .input-group {
+        & > .form-control:not([type="hidden"]) {
+            border-top-left-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        & > .form-control:not(:disabled) {
+            background-color: white;
+            cursor: pointer;
+        }
+    }
+}
+
+/* Header */
+.header {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: $xibo-color-primary;
+    margin-left: -4px;
+
+    &.main {
+        color: $xibo-color-primary-d60;
+        font-size: 1.3rem;
+    }
+}
+
+/* Rich text input */
+.rich-text-temp-container {
+    background-color: $xibo-color-neutral-1000;
+}
+#richTextDetachedOverlay {
+    z-index: calc($properties-panel-rich-text-container-z-index - 1) !important;
+}
+.ck-body-wrapper .ck-balloon-panel {
+    z-index: calc($properties-panel-rich-text-container-z-index + 1) !important;
+}
+
+.ck-editor-body-detached .ck-body-wrapper .ck-balloon-panel[data-main-toolbar] {
+    z-index: calc($properties-panel-rich-text-container-z-index + 2) !important;
+    right: 150px !important;
+    left: auto !important;
+    top: auto !important;
+    bottom: calc(100vh - 100px) !important;
+    width: calc(100vw - 300px) !important;
+    display: block;
+
+    &::before, &:after {
+        display: none;
+    }
+}
+
+.ck-editor-body-detached .ck-body-wrapper .ck-balloon-panel:not(.ck-powered-by-balloon):not([data-main-toolbar]) {
+    top: 148px !important;
+    left: 160px !important;
+    opacity: 0.95;
+}
+
+.ck-editor-body-detached .ck-body-wrapper .ck-balloon-panel.ck-powered-by-balloon {
+    top: auto !important;
+    left: auto !important;
+    bottom: 16px !important;
+    right: 16px !important;
+    display: block;
+}
+
+.rich-text-main-container {
+    width: 100%;
+    transform-origin: top right;
+    box-shadow: none !important;
+    overflow: hidden;
+    border-radius: 0 0 0.25rem 0.25rem;
+
+    textarea {
+        display: none;
+    }
+
+    .rich-text-container-wrapper {
+        font-size: initial;
+        max-height: 202px;
+        overflow: auto;
+
+        &.loading > * {
+            display: none;
+        }
+    }
+
+    .rich-text-container, .rich-text-editor {
+        overflow: visible;
+    }
+
+    .text-area-buttons {
+        width: 100%;
+        position: sticky;
+        left: 0;
+        top: 0;
+        z-index: 1;
+
+        button:focus {
+            box-shadow: none !important;
+        }
+    }
+
+    .ck-editor__editable_inline {
+        outline-color: $xibo-color-accent;
+        outline-style: solid;
+        border-radius: 0 !important;
+    }
+
+    &.source {
+        .rich-text-container-wrapper {
+            background-color: $xibo-color-neutral-0 !important;
+            overflow: initial;
+
+            .rich-text-container {
+                height: 100% !important;
+            }
+        }
+
+        .ck-editor__editable_inline {
+            display: none;
+        }
+
+        textarea {
+            display: initial !important;
+            opacity: initial !important;
+            height: 100% !important;
+            min-height: 160px;
+        }
+
+        .rich-text-editor {
+            display: none;
+        }
+
+        .viewSourceButton {
+            outline: 2px solid $xibo-color-neutral-700;
+            outline-offset: -5px;
+            border-radius: 8px;
+        }
+
+        .zoomButton {
+            display: none;
+        }
+    }
+
+    &.detached {
+        z-index: $properties-panel-rich-text-container-z-index;
+        position: fixed;
+        top: 100px;
+        right: 150px;
+        outline-width: 1px;
+        width: calc(100vw - 300px) !important;
+        height: calc(100vh - 200px) !important;
+        overflow: hidden;
+
+        .rich-text-container-wrapper {
+            height: calc(100% - 28.5px) !important;
+            max-height: none;
+        }
+
+        .rich-text-container {
+            height: 100%;
+        }
+
+        .rich-text-dimensions-control {
+            background: $xibo-color-neutral-100;
+            color: $xibo-color-neutral-900;
+
+            .control-label {
+                display: inline-block;
+            }
+        }
+
+        .text-area-buttons {
+            border-radius: 0.25rem 0.25rem 0 0;
+            padding: 6px;
+            @include set-transparent-color(background-color, $xibo-color-neutral-900, 0.9);
+
+            button {
+                color: $xibo-color-neutral-0;
+            }
+        }
+    }
+}
+
+.rich-text-dimensions-control {
+    padding: 6px 8px;
+    background: $xibo-color-primary-d60;
+    margin: 0;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+
+    .control-label {
+        display: none;
+    }
+
+    .form-group {
+        margin: 0;
+
+        input {
+            height: 25px;
+            width: 100%;
+        }
+
+        input[type=checkbox] {
+            margin: 0 6px;
+        }
+    }
+
+    select {
+        padding: 4px;
+        height: 28px;
+    }
+}
+
+// Data set column selector
+.dataset-column-selector, .ticker-tag-selector, .dataset-column-style-selector {
+    display: flex;
+    gap: 6px;
+
+    .connectedlist {
+        flex: 1;
+        min-width: 0;
+
+        .text-info {
+            color: $xibo-color-secondary !important;
+            font-weight: bold;
+        }
+
+        .ui-sortable {
+            width: 100% !important;
+            background-color: $xibo-color-primary-l60 !important;
+        }
+
+        .li-sortable {
+            width: calc(100% - 12px);
+        }
+    }
+}
+
+// Ticker tag selector
+.ticker-tag-selector, .dataset-column-style-selector {
+    flex-wrap: wrap;
+
+    .ticker-tag-styles, .dataset-column-styles {
+        width: 100%;
+
+        .ticker-tag-style-title, .dataset-col-style-title {
+            writing-mode: vertical-lr;
+            font-size: 1.2rem;
+            color: $xibo-color-secondary;
+        }
+
+        .ticker-tag-style, .dataset-col-style {
+            display: flex;
+        }
+
+        .ticker-tag-style-properties, .dataset-col-style-properties {
+            border-left: 6px solid $xibo-color-primary-l60;
+            padding-left: 12px;
+            margin-left: 6px;
+
+            .form-group {
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+}
+
+// Command Builder
+.xibo-command-builder {
+    .command-type {
+        display: block;
+        width: 100%;
+    }
+    .command-inputs {
+        border-radius: 0 0 6px 6px;
+        padding: 12px 6px;
+        margin: 0px 1px 4px 1px;
+        background-color: $xibo-color-primary-l10;
+
+        .col-12 {
+            max-width: 100%;
+        }
+
+        .intent-name {
+            width: 100%;
+            margin: 6px 0;
+        }
+
+        .intent-type-container {
+            font-size: 0;
+
+            .intent-type-label {
+                width: 30%;
+                font-size: 14px;
+            }
+    
+            .intent-type {
+                width: 70%
+            }
+        }
+
+        .intent-extra-element {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 2px;
+
+            select {
+                padding: 0;
+                width: 30%;
+            }
+        }
+    }
+    .command-preview {
+        border-radius: 6px;
+        padding: 8px !important;
+    }
+}
+
+// Playlist mixer
+.playlist-mixer {
+    .mixer-playlist-container {
+        padding: 0.4rem 0.2rem 0 0.2rem !important;
+    }
+
+    .subplaylist-item-row, .subplaylist-items-header {
+        & > * {
+            margin-right: 2px;
+        }
+
+        .subplaylist-id-container-header {
+            margin-left: 70px;
+        }
+
+        .subplaylist-spots-container, .subplaylist-spots-length-container {
+            width: 100px;
+            input {
+                width: 100%;
+            }
+        }
+        
+        .subplaylist-id-container {
+            width: 100px;
+            .select2-container {
+                min-width: 100% !important;
+            }
+        }
+
+        .subplaylist-spots-fill-container {
+            width: 120px;
+            .select2-container {
+                min-width: 100% !important;
+            }
+        }
+    }
+
+    .subplaylist-items-footer {
+        position: sticky;
+        left: 0;
+        bottom: 0;
+        padding: 10px;
+        width: 100%;
+        text-align: center !important;
+    }
+}
+
+// Canvas widget control
+.canvas-widget-control {
+    padding: 8px;
+    background-color: $xibo-color-primary;
+
+    .canvas-widget-control-dropdown {
+        color: $xibo-color-primary-l10;
+        margin: 0;
+
+        .input-info-container {
+            display: inline-block;
+            float: none;
+            padding: 0;
+        }
+
+        .canvas-widget-control-add {
+            cursor: pointer;
+            float: right;
+            padding: 0 6px;
+            border-radius: 4px;
+
+            i {
+                margin-right: 4px;
+            }
+
+            &:hover {
+                background-color: darken($xibo-color-primary, 10%);
+            }
+        }
+    }
+}
+
+.widget-info-container {
+    text-align: center;
+    padding: 6px;
+    background-color: $xibo-color-primary-l60;
+    color: $xibo-color-primary-l5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .widget-info-name {
+        font-weight: bold;
+    }
+}
+
+// Snippets
+.snippet-selector {
+    margin-top: -12px;
+
+    .select2-selection {
+        background-color: $xibo-color-primary-l10 !important;
+    }
+
+    .select2-selection__placeholder {
+        color: $xibo-color-secondary !important;
+        font-weight: bold;
+    }
+}
+
+// Panel group
+.panel-group {
+    margin-left: -1rem;
+    padding-left: 1.2rem;
+    border-left: 6px solid $xibo-color-primary-l10;
+
+    .panel-heading {
+        background-color: $xibo-color-primary-l10;
+        padding: 1rem;
+        margin: 0.5rem -1.5rem 0.5rem -1.5rem;
+        cursor: pointer;
+
+        .panel-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: $xibo-color-primary;
+            margin: 0;
+        }
+
+        .help-block {
+            margin-top: 0.5rem;
+        }
+
+        i {
+            font-size: 1rem;
+        }
+
+        &[aria-expanded="true"] {
+            .fa-chevron-up {
+                display: inline-block;
+            }
+            .fa-chevron-down {
+                display: none;
+            }
+        }
+
+        &[aria-expanded="false"] {
+            .fa-chevron-up {
+                display: none;
+            }
+            .fa-chevron-down {
+                display: inline-block;
+            }
+        }
+    }
+
+    .panel-collapse {
+        padding: 1rem 0 0.25rem 0;
+    }
+}
+
+#errorMessage {
+    margin-left: 15px;
+    box-sizing: border-box;
+    width: calc(100% - 30px);
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+// make select2 set as readonly to actually be readonly.
+select[readonly].select2-hidden-accessible + .select2-container {
+    pointer-events: none;
+    touch-action: none;
+}
+
+select[readonly].select2-hidden-accessible + .select2-container .select2-selection {
+    background: #eee;
+    box-shadow: none;
+}
+
+select[readonly].select2-hidden-accessible + .select2-container .select2-selection__arrow, select[readonly].select2-hidden-accessible + .select2-container .select2-selection__clear {
+    display: none;
+}
+
+/*
+ developer template form controls
+ */
+.developer-template-controls-container {
+    overflow: auto;
+    max-height: calc(100vh - 400px);
+
+    .developer-template-controls {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 6px;
+
+        .developer-template-placeholder {
+            width: 100%;
+            height: calc(100vh - 410px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: $xibo-color-primary-d60;
+            background-color: $xibo-color-primary-l10;
+            border-radius: 6px;
+        }
+
+        .developer-template-control-item {
+            background-color: $xibo-color-primary-l20;
+            padding: 16px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            min-width: 360px;
+            max-width: 360px;
+
+            .developer-template-control-form {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                gap: 18px;
+                
+                .xibo-form-input {
+                    margin-bottom: 0.5rem;
+
+                    label, .input-info-container {
+                        float: left;
+                    }
+                }
+
+                .player-compat-items {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 3px 6px;
+                    padding: 6px;
+                    background-color: $xibo-color-primary-l30;
+                    border-radius: 6px;
+                }
+
+                .option-item {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    background-color: $xibo-color-primary-l30;
+                    padding: 6px;
+                    border-radius: 6px;
+                    margin-bottom: 4px;
+                }
+
+                .test-container {
+                    .test-title, .condition-title {
+                        font-weight: bold;
+                    }
+
+                    .test-item {
+                        background-color: $xibo-color-primary-l30;
+                        border-radius: 6px;
+                        padding: 6px;
+                        margin-bottom: 6px;
+                    }
+
+                    .test-item-properties {
+                        display: flex;
+                        gap: 6px;
+                    }
+
+                    .condition-item {
+                        background-color: lighten($xibo-color-primary-l30, 5%);
+                        padding: 6px;
+                        border-radius: 8px;
+                        margin-bottom: 6px;
+                    }
+
+                    .test-conditions-container {
+                        margin: 6px 0 6px 34px;
+                    }
+
+                    .item-header {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 6px;
+                    }
+                }
+            }
+
+            .developer-template-control-item-controls {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+
+                .item-move {
+                    cursor: col-resize;
+                    color: $xibo-color-primary-l60;
+                }
+
+                .delete-btn {
+                    padding: 0;
+                    color: $xibo-color-semantic-error;
+                }
+
+                .item-move, .delete-btn {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}
+
+// Image replace control
+.image-replace-control .image-replace-control-area {
+    height: 80px;
+    border-radius: 4px;
+    text-align: center;
+    color: $xibo-color-neutral-1000;
+    background-color: $xibo-color-primary-l5;
+    padding: 18px;
+    border: 2px solid darken($xibo-color-primary-l5, 10%);
+
+    &.ui-droppable-active {
+        @include user-select-none();
+
+        cursor: pointer;
+        position: relative;
+        z-index: $designer-select-z-index;
+
+        &.ui-droppable-hover,
+        &:hover {
+            background-color: lighten($xibo-color-primary-l5, 10%);
+        }
+    }
+}
+
+// Colour gradient
+.color-gradient {
+    background-color: $xibo-color-primary-l5;
+    padding: 6px;
+    border-left: 8px solid $xibo-color-primary;
+
+    .color-gradient-colours {
+        display: flex;
+        gap: 6px;
+
+        .picker-container.colorpicker.colorpicker-with-alpha {
+            min-width: 150px;
+        }
+    }
+}
+
+// Fallback data
+.fallback-data-content {
+    margin-bottom: 1rem;
+
+    .fallback-data-record {
+        padding: 1rem;
+        background-color: $xibo-color-neutral-0;
+        border: 3px solid $xibo-color-primary-l60;
+        margin-bottom: 0.5rem;
+        border-radius: 0.5rem;
+        cursor: grab;
+
+        .fallback-data-record-previews {
+            margin-bottom: 0.6rem;
+        }
+
+        .fb-btn-edit, .fallback-data-record-previews {
+            display: block;
+        }
+
+        .fallback-data-record-preview {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.2rem;
+
+            .fallback-data-record-preview-title {
+                font-weight: bold;
+            }
+
+            .fallback-data-record-preview-title, .fallback-data-record-preview-value {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            &.hidden {
+                display: none;
+            }
+        }
+
+        .fb-btn-save, .fallback-data-record-fields {
+            display: none;
+        }
+
+        &.editing {
+            border-color: $xibo-color-accent;
+
+            .fb-btn-edit, .fallback-data-record-previews {
+                display: none;
+            }
+
+            .fb-btn-save, .fallback-data-record-fields {
+                display: block;
+            }
+        }
+
+        .fallback-property {
+            &[data-is-required="true"] {
+                color: $xibo-color-semantic-error;
+                font-weight: bold;
+            }
+        }
+
+        .fallback-data-record-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+
+            button {
+                flex: 1 1;
+            }
+        }
+    }
+}
+
+// Button switch
+.button-switch-input-group {
+    button {
+        color: $xibo-color-primary;
+        border-color: $xibo-color-primary;
+
+        &:not(.selected):hover {
+            color: $xibo-color-primary;
+            background-color: lighten($xibo-color-primary, 35%);
+        }
+
+        &.selected {
+            background-color: $xibo-color-primary;
+            color: $xibo-color-neutral-0;
+        }
+    }
+}

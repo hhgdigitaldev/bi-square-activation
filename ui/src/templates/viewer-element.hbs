@@ -1,0 +1,20 @@
+<div id="{{element.elementId}}" 
+    class="designer-element viewer-object-select {{#if element.selected}}selected{{/if}} {{#if element.isEditable}}editable{{/if}} {{#if element.isDeletable}}deletable{{/if}} "
+    data-type="element"
+    data-element-type="{{#if element.elementType}}{{element.elementType}}{{else}}global{{/if}}"
+    data-sub-type="{{element.id}}"
+    data-style-scope="element_{{#if element.elementType}}{{element.elementType}}{{else}}global{{/if}}__{{element.id}}"
+    data-widget-id="{{element.widgetId}}"
+    data-region-id="{{element.regionId}}"
+    style="
+        position: absolute;
+        width: {{dimensions.width}}px;
+        height: {{dimensions.height}}px;
+        top: {{dimensions.top}}px;
+        left: {{dimensions.left}}px;
+
+        {{#if dimensions.rotation}}
+            transform: rotate({{dimensions.rotation}}deg);
+        {{/if}}
+        z-index: {{dimensions.layer}};">
+</div>

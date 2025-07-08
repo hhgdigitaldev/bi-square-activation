@@ -1,0 +1,51 @@
+<div class="tab-pane" id="positionTab">
+    {{#eq type 'region'}}
+        {{> inputs/hidden id="type" value=regionType customClass="position-input" }}
+        {{#neq regionType 'playlist'}}
+            {{> inputs/hidden id="name" value=regionName customClass="position-input" }}
+        {{/neq}}
+    {{/eq}}
+
+    {{> button id="bringToView" type="btn-block btn-outline-success inline-btn d-none mb-2" name=trans.positionTab.bringToView }}
+
+    {{#if showElementLayer}}
+        {{set "layerTitle" trans.positionTab.elementLayer}}
+        {{set "layerHelp" trans.positionTab.elementLayerHelp}}
+    {{else if showElementGroupLayer}}
+        {{set "layerTitle" trans.positionTab.elementGroupLayer}}
+        {{set "layerHelp" trans.positionTab.elementGroupLayerHelp}}
+    {{else}}
+        {{set "layerTitle" trans.positionTab.layer}}
+        {{set "layerHelp" trans.positionTab.layerHelp}}
+    {{/if}}
+
+    {{#ifCond zIndex '!=' undefined}}
+        {{> inputs/number value=zIndex id="zIndex" title=layerTitle helpText=layerHelp min="0" customClass="position-input" }}
+    {{/ifCond}}
+
+    {{#ifCond zIndexCanvas '!=' undefined}}
+        {{> inputs/number value=zIndexCanvas id="zIndexCanvas" title=trans.positionTab.canvasLayer helpText=trans.positionTab.canvasLayerHelp min="0" customClass="position-canvas-input" }}
+    {{/ifCond}}
+
+    {{#ifCond top '!=' undefined}}
+        {{> inputs/number value=top id="top" title=trans.positionTab.top customClass="position-input" }}
+    {{/ifCond}}
+
+    {{#ifCond left '!=' undefined}}
+        {{> inputs/number value=left id="left" title=trans.positionTab.left customClass="position-input" }}
+    {{/ifCond}}
+
+    {{#ifCond width '!=' undefined}}
+        {{> inputs/number value=width id="width" title=trans.positionTab.width customClass="position-input" }}
+    {{/ifCond}}
+
+    {{#ifCond height '!=' undefined}}
+        {{> inputs/number value=height id="height" title=trans.positionTab.height customClass="position-input" }}
+    {{/ifCond}}
+
+    {{#ifCond rotation '!=' undefined}}
+        {{> inputs/number value=rotation id="rotation" title=trans.positionTab.rotation customClass="position-input" }}
+    {{/ifCond}}
+
+    {{> button id="setFullScreen" type="btn-block btn-outline-primary inline-btn" name=trans.positionTab.setFullscreen }}
+</div>

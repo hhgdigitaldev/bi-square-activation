@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="widgets">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<a href="media_modules.html">Modules</a>
+</li>
+<li>
+<a href="media_modules_connectors.html">Connectors</a>
+</li>
+<li>
+<a href="media_module_audio.html">Audio</a>
+</li>
+<li>
+<a href="media_module_calendar.html">Calendar</a>
+</li>
+<li>
+<a href="media_module_clock.html">Clock</a>
+</li>
+<li>
+<a href="media_module_countdown.html">Countdown</a>
+</li>
+<li>
+<a href="media_module_currencies.html">Currencies</a>
+</li>
+<li>
+<a href="media_module_dashboard.html">Dashboard</a>
+</li>
+<li class="active">
+<a href="media_module_dataset.html">DataSet<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a>
+</li>
+<li>
+<a href="media_module_embedded.html">Embedded</a>
+</li>
+<li>
+<a href="media_module_emergency_alerts.html">Emergency Alert</a>
+</li>
+<li>
+<a href="media_module_flash.html">Flash</a>
+</li>
+<li>
+<a href="media_module_googletraffic.html">Google Traffic</a>
+</li>
+<li>
+<a href="media_module_hls.html">HLS</a>
+</li>
+<li>
+<a href="media_module_htmlpackage.html">HTML Package</a>
+</li>
+<li>
+<a href="media_module_image.html">Image</a>
+</li>
+<li>
+<a href="media_module_localvideo.html">Local Video</a>
+</li>
+<li>
+<a href="media_module_mastodon.html">Mastodon</a>
+</li>
+<li>
+<a href="media_module_menuboards_category.html">Menu Board Category</a>
+</li>
+<li>
+<a href="media_module_menuboards_products.html">Menu Board Products</a>
+</li>
+<li>
+<a href="media_module_national_weather_service.html">National Weather Service</a>
+</li>
+<li>
+<a href="media_module_notifications.html">Notifications</a>
+</li>
+<li>
+<a href="media_module_pdf.html">PDF</a>
+</li>
+<li>
+<a href="media_module_powerpoint.html">PowerPoint</a>
+</li>
+<li>
+<a href="media_module_shellcommand.html">Shell Command</a>
+</li>
+<li>
+<a href="media_module_stocks.html">Stocks</a>
+</li>
+<li>
+<a href="media_module_ticker.html">Ticker</a>
+</li>
+<li>
+<a href="media_module_video.html">Video</a>
+</li>
+<li>
+<a href="media_module_video_in.html">Video In</a>
+</li>
+<li>
+<a href="media_module_weather.html">Weather</a>
+</li>
+<li>
+<a href="media_module_webpage.html">Webpage</a>
+</li>
+<li>
+<a href="media_module_world_clock.html">World Clock</a>
+</li>
+</ul>
+</body></html>
+<li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="dataset">DataSet <a href="#dataset" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Display data held in a DataSet anywhere on a Layout using <strong>Elements</strong> or include <strong>Static Templates</strong> to show Tickers and Tables of data in Layouts/Playlists.</p>
+<p>The DataSet Widget primarily consists of a DataSet source which feeds into configured Elements and Static Templates.</p>
+<blockquote class="tip"><p><a href="media_datasets.html">DataSets</a> need to be created and defined prior to adding the DataSet Widget to Layouts/Playlists.</p>
+</blockquote>
+<h2 id="dataset_elements">DataSet Elements <a href="#dataset_elements" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><a href="layouts_editor#content-data-widgets-and-elements">Elements</a> are available for selection when adding a DataSet Widget to a <a href="layouts_editor.html">Layout</a> to give Users more control over what components of the DataSet Widget to use and where they can be placed.</p>
+<p><img src="img/v4_media_module_dataset_elements.png" alt="DataSet Elements" /></p>
+<blockquote class="tip"><p>You will see a message in the properties panel should you try to use an Element that has no matching field type in your DataSet!</p>
+</blockquote>
+<p>Each Element has a set of configuration options in the Properties Panel. A DataSet must be selected to use as the data source from the <strong>Configure</strong> tab for each Element used on the Layout. Control how items should be cycled by specifying a <a href="layouts_editor.html#content-data-slots">Data Slot</a> to use for each of the added Elements. Data Elements can be further complimented by adding <a href="layouts_editor.html#content-global-elements">Global Elements</a> to add shapes and text which can all be put into an <a href="layouts_editor.html#content-grouping-elements">Element Group</a> for easier configuration and positioning.</p>
+<h2 id="dataset_static_templates">DataSet Static Templates <a href="#dataset_static_templates" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p><a href="layouts_editor.html#content-static-templates">Static Templates</a> define how returned data should be laid out and styled and are a simple way to show your data using pre-styled templates.</p>
+<p><img src="img/v4_media_module_dataset_templates.png" alt="DataSet Templates" /></p>
+<p>Templates can be configured to affect the behaviour of returned results as well as make changes to the design appearance using a range of options in the Properties Panel. A DataSet must be selected to use as the data source from the <strong>Configure</strong> tab for each Template added to the Layout/Playlist.</p>
+<h2 id="overview">Overview <a href="#overview" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>
+<p>Update Elements and Templates with new data by editing the underlying <a href="media_datasets.html#content-adding-data-to-columns">DataSet</a> data.</p>
+</li>
+<li>
+<p>Update DataSet Widget content without accessing Layouts or Playlists.</p>
+</li>
+<li>
+<p>Order and Filter results by any column.</p>
+</li>
+<li>
+<p>Shuffle items to play in a random sequence.</p>
+</li>
+<li>
+<p>Content for this media is cached by the Players for off-line playback.</p>
+</li>
+<li>
+<p>Set a ‘freshness check’ to determine when to switch to the ‘No data’ message when a Player is offline.</p>
+</li>
+</ul>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

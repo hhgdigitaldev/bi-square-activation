@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="widgets">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<a href="media_modules.html">Modules</a>
+</li>
+<li>
+<a href="media_modules_connectors.html">Connectors</a>
+</li>
+<li>
+<a href="media_module_audio.html">Audio</a>
+</li>
+<li>
+<a href="media_module_calendar.html">Calendar</a>
+</li>
+<li>
+<a href="media_module_clock.html">Clock</a>
+</li>
+<li>
+<a href="media_module_countdown.html">Countdown</a>
+</li>
+<li>
+<a href="media_module_currencies.html">Currencies</a>
+</li>
+<li>
+<a href="media_module_dashboard.html">Dashboard</a>
+</li>
+<li>
+<a href="media_module_dataset.html">DataSet</a>
+</li>
+<li>
+<a href="media_module_embedded.html">Embedded</a>
+</li>
+<li>
+<a href="media_module_emergency_alerts.html">Emergency Alert</a>
+</li>
+<li>
+<a href="media_module_flash.html">Flash</a>
+</li>
+<li>
+<a href="media_module_googletraffic.html">Google Traffic</a>
+</li>
+<li>
+<a href="media_module_hls.html">HLS</a>
+</li>
+<li>
+<a href="media_module_htmlpackage.html">HTML Package</a>
+</li>
+<li>
+<a href="media_module_image.html">Image</a>
+</li>
+<li>
+<a href="media_module_localvideo.html">Local Video</a>
+</li>
+<li>
+<a href="media_module_mastodon.html">Mastodon</a>
+</li>
+<li>
+<a href="media_module_menuboards_category.html">Menu Board Category</a>
+</li>
+<li>
+<a href="media_module_menuboards_products.html">Menu Board Products</a>
+</li>
+<li>
+<a href="media_module_national_weather_service.html">National Weather Service</a>
+</li>
+<li>
+<a href="media_module_notifications.html">Notifications</a>
+</li>
+<li>
+<a href="media_module_pdf.html">PDF</a>
+</li>
+<li class="active">
+<a href="media_module_powerpoint.html">PowerPoint<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a>
+</li>
+<li>
+<a href="media_module_shellcommand.html">Shell Command</a>
+</li>
+<li>
+<a href="media_module_stocks.html">Stocks</a>
+</li>
+<li>
+<a href="media_module_ticker.html">Ticker</a>
+</li>
+<li>
+<a href="media_module_video.html">Video</a>
+</li>
+<li>
+<a href="media_module_video_in.html">Video In</a>
+</li>
+<li>
+<a href="media_module_weather.html">Weather</a>
+</li>
+<li>
+<a href="media_module_webpage.html">Webpage</a>
+</li>
+<li>
+<a href="media_module_world_clock.html">World Clock</a>
+</li>
+</ul>
+</body></html>
+<li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="powerpoint">PowerPoint <a href="#powerpoint" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Display PowerPoint presentations by selecting from one of the following options:</p>
+<h2 id="1._add_video_(recommended)">1. Add Video (RECOMMENDED) <a href="#1._add_video_(recommended)" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>For non-Windows Players / users with no full copy of PowerPoint to install, from Office 2010 onwards PowerPoint presentations can be exported as a <strong>Video</strong> file.   Export a PowerPoint file by using the option on the file menu from inside the PowerPoint application.</p>
+<p>Continue by adding <a href="media_module_video.html">Video</a> to your Playlists and Layouts.</p>
+<h2 id="2._add_pdf">2. Add PDF <a href="#2._add_pdf" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>For non-Windows Players / users with no full copy of PowerPoint to install you can save your PowerPoint as a <strong>PDF</strong> file.</p>
+<p>Continue by adding <a href="media_module_pdf.html">PDF</a> to your Playlists and Layouts.</p>
+<h2 id="3._upload_a_prepared_ppt_file_(windows_players_only)">3. Upload a prepared PPT file (Windows Players only) <a href="#3._upload_a_prepared_ppt_file_(windows_players_only)" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>PowerPoint is a proprietary format from Microsoft and can only be displayed on a Windows-based signage player which has a full copy of Microsoft PowerPoint installed on each Windows Player. (Please see the <a href="media_module_powerpoint.html#content-prepare-your-windows-players">Prepare your Windows Players</a> section)</p>
+<h3>Prepare the PowerPoint Presentation.</h3>
+<p>PowerPoint will, by default, put scroll bars up the side of your presentation, unless you do the following for each PowerPoint file <em>BEFORE</em> you upload it:</p>
+<ol>
+<li>Open your PowerPoint Document</li>
+<li>Slide Show -&gt; Set-up Show</li>
+<li>Under “Show Type”, choose “Browsed by an individual (window)” and then untick “Show scrollbar”</li>
+<li>Click OK</li>
+<li>Save the Presentation</li>
+<li>Please note that BI Square Brand Activation will not advance the slides in a Presentation, so you should record automatic slide timings by going to “Slide Show -&gt; Rehearse Timings” and then save the presentation.</li>
+</ol>
+<h3>Upload to CMS</h3>
+<p>Using the ‘other media’ search, use the <strong>Type</strong> drop down to select <strong>PowerPoint</strong>:</p>
+<ul>
+<li>
+<p>Upload PPT files directly to Playlists/Layouts using the <a href="layouts_editor.html#content-library-search">Library Search</a> from the toolbar.</p>
+</li>
+<li>
+<p>Files uploaded directly to Playlists and Layouts are automatically saved to the <a href="media_library.html">Library</a> for re-use.</p>
+</li>
+<li>
+<p>PowerPoint files can also be uploaded in advance to the Library.</p>
+</li>
+<li>
+<p>Set <a href="media_playlists.html#content-widget-expiry-dates">start and end times</a> for PowerPoint files uploaded directly to a Playlist.</p>
+</li>
+<li>
+<p>Save PowerPoint files to <a href="tour_folders.html#content-saving-to-folders">Folders</a> on upload, to easily control access to Users.</p>
+</li>
+</ul>
+<p><img src="img/v4_media_module_powerpoint.png" alt="PowerPoint" /></p>
+<blockquote class="tip"><p>A Preview for PowerPoint files is not available in the CMS!</p>
+</blockquote>
+<h2 id="prepare_your_windows_players">Prepare your Windows Players <a href="#prepare_your_windows_players" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Install PowerPoint on your Windows PC alongside your BI Square Brand Activation Player and make the following adjustments to the Windows Registry to disable the windows prompt when opening the PowerPoint. <strong>Please ensure you have taken all necessary precautions when making these changes</strong>.</p>
+<pre><code class="language-registry">[HKEY_CLASSES_ROOT\PowerPoint.Show.12]
+&quot;BrowserFlags&quot;=dword:00000002
+&quot;EditFlags&quot;=dword:00010000
+
+[HKEY_CLASSES_ROOT\PowerPoint.Show.8]
+&quot;BrowserFlags&quot;=dword:00000002
+&quot;EditFlags&quot;=dword:00010000
+
+[HKEY_CLASSES_ROOT\PowerPoint.SlideShow.12]
+&quot;BrowserFlags&quot;=dword:800000a0
+&quot;EditFlags&quot;=dword:00010000
+
+[HKEY_CLASSES_ROOT\PowerPoint.SlideShow.8]
+&quot;BrowserFlags&quot;=dword:00000002
+&quot;EditFlags&quot;=dword:00010000
+</code></pre>
+<p>If you do not feel comfortable changing the registry it may be possible to achieve the same results by waiting for BI Square Brand Activation to open the first PowerPoint and then when the pop-up notification appears, choose to “Open” the file, and un-check the box so you won’t be prompted again.</p>
+<h3>Enable PowerPoint on Displays</h3>
+<p>You will need to ensure that the Windows <a href="displays_settings">Display Setting Profile</a> used for the Displays you intend to use PowerPoint on, must be first enabled:</p>
+<ul>
+<li>Click on <strong>Display Settings</strong> under the <strong>Displays</strong> section of the main CMS menu.</li>
+<li>Use the row menu for the Windows Display Profile and select <strong>Edit</strong>.</li>
+<li>From the <strong>General</strong> tab, tick to <strong>Enable PowerPoint</strong>.</li>
+<li>
+<strong>Save</strong>.</li>
+</ul>
+<h3>Advanced Steps</h3>
+<p>When displaying PowerPoint, BI Square Brand Activation is relying on Windows and PowerPoint to display the content. This means that error capture and reporting is outside the control of BI Square Brand Activation. To mitigate any issues we recommend disabling Windows error notifications. This can be done by following the <a href="https://www.lifewire.com/how-do-i-disable-error-reporting-in-windows-2626074">steps here</a>.</p>
+<p>If you still experience issues, it may also be advisable to disable Office Application Error reporting by merging the registry patch below.</p>
+<pre><code class="language-reg">[HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\11.0\Common]
+&quot;DWNeverUpload&quot;=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\10.0\Common]
+&quot;DWNeverUpload&quot;=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\12.0\Common]
+&quot;DWNeverUpload&quot;=dword:00000001
+</code></pre>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

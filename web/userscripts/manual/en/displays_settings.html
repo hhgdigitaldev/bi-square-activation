@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="displays">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<a href="displays.html">Displays</a>
+</li>
+<li class="active">
+<a href="displays_settings.html">Display Settings<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a>
+</li>
+<li>
+<a href="displays_groups.html">Display Groups</a>
+</li>
+<li>
+<a href="displays_sync_groups.html">Sync Groups</a>
+</li>
+<li>
+<a href="displays_metrics.html">Reporting</a>
+</li>
+<li>
+<a href="displays_command_functionality.html">Command Functionality</a>
+</li>
+</ul>
+</body></html>
+<li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="display_settings">Display Settings <a href="#display_settings" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Once installed and Connected to the CMS, Displays can be automatically managed and configured using <strong>Display Setting Profiles</strong>. Each Display has a default profile which can be customised by an Administrator to suit requirements.</p>
+<p>Available profiles can be viewed by clicking <strong>Display Settings</strong> under the <strong>Display</strong> section of the main CMS menu:</p>
+<p><img src="img/v4_displays_settings_profiles.png" alt="Display Settings Profiles" /></p>
+<p>Each profile has a <strong>Name</strong>, <strong>Type</strong> and a flag indicating if it is the <strong>default</strong> or not. Default profiles are automatically assigned to Displays of the corresponding type.</p>
+<h2 id="add/editing_profiles">Add/Editing Profiles <a href="#add/editing_profiles" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>To <strong>Add</strong> a new Profile:</p>
+<ul>
+<li>Click on the <strong>Add Profile</strong> button and give the new Profile a <strong>Name</strong> and select the <strong>Display Type</strong>.</li>
+<li>Use the box if this should be used as the <strong>Default Profile</strong> for all Displays of the selected type.</li>
+</ul>
+<blockquote class="tip"><p>Only 1 profile can be selected as the <strong>Default Profile</strong> per Display Type!</p>
+</blockquote>
+<ul>
+<li>Complete all the required settings for the new Profile.</li>
+</ul>
+<p>To <strong>Edit</strong> an existing Profile:</p>
+<ul>
+<li>From the row menu of the selected Profile click <strong>Edit</strong>.</li>
+<li>Use the form to adjust the available settings.</li>
+</ul>
+<blockquote class="tip"><p>For ease, use the row menu to <strong>Copy</strong> a Profile so you can make adjustments as needed to quickly create new Profiles!</p>
+</blockquote>
+<p>Some of the notable settings are listed below:</p>
+<h3>Collect Interval</h3>
+<p>Located on the <strong>General</strong> tab, use the <strong>Collect interval</strong> drop-down menu to determine how often the Player checks for new content/schedules. This means that once a Player has communicated with the CMS, it will check again for any changes by the time set here.</p>
+<blockquote class="tip"><p><strong>Scenario:</strong>
+A Player has a collect interval set for 24 hours, it will check for any changes, action pending changes and then wait for the next 24-hour collection. If a change is made between this period of time, the Player will not be aware of it until it is time to check again.</p>
+</blockquote>
+<p>If a Display Profile for a Player is changed, the Player will only be aware of the change after it has connected according to its prior connection interval.</p>
+<blockquote class="tip"><p><strong>Scenario:</strong></p>
+<p>A Player with a collect interval set for 24 hours made a check at 12 pm, it will not check again until 12 pm the following day for any changes that have been made. Once the 24 hour interval has passed, it will update the new changes and from this point will collect changes based on the new Profile.</p>
+</blockquote>
+<p>The CMS can be configured to talk to an XMR instance if player actions are required, please contact your Administrator.</p>
+<blockquote class="tip"><p>We recommend setting an interval no lower than 5 minutes for production, generally a 15-30 minute setting would be sensible.</p>
+</blockquote>
+<h3>Enable Stats Reporting</h3>
+<p>Further down the <strong>General</strong> tab, use the box to enable/disable the collection of statistics for <strong>Proof of Play Reports</strong> for all <strong>Displays</strong> that use the selected <strong>Display Profile</strong>.</p>
+<ul>
+<li>
+<p>If enabled set the required level of collection for Proof of Play statistics to be applied to all Layouts, Media and Widget items using the <strong>Aggregation level</strong> drop down:</p>
+<ul>
+<li>
+<p><strong>Individual</strong> - statistics are collected when specified by default.</p>
+</li>
+<li>
+<p><strong>Hourly</strong> - statistics will be collected hourly by default.</p>
+</li>
+<li>
+<p><strong>Daily</strong> - statistics will be collected daily by default.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>If the geolocation of the Display is known, enable the checkbox to record the location against each proof of play record. Users with mobile Displays can turn this setting on if desired.</p>
+<h3>Download and Update windows</h3>
+<p>Located on the <strong>Network</strong> tab, set a time window for <strong>Downloads</strong> from the CMS and <strong>Updates</strong> to the Player:</p>
+<h4>Download window timings</h4>
+<ul>
+<li>Select Start and End times to connect to the CMS to download any changes that have been made.</li>
+</ul>
+<p>If you make changes to content outside of the download window set, the Player will not be able to download any changes and could cause the Player to show the assigned default Layout or Splash screen instead.</p>
+<blockquote class="tip"><p>Leave at the Default 00:00 - 00:00 to leave the window as always open!</p>
+</blockquote>
+<h4>Update window timings</h4>
+<ul>
+<li>Select Start and End times to install any application updates.</li>
+</ul>
+<p>Define a time to download updates to a Player, such as new Player versions. This will also include any new or changes to existing schedules to be updated to the Player. Changes to content will <strong>NOT</strong> be updated during the set Update window timings set.</p>
+<blockquote class="tip"><p>This setting is best used in conjunction with either assigned Layouts or deferred published Layouts so that they publish during the update window!</p>
+</blockquote>
+<h3>Force HTTPS</h3>
+<p>From the <strong>Network</strong> tab use the checkbox to force a Displays connection to the CMS using HTTPS.</p>
+<blockquote class="tip"><p>This option can be overridden for individual Displays if required.</p>
+</blockquote>
+<h3>Operating Hours</h3>
+<p>Set <strong>Operating Hours</strong> for Displays by setting pre-defined <a href="scheduling_dayparting.html">Dayparts</a></p>
+<ul>
+<li>Use the <strong>Network</strong> tab for Windows, Android and Linux Players, and select the day part to use from the drop down menu.</li>
+<li>Use the <strong>General</strong> tab for webOS and Tizen Players, and select the day part to use from the drop down menu.</li>
+</ul>
+<blockquote class="tip"><p>‘Email alerts’ such as those which send when a Display is offline, will not be sent outside of the specified Operating Hours.</p>
+</blockquote>
+<h3>Expire Modified Layouts</h3>
+<p>Located on the <strong>Advanced</strong> tab, use this checkbox to tell BI Square Brand Activation to immediately expire and cut playback of a Layout when a Player receives an update from the CMS.</p>
+<blockquote class="tip"><p>Useful for Layouts with long durations!</p>
+</blockquote>
+<h3>Use Multiple Decoders</h3>
+<p><strong>Gapless Playback</strong> with Video content requires a device to have multiple decoders. This setting can be found on the <strong>Advanced</strong> tab and will automatically use the <strong>Device Default</strong>.</p>
+<blockquote class="tip"><p>Should an issue arise with playback, use the dropdown to set to <strong>On</strong>!</p>
+</blockquote>
+<h3>Enable Touch capabilities on the device (Android only)</h3>
+<p>If the Display is to be used as a <strong>touch screen</strong>, enable this option from the <strong>Advanced</strong> tab.</p>
+<blockquote class="tip"><p>Enabling this option will show a one time message on the Player which will need to be manually dismissed!</p>
+</blockquote>
+<p>When left disabled, touching the screen will show the action bar according to the <strong>Action Bar Mode</strong> option.</p>
+<h2 id="deleting_profiles">Deleting Profiles <a href="#deleting_profiles" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Delete Display Profiles by using the row menu.</p>
+<p>Please ensure that there is <strong>one default</strong> remaining for each Type.</p>
+<h2 id="settings_profile">Settings Profile <a href="#settings_profile" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>A <strong>Default Profile</strong> will automatically apply its settings to all Displays of the same Type.</p>
+<p>A <a href="displays.html">Display</a> can be overridden to use an alternative Profile from the default.</p>
+<p>Click on <strong>Displays</strong> under the Displays section of the main CMS menu:</p>
+<ul>
+<li>Select the Display to override click <strong>Edit</strong> from the row menu.</li>
+<li>From the <strong>Settings</strong> tab, use the drop down to select which <strong>Settings Profile</strong> the Display should use.</li>
+</ul>
+<blockquote class="tip"><p>Each setting can also be overridden to suit individual Display requirements!</p>
+</blockquote>
+<h4>Next…</h4>
+<p><a href="displays_metrics.html">Reporting</a></p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

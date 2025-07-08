@@ -1,0 +1,58 @@
+<div id="{{ id }}"
+    data-type="widget"
+    data-widget-id="{{ widgetId }}"
+    data-widget-type="{{ subType }}"
+    data-duration="{{ calculatedDuration }}"
+    class="playlist-widget tooltip-always-on selectable 
+        {{#eq isValid 0}}invalid-widget{{/eq}} 
+        {{#if selected}}selected{{/if}} 
+        {{#if isEditable}}editable{{/if}} 
+        {{#if isPermissionsModifiable}}permissionsModifiable{{/if}} 
+        {{#if previewSrc}}has-preview{{/if}} 
+        {{#if isDeletable}}deletable{{/if}}">
+
+    <div
+        class="widgetLabel timelineMediaItemColouringDefault timelineMediaItemColouring_{{ subType }} {{ widgetColouring }}">
+        <div class="widgetSubType">
+            <i class="{{icon}} tooltip-always-on" data-toggle="tooltip"
+                data-container="#playlist-timeline" data-title="{{moduleName}}"></i>
+        </div>
+        <div class="widgetDuration">
+            {{#if calculatedDurationFormatted}}
+                {{ calculatedDurationFormatted }}
+            {{else}}
+                {{ calculatedDuration }}
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="playlist-widget-left-area">
+        <div class="widgetName">
+            {{widgetName}}
+        </div>
+
+        <div class="widgetProperties">
+            {{#if audio}}
+                <i class="fa fa-volume-up editProperty" data-property="Audio"></i>
+            {{/if}}
+
+            {{#each transitions}}
+                <i class="fa fa-sign-{{@key}} editProperty" data-property="Transition" data-property-type="{{@key}}"></i>
+            {{/each}}
+
+            {{#gt expireStatus 0}}
+                <i class="fa {{expireStatusIcon}} editProperty" data-html="true" data-toggle="tooltip"
+                    data-container="#playlist-timeline" data-title="{{expireStatusTitle}}" data-property="Expiry"></i>
+            {{/gt}}
+        </div>
+    </div>
+    {{#if previewSrc}}
+        <div class="widgetPreview">
+            <img src="{{previewSrc}}" />
+        </div>
+    {{/if}}
+
+    <div class="widgetDelete">
+        <i class="fa fa-trash"></i>
+    </div>
+</div>

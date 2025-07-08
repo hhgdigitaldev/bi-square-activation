@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  xmr:
+    image: ghcr.io/xibosignage/xibo-xmr:develop
+    ports:
+    - "9505:9505"
+    environment:
+      XMR_DEBUG: "true"
+      IPV6PUBSUPPORT: "false"
+
+  web-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+    - ./:/var/www/cms
+    - ./cms/custom:/var/www/cms/custom
+    - ./cms/library:/var/www/cms/library
+    - ./cms/web/theme/custom:/var/www/cms/web/theme/custom
+    - ./cms/cache:/var/www/cms/cache
+    ports:
+    - "8000:80"
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    environment:
+      CMS_DEV_MODE: "true"
+      MYSQL_DATABASE: "cms"
+
+  memcached:
+    image: memcached:alpine
+    command: memcached -m 15
+
+  swagger:
+    image: swaggerapi/swagger-ui:latest
+    ports:
+    - "8080:8080"
+    environment:
+    - API_URL=http://localhost/swagger.json
+
+  quickchart:
+    image: ianw/quickchart

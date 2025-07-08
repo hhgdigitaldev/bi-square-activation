@@ -1,0 +1,13 @@
+{
+  "name": "AuditLog Archiver",
+  "class": "\\Xibo\\XTR\\AuditLogArchiveTask",
+  "options": {
+    "deleteInstead": 1,
+    "maxPeriods": 4,
+    "archiveOwner": "",
+    "maxAgeMonths": 1,
+    "deleteLimit": 1000,
+    "maxDeleteAttempts": -1,
+    "deleteSleep": 5
+  }
+}

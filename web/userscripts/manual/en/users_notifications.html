@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="users">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<a href="users_administration.html">User Administration</a>
+</li>
+<li>
+<a href="users_groups.html">User Groups</a>
+</li>
+<li>
+<a href="users_dashboards.html">User Dashboards</a>
+</li>
+<li>
+<a href="users_features_and_sharing.html">Features and Sharing</a>
+</li>
+<li class="active">
+<a href="users_notifications.html">Notifications<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a>
+</li>
+</ul>
+</body></html>
+<li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="notifications">Notifications <a href="#notifications" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>The BI Square Brand Activation <strong>Notification System</strong> is used to keep other Users of the CMS informed of important system events and user-created notifications.</p>
+<blockquote class="tip"><p>Users with Notifications already enabled please go straight to the <a href="users_notifications.html#content-notification-drawer">Notification Drawer</a> section below.</p>
+</blockquote>
+<h2 id="administrator_set_up">Administrator Set up <a href="#administrator_set_up" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Notifications need to be enabled for Users/User Groups using <a href="users_features_and_sharing.html">Features</a>.</p>
+<ul>
+<li>Click on the <strong>Users</strong> tab.</li>
+<li>Expand the <strong>Notifications</strong> Feature set, and tick to enable the appropriate access.</li>
+</ul>
+<p><img src="img/v4_users_notification_feature.png" alt="Notification Features" /></p>
+<h2 id="system_notifications">System Notifications <a href="#system_notifications" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>BI Square Brand Activation raises various <strong>System Notifications</strong> to report on the health of the system as a whole.</p>
+<blockquote class="tip"><p>Notifications are emailed to the <strong>Admin</strong> email address configured in <strong>CMS Settings</strong> from the <a href="tour_cms_settings.html#content-network">Network</a> tab.</p>
+</blockquote>
+<p>Notifications will also be sent to Users who belong to User Groups configured to receive System Notifications or who have been configured to receive these Notifications themselves. System Notifications are managed from the User/User Group edit form:</p>
+<p><img src="img/v4_users_notifications_system.png" alt="System Notifications" /></p>
+<h2 id="notification_drawer">Notification Drawer <a href="#notification_drawer" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Notifications, for the logged in User, are shown in the Notification Drawer which is accessed from clicking the alarm bell icon in the top right of the screen.</p>
+<blockquote class="tip"><p>The number of unread Notifications will also be shown here in red!</p>
+</blockquote>
+<p><img src="img/v4_users_notification_bell.png" alt="Users Notification Bell" /></p>
+<p>The drawer will show the last 5 Notifications received.</p>
+<p>Unread Notifications are shown in black text with those that have already been read shown in a light grey text.</p>
+<blockquote class="tip"><p>Notifications will only show in the Notification Drawer if their release date has passed and if the logged in User has been assigned the notification, <a href="scheduling_events.html#content-reminders">Schedule Event Reminders</a> for example.</p>
+</blockquote>
+<ul>
+<li>Click on the title of a <strong>Notification</strong> to open to read the full Notification message.</li>
+</ul>
+<h2 id="create_notifications">Create Notifications <a href="#create_notifications" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Notifications are created by Users by clicking <strong>Notification Centre</strong> from the Notification Drawer:</p>
+<p><img src="img/v4_users_notification_centre.png" alt="Notification Centre" /></p>
+<p>Click on the <strong>Add Notification</strong> action button at the top right of the grid:</p>
+<ul>
+<li>
+<p>Include a <strong>Subject</strong> title.</p>
+</li>
+<li>
+<p>Select the <strong>date</strong> and time to publish the Notification.</p>
+</li>
+<li>
+<p>Tick to optionally send the Notification additionally as an <strong>Email</strong>.</p>
+</li>
+</ul>
+<blockquote class="tip"><p>The email address entered on the User record will be used. Users who should receive this Notification are defined on the <strong>Audience</strong> tab!</p>
+</blockquote>
+<ul>
+<li>Use the <strong>Interrupt</strong> option to automatically redirect Users to a page that will show the Notification in full.</li>
+</ul>
+<blockquote class="tip"><p>This option is useful for important User messages. Users would need to click on Continue to carry on navigating the CMS.</p>
+<p>Ensure that <strong>Enable Email Alerts</strong> has been enabled from the <strong>Maintenance</strong> tab on the <strong>Administration Settings</strong> page. If you are unsure, speak to your Administrator.</p>
+</blockquote>
+<ul>
+<li>
+<p>From the <strong>Message</strong> tab, use the text editor to create and format the message body of your Notification.</p>
+<blockquote class="tip"><p>If you intend to target your message to Display/Display Groups using the <a href="media_module_notifications.html">Notification Widget</a>, the formatting will applied from the Widget and not from the formatting used in the editor here.</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>From the <strong>Audience</strong> tab, select the <strong>Users/User Groups</strong> to receive this Notification.</p>
+</li>
+<li>
+<p>Enter the email addresses of Non Users of the CMS to send this Notification to.</p>
+</li>
+<li>
+<p>Select the <strong>Display/Display Groups</strong> that should show the notification.</p>
+</li>
+</ul>
+<blockquote class="tip"><p>Layouts need to already be in the schedule and contain the <a href="media_module_notifications.html">Notification Widget</a> to target Display/Display Groups successfully!</p>
+</blockquote>
+<ul>
+<li>Use the Attachment tab should you need to upload a file to attach to the Notification.</li>
+</ul>
+<blockquote class="tip"><p>Attachments can be downloaded by Users from the Notification Centre.</p>
+</blockquote>
+<h2 id="notification_widget">Notification Widget <a href="#notification_widget" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Add the <a href="media_module_notifications.html">Notification Widget</a> to Layouts/Playlists to show messages on Displays created from the <strong>Notification Centre</strong>.</p>
+<h4>Next…</h4>
+<p><a href="layouts.html">Layouts</a></p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

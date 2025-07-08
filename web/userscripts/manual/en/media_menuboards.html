@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="media">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="media_library.html">Library Media</a></p>
+</li>
+<li>
+<p><a href="media_playlists.html">Playlists</a></p>
+</li>
+<li>
+<p><a href="media_datasets.html">DataSets</a></p>
+</li>
+<li>
+<p class="active"><a href="media_menuboards.html">Menu Boards<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="media_dashboard_service.html">Dashboard Service</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="menu_boards">Menu Boards <a href="#menu_boards" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>The Menu Boards interface provides a simple way for users to create and manage ‘categories’ and ‘product’ information independently to Layouts. Once created, Menu Board data can be added anywhere on a Layout using <a href="layouts_editor#content-data-widgets-and-elements">Elements</a> from the  <a href="media_module_menuboards_category.html">Menu Board: Category</a> and <a href="media_module_menuboards_products.html">Menu Board: Products</a> Widgets available in the <a href="layouts_editor.html">Layout Editor.</a></p>
+<h2 id="feature_overview">Feature Overview <a href="#feature_overview" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>Create and define Categories.</li>
+<li>Include detailed product information.</li>
+<li>Select Images to use from your Library.</li>
+<li>Maintain content without accessing Layouts.</li>
+<li>Re-use across multiple Widgets/Layouts.</li>
+</ul>
+<p>Menu Boards are created and managed independently to Layouts and therefore do not require user access to Layouts or the Layout Editor to add or manage categories/product data held within a Menu Board.</p>
+<h2 id="creating_a_menu_board">Creating a Menu Board <a href="#creating_a_menu_board" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Menu Boards are created and managed by selecting <strong>Menu Boards</strong> under the <strong>Library</strong> section of the main CMS menu:</p>
+<p><img src="img/v4_media_menuboards_grid.png" alt="Menu Board" /></p>
+<ul>
+<li>Select the <strong>Add Menu Board</strong> button and complete the form fields to create a new record:</li>
+</ul>
+<p><img src="img/v4_media_menuboards_add.png" alt="Menu Board Add" /></p>
+<p><a href="tour_folders.html">Folders</a> are used to organise, search and easily <a href="https://test.xibo.org.uk/manual/en/users_features_and_sharing.html#content-share">Share</a> User objects with other Users/User Groups. DataSets saved to a Folder will inherit the access options applied to that Folder.</p>
+<ul>
+<li>
+<p>Give your Menu Board a <strong>Name</strong> for easy identification in the CMS. Provide an optional internal <strong>Description</strong> and enter a <strong>Code</strong> if referencing this Menu Board via the API.</p>
+</li>
+<li>
+<p>Click to <strong>Save</strong>.</p>
+</li>
+</ul>
+<h2 id="create_and_configure_categories">Create and Configure Categories <a href="#create_and_configure_categories" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Categories define the structure of your data:</p>
+<ul>
+<li>Use the row menu for a Menu Board record and select <strong>View Categories</strong>.</li>
+</ul>
+<p><img src="img/v4_media_menuboards_row_menu.png" alt="Menu Board row menu" /></p>
+<p>Click on the <strong>Add Category</strong> button and complete the required form fields:</p>
+<p><img src="img/v4_media_menuboards_add_category.png" alt="Add Category" /></p>
+<blockquote class="tip"><p><strong>Code</strong> is for advanced use when referencing the API.</p>
+</blockquote>
+<ul>
+<li>Click <strong>Next</strong> to repeat this process to add the required <strong>Categories</strong> for the Menu Board.</li>
+<li>Select <strong>Save</strong> when entering the last Category to use.</li>
+</ul>
+<h2 id="add_products">Add Products <a href="#add_products" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Product data is added to Categories to provide all key information which can be selected to be shown on Displays.</p>
+<ul>
+<li>Use the row menu for a Category and select <strong>View Products</strong>:</li>
+</ul>
+<p><img src="img/v4_media_menuboards_products.png" alt="Products" /></p>
+<ul>
+<li>Create new Product data by clicking the <strong>Add Product</strong> button and complete all relevant form fields:</li>
+</ul>
+<p><img src="img/v4_media_menuboards_add_product.png" alt="Add Products" /></p>
+<blockquote class="tip"><p>The <a href="media_module_menuboards_products.html">Menu Boards: Products</a> Widget can be configured to dim products that are marked as unavailable to show on Displays!</p>
+</blockquote>
+<h3>Product Options</h3>
+<p>Use this tab to provide further product options:</p>
+<p><img src="img/v4_media_menuboards_product_options.png" alt="Product Options" /></p>
+<blockquote class="tip"><p>Use Options to provide special offers, limited deals etc for this particular product.</p>
+</blockquote>
+<ul>
+<li>Repeat the process to add further Products/Product Options to the Category.</li>
+</ul>
+<blockquote class="tip"><p>Each Category will be shown as a separate tab on the Product grid so you can easily switch between Categories to add and edit product information!</p>
+</blockquote>
+<p><img src="img/v4_media_menuboards_product_tabs.png" alt="Product Tabs" /></p>
+<p>Click on <strong>View Categories</strong> to go back to the Categories grid to view and edit existing using the row menu or <strong>Add Category</strong>.</p>
+<p>Menu Board data is added to Layouts using the <a href="media_module_menuboards_category.html">Menu Board: Category</a> Widget which has data elements which are primarily used to add ‘header’ information and the <a href="media_module_menuboards_products.html">Menu Board: Products</a> Widget which allows for precise placement of Product details on Layouts.</p>
+<blockquote class="tip"><p>Menu Boards are edited independently to Layouts, so there is no need to access or edit the Layout(s) the Menu Board has been added to. Changes will be available in the system straight away ready to be picked up by Players on their next collection, with no need to make any edits to Layouts!</p>
+</blockquote>
+<h4>Next…</h4>
+<p><a href="layouts.html#content-adding-layouts">Add Layout</a></p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="displays">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<a href="displays.html">Displays</a>
+</li>
+<li>
+<a href="displays_settings.html">Display Settings</a>
+</li>
+<li class="active">
+<a href="displays_groups.html">Display Groups<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a>
+</li>
+<li>
+<a href="displays_sync_groups.html">Sync Groups</a>
+</li>
+<li>
+<a href="displays_metrics.html">Reporting</a>
+</li>
+<li>
+<a href="displays_command_functionality.html">Command Functionality</a>
+</li>
+</ul>
+</body></html>
+<li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="display_groups">Display Groups <a href="#display_groups" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Create Display Groups to group together specific <a href="displays.html">Displays</a> for easier Scheduling and management as your BI Square Brand Activation system grows.</p>
+<p>Display Groups can contain both singular <strong>Displays</strong> as well as other <strong>Display Groups</strong>. This allows you to target large numbers of Displays with just a simple <a href="scheduling_events.html">Schedule</a></p>
+<h2 id="display_group_administration">Display Group Administration <a href="#display_group_administration" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Display Groups are managed in the CMS by clicking <strong>Display Groups</strong> under the Displays section of the main CMS menu:</p>
+<p><img src="img/v4_displays_groups_grid.png" alt="Display Groups Grid" /></p>
+<p>Use the <strong>Add Display Group</strong> button to create a new Display Group and complete the required form fields:</p>
+<p><img src="img/v4_displays_groups_add.png" alt="Add Display Group" /></p>
+<p>Display Groups can be saved to <a href="/manual/en/tour_folders.html">Folders</a> to easily control User/User User Group levels of interaction for Display Groups as well as provide an additional way to organise.</p>
+<blockquote class="tip"><p>Display Groups that are saved in Folders will inherit the View, Edit, Delete <a href="users_features_and_sharing.html#content-share">Share</a> options that been applied to the destination Folder for the User/User Group!</p>
+</blockquote>
+<p>Displays need to be assigned to the Display Group in one of two ways, by manually adding or it can be controlled with filter criteria as a Dynamic Group.</p>
+<h3>Dynamic Group Membership</h3>
+<p>To assign members to this group dynamically:</p>
+<ul>
+<li>Tick the Dynamic Group checkbox on the form to reveal additional form fields.</li>
+<li>Filter criteria for Dynamic Groups is in the format of regular expressions, but can also be simple string comparisons. The expressions should be separated by a comma and can be negated with a <code>-</code> prefix.</li>
+</ul>
+<blockquote class="tip"><p>For example, all Displays containing “a” but not “b” would be <code>a,-b</code>.</p>
+</blockquote>
+<p><img src="img/v4_displays_group_dynamic.png" alt="Display Group Dynamic Criteria" /></p>
+<blockquote class="tip"><p>Criteria Tags can be filtered using additional OR/AND filters for Displays that have multiple Tags assigned!</p>
+</blockquote>
+<ul>
+<li>Click to <strong>Save</strong>
+</li>
+</ul>
+<blockquote class="tip"><p>If you have more Display Groups to create instead of hitting Save click <strong>Next</strong> to keep the form open and continue creating new Display Groups!</p>
+</blockquote>
+<h3>Manual Group Membership</h3>
+<p>To manually assign members to this group:</p>
+<ul>
+<li>Leave the Dynamic Group checkbox unticked and click to <strong>Save</strong> the form.</li>
+<li>Use the row menu for the new Display Group record and select <strong>Members</strong>.</li>
+<li>Use the checkbox for each Display to control the membership to the group.</li>
+</ul>
+<p><img src="img/v4_displays_groups_memberships.png" alt="Display Group Memberships" /></p>
+<blockquote class="tip"><p>Use the <strong>Relationship Tree</strong> tab to view the ancestors and descendants of the Display Group being edited. The current Display Group will be in bold text. Parent Display Groups (above the current one) will pass their schedule down to the current and child Display Groups. Child Display Groups (below the current one) will inherit schedule information from the Parent Display Group and the current Display Group.</p>
+</blockquote>
+<ul>
+<li>click to <strong>Save</strong>.</li>
+</ul>
+<h2 id="nested_groups">Nested Groups <a href="#nested_groups" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Display Groups can be nested to create complex structures and targeted Scheduling.</p>
+<blockquote class="tip"><p>Example Group Structure</p>
+<ul>
+<li>Site 1</li>
+<li>Site 1 - Building A</li>
+<li>Site 1 - Building A - Level 1</li>
+<li>Site 1 - Building A - Level 2</li>
+<li>Site 1 - Building B</li>
+</ul>
+<p>The Display membership is set on the lowest level groups and those groups then belong to the next level up, which in turn belong to the highest level parent “Site 1”.
+The CMS will not allow a circular reference to be created (an assignment that creates a loop i.e. Site 1 has Site 1 - Building A, and Site 1 - Building A has Site 1.)</p>
+</blockquote>
+<p><strong>Schedules</strong>, <strong>Media files</strong> and <strong>Layout Assignments</strong> set to the Display Group, will apply to all members assigned to the group.</p>
+<h2 id="row_menu">Row Menu <a href="#row_menu" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Each Display Group has a row menu containing a number of actions/shortcuts.</p>
+<ul>
+<li>Click on <strong>Members</strong> to manage the membership of Display Groups which have had Displays manually assigned.</li>
+<li>Use <strong>Edit</strong> to view the criteria used for dynamic memberships and to make changes if required.</li>
+<li>Directly <a href="displays.html#content-assign-files--layouts">Assign Library files and Layouts</a> to a Display Group so that they are always available in the local library of the Player.</li>
+</ul>
+<blockquote class="tip"><p>Use the <strong>With Selected</strong> option at the bottom of the grid to easily perform bulk actions for multiple Display Groups!</p>
+</blockquote>
+<h4>Next…</h4>
+<p><a href="displays_sync_groups.html">Display Sync Groups</a></p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="tour">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="index.html">Introduction</a></p>
+</li>
+<li>
+<p><a href="tour_user_access.html">User Access</a></p>
+</li>
+<li>
+<p><a href="tour_cms_navigation.html">CMS Navigation</a></p>
+</li>
+<li>
+<p><a href="tour_cms_settings.html">CMS Administrator Settings</a></p>
+</li>
+<li>
+<p class="active"><a href="tour_tags.html">Tags<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+<li>
+<p><a href="tour_folders.html">Folders</a></p>
+</li>
+<li>
+<p><a href="tour_transitions.html">Transitions</a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="tag_management">Tag Management <a href="#tag_management" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Tags can be assigned to <strong>Layouts</strong>, <strong>Campaigns</strong>, <strong>Templates</strong>, <strong>Playlists</strong>, <strong>Media</strong> and <strong>Displays/ Display Groups</strong> in order to bring about organisation and structure within the CMS.</p>
+<h2 id="feature_overview:">Feature Overview: <a href="#feature_overview:" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<ul>
+<li>Used throughout the CMS.</li>
+<li>Easier searches by narrowing down results.</li>
+<li>Set values to be associated with a Tag.</li>
+<li>Make values a ‘Required Value’ in order to Save.</li>
+<li>Dedicated Tags page for easier management.</li>
+</ul>
+<p>Tags can be created by Users from various <a href="tour_cms_navigation.html#content-forms">Forms</a> throughout the CMS. These can be managed by Administrators from the <strong>Tags</strong> page under the <strong>Administration</strong> section of the main CMS menu:</p>
+<p><img src="img/v4_tour_tags_grid.png" alt="Tags Grid" /></p>
+<blockquote class="tip"><p>Additional filter options can be applied to only view <strong>System Tags</strong> and Tags with associated <strong>Values</strong>!</p>
+</blockquote>
+<p>When adding Tags you can optionally create a <strong>Tag value</strong> to be associated with the Tag.</p>
+<ul>
+<li>Free type the <strong>Tag Value</strong> to be used with the Tag:</li>
+</ul>
+<p><img src="img/v4_tour_tags_value.png" alt="Tag Value" /></p>
+<ul>
+<li>Click enter on your keyboard to confirm.</li>
+</ul>
+<p>The Tag field will update to show the <code>Tag|Value</code></p>
+<p><img src="img/v4_tour_tags_updated_value.png" alt="Updated Tag Value" /></p>
+<p>The next time this Tag is entered the associated Value will be shown for selection.</p>
+<p>Tags can have a <strong>Required Value</strong> enabled so that a Value must be selected in order for a User to save the form.</p>
+<ul>
+<li>Enable from the row menu for a selected Tag and click <strong>Edit</strong>.</li>
+</ul>
+<p>You can also provide filter options to <strong>exclude</strong> items with specific tags from searches:</p>
+<ul>
+<li>Enter <code>-Tag</code> to exclude the tag from search results.</li>
+<li>Enter <code>-|Value</code> to exclude the value from search results.</li>
+<li>Enter <code>-Tag|Value</code> to exclude both tag and value from search results.</li>
+</ul>
+<blockquote class="tip"><p>You can have a comma separated mix of all the above!</p>
+</blockquote>
+<ul>
+<li>If you want to show all items that have <strong>not</strong> got a tag then enter <code>--no-tag</code>
+</li>
+</ul>
+<h2 id="edit/delete_tags">Edit/Delete Tags <a href="#edit/delete_tags" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>From the Tags page use the row Menu for a selected Tag to <strong>Edit</strong> or <strong>Delete</strong>.</p>
+<ul>
+<li>Select <strong>Edit</strong> to rename, set associated Values and enable/disable the Required Value function.</li>
+</ul>
+<p>Tags can be deleted individually or removed in bulk:</p>
+<ul>
+<li>Click rows to select which Tags you wish to delete and use the <strong>With Selected</strong> drop down at the bottom of the grid</li>
+<li>Select <strong>Delete</strong>.</li>
+</ul>
+<h2 id="assigning_tags">Assigning Tags <a href="#assigning_tags" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>As soon as you start entering text in the Tag field, an auto-complete helper will show possible matches to make it easier for Users to see what Tags are available to select from.</p>
+<blockquote class="tip"><p>To enter a Tag, start typing in the Tag field and pick from the list or click out of the box when you are done.</p>
+</blockquote>
+<ul>
+<li>You can see in the image below that the <code>colour</code> Tag already has associated values of <code>Red, Green and Blue</code>  shown as Tag values to select from.</li>
+</ul>
+<p><img src="img/v4_tour_tags_associated_value.png" alt="Tags Value" /></p>
+<p>If the Tag Value is already known then this can also be typed in the field using the <code>Tag|Value</code> format.</p>
+<p>Users can add an associated value to a Tag without an existing predefined value using the Tag Value field. Enter the Value you wish to associate with the Tag in the Tag value field and click enter. If you do not wish to enter a Tag value, then this field can be left blank.</p>
+<blockquote class="tip"><p>Tags can also be assigned to multiple objects using the <a href="tour_cms_navigation.html#content-multi-select---with-selected">With Selected</a> option on multiple pages throughout the CMS.</p>
+<p>When exporting a Layout the <strong>Layout Tag</strong> will also be exported. Select the <strong>Import Tags</strong> option to add the Tag on Layout import if required.</p>
+</blockquote>
+<h4>Next…</h4>
+<p><a href="tour_folders.html">Folders</a></p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

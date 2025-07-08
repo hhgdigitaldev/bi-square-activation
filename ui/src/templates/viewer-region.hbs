@@ -1,0 +1,12 @@
+<div id="{{id}}"
+    data-type="{{type}}"
+    data-sub-type="{{subType}}"
+    class="designer-region designer-region-{{subType}} droppable {{#neq subType 'canvas'}}viewer-object-select{{/neq}} {{#if isEditable}}editable{{/if}}"
+    data-region-id="{{regionId}}"
+    style="position:absolute;
+        width: {{ scaledDimensions.width }}px; 
+        height: {{ scaledDimensions.height }}px; 
+        top: {{ scaledDimensions.top }}px;
+        left: {{ scaledDimensions.left }}px;
+        z-index: {{ zIndex }};">
+</div>

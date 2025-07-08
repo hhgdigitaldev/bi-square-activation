@@ -1,0 +1,285 @@
+<!--
+  ~ Copyright (C) 2024 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<module>
+    <id>core-calendar</id>
+    <name>Calendar</name>
+    <author>Core</author>
+    <description>A module for displaying a calendar based on an iCal feed</description>
+    <icon>fa fa-calendar-alt</icon>
+    <class>Xibo\Widget\IcsProvider</class>
+    <compatibilityClass>\Xibo\Widget\Compatibility\CalendarWidgetCompatibility</compatibilityClass>
+    <type>ics-calendar</type>
+    <legacyType>calendaradvanced</legacyType>
+    <legacyType>calendar</legacyType>
+    <dataType>event</dataType>
+    <dataCacheKey>%uri%_%useDateRange%_%startIntervalFrom%_%customInterval%_%rangeStart%_%rangeEnd%_%useEventTimezone%_%useCalendarTimezone%_%windowsFormatCalendar%_%excludeAllDay%</dataCacheKey>
+    <fallbackData>1</fallbackData>
+    <schemaVersion>2</schemaVersion>
+    <assignable>1</assignable>
+    <regionSpecific>1</regionSpecific>
+    <renderAs>html</renderAs>
+    <defaultDuration>60</defaultDuration>
+    <settings>
+        <property id="cachePeriod" type="number">
+            <title>Cache Period (mins)</title>
+            <helpText>Please enter the number of minutes you would like to cache ICS feeds.</helpText>
+            <default>1440</default>
+        </property>
+    </settings>
+    <properties>
+        <property id="uri" type="text" variant="uri">
+            <title>Feed URL</title>
+            <helpText>The Link for the iCal Feed.</helpText>
+            <default></default>
+            <rule>
+                <test type="and">
+                    <condition type="required"></condition>
+                    <condition type="uri"></condition>
+                </test>
+            </rule>
+        </property>
+        <property type="header" variant="main">
+            <title>Events to show</title>
+        </property>
+        <property id="useDateRange" type="checkbox">
+            <title>Get events using a preset date range?</title>
+            <helpText>Use the checkbox to return events within defined start and end dates.</helpText>
+            <default>0</default>
+        </property>
+        <property id="startIntervalFrom" type="dropdown" mode="single">
+            <title>Events from the start of the</title>
+            <helpText>When should events be returned from?</helpText>
+            <options>
+                <option name="day">Day</option>
+                <option name="week">Week</option>
+                <option name="month">Month</option>
+            </options>
+            <visibility>
+                <test>
+                    <condition field="useDateRange" type="eq">0</condition>
+                </test>
+            </visibility>
+        </property>
+        <property id="customInterval" type="text">
+            <title>for an interval of</title>
+            <helpText>Using natural language enter a string representing the period for which events should be returned, for example 2 days or 1 week.</helpText>
+            <rule>
+                <test>
+                    <condition type="interval"></condition>
+                </test>
+            </rule>
+            <visibility>
+                <test>
+                    <condition field="useDateRange" type="eq">0</condition>
+                </test>
+            </visibility>
+        </property>
+        <property id="rangeStart" type="date" variant="dateTime">
+            <title>Start Date</title>
+            <visibility>
+                <test>
+                    <condition field="useDateRange" type="eq">1</condition>
+                </test>
+            </visibility>
+        </property>
+        <property id="rangeEnd" type="date" variant="dateTime">
+            <title>End Date</title>
+            <visibility>
+                <test>
+                    <condition field="useDateRange" type="eq">1</condition>
+                </test>
+            </visibility>
+        </property>
+        <property id="excludeAllDay" type="checkbox">
+            <title>Exclude all day events?</title>
+            <helpText>When all day events are excluded they are removed from the list of events in the feed and wont be shown</helpText>
+            <default></default>
+        </property>
+        <property id="excludePast" type="checkbox">
+            <title>Exclude past events?</title>
+            <helpText>When past events are excluded they are removed from the list of events in the feed and wont be shown.</helpText>
+            <default></default>
+        </property>
+        <property id="showOnlyCurrent" type="checkbox">
+            <title>Show only current events?</title>
+            <helpText>Show current events and hide all other events from the feed.</helpText>
+            <default></default>
+        </property>
+        <property id="excludeCurrent" type="checkbox">
+            <title>Exclude current events?</title>
+            <helpText>When current events are excluded they are removed from the list of events in the feed and wont be shown.</helpText>
+            <default></default>
+        </property>
+        <property id="useEventTimezone" type="checkbox">
+            <title>Use event timezone?</title>
+            <helpText>If an event specifies a timezone, should it be used. Deselection means the CMS timezone will be used.</helpText>
+            <default>1</default>
+        </property>
+        <property id="useCalendarTimezone" type="checkbox">
+            <title>Use calendar timezone?</title>
+            <helpText>If your calendar feed specifies its own time zone, should this be used for events without their own timezone? Deselecting means the CMS timezone will be used.</helpText>
+            <default>1</default>
+        </property>
+        <property id="windowsFormatCalendar" type="checkbox">
+            <title>Windows format Calendar?</title>
+            <helpText>Does the calendar feed come from Windows - if unsure leave unselected.</helpText>
+            <default>0</default>
+        </property>
+        <property id="durationIsPerItem" type="checkbox">
+            <title>Duration is per item</title>
+            <helpText>The duration specified is per item otherwise it is per feed.</helpText>
+            <default>0</default>
+        </property>
+        <property id="numItems" type="number">
+            <title>Number of items</title>
+            <helpText>The number of items you want to display.</helpText>
+            <rule>
+                <test type="or" message="When duration is per item then number of items must be 1 or higher">
+                    <condition type="gte">1</condition>
+                    <condition field="durationIsPerItem" type="eq">0</condition>
+                </test>
+            </rule>
+        </property>
+        <property id="updateInterval" type="number">
+            <title>Update Interval (mins)</title>
+            <helpText>Please enter the update interval in minutes. This should be kept as high as possible. For example, if the data will only change once per hour this could be set to 60.</helpText>
+            <default>60</default>
+        </property>
+        <property type="header" variant="main">
+            <title>Web Hook triggers</title>
+        </property>
+        <property type="message">
+            <title>Web Hook triggers can be executed when certain conditions are detected. If you would like to execute a trigger, enter the trigger code below against each event.</title>
+        </property>
+        <property id="currentEventTrigger" type="text">
+            <title>Current Event</title>
+            <helpText>Code to be triggered when a event is currently ongoing.</helpText>
+            <default></default>
+        </property>
+        <property id="noEventTrigger" type="text">
+            <title>No Event</title>
+            <helpText>Code to be triggered when no events are ongoing at the moment.</helpText>
+            <default></default>
+        </property>
+    </properties>
+    <onDataLoad><![CDATA[
+// items: The items to render
+// meta: Metadata
+// properties: The properties for the widget
+
+// Track whether there is an event currently ongoing
+window.ongoingEvent = false;
+
+// Process events
+var now = moment();
+
+for(var idx = 0; idx < items.length; idx++) {
+    var item = items[idx];
+
+    var startDate = moment(item.startDate);
+    var endDate = moment(item.endDate);
+
+    // Check if there is an event ongoing and change it if the variable isn't set or is false
+    window.ongoingEvent = window.ongoingEvent || (startDate.isBefore(now) && endDate.isAfter(now));
+
+    if (endDate.isAfter(now)) {
+        if (moment(items[idx].startDate).isBefore(now)) {
+            items[idx].currentEvent = true;
+        } else {
+            items[idx].currentEvent = false;
+        }
+    }
+
+    if (endDate.isBefore(now)) {
+        items[idx].pastEvent = true;
+    } else {
+        items[idx].pastEvent = false;
+    }
+
+    // Filter items based on properties
+    if (
+        // If it's current event and we need to exclude it
+        (properties.excludeCurrent == 1 && items[idx].currentEvent) ||
+        // If it's not current event, and we only want to show current events
+        (properties.showOnlyCurrent == 1 && !item.currentEvent) ||
+        // If it's a past event and we need to exclude it
+        (properties.excludePast == 1 && item.pastEvent)
+    ) {
+        items.splice(idx, 1);
+        idx--;
+    }
+}
+
+// If we have numItems, send only that number
+var numItems = properties.numItems && properties.numItems < items.length
+  ? properties.numItems
+  : items.length;
+
+return {dataItems: items.slice(0, numItems)};
+    ]]></onDataLoad>
+    <onRender>
+        <![CDATA[
+// Module renderer options
+// id: The id of the widget
+// target: The target element to render
+// properties: The properties for the <widget></widget>
+
+// Event triggers
+if (properties.currentEventTrigger && window.ongoingEvent) {
+    // If there is an event now, send the Current Event trigger (if exists)
+    xiboIC.trigger(properties.currentEventTrigger, {targetId: 0});
+} else if (properties.noEventTrigger) {
+    // If there is no event now, send the No Event trigger
+    xiboIC.trigger(properties.noEventTrigger, {targetId: 0});
+}
+    ]]></onRender>
+    <sampleData><![CDATA[
+[{
+    "summary": "Sample Event 1",
+    "description": "This event will start an hour after the current date and time and ends 12 hours after that.",
+    "location": null,
+    "startDate": "%+1h%",
+    "endDate": "%+12h%"
+},
+{
+    "summary": "Sample Event 2",
+    "description": "This event will start right away on the current date and time and ends after a day.",
+    "location": null,
+    "startDate": "%+0d%",
+    "endDate": "%+1d%"
+},
+{
+    "summary": "Sample Event 3",
+    "description": "This event will start 2 hours after the current date and time and ends 4 hours after that.",
+    "location": null,
+    "startDate": "%+2h%",
+    "endDate": "%+4h%"
+},
+{
+    "summary": "Sample Event 4",
+    "description": "This event will start 5 minutes after the current date and time and ends 30 minutes after that.",
+    "location": null,
+    "startDate": "%+5m%",
+    "endDate": "%+30m%"
+}]
+]]></sampleData>
+    <preview></preview>
+</module>

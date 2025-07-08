@@ -1,0 +1,44 @@
+<div class="toolbar-card  {{#eq cardType "moduleGroup"}}toolbar-card-group{{/eq}} {{#neq dataType ""}}toolbar-card-menu{{/neq}} {{#if favourited}}favourited{{/if}} {{#if thumbnail}}has-thumb{{/if}}" 
+    data-type="{{contentType}}" 
+    data-sub-type="{{type}}"
+    data-data-type="{{dataType}}"
+    data-target="{{#if target}}{{target}}{{else}}layout zone {{#neq type "playlist"}}drawer playlist{{/neq}}{{/if}}"
+    data-region-specific="{{regionSpecific}}"
+    data-valid-ext="{{ validExtensions }}"
+    data-max-size="{{ maxSize }}" 
+    data-max-size-message="{{ maxSizeMessage }}"
+    data-description="{{description}}"
+    data-start-width="{{startWidth}}"
+    data-start-height="{{startHeight}}"
+    data-card-title="{{name}}"
+    data-toggle="tooltip" data-title="{{description}}"
+>
+    
+    {{#eq contentType "widgets"}}
+        <div class="btn-favourite" data-toggle="tooltip" data-placement="left" 
+            {{#unless favourited}}
+                data-title="{{trans.addAsFavourite}}
+            {{/unless}}
+            ">
+            <i class="fa {{#if favourited}}fa-star{{else}}fa-star-o{{/if}}"></i>
+        </div>
+
+        {{#neq dataType ""}}
+            <div class="open-submenu" data-title="{{trans.open}}" data-toggle="tooltip" data-placement="right">
+                <i class="fa fa-angle-right"></i>
+            </div>
+        {{/neq}}
+    {{/eq}}
+
+    {{#if thumbnail}}
+        <div class="toolbar-card-thumb">
+            <img src="{{thumbnail}}" />
+        </div>
+    {{else}}
+        <i class="{{iconType}}-icon {{icon}} card-icon"></i>
+    {{/if}}
+    
+    <div class="toolbar-content">
+        <span class="card-title">{{name}}</span>
+    </div>
+</div>

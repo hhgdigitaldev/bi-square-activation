@@ -1,0 +1,634 @@
+<!--
+  ~ Copyright (C) 2024 Xibo Signage Ltd
+  ~
+  ~ Xibo - Digital Signage - https://xibosignage.com
+  ~
+  ~ This file is part of Xibo.
+  ~
+  ~ Xibo is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ any later version.
+  ~
+  ~ Xibo is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<templates>
+    <template>
+        <id>currencies_custom_html</id>
+        <type>static</type>
+        <dataType>currency</dataType>
+        <showIn>none</showIn>
+        <title>Currencies Custom HTML</title>
+        <properties>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000).</helpText>
+            </property>
+            <property id="backgroundColor" type="color">
+                <title>Background Colour</title>
+                <helpText>The selected effect works best with a background colour. Optionally add one here.</helpText>
+                <default></default>
+            </property>
+            <property id="itemsPerPage" type="number">
+                <title>Items per Page</title>
+                <helpText>This is the intended number of items on each page.</helpText>
+                <default>4</default>
+            </property>
+            <property id="customTemplate" type="hidden">
+                <default>1</default>
+            </property>
+            <property id="moduleType" type="hidden">
+                <default>currencies</default>
+            </property>
+            <property id="widgetDesignWidth" type="number">
+                <title>Original Width</title>
+                <helpText>This is the intended width of the template and is used to scale the Widget within its region when the template is applied.</helpText>
+            </property>
+            <property id="widgetDesignHeight" type="number">
+                <title>Original Height</title>
+                <helpText>This is the intended height of the template and is used to scale the Widget within its region when the template is applied.</helpText>
+            </property>
+            <property id="mainTemplate" type="code" allowLibraryRefs="true" parseTranslations="true" variant="html">
+                <title>mainTemplate</title>
+            </property>
+            <property id="itemTemplate" type="code" allowLibraryRefs="true" parseTranslations="true" variant="html">
+                <title>itemTemplate</title>
+            </property>
+            <property id="styleSheet" type="code" allowLibraryRefs="true" variant="css">
+                <title>styleSheet</title>
+            </property>
+        </properties>
+        <stencil>
+            <twig><![CDATA[
+<div class="template-container" style="display: none;">
+{{mainTemplate|raw}}
+</div>
+
+<div class="item-template" style="display: none;">
+{{itemTemplate|raw}}
+</div>
+
+<div class="sample-image" style="display: none;">
+  <div class="img-circle center-block flag-icon-container">
+    <img src="[[assetId=flags]]" class="flag-icon flag-icon-[NameShort]">
+  </div>
+</div>
+            ]]></twig>
+            <style><![CDATA[
+{{styleSheet|raw}}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+// Template renderer options
+// id: The id of the widget
+// target: The target element to render
+// items: The items to render
+// properties: The properties for the widget
+$(target).xiboLayoutScaler(properties);
+
+// Get body
+var body = $(target).find('.template-container > div');
+
+// Get items
+var templateItems = $(target).find('#content > .template-item');
+
+// Run only if there are items
+if (templateItems.length > 0) {
+    // Render items
+    $(target).find('#content').xiboFinanceRender(properties, templateItems, body);
+} else {
+    // Hide container
+    $(body).hide();
+}
+$(target).find('img').xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="flags" type="path" mimeType="image/webp" path="/modules/assets/currency/flags.webp"></asset>
+            <asset id="flagsCSS" type="path" mimeType="text/css" path="/modules/assets/currency/flags.css"></asset>
+        </assets>
+    </template>
+    <template>
+        <id>currencies1</id>
+        <type>static</type>
+        <dataType>currency</dataType>
+        <title>Currencies 1</title>
+        <thumbnail>currencies1</thumbnail>
+        <startWidth>500</startWidth>
+        <startHeight>300</startHeight>
+        <properties>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000).</helpText>
+            </property>
+            <property id="backgroundColor" type="color">
+                <title>Background Colour</title>
+                <helpText>The selected effect works best with a background colour. Optionally add one here.</helpText>
+                <default></default>
+            </property>
+            <property id="itemBackgroundColor" type="color">
+                <title>Item Colour</title>
+                <helpText>Background colour for each currency item.</helpText>
+                <default>rgba(0, 0, 0, 0.87)</default>
+            </property>
+            <property id="itemFontColor" type="color">
+                <title>Item Font Colour</title>
+                <helpText>Font colour for each currency item.</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="headerFontColor" type="color">
+                <title>Header Font Colour</title>
+                <helpText>Font colour for the header.</helpText>
+                <default>#fff</default>
+            </property>
+            <property id="upArrowColor" type="color">
+                <title>Up Arrow Colour</title>
+                <helpText>Colour for the up change arrow.</helpText>
+                <default>green</default>
+            </property>
+            <property id="downArrowColor" type="color">
+                <title>Down Arrow Colour</title>
+                <helpText>Colour for the down change arrow.</helpText>
+                <default>red</default>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="itemsPerPage" type="hidden" saveDefault="true">
+                <default>4</default>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">820</width>
+            <height id="height">420</height>
+            <hbs><![CDATA[
+<div class="row-finance template-item">
+  <div class="flags">
+    <div class="img-circle center-block flag-icon-container">
+      <img src="[[assetId=flags]]" class="flag-icon flag-icon-{{NameShort}}">
+    </div>
+  </div>
+  <div class="name value">{{NameShort}}</div>
+  <div class="price text-center value">{{RawLastTradePriceOnly}}</div>
+</div>
+            ]]></hbs>
+            <twig><![CDATA[
+<div class="container-main template-container">
+    <div class="container">
+        <div class="row-header">
+            <div class="header-rate value">||RATE||</div>
+        </div>
+        <div id="cycle-container" class="items-container">
+        </div>
+    </div>
+</div>
+            ]]></twig>
+            <style><![CDATA[
+body {
+    width: 820px !important;
+    height: 420px !important;
+    line-height: 1;
+{% if fontFamily %}
+    font-family: {{fontFamily}};
+{% else %}
+    font-family: "Helvetica", "Arial", sans-serif;
+{% endif %}
+}
+
+.container-main {
+    height: 420px !important;
+    width: 820px !important;
+{% if backgroundColor %}
+    background-color: {{backgroundColor}};
+{% endif %}
+}
+
+.container {
+    height: 420px !important;
+    width: 820px !important;
+    float: left;
+}
+
+.row-finance {
+    height: 60px;
+    margin-bottom: 20px;
+{% if itemBackgroundColor %}
+    background-color: {{itemBackgroundColor}};
+{% endif %}
+}
+
+.row-header {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 20px;
+{% if headerFontColor %}
+    color: {{headerFontColor}};
+{% endif %}
+}
+
+.header-rate {
+    margin-left: 70%;
+    width: 30%;
+    text-align: center;
+}
+
+.value {
+    font-size: 20px;
+    padding-top: 20px;
+    font-weight: bold;
+}
+
+.page .value {
+{% if itemFontColor %}
+    color: {{itemFontColor}};
+{% endif %}
+}
+
+.img-circle {
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 0;
+}
+
+.center-block {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.down-arrow {
+    font-size: 20px;
+{% if downArrowColor %}
+    color: {{downArrowColor}};
+{% endif %}
+    padding-top: 17px;
+}
+
+.up-arrow {
+    font-size: 20px;
+{% if upArrowColor %}
+    color: {{upArrowColor}};
+{% endif %}
+    padding-top: 17px;
+}
+
+.variant {
+    font-size: 20px;
+    padding-top: 17px;
+}
+
+.flags {
+    padding-top: 4px;
+    width: 15%;
+    float: left;
+}
+
+.name {
+    width: 30%;
+    float: left;
+}
+
+.price {
+    float: right;
+    width: 30%;
+    text-align: center;
+}
+
+.center-block {
+    width: 50px;
+    height: 50px;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+// Template renderer options
+// id: The id of the widget
+// target: The target element to render
+// items: The items to render
+// properties: The properties for the widget
+var overrideItemPerPage = {
+    itemsPerPage: 0,
+};
+$(target).xiboLayoutScaler($.extend({}, properties, overrideItemPerPage));
+
+// Get items
+var templateItems = $(target).find(".template-item");
+
+// Get body
+var body = $(target).find(".template-container");
+
+// Run only if there are items
+if (templateItems.length > 0) {
+    // Render items
+    $(target).find("#content").xiboFinanceRender(properties, templateItems, body);
+} else {
+    // Hide container
+    $(body).hide();
+}
+$(target).find("img").xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="currencies1" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/currency/currencies1.png"></asset>
+            <asset id="flags" type="path" mimeType="image/webp" path="/modules/assets/currency/flags.webp"></asset>
+            <asset id="flagsCSS" type="path" mimeType="text/css" path="/modules/assets/currency/flags.css"></asset>
+        </assets>
+    </template>
+    <template>
+        <id>currencies2</id>
+        <type>static</type>
+        <dataType>currency</dataType>
+        <title>Currencies 2</title>
+        <thumbnail>currencies2</thumbnail>
+        <startWidth>500</startWidth>
+        <startHeight>300</startHeight>
+        <properties>
+            <property id="effect" type="effectSelector" variant="showPaged">
+                <title>Effect</title>
+                <helpText>Please select the effect that will be used to transition between items.</helpText>
+                <default>noTransition</default>
+            </property>
+            <property id="speed" type="number">
+                <title>Speed</title>
+                <helpText>The transition speed of the selected effect in milliseconds (normal = 1000).</helpText>
+            </property>
+            <property id="backgroundColor" type="color">
+                <title>Background Colour</title>
+                <helpText>The selected effect works best with a background colour. Optionally add one here.</helpText>
+                <default></default>
+            </property>
+            <property id="itemBackgroundColor" type="color">
+                <title>Item Colour</title>
+                <helpText>Background colour for each currency item.</helpText>
+                <default>#e0e0e0</default>
+            </property>
+            <property id="itemFontColor" type="color">
+                <title>Item Font Colour</title>
+                <helpText>Font colour for each currency item.</helpText>
+                <default>#000</default>
+            </property>
+            <property id="borderLeftColor" type="color">
+                <title>Item Border Colour</title>
+                <helpText>Border colour for each currency item.</helpText>
+                <default>#264a88</default>
+            </property>
+            <property id="upArrowColor" type="color">
+                <title>Up Arrow Colour</title>
+                <helpText>Colour for the up change arrow.</helpText>
+                <default>green</default>
+            </property>
+            <property id="downArrowColor" type="color">
+                <title>Down Arrow Colour</title>
+                <helpText>Colour for the down change arrow.</helpText>
+                <default>red</default>
+            </property>
+            <property id="equalArrowColor" type="color">
+                <title>Equal Arrow Colour</title>
+                <helpText>Colour for the equal change arrow.</helpText>
+                <default>gray</default>
+            </property>
+            <property id="fontFamily" type="fontSelector">
+                <title>Font</title>
+                <helpText>Select a custom font - leave empty to use the default font.</helpText>
+            </property>
+            <property id="itemsPerPage" type="hidden" saveDefault="true">
+                <default>5</default>
+            </property>
+        </properties>
+        <stencil>
+            <width id="width">820</width>
+            <height id="height">420</height>
+            <hbs><![CDATA[
+<div class="row-finance template-item">
+    <div class="flags">
+      <div class="img-circle center-block flag-icon-container">
+        <img src="[[assetId=flags]]" class="flag-icon flag-icon-{{NameShort}}">
+      </div>
+    </div>
+    <div class="name value">{{NameShort}}</div>
+    <div class="price value">{{RawLastTradePriceOnly}}</div>
+    <div class="perc value {{ChangeStyle}}">{{ChangePercentage}}%</div>
+    <div class="arrow"><div class="{{ChangeIcon}}"></div></div>
+</div>
+            ]]></hbs>
+            <twig><![CDATA[
+<div class="container-main template-container">
+  <div id="cycle-container" class="items-container">
+  </div>
+</div>
+            ]]></twig>
+            <style><![CDATA[
+body {
+  width: 820px !important;
+  height: 420px !important;
+{% if fontFamily %}
+    font-family: {{fontFamily}};
+{% else %}
+    font-family: "Helvetica", "Arial", sans-serif;
+{% endif %}
+  line-height: 1;
+}
+
+.img-circle {
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 0;
+}
+
+.container-main {
+  height: 370px !important;
+  width: 820px !important;
+  float: left;
+  padding: 25px 0;
+{% if backgroundColor %}
+  background-color: {{backgroundColor}};
+{% endif %}
+}
+
+.row-finance {
+  height: 60px;
+  margin-bottom: 17px;
+  border-left: #264a88 10px solid;
+{% if borderLeftColor %}
+    border-left-color: {{borderLeftColor}};
+{% endif %}
+{% if itemBackgroundColor %}
+    background: {{itemBackgroundColor}};
+{% endif %}
+}
+
+.row-finance>div {
+  float: left;
+}
+
+.value {
+  font-size: 20px;
+  padding-top: 20px;
+{% if itemFontColor %}
+  color: {{itemFontColor}};
+{% endif %}
+  white-space: nowrap;
+}
+
+.down-arrow {
+  margin: 25px 0px 0px 20px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid red;
+  {% if downArrowColor %}
+    border-top-color: {{downArrowColor}};
+  {% endif %}
+}
+
+.up-arrow {
+  margin: 25px 0px 0px 20px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid green;
+{% if upArrowColor %}
+    border-bottom-color: {{upArrowColor}};
+{% endif %}
+}
+
+.right-arrow {
+  margin: 20px 0px 0px 25px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid gray;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+{% if equalArrowColor %}
+    border-left-color: {{equalArrowColor}};
+{% endif %}
+}
+
+.img-circle {
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 0;
+}
+
+.center-block {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.variant {
+  font-size: 20px;
+  padding-top: 17px;
+}
+
+.flags {
+  padding-top: 4px;
+  width: 15%;
+}
+
+.name {
+  width: 20%;
+}
+
+.price {
+  width: 20%;
+  margin-left: 15%;
+  text-align: right;
+}
+
+.perc {
+  width: 20%;
+  text-align: right;
+}
+
+.arrow {
+  width: 8%;
+  margin-left: 2%;
+}
+
+.value-up {
+  font-weight: bold;
+{% if upArrowColor %}
+    color: {{upArrowColor}};
+{% endif %}
+}
+
+.value-down {
+  font-weight: bold;
+{% if downArrowColor %}
+    color: {{downArrowColor}};
+{% endif %}
+}
+
+.value-equal {
+  font-weight: bold;
+{% if equalArrowColor %}
+    color: {{equalArrowColor}};
+{% endif %}
+}
+
+.name-stock {
+  color: gray;
+}
+            ]]></style>
+        </stencil>
+        <onTemplateRender><![CDATA[
+// Template renderer options
+// id: The id of the widget
+// target: The target element to render
+// items: The items to render
+// properties: The properties for the widget
+var overrideItemPerPage = {
+    itemsPerPage: 0,
+};
+$(target).xiboLayoutScaler($.extend({}, properties, overrideItemPerPage));
+
+// Get template items
+var templateItems = $(target).find(".template-item");
+
+// Get body
+var body = $(target).find(".template-container");
+
+$(target).find("#content").xiboFinanceRender(properties, templateItems, body);
+$(target).find("img").xiboImageRender(properties);
+        ]]></onTemplateRender>
+        <onTemplateVisible><![CDATA[
+// Start effects for this template
+$(target).xiboLayoutAnimate(properties);
+        ]]></onTemplateVisible>
+        <assets>
+            <asset id="currencies2" type="path" mimeType="image/png" cmsOnly="true" path="/modules/assets/template-thumbnails/currency/currencies2.png"></asset>
+            <asset id="flags" type="path" mimeType="image/webp" path="/modules/assets/currency/flags.webp"></asset>
+            <asset id="flagsCSS" type="path" mimeType="text/css" path="/modules/assets/currency/flags.css"></asset>
+        </assets>
+    </template>
+</templates>

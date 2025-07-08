@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BI Square Brand Activation Documentation</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <!-- favicon -->
+        <link href="../img/favicon.ico" rel="shortcut icon"/>
+
+        <!-- Bootstrap -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+        <!-- Stylesheets -->
+        <link href="../manual.css" rel="stylesheet" media="screen">
+        
+        <!-- META -->
+        <meta name="keywords" content="digital signage, signage, narrow-casting, xibo, open source, agpl, documentation" />
+        <meta name="description" content="BI Square Brand Activation is an open source digital signage solution. It supports all main media types and can be interfaced to other sources of data using CSV, Databases or RSS." />
+    </head>
+    <body data-toc="tour">
+        <!-- Copyright 2020 Xibo Signage Ltd. Part of the Xibo Open Source Digital Signage Solution. Released under the AGPLv3 or later. -->
+        <nav id="top-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ss-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">BI Square Brand Activation Documentation</a>
+                </div>
+            
+                <div class="collapse navbar-collapse" id="ss-navbar">
+                    <ul class="nav navbar-nav">
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ss_body container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul id="side-nav" class="nav nav-pills nav-stacked">
+                        <li><a href="index.html" data-toc-name="tour">Tour</a></li><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul>
+<li>
+<p><a href="index.html">Introduction</a></p>
+</li>
+<li>
+<p><a href="tour_user_access.html">User Access</a></p>
+</li>
+<li>
+<p><a href="tour_cms_navigation.html">CMS Navigation</a></p>
+</li>
+<li>
+<p><a href="tour_cms_settings.html">CMS Administrator Settings</a></p>
+</li>
+<li>
+<p><a href="tour_tags.html">Tags</a></p>
+</li>
+<li>
+<p><a href="tour_folders.html">Folders</a></p>
+</li>
+<li>
+<p class="active"><a href="tour_transitions.html">Transitions<span class="glyphicon glyphicon-arrow-left you-are-here-arrow"></span></a></p>
+</li>
+</ul>
+</body></html>
+<li><a href="users_administration.html" data-toc-name="users">Users</a></li><li><a href="displays.html" data-toc-name="displays">Displays</a></li><li><a href="layouts.html" data-toc-name="layouts">Layouts</a></li><li><a href="media_library.html" data-toc-name="media">Media</a></li><li><a href="media_modules.html" data-toc-name="widgets">Modules</a></li><li><a href="scheduling_events.html" data-toc-name="scheduling">Scheduling</a></li><li><a href="troubleshooting.html" data-toc-name="troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9" role="main">
+                    <h1 id="transition_management">Transition Management <a href="#transition_management" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h1>
+<p>Transitions are managed from the <strong>Transitions</strong> page under the <strong>Administration</strong> section of the main CMS menu. Configure which Transitions should be available to Users for assignment to Media items:</p>
+<p><img src="img/v4_tour_transitions_grid.png" alt="Transitions Grid" /></p>
+<ul>
+<li>
+<strong>Fade In</strong> - Increase Opacity from 0 to 100.</li>
+<li>
+<strong>Fade Out</strong> - Decrease Opacity from 100 to 0.</li>
+<li>
+<strong>Fly</strong> - Fly in or out on a compass point.</li>
+</ul>
+<h2 id="transition_defaults">Transition Defaults <a href="#transition_defaults" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>Default Transitions can be easily enabled for all Widgets added to a Layout by ticking the <strong>Automatically apply Transitions?</strong> box from the Layout property panel:</p>
+<p><img src="img/v4_tour_transitions_layout.png" alt="Transitions Layout" /></p>
+<h2 id="playlist_transitions">Playlist Transitions <a href="#playlist_transitions" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>These are the Transitions between <strong>Media items</strong> on a <a href="media_playlists.html">Playlist</a> and are set as <strong>In</strong> and <strong>Out</strong> transitions.</p>
+<blockquote class="tip"><p>The Transition form adapts depending on the Transition selected and the options available for that transition. In most cases it is necessary to select a duration for the Transition in Milliseconds and in the case of Fly, a direction must also be selected.</p>
+</blockquote>
+<h2 id="playlist_exit_transition">Playlist Exit Transition <a href="#playlist_exit_transition" class="header-link"><span class="glyphicon glyphicon-link"></span></a></h2>
+<p>A Playlist Exit Transition happens when the last Media Item to be displayed on a <a href="media_playlists.html">Playlist</a> is shown and allows for a different Exit Transition to be set.</p>
+
+                </div>
+            </div>
+        </div> <!-- container-->
+        <footer class="ss_footer" role="contentinfo">
+            <div class="container">
+                <div class="pull-right">
+                    <img class="img-responsive logo" src="../img/logo.png" alt="BI Square Brand Activation" />
+                </div>
+
+                <p class="ss_back_to_top">Back to Top</p>
+
+                <p class="ss_footer_links">Currently v4</p>
+
+                <p class="ss_languages"><a href="../en/index.html">en</a></p>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".ss-sidebar .list-group li").addClass("list-group-item");
+                $(".ss_body img").addClass("img-thumbnail");
+                $(".ss_body table").addClass("table");
+
+                // Set the selected page based on the TOC name
+                // Mark the appropriate top nav element as the selected page
+                $("#top-nav a").each(function() {
+                    if ($(this).data().tocName == $("body").data().toc)
+                        $(this).parent().addClass("active");
+                });
+
+                $(".ss_back_to_top").click(function() {
+                    $('html, body').animate({scrollTop : 0},800);
+                });
+
+                if (inIframe()) {
+                    console.log("In Frame");
+                    $("#top-nav").css("display", "none");
+                    $(".ss-sidebar").parent().css("display", "none");
+                }
+            });
+
+            function inIframe () {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

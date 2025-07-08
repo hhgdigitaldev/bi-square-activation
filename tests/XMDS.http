@@ -1,0 +1,193 @@
+POST {{url}}/xmds.php?v=7
+Content-Type: application/xml
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:tns="urn:xmds" xmlns:types="urn:xmds/encodedTypes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <tns:RegisterDisplay>
+      <serverKey xsi:type="xsd:string">{{serverKey}}</serverKey>
+      <hardwareKey xsi:type="xsd:string">{{hardwareKey}}</hardwareKey>
+      <displayName xsi:type="xsd:string">{{displayName}}</displayName>
+      <clientType xsi:type="xsd:string">{{clientType}}</clientType>
+      <clientVersion xsi:type="xsd:string">4</clientVersion>
+      <clientCode xsi:type="xsd:int">400</clientCode>
+      <macAddress xsi:type="xsd:string">{{macAddress}}</macAddress>
+      <licenceResult xsi:type="xsd:string">trial</licenceResult>
+      <xmrChannel xsi:type="xsd:string">XMR_test_channel</xmrChannel>
+      <xmrPubKey xsi:type="xsd:string">-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8tUH0MqtiB7Hq7a+Au0v
+3MHFDnlwBmSz9S+44dGir0d119pbZQKb1D5JaGTWsBq0Ca4yAW/XtDwL5Olbue8n
+y2PBygUArJulUQdCeguAKmHCcRw6rce0ZsQymUe84dclf9l7yyCbo1VTDBH651UT
+a/ei6ATBPeLhh98lDKDpz/RmsXuW695thxhTRXPIILDDKYkK5yQF2DNEgVoShFjG
+TRys5AL2ZUrGHrrT5dxOfbNE0sU8qvoYVQIjyUVhANzh66bu8QTbjDcRLMiKE1lJ
+l5U/XOnNkKi+qNimFWRKlNS0sOvPdTJHHZZEaoFa2FXGYGL8/XAidwT6YSY702Gb
+8wIDAQAB
+-----END PUBLIC KEY-----</xmrPubKey>
+    </tns:RegisterDisplay>
+  </soap:Body>
+</soap:Envelope>
+
+###
+
+POST {{url}}/xmds.php?v=7
+Content-Type: application/xml
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:tns="urn:xmds" xmlns:types="urn:xmds/encodedTypes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <tns:RequiredFiles>
+      <serverKey xsi:type="xsd:string">{{serverKey}}</serverKey>
+      <hardwareKey xsi:type="xsd:string">{{hardwareKey}}</hardwareKey>
+    </tns:RequiredFiles>
+  </soap:Body>
+</soap:Envelope>
+
+###
+
+POST {{url}}/xmds.php?v=7
+Content-Type: application/xml
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:tns="urn:xmds" xmlns:types="urn:xmds/encodedTypes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <tns:Schedule>
+      <serverKey xsi:type="xsd:string">{{serverKey}}</serverKey>
+      <hardwareKey xsi:type="xsd:string">{{hardwareKey}}</hardwareKey>
+    </tns:Schedule>
+  </soap:Body>
+</soap:Envelope>
+
+###
+
+POST {{url}}/xmds.php?v=7
+Content-Type: application/xml
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:tns="urn:xmds" xmlns:types="urn:xmds/encodedTypes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <tns:GetResource>
+      <serverKey xsi:type="xsd:string">{{serverKey}}</serverKey>
+      <hardwareKey xsi:type="xsd:string">{{hardwareKey}}</hardwareKey>
+      <layoutId xsi:type="xsd:string">12</layoutId>
+      <regionId xsi:type="xsd:string">33</regionId>
+      <mediaId xsi:type="xsd:string">{{testWidgetId}}</mediaId>
+    </tns:GetResource>
+  </soap:Body>
+</soap:Envelope>
+
+###
+
+POST {{url}}/xmds.php?v=7
+Content-Type: application/xml
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:tns="urn:xmds" xmlns:types="urn:xmds/encodedTypes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <tns:GetDependency>
+      <serverKey xsi:type="xsd:string">{{serverKey}}</serverKey>
+      <hardwareKey xsi:type="xsd:string">{{hardwareKey}}</hardwareKey>
+      <fileType xsi:type="xsd:string">bundle</fileType>
+      <id xsi:type="xsd:int">1</id>
+    </tns:GetDependency>
+  </soap:Body>
+</soap:Envelope>
+
+###
+
+POST {{url}}/xmds.php?v=7
+Content-Type: application/xml
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:tns="urn:xmds" xmlns:types="urn:xmds/encodedTypes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <tns:GetData>
+      <serverKey xsi:type="xsd:string">{{serverKey}}</serverKey>
+      <hardwareKey xsi:type="xsd:string">{{hardwareKey}}</hardwareKey>
+      <widgetId xsi:type="xsd:int">{{testWidgetId}}</widgetId>
+    </tns:GetData>
+  </soap:Body>
+</soap:Envelope>
+
+###
+
+POST {{url}}/xmds.php?v=7
+Content-Type: application/xml
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:tns="urn:xmds" xmlns:types="urn:xmds/encodedTypes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <tns:ReportFaults>
+      <serverKey xsi:type="xsd:string">{{serverKey}}</serverKey>
+      <hardwareKey xsi:type="xsd:string">{{hardwareKey}}</hardwareKey>
+      <fault xsi:type="xsd:string">[{"code":5000, "reason": "Too long: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}]</fault>
+    </tns:ReportFaults>
+  </soap:Body>
+</soap:Envelope>
+
+###
+
+POST {{url}}/xmds.php?v=7
+Content-Type: application/xml
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:tns="urn:xmds" xmlns:types="urn:xmds/encodedTypes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <tns:SubmitLog>
+      <serverKey xsi:type="xsd:string">{{serverKey}}</serverKey>
+      <hardwareKey xsi:type="xsd:string">{{hardwareKey}}</hardwareKey>
+      <logXml xsi:type-="xsd:string">&lt;log&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Prepare Layout Failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;trace date=&quot;2024-07-20 20:04:28&quot; category=&quot;Error&quot;&gt;&lt;logdate&gt;10/26/2016 8:04:28 PM&lt;/logdate&gt;&lt;thread&gt;UI Thread&lt;/thread&gt;&lt;method&gt;MainForm - ChangeToNextLayout&lt;/method&gt;&lt;message&gt;Layout Change to failed. Exception raised was: Default layout&lt;/message&gt;&lt;/trace&gt;&lt;/log&gt;</logXml>
+    </tns:SubmitLog>
+  </soap:Body>
+</soap:Envelope>
+
+###
+
+POST {{url}}/xmds.php?v=7
+Content-Type: application/xml
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:tns="urn:xmds" xmlns:types="urn:xmds/encodedTypes"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <tns:SubmitStats>
+      <serverKey xsi:type="xsd:string">{{serverKey}}</serverKey>
+      <hardwareKey xsi:type="xsd:string">{{hardwareKey}}</hardwareKey>
+      <statXml xsi:type-="xsd:string">&lt;records&gt;&lt;stat fromdt=&quot;2024-08-01 00:00:00&quot; todt=&quot;2024-08-01 00:05:00&quot; type=&quot;layout&quot; scheduleid=&quot;48&quot; layoutid=&quot;133&quot; mediaid=&quot;null&quot; tag=&quot;&quot; count=&quot;250&quot; /&gt;&lt;/records&gt;</statXml>
+    </tns:SubmitStats>
+  </soap:Body>
+</soap:Envelope>
+
+###
+
+# Get the fileID from the Required Files response.
+GET {{url}}/xmds.php?file=12.xlf&displayId=1&type=L&itemId=12&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230502T000000Z&X-Amz-Expires=1683048895&X-Amz-SignedHeaders=host&X-Amz-Signature=7c876be170afb29d194e7b035be6969198c22a32c22e163e2696754bb1163f5d
+
+###
+
+GET {{url}}/xmds.php?file=6fdcddfc0c386f5abce4f8c8b5983b1a&displayId=1&type=P&itemId=4&fileType=font
